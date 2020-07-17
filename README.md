@@ -51,7 +51,7 @@ I did not test the original Fortran code, so I used the results on original file
 
 **Note:** At this time, the results I got are **not** exactly the same as in VSOP2013_ctl-1.txt.
 Still searching for an explanation for that, as the Delphi code is very close to original Fortran.
-Results are close. Judge for yourself...
+But results are **close**. Judge for yourself...
 
     Test of Delphi implementation of VSOP2013
     ==========================================
