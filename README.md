@@ -47,23 +47,21 @@ I did not test the original Fortran code, so I used the results on original file
 
 Note: At this time, the results I got are *not* exactly the same as in VSOP2013_ctl-1.txt.
 But are close. Still searching for an explanation for that, as the Delphi code is very close to original Fortran by theory authors.
-Judge for yourself:
 
-Tests of Delphi implememntation of VSOP2013
-===========================================
+# Tests of Delphi implementation of VSOP2013
 
-from VSOP2013_ctl.txt
-  JUPITER     JD2405730.5  X: -5.392780445602 ua    Y: -0.805698954496 ua      Z :  0.124332318817 ua  
-                          X':  0.001019284060 ua/d  Y': -0.007116469431 ua/d   Z':  0.000005921462 ua/d
+    from VSOP2013_ctl.txt
+      JUPITER     JD2405730.5  X: -5.392780445602 ua    Y: -0.805698954496 ua      Z :  0.124332318817 ua  
+                              X':  0.001019284060 ua/d  Y': -0.007116469431 ua/d   Z':  0.000005921462 ua/d
 						   
-from TestVSOP2013 (code in this repo)
-  Jupiter     jd2405730.5  x: -5.39278030395508 ua   y: -0.80569893121719 ua    z: 0.12433231621981 ua
-                          sx: 0.00101928401273 ua/d sy: -0.00711646955460 ua/d sz: 0.00000592146216 ua/d
-
-from https://ssd.jpl.nasa.gov/horizons.cgi ( Nasa Horizons. used Jupiter Center and Sun  Center)
-  Jupiter     jd2405730.5 (A.D. 1874-Jul-26 00:00:00.0000 TDB )  
-                           X =-5.392781657192185E+00 Y =-8.056977928944861E-01 Z = 1.243323711175276E-01
-                           VX= 1.019554845438113E-03 VY=-7.116569436623840E-03 VZ= 5.921987272194194E-06
+    from TestVSOP2013 (code in this repo)
+      Jupiter     jd2405730.5  x: -5.39278030395508 ua   y: -0.80569893121719 ua    z: 0.12433231621981 ua
+                              sx: 0.00101928401273 ua/d sy: -0.00711646955460 ua/d sz: 0.00000592146216 ua/d
+    
+    from https://ssd.jpl.nasa.gov/horizons.cgi ( Nasa Horizons. used Jupiter Center and Sun  Center)
+      Jupiter     jd2405730.5 (A.D. 1874-Jul-26 00:00:00.0000 TDB )  
+                               X =-5.392781657192185E+00 Y =-8.056977928944861E-01 Z = 1.243323711175276E-01
+                               VX= 1.019554845438113E-03 VY=-7.116569436623840E-03 VZ= 5.921987272194194E-06
 
 
 
