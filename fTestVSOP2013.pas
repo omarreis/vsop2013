@@ -7,8 +7,10 @@ uses
   System.Math.Vectors,
 
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.StdCtrls, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo, FMX.Objects,
-  vsop2013, FMX.Edit;
+  FMX.StdCtrls, FMX.Controls.Presentation, FMX.ScrollBox,
+  FMX.Memo, FMX.Objects, FMX.Edit,
+
+  vsop2013;
 
 type
   TForm2 = class(TForm)
@@ -43,11 +45,11 @@ type
   private
     procedure Form2LoadPropgress(Sender: TObject; aPerc: integer);
     procedure showVectors(ip: integer; const jde: Double; const Position,
-      Speed: TVector3D);
+      Speed: TCoord3D);
   public
     fVSOPFile:T_VSOP2013_File;
     fBitmap:TBitmap;             // Sky chart
-    fPosPlanets:Array[1..NUM_PLANETS] of TVector3D;
+    fPosPlanets:Array[1..NUM_PLANETS] of TCoord3D;
 
     fanimJDE:double;
   end;
@@ -63,7 +65,7 @@ procedure TForm2.FormCreate(Sender: TObject);
 var i:integer;
 begin
   fVSOPFile := nil;
-  for i:=1 to NUM_PLANETS do fPosPlanets[i] := Vector3D(0,0,0);
+  for i:=1 to NUM_PLANETS do fPosPlanets[i] := Coord3D(0,0,0);
 
   fBitmap := TBitmap.Create;
 end;
@@ -95,7 +97,7 @@ const
 
 
 procedure TForm2.pbChartPaint(Sender: TObject; Canvas: TCanvas);
-var ip:integer; aPos:TVector3D; aScP:TVector; aR:TRectF; C:TVector; aScale,aRadius:Double;
+var ip:integer; aPos:TCoord3D; aScP:TVector; aR:TRectF; C:TVector; aScale,aRadius:Double;
 begin
   // paint fBitmap
   C := Vector(300,300); //center of chart = Sun pos (heliocantric coordinates)
@@ -165,7 +167,7 @@ begin
     end;
 end;
 
-procedure TForm2.showVectors(ip:integer; const jde:Double; const Position,Speed:TVector3D);
+procedure TForm2.showVectors(ip:integer; const jde:Double; const Position,Speed:TCoord3D);
 begin
   Memo1.Lines.Add('');
   Memo1.Lines.Add( PLANET_NAMES[ip] );
@@ -182,7 +184,7 @@ end;
 
 
 procedure TForm2.btnTestsClick(Sender: TObject);
-var Position,Speed:TVector3D; ip:integer; jde:double;
+var Position,Speed:TCoord3D; ip:integer; jde:double;
 begin
   // calculation tests extracted from VSOP2013_ctl.txt
 
@@ -245,7 +247,7 @@ end;
 
 // 200 ms = 5 ticks per second
 procedure TForm2.TimerAnimatePlanetsTimer(Sender: TObject);
-var ip:integer; aPosition,aSpeed:TVector3D; Year:Double;
+var ip:integer; aPosition,aSpeed:TCoord3D; Year:Double;
 begin
   if Assigned(fVSOPFile) then //upd
     begin
@@ -270,7 +272,7 @@ end;
 
 // Loads vsop2013 ASCII file and performs a few calculations
 procedure TForm2.btnCalcClick(Sender: TObject);
-var Position,Speed:TVector3D; ip:integer; jde:double;
+var Position,Speed:TCoord3D; ip:integer; jde:double;
 begin
   ip  := StrToInt(edPlanet.Text);
   jde := StrToFloat(edJDE.Text);

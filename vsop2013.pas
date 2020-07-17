@@ -28,6 +28,7 @@ const
   //
   // NUM_PERIODS=17122;
 
+
 var
    // original file names. Each of these files is 400 MB !
    TXT_FILES : Array[1..NUM_FILES] of string = (
@@ -60,6 +61,11 @@ var
                   (ti:2268910.5 ;tf: 2816814.5),      // +1500 to +3000       VSOP2013.p2000
                   (ti:2816814.5 ;tf: 3364718.5));     // +3000 to +4500       VSOP2013.p4000
 type
+  // Delphi TVector3D components are Singles, not long enough to hold planet coordinates
+  TCoord3D=record       //3d vector w/ Double components
+    x,y,z:Double;
+  end;
+
   // VSOP2013File loads a bin file and parses it into a Chebyshev Polynomial
   // indexing and evaluation machine.
 
@@ -94,12 +100,22 @@ type
     Destructor  Destroy; override;
     Procedure   Reset;
     function    Read_ASCII_File(const aFilename:String):boolean;  //read vsop2013 ASCII file to memory
-    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TVector3D): boolean;
+    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TCoord3D): boolean;
 
     property    OnLoadProgress:T_VSOP2013_LoadProgress read fOnLoadProgress write fOnLoadProgress;
   end;
 
+function Coord3D(const X, Y, Z: Double): TCoord3D;
+
 implementation
+
+function Coord3D(const X, Y, Z: Double): TCoord3D;
+begin
+  Result.x := X;
+  Result.y := Y;
+  Result.z := Z;
+end;
+
 
 { T_VSOP2013_Period }
 
@@ -263,7 +279,7 @@ begin
     else raise Exception.Create('File not found');
 end;
 
-function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TVector3D):boolean;
+function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TCoord3D):boolean;
 //         Attempt to calculate the position and velocity for the specified planet.
 //         :param ip: index of planet to perform calculation for
 //         :param jde: the julian date to perform the calculation for
@@ -340,8 +356,8 @@ begin
               end;
           end;
         // copy vectors
-        Position := Vector3D(r[1],r[2],r[3]);
-        Speed    := Vector3D(r[4],r[5],r[6]);
+        Position := Coord3D(r[1],r[2],r[3]);
+        Speed    := Coord3D(r[4],r[5],r[6]);
         result   := true;
       end
       else raise Exception.Create('period outside bounds');

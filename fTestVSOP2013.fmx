@@ -26,7 +26,7 @@ object Form2: TForm2
   object btnLoadFile: TButton
     StyledSettings = [Family, Style, FontColor]
     Position.X = 56.000000000000000000
-    Position.Y = 24.000000000000000000
+    Position.Y = 18.000000000000000000
     Size.Width = 153.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
@@ -37,7 +37,7 @@ object Form2: TForm2
   end
   object labPercent: TLabel
     Position.X = 216.000000000000000000
-    Position.Y = 32.000000000000000000
+    Position.Y = 26.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
@@ -106,7 +106,7 @@ object Form2: TForm2
     Min = 1.000000000000000000
     Orientation = Horizontal
     Position.X = 304.000000000000000000
-    Position.Y = 52.000000000000000000
+    Position.Y = 48.000000000000000000
     Size.Width = 137.000000000000000000
     Size.Height = 19.000000000000000000
     Size.PlatformDefault = False
@@ -116,7 +116,7 @@ object Form2: TForm2
   end
   object labScale: TLabel
     Position.X = 448.000000000000000000
-    Position.Y = 51.000000000000000000
+    Position.Y = 47.000000000000000000
     Text = '10 pix/au'
     TabOrder = 11
   end
@@ -126,7 +126,7 @@ object Form2: TForm2
     Min = 1.000000000000000000
     Orientation = Horizontal
     Position.X = 584.000000000000000000
-    Position.Y = 52.000000000000000000
+    Position.Y = 48.000000000000000000
     Size.Width = 145.000000000000000000
     Size.Height = 19.000000000000000000
     Size.PlatformDefault = False
@@ -136,7 +136,7 @@ object Form2: TForm2
   end
   object labAnimationSpeed: TLabel
     Position.X = 736.000000000000000000
-    Position.Y = 51.000000000000000000
+    Position.Y = 47.000000000000000000
     Size.Width = 177.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
