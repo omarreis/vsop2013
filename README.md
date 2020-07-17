@@ -36,7 +36,7 @@ Object T_VSOP2013_File in vsop2013.pas:
 * calculates heliocentric rectangular position and speed ( in UA and UA/day)
 
 # Test app
-Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at least one of the files mentioned above from theory's FTP repository. 
+Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
 
 * Set filename and click [Load File] - This will freeze the app for a while, as it loads de 400 MB of text
 * Set JDE epoch and planet id and click [Calc]
