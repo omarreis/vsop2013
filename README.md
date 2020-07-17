@@ -68,4 +68,7 @@ But results are **close**. Judge for yourself...
                                X =-5.392781657192185E+00 Y =-8.056977928944861E-01 Z = 1.243323711175276E-01
                                VX= 1.019554845438113E-03 VY=-7.116569436623840E-03 VZ= 5.921987272194194E-06
 
+## Download executable for Windows
+
+from https://github.com/omarreis/vsop2013/releases/tag/1.0
 
