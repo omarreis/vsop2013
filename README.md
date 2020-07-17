@@ -1,15 +1,16 @@
 # vsop2013
 
-VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by J. Simon and G. Francou. 
+VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
-It is a large series of Chebyshev polynomial coeficients. 
+It is a large set of tables of  Chebyshev polynomial coeficients. 
 
 This is a Delphi port of original Fortran files by the theory authors.  It was tested with D10.3.3 on Win32.
 
 VSOP original files can be found at:
 
-* ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
-
+* [ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/](ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/)
+* [README.pdf](ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/README.pdf)
+ 
 Data files are large (400 MB) ASCII containing Chebyshev polynomial 1st kind coeficients. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
   
@@ -41,12 +42,15 @@ Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at lea
 * Set JDE epoch and planet id and click [Calc]
 * Check animate show a solar system animation ( use track bars to control scale and speed )
 
+![screenshot](screenshotTestVSOP2013.png)
+
 # Test results
 
 I did not test the original Fortran code, so I used the results on original file VSOP2013_ctl-1.txt.
 
 **Note:** At this time, the results I got are **not** exactly the same as in VSOP2013_ctl-1.txt.
-But are close. Still searching for an explanation for that, as the Delphi code is very close to original Fortran.
+Still searching for an explanation for that, as the Delphi code is very close to original Fortran.
+But are close. Judge for yourself...
 
     Test of Delphi implementation of VSOP2013
     ==========================================
@@ -64,19 +68,3 @@ But are close. Still searching for an explanation for that, as the Delphi code i
                                VX= 1.019554845438113E-03 VY=-7.116569436623840E-03 VZ= 5.921987272194194E-06
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![screenshot](screenshotTestVSOP2013.png)
