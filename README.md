@@ -29,7 +29,7 @@ The FTP repository also contains Fortran code:
 * VSOP2013_binfile.f - Parses text file into binary file that allows fast random access.
 * VSOP2013_compute.f - Retrieves 32d interval from binary file and computes planet data ( position and speed )
 
-In this Delphi port, the ASCII file is loaded directly into memory tables, for even faster access. 
+In this Delphi port, the whole ASCII file is loaded into memory tables, for even faster access. 
 Once loaded, computations are very fast. 
 
 Object T_VSOP2013_File in vsop2013.pas:
