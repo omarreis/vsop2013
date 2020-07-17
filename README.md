@@ -4,7 +4,7 @@ VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high pr
 
 It is a large set of tables of  Chebyshev polynomial coeficients. 
 
-This is a Delphi port of original Fortran files by the theory authors.  It was tested with D10.3.3 on Win32.
+This is a Delphi port of original Fortran code by the theory authors.  It was tested with D10.3.3 Rio on Win32.
 
 VSOP 2013 original files can be found at:
 
@@ -12,7 +12,7 @@ VSOP 2013 original files can be found at:
  
 README: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/README.pdf
  
-Data files are large (400 MB) ASCII containing Chebyshev polynomial 1st kind coeficients. 
+VSOP2013 data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind coeficients. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
   
      range                file
