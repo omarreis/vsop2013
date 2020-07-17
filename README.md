@@ -45,16 +45,16 @@ Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at lea
 
 I did not test the original Fortran code, so I used the results on original file VSOP2013_ctl-1.txt.
 
-Note: At this time, the results I got are *not* exactly the same as in VSOP2013_ctl-1.txt.
-But are close. Still searching for an explanation for that, as the Delphi code is very close to original Fortran by theory authors.
+**Note:** At this time, the results I got are **not** exactly the same as in VSOP2013_ctl-1.txt.
+But are close. Still searching for an explanation for that, as the Delphi code is very close to original Fortran.
 
-# Tests of Delphi implementation of VSOP2013
-
-    from VSOP2013_ctl.txt
+    Test of Delphi implementation of VSOP2013
+    ==========================================
+    from VSOP2013_ctl.txt ( original results file)
       JUPITER     JD2405730.5  X: -5.392780445602 ua    Y: -0.805698954496 ua      Z :  0.124332318817 ua  
                               X':  0.001019284060 ua/d  Y': -0.007116469431 ua/d   Z':  0.000005921462 ua/d
 						   
-    from TestVSOP2013 (code in this repo)
+    from TestVSOP2013   ( code in this repo )
       Jupiter     jd2405730.5  x: -5.39278030395508 ua   y: -0.80569893121719 ua    z: 0.12433231621981 ua
                               sx: 0.00101928401273 ua/d sy: -0.00711646955460 ua/d sz: 0.00000592146216 ua/d
     
