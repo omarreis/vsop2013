@@ -41,7 +41,7 @@ Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at lea
 
 * Set filename and click [Load File] - This will freeze the app for a while, as it loads de 400 MB of text
 * Set JDE epoch and planet id and click [Calc]
-* Check animate show a solar system animation ( use track bars to control scale and speed )
+* Check animate to show a Solar System animated chart.  Use trackbars to control scale and speed of the animation. 
 
 ![screenshot](screenshotTestVSOP2013.png)
 
