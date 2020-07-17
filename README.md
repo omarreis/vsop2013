@@ -49,10 +49,6 @@ Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at lea
 
 I did not test the original Fortran code, so I used the results on original file VSOP2013_ctl-1.txt.
 
-**Note:** At this time, the results I got are **not** exactly the same as in VSOP2013_ctl-1.txt.
-Still searching for an explanation for that, as the Delphi code is very close to original Fortran.
-But results are **close**. Judge for yourself...
-
     Test of Delphi implementation of VSOP2013
     ==========================================
     from VSOP2013_ctl.txt ( original results file)
@@ -60,8 +56,8 @@ But results are **close**. Judge for yourself...
                               X':  0.001019284060 ua/d  Y': -0.007116469431 ua/d   Z':  0.000005921462 ua/d
 						   
     from TestVSOP2013   ( code in this repo )
-      Jupiter     jd2405730.5  x: -5.39278030395508 ua   y: -0.80569893121719 ua    z: 0.12433231621981 ua
-                              sx: 0.00101928401273 ua/d sy: -0.00711646955460 ua/d sz: 0.00000592146216 ua/d
+      Jupiter     jde2405730.5 x: -5.39278044560243 ua   y: -0.80569895449564 ua    z: 0.12433231881710 ua
+                              sx: 0.00101928405984 ua/d sy: -0.00711646943146 ua/d sz: 0.00000592146220 ua/d			      
     
     from https://ssd.jpl.nasa.gov/horizons.cgi ( Nasa Horizons. used Jupiter Center and Sun  Center)
       Jupiter     jd2405730.5 (A.D. 1874-Jul-26 00:00:00.0000 TDB )  
