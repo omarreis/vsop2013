@@ -1,0 +1,205 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'VSOP 2013 sample app'
+  ClientHeight = 689
+  ClientWidth = 906
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    StyledSettings = [Family, Style, FontColor]
+    TextSettings.Font.Size = 14.000000000000000000
+    Position.X = 8.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 481.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 277.000000000000000000
+    Viewport.Height = 477.000000000000000000
+  end
+  object btnLoadFile: TButton
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 56.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 153.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Load file '
+    TextSettings.Font.Size = 14.000000000000000000
+    OnClick = btnLoadFileClick
+  end
+  object labPercent: TLabel
+    Position.X = 216.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = '0%'
+    TabOrder = 5
+  end
+  object pbChart: TPaintBox
+    Position.X = 296.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 600.000000000000000000
+    Size.Height = 600.000000000000000000
+    Size.PlatformDefault = False
+    OnPaint = pbChartPaint
+    object edPlanet: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      Text = '5'
+      TextSettings.Font.Size = 14.000000000000000000
+      Position.X = -200.000000000000000000
+      Position.Y = 68.000000000000000000
+      Size.Width = 57.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style, FontColor]
+    end
+    object Label2: TLabel
+      Position.X = -304.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = 'Planet (1..9)'
+      TabOrder = 1
+    end
+  end
+  object cbAnimatePlanets: TSwitch
+    IsChecked = False
+    Position.X = 320.000000000000000000
+    Position.Y = 8.000000000000000000
+    TabOrder = 8
+    OnSwitch = cbAnimatePlanetsSwitch
+  end
+  object Label1: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 408.000000000000000000
+    Position.Y = 12.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    Text = 'Animate'
+    TabOrder = 9
+  end
+  object labTime: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 576.000000000000000000
+    Position.Y = 13.000000000000000000
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = '2000.0'
+    TabOrder = 12
+  end
+  object tbScale: TTrackBar
+    CanParentFocus = True
+    Min = 1.000000000000000000
+    Orientation = Horizontal
+    Position.X = 304.000000000000000000
+    Position.Y = 52.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    Value = 10.000000000000000000
+    OnChange = tbScaleChange
+  end
+  object labScale: TLabel
+    Position.X = 448.000000000000000000
+    Position.Y = 51.000000000000000000
+    Text = '10 pix/au'
+    TabOrder = 11
+  end
+  object tbAnimationSpeed: TTrackBar
+    CanParentFocus = True
+    Max = 366.000000000000000000
+    Min = 1.000000000000000000
+    Orientation = Horizontal
+    Position.X = 584.000000000000000000
+    Position.Y = 52.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    Value = 7.000000000000000000
+    OnChange = tbAnimationSpeedChange
+  end
+  object labAnimationSpeed: TLabel
+    Position.X = 736.000000000000000000
+    Position.Y = 51.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = '7 d/tick'
+    TabOrder = 10
+  end
+  object edFilename: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 15
+    Text = '\vsop2013\VSOP2013.p2000'
+    Position.X = 8.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object TimerAnimatePlanets: TTimer
+    Enabled = False
+    Interval = 200
+    OnTimer = TimerAnimatePlanetsTimer
+    Left = 112
+    Top = 528
+  end
+  object btnTests: TButton
+    Position.X = 56.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 153.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 17
+    Text = 'Run Tests'
+    OnClick = btnTestsClick
+  end
+  object btnCalc: TButton
+    Position.X = 216.000000000000000000
+    Position.Y = 173.000000000000000000
+    Size.Width = 64.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 18
+    Text = 'Calc'
+    OnClick = btnCalcClick
+  end
+  object Labw: TLabel
+    Position.X = -8.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.HorzAlign = Trailing
+    Text = 'JDE:'
+    TabOrder = 2
+  end
+  object edJDE: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 0
+    Text = '2405730.5'
+    TextSettings.Font.Size = 14.000000000000000000
+    Position.X = 96.000000000000000000
+    Position.Y = 172.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+  end
+end
