@@ -24,7 +24,7 @@ It is organized in 6 files, covering a 9,000 year period in all, as follows:
      +3000 to +4500       VSOP2013.p4000
 
 Each file is divided in 17122, 32 day intervals. Each interval has 978 coeficients, arranged in groups of 6 per line. File header contains a table of indexes into coeficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
-Planet Chebyshev polynomials can have from 7 to 14 terms. 
+Planet Chebyshev polynomials can have from 7 to 14 terms. There are 6 components: 3 for position and 3 for speed.
 
 The FTP repository also contains Fortran code:
 * VSOP2013_binfile.f - Parses text file into binary file that allows fast random access.
