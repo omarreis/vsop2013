@@ -40,9 +40,9 @@ Object T_VSOP2013_File in vsop2013.pas:
 # Test app
 Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
 
-* Set filename and click [Load File] - This will freeze the app for a while, as it loads de 400 MB of text
-* Set JDE epoch and planet id and click [Calc]
-* Check animate to show a Solar System animated chart.  Use trackbars to control scale and speed of the animation. 
+* Set filename and click [Load File] - This will freeze the app for a while, as it loads the 400 MB of text data.
+* Set JD epoch and planet id and click [Calc]
+* Check [x]Animate to show a solar system animated chart.  Use trackbars to control scale and speed of the animation. 
 
 ![screenshot](screenshotTestVSOP2013.png)
 
