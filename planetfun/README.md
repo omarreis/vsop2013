@@ -44,4 +44,4 @@ Planet 3D textures are *not* included in this repository. You can find suitable 
 * Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
 * Mouse events with mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
 
-keywords: solar system planet astronomy vsop2013 
+keywords: solar system planet astronomy vsop2013 Delphi Firemonkey
