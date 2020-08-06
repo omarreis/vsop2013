@@ -18,7 +18,7 @@ see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
 VSOP2013 files are not in this repository.
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB file) 
-* Use program *TestVSOP2013* to load VSOP2013.p2000  and save VSOP2013.p2000.bin, a binary file containing VSOP2013 data. Do *not* use binary files from original repository. Binary files are different formats.
+* Use program *TestVSOP2013* to load VSOP2013.p2000 and save VSOP2013.p2000.bin, a binary file containing VSOP2013 data. Do *not* use binary files from original repository. Binary files for this app use a different, custom format.
 * Deploy file VSOP2013.p2000.bin with the app.
 
 # Planet textures
