@@ -43,6 +43,8 @@ Planet 3D textures are *not* included in this repository. You can find suitable 
 * Configurable camera distance-to-target
 * Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
 * Mouse events with mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
+* Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it's one dot/week )
+* Solar system axis
 
 # Dependencies
 *  Uses file vsop2013.pas from https://github.com/omarreis/vsop2013/
