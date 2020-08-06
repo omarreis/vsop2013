@@ -6,12 +6,20 @@ Full app source code is available at:
 
 https://github.com/omarreis/vsop2013/planetfun
 
+![screenshots](screenshotsPlanetFun.png)
+
 # Planet positions
 
 Planet positions are calculated using VSOP2013 ephemerides ( see https://github.com/omarreis/vsop2013 ) 
 This is high resolution planet positions between epochs 1500 to 3000 (by Francou and Simon) 
 
 see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+
+VSOP2013 files are not in this repository.
+* Download VSOP2013.p2000 from the FTP repository ( a 400 MB file) 
+* Use program TestVSOP2013 to load VSOP2013.p2000
+* Save VSOP2013.p2000.bin, a binary file containing VSOP2013 data
+* Deploy file VSOP2013.p2000.bin with the app.
 
 # Planet textures
 
