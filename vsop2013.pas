@@ -1,22 +1,28 @@
 unit vsop2013;       // Delphi implementation of theory VSOP2013
 // This is Delphi port from original Fortran code by FRANCOU & SIMON
 // VSOP original files:
-//  ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
-//  VSOP2013.m2000, VSOP2013.m1000, VSOP2013.p1000,VSOP2013.p2000,VSOP2013.p4000
-//  Files are large 400 MB ASCII containing chebyshev polynomial 1st kind coeficients.
+//   ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+//   VSOP2013.m2000, VSOP2013.m1000, VSOP2013.p1000,VSOP2013.p2000,VSOP2013.p4000
+//   Files are large 400 MB ASCII containing chebyshev polynomial 1st kind coeficients.
 // There are 6 coefs/line ( 163 x )
 // The file header constains a table loc[,] of indexes into the coefs[] array
 // Each planet has a number of coefs.
+// Source: github.com/omarreis/vsop2013
+
 //
 // History:
 //   jun 2020: Loose port v0.9 from Fortran by oMAR
 //     this code loads coefs from ASCII file and builds memory tables (instead of original BIN files)
 //     note: Fortran language is '1 based' (array indexes all start with 1 (at least this code is) )
+//   jul 2020: For reasons of max bundle size and load speed om mobile, I adopted a custom binary format
+//             ( same solution as VSOP2013 authors, however w/ a different approach )
+//             This cut the database size from 400 MB to 130 MB :)
 
 interface
 
 uses
   System.Math,           //NaN
+  System.Classes,        //anonymous thread
   System.Math.Vectors,
   System.SysUtils;
 
@@ -60,9 +66,24 @@ var
                   (ti:1721006.5 ;tf: 2268910.5),      // 0 to +1500           VSOP2013.p1000
                   (ti:2268910.5 ;tf: 2816814.5),      // +1500 to +3000       VSOP2013.p2000
                   (ti:2816814.5 ;tf: 3364718.5));     // +3000 to +4500       VSOP2013.p4000
+
 type
+  // binary file record format, for faster access and smaller files (than  text)
+  // ( Android has a 150MB bundle size limit. VSOP2013.p2000 is 400MB!! )
+  // binary file is 7840*17123 = 134,244,320 bytes. much better than original
+  T_VSOP2013_binaryRec=packed record    // rec len = 7840 bytes
+    case boolean of                     //  <----------------- don't mess with this. file records
+       true:  ( t1,t2,delta:Double;     //header ( 1st record )
+                nintv,ncoef:integer;
+                loc:Array[1..3,1..9] of integer;
+              );
+       false: ( dj1,dj2:Double;         // each rec corresponds to a 32 period ( there are 17122 of these )
+                coef:Array[1..NUM_COEFS] of Double;    // 978 coefs / period
+              );
+    end;
+
   // Delphi TVector3D components are Singles, not long enough to hold planet coordinates
-  TCoord3D=record       //3d vector w/ Double components
+  TCoord3D=record    // 3d vector w/ Double components
     x,y,z:Double;
   end;
 
@@ -75,7 +96,7 @@ type
   private
   public
     dj1,dj2:Double;                       // bounds
-    coef:Array[1..NUM_COEFS] of Extended; // coefs
+    coef:Array[1..NUM_COEFS] of Double; // coefs
     Constructor Create;
     Destructor  Destroy; override;
     procedure   Reset;
@@ -84,6 +105,8 @@ type
   T_VSOP2013_File=class
   private
     fOnLoadProgress:T_VSOP2013_LoadProgress;
+    fOnLoadTerminate: TNotifyEvent;
+    procedure DoNotifyTerminate;
   public
     //header
     idf:integer;   // file identification.  Should read 2013
@@ -96,13 +119,27 @@ type
 
     Periods:Array of T_VSOP2013_Period;  // dynamic allocated Periods array
 
+    fLoaded:boolean;
+    fFilename:String;
+
     Constructor Create;
+
     Destructor  Destroy; override;
     Procedure   Reset;
-    function    Read_ASCII_File(const aFilename:String):boolean;  //read vsop2013 ASCII file to memory
-    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TCoord3D): boolean;
+    // custom binary file format ahead..
+    function    WriteBinaryFile(const aFilename:String):boolean;   // vsop2013.p2000.bin
+    function    ReadBinaryFile(const aFilename:String):boolean;
 
-    property    OnLoadProgress:T_VSOP2013_LoadProgress read fOnLoadProgress write fOnLoadProgress;
+    function    Read_ASCII_File(const aFilename:String):boolean;    //read vsop2013 ASCII file to memory
+    Procedure   Threaded_Read_ASCII_File(const aFilename: String);
+
+    Procedure   Threaded_ReadBinaryFile(const aFilename: String);
+
+    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TCoord3D): boolean;
+    function    getMetadata:String;
+    property    OnLoadProgress:T_VSOP2013_LoadProgress read fOnLoadProgress  write fOnLoadProgress;
+    property    OnLoadTerminate:TNotifyEvent           read fOnLoadTerminate write fOnLoadTerminate; //threaded loat terminate
+
   end;
 
 function Coord3D(const X, Y, Z: Double): TCoord3D;
@@ -143,9 +180,12 @@ end;
 constructor T_VSOP2013_File.Create;
 begin
   inherited Create;
+  fLoaded:= false;
 
   Reset;
-  fOnLoadProgress:=nil;
+  fOnLoadProgress  := nil;
+  fOnLoadTerminate := nil;
+  fFilename:='';
 end;
 
 Procedure  T_VSOP2013_File.Reset;  // zero vars
@@ -172,6 +212,115 @@ begin
   inherited;
 end;
 
+Procedure T_VSOP2013_File.DoNotifyTerminate;
+begin
+  if Assigned(fOnLoadTerminate) then
+      fOnLoadTerminate( Self );
+end;
+
+Procedure T_VSOP2013_File.Threaded_Read_ASCII_File(const aFilename:String);
+var aThread:TThread;
+begin
+  aThread := TThread.CreateAnonymousThread(
+    procedure
+    begin
+      try
+        Read_ASCII_File(aFilename); // this takes some 15 secs to load
+      except
+        // ignore error ??
+      end;
+      if Assigned(fOnLoadTerminate) then
+        TThread.Synchronize( aThread, DoNotifyTerminate );   // notify vsop2013 file loaded and parsed
+    end
+    );
+  aThread.Start;
+end;
+
+
+Procedure   T_VSOP2013_File.Threaded_ReadBinaryFile(const aFilename: String);
+var aThread:TThread;
+begin
+  aThread := TThread.CreateAnonymousThread(
+    procedure
+    begin
+      try
+        ReadBinaryFile(aFilename); // this takes some 15 secs to load
+      except
+        // ignore error ??
+      end;
+      if Assigned(fOnLoadTerminate) then
+        TThread.Synchronize( aThread, DoNotifyTerminate );   // notify vsop2013 file loaded and parsed
+    end
+    );
+  aThread.Start;
+end;
+
+// once loaded from original ASCII text, save smaller and faster binary format
+function  T_VSOP2013_File.WriteBinaryFile(const aFilename:String):boolean;
+var aRec:T_VSOP2013_binaryRec; i,j:integer; F:File of T_VSOP2013_binaryRec;
+    aPeriod:T_VSOP2013_Period;
+begin
+  Result := false;
+  if not fLoaded then exit;
+  assignFile(F, aFilename );
+  rewrite(F);
+
+  //write header rec
+  aRec.t1     := t1;
+  aRec.t2     := t2;
+  aRec.delta  := delta;
+  aRec.nintv  := nintv;
+  aRec.ncoef  := ncoef;
+  for i:=1 to 3 do for j:=1 to 9 do aRec.loc[i,j] := loc[i,j];
+  write(F,aRec);
+
+  //write coeficient records
+  for i:=1 to nintv do        // 17k
+    begin
+       aPeriod := Periods[i];
+       aRec.dj1  := aPeriod.dj1;
+       aRec.dj2  := aPeriod.dj2;
+       for j := 1 to NUM_COEFS do aRec.coef[j] := aPeriod.coef[j];    // 978 coefs
+       write(F,aRec);
+    end;
+  CloseFile(F);
+  Result := true;
+end;
+
+// !! ReadBinaryFile() binary format is not the same as original VSOP2013 binaries.
+// Use only .bin binaries generated by this object
+function  T_VSOP2013_File.ReadBinaryFile(const aFilename:String):boolean;  // 'vsop2013.p2000.bin'
+var aRec:T_VSOP2013_binaryRec; i,j:integer;
+    F:File of T_VSOP2013_binaryRec;
+    aPeriod:T_VSOP2013_Period;
+begin
+  Result := false;
+  fFilename   := aFilename;       //
+  assignFile(F, aFilename );
+  System.Reset(F);
+  read(F,aRec);    //read header rec
+  t1     := aRec.t1;
+  t2     := aRec.t2;
+  delta  := aRec.delta;
+  nintv  := aRec.nintv;
+  ncoef  := aRec.ncoef;
+  for i:=1 to 3 do for j:=1 to 9 do loc[i,j] := aRec.loc[i,j];
+  //read coef records
+  SetLength(Periods, nintv+1);          // alloc Periods[]
+  for i:=1 to nintv do  // 17k of them
+    begin
+       aPeriod := T_VSOP2013_Period.Create;
+       read(F, aRec);
+       aPeriod.dj1 := aRec.dj1;
+       aPeriod.dj2 := aRec.dj2;
+       for j := 1 to NUM_COEFS do aPeriod.coef[j] := aRec.coef[j];
+       Periods[i] := aPeriod;
+    end;
+  CloseFile(F);
+  fLoaded := true;
+  Result := true;
+end;
+
 function T_VSOP2013_File.Read_ASCII_File(const aFilename:String):boolean;  //read vsop2013 ASCII file to memory
 var
   InFile:Textfile;
@@ -185,6 +334,9 @@ var
 begin
   If FileExists(aFileName) then
     begin
+      fLoaded:= false;
+      fFilename := aFilename;
+
       AssignFile(InFile,aFileName);
       try
         System.Reset(InFile);
@@ -270,6 +422,7 @@ begin
                 end;
             end;
           CloseFile(InFile);
+          fLoaded := true;
       except
         CloseFile(InFile);  //close anyway
         raise Exception.Create('Error loading file');
@@ -277,6 +430,28 @@ begin
 
     end
     else raise Exception.Create('File not found');
+end;
+
+const
+  crlf=#13#10;
+
+function  T_VSOP2013_File.getMetadata:String;  //returns file header information
+var aFN:String; L:integer;
+begin
+  if fLoaded then
+    begin
+      aFN := fFilename;
+      L:= aFN.Length;
+      if (L>20) then aFN := '...'+ Copy(aFN,L-20,MAXINT);  //long filename...keep last part
+
+      Result := 'file:'+aFN+crlf+
+                'per:'  + Format('%5.1f',[t1])+' - '+Format('%5.1f',[t2])+crlf+
+                'delta:'+ Format('%4.1f',[delta])+' nint:'+IntToStr(nintv);
+                 // ncoef always 0978 ?
+    end
+    else begin
+      Result := 'no data';
+    end;
 end;
 
 function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TCoord3D):boolean;

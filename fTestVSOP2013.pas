@@ -8,7 +8,7 @@ uses
 
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.ScrollBox,
-  FMX.Memo, FMX.Objects, FMX.Edit,
+  FMX.Memo, FMX.Objects, FMX.Edit, FMX.Memo.Types,
 
   vsop2013;
 
@@ -33,6 +33,8 @@ type
     Label2: TLabel;
     Labw: TLabel;
     edJDE: TEdit;
+    btnSaveBinFile: TButton;
+    btnLoadBinFile: TButton;
     procedure btnLoadFileClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cbAnimatePlanetsSwitch(Sender: TObject);
@@ -42,6 +44,9 @@ type
     procedure tbAnimationSpeedChange(Sender: TObject);
     procedure btnTestsClick(Sender: TObject);
     procedure btnCalcClick(Sender: TObject);
+    procedure btnSaveBinFileClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure btnLoadBinFileClick(Sender: TObject);
   private
     procedure Form2LoadPropgress(Sender: TObject; aPerc: integer);
     procedure showVectors(ip: integer; const jde: Double; const Position,
@@ -64,10 +69,17 @@ implementation
 procedure TForm2.FormCreate(Sender: TObject);
 var i:integer;
 begin
-  fVSOPFile := nil;
+  fVSOPFile := T_VSOP2013_File.Create;
+
   for i:=1 to NUM_PLANETS do fPosPlanets[i] := Coord3D(0,0,0);
 
   fBitmap := TBitmap.Create;
+end;
+
+procedure TForm2.FormDestroy(Sender: TObject);
+begin
+  fVSOPFile.Free;
+
 end;
 
 const
@@ -194,6 +206,7 @@ begin
   jde := 2405730.5;
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
+  Memo1.Lines.Add('X :  0.242020971329 ua    Y : -0.352713705683 ua    Z : -0.051047411323 ua expected');
 
   //JUPITER     JD2816124.5  X : -0.280774899591 ua    Y :  5.124152830950 ua    Z : -0.018441408820 ua
   //                         X': -0.007646343544 ua/d  Y': -0.000050903873 ua/d  Z':  0.000168106750 ua/d
@@ -203,12 +216,16 @@ begin
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
 
+  Memo1.Lines.Add('X : -0.280774899591 ua    Y :  5.124152830950 ua    Z : -0.018441408820 ua expected');
+
+
   // JUPITER     JD2405730.5  X : -5.392780445602 ua    Y : -0.805698954496 ua    Z :  0.124332318817 ua
   //                          X':  0.001019284060 ua/d  Y': -0.007116469431 ua/d  Z':  0.000005921462 ua/d
   ip  := 5;            //jupiter
   jde := 2405730.5;
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
+  Memo1.Lines.Add('-5.392780445602 ua    Y : -0.805698954496 ua    Z :  0.124332318817 ua expected');
 
 
   // EARTH-MOON  JD2268932.5  X : -0.437662445161 ua    Y :  0.880925943295 ua    Z :  0.000970542639 ua
@@ -217,6 +234,7 @@ begin
   jde := 2268932.5;
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
+  Memo1.Lines.Add('X : -0.437662445161 ua    Y :  0.880925943295 ua    Z :  0.000970542639 ua expected');
 
 
   // MARS        JD2542528.5  X : -1.501298042540 ua    Y :  0.720630252585 ua    Z :  0.051244837632 ua
@@ -225,6 +243,7 @@ begin
   jde := 2542528.5;
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
+  Memo1.Lines.Add('X : -1.501298042540 ua    Y :  0.720630252585 ua    Z :  0.051244837632 ua expected');
 
 
   // SATURN      JD2542528.5  X : -7.484629691185 ua    Y : -6.379153813306 ua    Z :  0.409052899765 ua
@@ -233,6 +252,7 @@ begin
   jde := 2542528.5;
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
+  Memo1.Lines.Add('X : -7.484629691185 ua    Y : -6.379153813306 ua    Z :  0.409052899765 ua expected');
 
 end;
 
@@ -280,18 +300,33 @@ begin
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
 end;
 
+procedure TForm2.btnLoadBinFileClick(Sender: TObject);
+var aFN:String;
+begin
+  aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000.bno'  1500-3000. ( includes current time )
+  if fVSOPFile.ReadBinaryFile(aFN) then Memo1.Lines.Add(aFN+' Loaded')
+     else Memo1.Lines.Add(aFN+' write error');
+end;
+
 procedure TForm2.btnLoadFileClick(Sender: TObject);
 var aFN:String;
 begin
-  fVSOPFile := T_VSOP2013_File.Create;
   fVSOPFile.OnLoadProgress := Form2LoadPropgress;
   // reads and parses long ASCII file: wait..
   // te
-  aFN := Trim( edFilename.Text );    // '\dpr4\vsop2013\VSOP2013.p2000'  1500-3000. ( includes current time )
-  fVSOPFile.Read_ASCII_File( aFN );  // load test file
+  aFN := Trim( edFilename.Text );      // '\dpr4\vsop2013\VSOP2013.p2000'  1500-3000. ( includes current time )
+  fVSOPFile.Read_ASCII_File( aFN );    // load test file
 
   Memo1.Lines.Add(aFN+' Loaded');
 
+end;
+
+procedure TForm2.btnSaveBinFileClick(Sender: TObject);
+var aFN:String;
+begin
+  aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000.bin'  1500-3000. ( includes current time )
+  if fVSOPFile.WriteBinaryFile(aFN) then Memo1.Lines.Add(aFN+' saved')
+     else Memo1.Lines.Add(aFN+' write error');
 end;
 
 procedure TForm2.Form2LoadPropgress(Sender:TObject; aPerc:integer);
