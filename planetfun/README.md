@@ -1,4 +1,6 @@
-## Planet Fun
+## Planet Fun   
+![banner](bannerPlanetFun.png)
+
 
 Planet Fun is a solar system working model in 3D.  Program is a Delphi Firemonkey 3D multi-platform app, and was tested on Windows, Android and iOS (w/ Delphi 10.4 Seattle)
 
