@@ -6,7 +6,7 @@ Tested on Windows, Android and iOS (w/ Delphi 10.4 Seattle).
 
 Full app source code is available at:
 
-    https://github.com/omarreis/vsop2013/tree/master/planetfun
+* https://github.com/omarreis/vsop2013/tree/master/planetfun
 
 ![screenshots](screenshotsPlanetFun.png)
 
