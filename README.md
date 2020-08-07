@@ -38,7 +38,7 @@ Object T_VSOP2013_File in vsop2013.pas:
 * Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
 * calculates heliocentric rectangular position and speed ( in UA and UA/day)
 
-# Test app
+# Sample app 1: TestVSOP2013
 Program *TestVSOP2013* is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
 
 * Set filename and click [Load File] - This will freeze the app for a while, as it loads the 400 MB of text data.
@@ -70,14 +70,16 @@ I did not test the original Fortran code, so I used the results on original file
 
 from https://github.com/omarreis/vsop2013/releases/tag/1.0
 
-# Planet Fun
+# Sample app 2: PlanetFun
 ![screenshot](planetfun/bannerPlanetFun.png)
 
 Planet Fun is a Firemonkey 3D solar system working model app. It uses VSOP2013 binary files to calculate planet positions.
-Full souce code is available at https://github.com/omarreis/vsop2013/tree/master/planetfun
+Full souce code is available at:
+    https://github.com/omarreis/vsop2013/tree/master/planetfun
+
 In order to compile and run this app, you will need to:
-* Download VSOP2013 data file and convert to binary format.
-* Download and include planet textures
+* Download VSOP2013.p2000 data file from VSOP2013 FTP repository. Convert it to binary format using TestVSOP2013
+* Download and include planet textures from 3rd party website
 
 ## tiktok video
 https://www.tiktok.com/@omar_reis/video/6850534226689805574
