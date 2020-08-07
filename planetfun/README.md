@@ -1,5 +1,4 @@
-# Planet Fun   ![banner](bannerPlanetFun.png)
-
+# Planet Fun      ![banner](bannerPlanetFun.png)
 
 Planet Fun is a solar system working model in 3D.  Program is a Delphi Firemonkey 3D multi-platform app, and was tested on Windows, Android and iOS (w/ Delphi 10.4 Seattle)
 
@@ -15,9 +14,9 @@ https://github.com/omarreis/vsop2013/planetfun
 * Set date/time bewteen years 1500 and 3000
 * Configurable camera distance-to-target
 * Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
-* Mouse events with mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
-* Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it's one dot/week )
-* Solar system axis
+* Mouse events: mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
+* Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it is 1 dot per week) )
+* Solar system heliocentric axis (x and z)
 
 # Planet positions
 
@@ -25,7 +24,7 @@ Planet positions are calculated using VSOP2013 ephemerides ( see https://github.
 This library calculates planet's heliocentric coordinates between epochs 1500 to 3000.
 ( VSOP2013 by Francou and Simon )
 
-see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+    see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
 VSOP2013 data files are not in this repository. Planet Fun loads a custom binary format of VSOP2013 data:
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB file) 
