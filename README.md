@@ -38,12 +38,18 @@ Object T_VSOP2013_File in vsop2013.pas:
 * Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
 * calculates heliocentric rectangular position and speed ( in UA and UA/day)
 
+# Sample apps
+Two sample apps are included. 
+* TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
+* PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file
+
 # Sample app 1: TestVSOP2013
 Program *TestVSOP2013* is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
 
 * Set filename and click [Load File] - This will freeze the app for a while, as it loads the 400 MB of text data.
 * Set JD epoch and planet id and click [Calc]
 * Check [x]Animate to show a solar system animated chart.  Use trackbars to control scale and speed of the animation. 
+* [Save Binary file] for deploying with PlanetFun
 
 ![screenshot](screenshotTestVSOP2013.png)
 
