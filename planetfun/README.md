@@ -51,7 +51,7 @@ Follow *Solar System Scope* license conditions ( Attribution )
 # What is not realistic
 * Planet sizes in the real solar system are difficult for computer visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.  applied a log formula to Sun and planet sizes, so that the Sun is only 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
 * Moon position, size and orbit size are not connected to real coordinates yet. Fake. (TODO)
-* Stars background is still too fuzzy for a check. Only illustrative in this 1st version. Fake. (TODO).
+* Stars background is too fuzzy to check texture placement. Only illustrative in this 1st version. Fake. (TODO)
 
 # Dependencies
 *  Uses file vsop2013.pas from https://github.com/omarreis/vsop2013/
