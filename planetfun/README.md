@@ -33,7 +33,7 @@ VSOP2013 data files are not in this repository. Planet Fun loads a custom binary
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB file) 
 * Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
 * Save binary binary file VSOP2013.p2000.bin.  Do *not* use binary files from original FTP repository. Binary files for this app use a different custom format.
-* Deploy file VSOP2013.p2000.bin with the app.
+* Deploy file VSOP2013.p2000.bin with PlanetFun app.
 
 # Planet textures
 
