@@ -72,8 +72,12 @@ from https://github.com/omarreis/vsop2013/releases/tag/1.0
 
 # Planet Fun
 ![screenshot](planetfun/bannerPlanetFun.png)
-Planet Fun is a Firemonkey 3D solar system working model. It uses VSOP2013 binary files to calculate planet positions.
+
+Planet Fun is a Firemonkey 3D solar system working model app. It uses VSOP2013 binary files to calculate planet positions.
 Full souce code is available at https://github.com/omarreis/vsop2013/tree/master/planetfun
+In order to compile and run this app, you will need to:
+* Download VSOP2013 data file and convert to binary format.
+* Download and include planet textures
 
 ## tiktok video
 https://www.tiktok.com/@omar_reis/video/6850534226689805574
