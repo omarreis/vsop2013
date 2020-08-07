@@ -1,4 +1,4 @@
-# vsop2013
+## VSOP2013 for Delphi
 
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
@@ -73,7 +73,7 @@ from https://github.com/omarreis/vsop2013/releases/tag/1.0
 # Planet Fun
 ![screenshot](planetfun/bannerPlanetFun.png)
 Planet Fun is a Firemonkey 3D solar system working model. It uses VSOP2013 binary files to calculate planet positions.
-Full souce code is available at https://github.com/omarreis/vsop2013/planetfun
+Full souce code is available at https://github.com/omarreis/vsop2013/tree/master/planetfun
 
 ## tiktok video
 https://www.tiktok.com/@omar_reis/video/6850534226689805574
