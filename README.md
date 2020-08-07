@@ -34,11 +34,12 @@ In this Delphi port, the whole ASCII file is loaded into memory tables, for even
 Once loaded, computations are very fast. 
 
 Object T_VSOP2013_File in vsop2013.pas:
-* parses a data file - Use only files in original format, as the parser relies on fixed positions.
+* Parses a data file - Use only files in original format, as the parser relies on fixed positions.
+* Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
 * calculates heliocentric rectangular position and speed ( in UA and UA/day)
 
 # Test app
-Program TestVSOP2013 is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
+Program *TestVSOP2013* is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
 
 * Set filename and click [Load File] - This will freeze the app for a while, as it loads the 400 MB of text data.
 * Set JD epoch and planet id and click [Calc]
@@ -68,6 +69,11 @@ I did not test the original Fortran code, so I used the results on original file
 ## Download executable for Windows 
 
 from https://github.com/omarreis/vsop2013/releases/tag/1.0
+
+# Planet Fun
+![screenshot](planetfun/bannerPlanetFun.png)
+Planet Fun is a Firemonkey 3D solar system working model. It uses VSOP2013 binary files to calculate planet positions.
+Full souce code is available at https://github.com/omarreis/vsop2013/planetfun
 
 ## tiktok video
 https://www.tiktok.com/@omar_reis/video/6850534226689805574
