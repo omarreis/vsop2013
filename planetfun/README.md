@@ -44,9 +44,9 @@ Planet 3D textures are *not* included in this repository. You can find suitable 
 
 * Download files: 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
 * On the program Form, load each image into the corresponding lightMaterialTextureXXX object. For instance load file '2k_jupiter.jpg' into lightMaterialTextureJupiter. And so on.
-* Once you have loaded the textures for the 9 planets, Sun, Moon and stars background, you are ready to compile the project.
+* Once you have loaded the textures for the 9 planets, Moon and stars background, you are ready to compile the project.
 
-Follow *Solar System Scope* license conditions ( Attribution )
+Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 
 # Warning: not realistic
 * Solar and planet sizes are difficult for compuiter visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
