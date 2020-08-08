@@ -76,12 +76,15 @@ I did not test the original Fortran code, so I used the results on original file
 
 from https://github.com/omarreis/vsop2013/releases/tag/1.0
 
-# Sample app 2: PlanetFun
+## Sample app 2: PlanetFun
 ![screenshot](planetfun/bannerPlanetFun.png)
 
 Planet Fun is a Firemonkey 3D solar system working model app. It uses VSOP2013 binary files to calculate planet positions.
 Full souce code is available at:
     https://github.com/omarreis/vsop2013/tree/master/planetfun
+    
+PlanetFun readme:
+    https://github.com/omarreis/vsop2013/blob/master/planetfun/README.md
 
 In order to compile and run this app, you will need to:
 * Download VSOP2013.p2000 data file from VSOP2013 FTP repository. Convert it to binary format using TestVSOP2013
