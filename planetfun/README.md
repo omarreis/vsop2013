@@ -39,7 +39,9 @@ Steps to obtain planet ephemeris file:
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB text file) 
 * Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
 * Save binary file VSOP2013.p2000.bin.   Do *not* use binary files from original FTP repository.  Binary files for this app use a different custom format.
-* Deploy file VSOP2013.p2000.bin to PlanetFun app documents folder.
+* Deploy file VSOP2013.p2000.bin to PlanetFun app documents folder. 
+
+Resulting binary file is *only* 131 MB and doesn't require parsing to load. 
 
 The scale factor between astronomical units and the app's 3D world:     
      1.0 AU = 10.0 3D-world-units  
