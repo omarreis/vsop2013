@@ -19,6 +19,7 @@ Full app source code is available at:
 * Mouse events: mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
 * Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it is 1 dot per week) )
 * Solar system heliocentric axis (x and z)
+* VSOP2013 planet ephemeris usage sample
 * Edit date/time
 
 # Planet positions
@@ -29,19 +30,26 @@ This library calculates planet's heliocentric coordinates between epochs 1500 to
 
     see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
-VSOP2013 data files are not in this repository. Planet Fun loads a custom binary format of VSOP2013 data:
-* Download VSOP2013.p2000 from the FTP repository above ( a 400 MB file) 
-* Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
-* Save binary binary file VSOP2013.p2000.bin.  Do *not* use binary files from original FTP repository. Binary files for this app use a different custom format.
-* Deploy file VSOP2013.p2000.bin with PlanetFun app.
+VSOP2013 data files are not in this repository. 
+For speed and bundle size, PlanetFun app uses a custom binary version of VSOP2013 data.
 
-There is a scale factor between astronomical units and the app's 3D world:   1.0 AU = 10.0 3D units  
-i.e. Earth orbit radius is ~around~ 10.0 3D-world-units
+Steps to obtain planet ephemeris file:
+
+* Download VSOP2013.p2000 from the FTP repository above ( a 400 MB text file) 
+* Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
+* Save binary binary file VSOP2013.p2000.bin.  Do *not* use binary files from original FTP repository.  Binary files for this app use a different custom format.
+* Deploy file VSOP2013.p2000.bin to PlanetFun app documents folder.
+
+The scale factor between astronomical units and the app's 3D world:     
+     1.0 AU = 10.0 3D-world-units  
+    
+ex: Earth orbit radius is ~around~ 10.0 3D-world-units
 
 # Planet textures
 
-PlanetFun sources are *almost ready* to compile.  Planet 3D texture images are *not* included in this repository. 
-But you can find suitable and free textures on this website:
+PlanetFun sources are *almost ready* to compile.  Planet 3D textures are also *not* included in this repository. 
+
+You can find suitable and free textures on this website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
 
