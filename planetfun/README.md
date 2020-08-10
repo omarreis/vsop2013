@@ -35,6 +35,9 @@ VSOP2013 data files are not in this repository. Planet Fun loads a custom binary
 * Save binary binary file VSOP2013.p2000.bin.  Do *not* use binary files from original FTP repository. Binary files for this app use a different custom format.
 * Deploy file VSOP2013.p2000.bin with PlanetFun app.
 
+There is a scale factor between astronomical units and the app's 3D world:   1.0 AU = 10.0 3D units  
+i.e. Earth orbit radius is ~around~ 10.0 3D-world-units
+
 # Planet textures
 
 PlanetFun sources are *almost ready* to compile.  Planet 3D texture images are *not* included in this repository. 
