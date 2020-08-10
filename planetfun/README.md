@@ -68,7 +68,7 @@ Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
 * Moon position, speed, size and orbit size are not connected to real world coordinates yet. Anyway, Moon revolution ( 27.32 days) is so much faster than other celestial objects, it is just all over the place when animated. In this illustration, it is animated on a circular orbit and smooth, slow speed. Fake. (TODO)
 * Stars background is too fuzzy to check texture placement. Only illustrative in this 1st version. Fake. (TODO)
-* Planet rotation speeds are not also not real (TODO). But Planet positions are ok :)
+* Planet rotation speeds are also not realistic (TODO). But Planet positions and revolutions are just fine!  :)
 
 # Dependencies
 *  Uses file vsop2013.pas from https://github.com/omarreis/vsop2013/
