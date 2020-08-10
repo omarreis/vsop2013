@@ -76,4 +76,7 @@ Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 # Julian date formulas
 from Astronomical Algorithms. Jean Meeus
 
+# video
+https://www.tiktok.com/@omar_reis/video/6859411602031119622
+
 keywords: solar system planet astronomy vsop2013 Delphi Firemonkey
