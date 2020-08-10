@@ -11,6 +11,7 @@ Full app source code is available at:
 ![screenshots](screenshotsPlanetFun.png)
 
 # Program features
+* Multi platform: Android, iOS and Windows
 * Solar system *animation* with configurable speed
 * Choose camera target (Sun or planets)
 * Set date/time bewteen years 1500 and 3000
