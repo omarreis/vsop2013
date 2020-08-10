@@ -87,6 +87,9 @@ In order to compile and run this app, you will need to:
 * Download VSOP2013.p2000 data file from VSOP2013 FTP repository. Convert it to binary format using TestVSOP2013
 * Download and include planet textures from 3rd party website
 
+## app for Android
+https://play.google.com/store/apps/details?id=com.omarreis.planetfun
+
 ## videos
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
 * PlanetFun - https://www.tiktok.com/@omar_reis/video/6859411602031119622
