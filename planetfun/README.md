@@ -83,3 +83,6 @@ from Astronomical Algorithms. Jean Meeus
 https://www.tiktok.com/@omar_reis/video/6859411602031119622
 
 keywords: solar system planet astronomy vsop2013 Delphi Firemonkey
+
+## download for Android
+https://play.google.com/store/apps/details?id=com.omarreis.planetfun
