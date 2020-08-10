@@ -48,7 +48,7 @@ ex: Earth orbit radius is ~around~ 10.0 3D-world-units
 # Planet textures
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
-The Texture property is a bitmap that is mapped to the sphere, like a Mercator projection.  
+The Texture property is a bitmap that is mapped to the sphere, on a reverse-Mercator projection.  
 
 Planet textures are *not* included in this repository. 
 
