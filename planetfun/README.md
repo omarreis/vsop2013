@@ -56,7 +56,7 @@ You can find suitable and free textures on this website:
 steps to complete PlanetFun assets:
 
 * Download texture images: ex: 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
-* On the program Form, load each images into the corresponding lightMaterialTextureXXX objects. For example, load file '2k_jupiter.jpg' into lightMaterialTextureJupiter.Texture .   And so on.
+* On the program Form, load each image into the corresponding lightMaterialTextureXXX objects. For example, load file '2k_jupiter.jpg' into lightMaterialTextureJupiter.Texture .   And so on.
 * Once you have loaded all the textures for the 9 planets, Moon and stars background, it will be ready to compile. ( Sun has no texture at this time, just a white ball )
 
 Follow *Solar System Scope* license conditions ( Attribution 4.0 )
