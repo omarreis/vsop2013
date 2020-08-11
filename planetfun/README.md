@@ -21,7 +21,7 @@ Full app source code is available at:
 * Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it is 1 dot per week) )
 * Solar system heliocentric axis (x and z)
 * VSOP2013 planet ephemeris usage sample
-* Edit date/time
+* Current catalog is small: Sun, 9 planets and Moon
 
 # Planet positions
 
