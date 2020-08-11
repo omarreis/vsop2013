@@ -4,7 +4,7 @@ VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high pr
 
 It is a large set of tables of  Chebyshev polynomial coeficients. 
 
-This is a Delphi port of original Fortran code by the theory authors.  It was tested with D10.3.3 Rio on Win32.
+This is a Delphi port of original Fortran code by the theory authors.  It was tested with D10.3.3, D10.4 on Win32,iOS and Android. 
 
 VSOP 2013 original files can be found at:
 
@@ -44,13 +44,14 @@ Two sample apps are included.
 * PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file
 
 # Sample app 1: TestVSOP2013
-Program *TestVSOP2013* is a Firemonkey app. To use it, you have to download at least one of the data files mentioned above from theory's FTP repository ( current file is VSOP2013.p2000 )  
+*TestVSOP2013* is a Firemonkey app. To use it you have to download at least one of the data files mentioned above, from VSOP2013 FTP repository ( current file is VSOP2013.p2000 )  
 
-* Set filename and click [Load File] - This will freeze the app for a while, as it loads the 400 MB of text data.
-* Set JD epoch and planet id and click [Calc]
-* Check [x]Animate to show a solar system animated chart.  Use trackbars to control scale and speed of the animation. 
+* Download VSOP2013.p2000 from FTP repository 
+* Set filename and click [Load File] - This will freeze the app for a while, while it loads the 400 MB of text data.
+* To test a particular planet position, set JD epoch, planet id and click [Calc]
+* Check [x]Animate to show a solar system 2D animated chart.  Use trackbars to control scale and speed of the animation. 
 * Click [Run tests] to compare some calculation results with expected values from original vsop2013. 
-* [Save Binary file] for deploying with PlanetFun
+* [Save Binary file] for deploying with *PlanetFun*
 
 ![screenshot](screenshotTestVSOP2013.png)
 
