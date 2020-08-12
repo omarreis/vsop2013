@@ -1,4 +1,4 @@
-## VSOP2013 for Delphi
+## VSOP2013 for Delphi ( and PlanetFun app )
 
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
