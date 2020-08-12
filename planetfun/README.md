@@ -53,8 +53,7 @@ ex: Earth orbit radius is ~around~ 10.0 3D-world-units
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
 The Texture property is a bitmap that is mapped to the sphere, on a reverse-Mercator projection.  
 
-Planet textures are *not* included in this repository. 
-
+Planet textures are *not* included in this repository ( repository TForm planets have blank textures )
 You can find suitable and free textures on this website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
