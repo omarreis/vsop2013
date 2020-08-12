@@ -2,9 +2,10 @@
 
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
+This is a Delphi port of original Fortran code by the theory authors.  
 It is a large set of tables of  Chebyshev polynomial coeficients. 
-
-This is a Delphi port of original Fortran code by the theory authors.  It was tested with D10.3.3, D10.4 on Win32,iOS and Android. 
+Algorithm uses clever indexing to manage a large number of tables of Doubles, while keeping data file sizes minimum.
+Tested with D10.3.3, D10.4 on Win32, iOS and Android. 
 
 VSOP 2013 original files can be found at:
 
