@@ -32,7 +32,7 @@ This library calculates planet's heliocentric coordinates between epochs 1500 to
     see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
 VSOP2013 data files are not in this repository. 
-For speed and bundle size, PlanetFun app uses a custom binary version of VSOP2013 data.
+For speed and bundle size, PlanetFun app uses a custom binary version of VSOP2013 data ( same idea as original code )
 
 Steps to obtain planet ephemeris file:
 
