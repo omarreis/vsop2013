@@ -92,6 +92,9 @@ In order to compile and run this app, you will need to:
 ## app for Android
 https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 
+## app for iOS
+https://apps.apple.com/us/app/planet-fun/id1525941640
+
 ## videos
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
 * PlanetFun - https://www.tiktok.com/@omar_reis/video/6859411602031119622
