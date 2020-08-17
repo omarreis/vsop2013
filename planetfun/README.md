@@ -83,5 +83,9 @@ https://www.tiktok.com/@omar_reis/video/6859411602031119622
 
 keywords: solar system planet astronomy vsop2013 Delphi Firemonkey
 
-## download for Android
+## download Android app
 https://play.google.com/store/apps/details?id=com.omarreis.planetfun
+
+## download iOS app
+https://apps.apple.com/us/app/planet-fun/id1525941640
+
