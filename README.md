@@ -42,7 +42,7 @@ Object T_VSOP2013_File in vsop2013.pas:
 # Sample apps
 Two sample apps are included. 
 * TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
-* PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file
+* PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file. PlanetFun app is available as apps for Android and iOS, in the app stores. See below.
 
 # Sample app 1: TestVSOP2013
 *TestVSOP2013* is a Firemonkey app. To use it you have to download at least one of the data files mentioned above, from VSOP2013 FTP repository ( current file is VSOP2013.p2000 )  
