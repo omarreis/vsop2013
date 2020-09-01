@@ -42,6 +42,7 @@ Using the leapfrog integration app *gravityIntegration* select:
   * [x]Uranus chart
   * comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
   * click Pluto and Neptune out of existence ( select planets and uncheck *Exists* []checkbox )
+  * click Build charts
 
 In the resulting chart below we see that Uranus behaves ok up to 1820, 
 then it starts to drift away. By 1846, time of Neptune discovery, 
