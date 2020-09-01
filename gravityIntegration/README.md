@@ -37,8 +37,8 @@ states incrementally:
      Vi+1 = Vi + Ai * DT    <-- speed vector acceleration 
      goto to next i 
   
-This is called Euler integration. It looks ok, but speeds ends up being systematically 
-off the mark, resulting in continuous drift in position from actual values.
+This is called *Euler* method. It looks ok, but speeds ends up being systematically 
+off the mark, resulting in continuous drift in positions from actual values.
 
 A better calculation method is the so called *leapfrog* integration.
 It also starts with P0 ( position at time 0), but uses V1/2 ( speed at time DT/2 )
@@ -49,9 +49,9 @@ results using leapfrog integration are much better than Euler's.
 
 The leapfrog integration algorithm goes like this:
 
-     Ai = Sum (G*M/D^2)        <-- sumatory of gravity acceleration due to all objects
-     Pi+1 = Pi + Vi+1/2 * DT   <-- position vector change using V in the middle of the segment
-     Vi+1 = Vi + Ai * DT       <-- speed vector acceleration 
+     Ai = Sum (G*M/D^2)            <-- sumatory of gravity acceleration due to all objects
+     Pi+1   = Pi + Vi+1/2 * DT     <-- position vector change using V in the middle of the segment
+     Vi+3/2 = Vi+1/2 + Ai * DT     <-- speed vector acceleration 
      goto to next i 
     
 While Euler integration is first order, leapfrog is second order (meaning that the error
