@@ -65,6 +65,11 @@ a small enough DT.
 
 ![leapfrog integration](leapfrogIntegration.png)
 
+# Dependencies
+
+Uses files from VSOP2013 repository:  https://github.com/omarreis/vsop2013
+Also requires downloading and installing VSOP2013.p2000 data file ( not in this repo, see VSOP2013 read-me )
+
 # Discovery of planet Neptune
 
 As an application of this leapfrog integration, I tried to reconstruct some of the 
