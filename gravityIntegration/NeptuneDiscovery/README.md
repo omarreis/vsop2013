@@ -1,4 +1,4 @@
-## Urbain Le Verrier discovery of Neptune
+## The discovery of Neptune
 
 In 1846, Urbain Le Verrier predicted the existence of a new planet,
 never seen before by astronomers. The planet was later named Neptune.
@@ -23,7 +23,7 @@ numbers Verrier had.
 I should notice that I'm not an astronomer or historian.
 I just working with planet ephemerides and integration software.
 
-## The Discovery
+## some numbers
 
 Uranus was discovered in 13/mar/1781 by William Herschel.
 So, by 1846, astronomers had about 65 years worth of Uranus observations.
@@ -38,16 +38,15 @@ To simulate the planet observations at the time, I'm going to use
 vsop2013 ephemerides. And leapfrog integration will be used
 to simulate the calculations Verrier and Adams had.
 
-Using the leapfrog integration app [Xapp] select 
-  [x]Uranus chart
-  comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
-  click Pluto and Neptune out of existence ( select planets and uncheck Exists []checkbox )
+Using the leapfrog integration app *gravityIntegration* select:
+  * [x]Uranus chart
+  * comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
+  * click Pluto and Neptune out of existence ( select planets and uncheck *Exists* []checkbox )
 
 In the resulting chart below we see that Uranus behaves ok up to 1820, 
 then it starts to drift away. By 1846, time of Neptune discovery, 
 Uranus longitude integration was already 140 arcsec off,
 a large difference that was certainly observable at the time.
-
 
 ![chart of Uranus longitude without Neptune](UranusLongitudeNoNeptune.png)
 
