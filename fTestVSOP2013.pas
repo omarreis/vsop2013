@@ -9,8 +9,11 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.ScrollBox,
   FMX.Memo, FMX.Objects, FMX.Edit, FMX.Memo.Types,
+  FMX.DateTimeCtrls,
 
-  vsop2013;
+  vsop2013,
+  doubleVector3D,
+  PlanetData;
 
 type
   TForm2 = class(TForm)
@@ -31,10 +34,12 @@ type
     btnCalc: TButton;
     edPlanet: TEdit;
     Label2: TLabel;
-    Labw: TLabel;
+    C: TLabel;
     edJDE: TEdit;
     btnSaveBinFile: TButton;
     btnLoadBinFile: TButton;
+    edDate: TDateEdit;
+    Label3: TLabel;
     procedure btnLoadFileClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cbAnimatePlanetsSwitch(Sender: TObject);
@@ -47,14 +52,14 @@ type
     procedure btnSaveBinFileClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnLoadBinFileClick(Sender: TObject);
+    procedure edDateChange(Sender: TObject);
   private
     procedure Form2LoadPropgress(Sender: TObject; aPerc: integer);
-    procedure showVectors(ip: integer; const jde: Double; const Position,
-      Speed: TCoord3D);
+    procedure showVectors(ip: integer; const jde: Double; const Position,Speed: TVector3D_D);
   public
     fVSOPFile:T_VSOP2013_File;
     fBitmap:TBitmap;             // Sky chart
-    fPosPlanets:Array[1..NUM_PLANETS] of TCoord3D;
+    fPosPlanets:Array[1..NUM_PLANETS] of TVector3D_D;
 
     fanimJDE:double;
   end;
@@ -71,7 +76,7 @@ var i:integer;
 begin
   fVSOPFile := T_VSOP2013_File.Create;
 
-  for i:=1 to NUM_PLANETS do fPosPlanets[i] := Coord3D(0,0,0);
+  for i:=1 to NUM_PLANETS do fPosPlanets[i] := Vector3D_D(0,0,0);
 
   fBitmap := TBitmap.Create;
 end;
@@ -109,7 +114,7 @@ const
 
 
 procedure TForm2.pbChartPaint(Sender: TObject; Canvas: TCanvas);
-var ip:integer; aPos:TCoord3D; aScP:TVector; aR:TRectF; C:TVector; aScale,aRadius:Double;
+var ip:integer; aPos:TVector3D_D; aScP:TVector; aR:TRectF; C:TVector; aScale,aRadius:Double;
 begin
   // paint fBitmap
   C := Vector(300,300); //center of chart = Sun pos (heliocantric coordinates)
@@ -133,7 +138,6 @@ begin
   fBitmap.Canvas.Fill.Kind   := TBrushKind.Solid;
   fBitmap.Canvas.Fill.Color  := TAlphaColorRec.Yellow;
   fBitmap.Canvas.Stroke.Kind := TBrushKind.Solid;
-
 
   fBitmap.Canvas.FillEllipse(aR, 1.0);
 
@@ -179,7 +183,7 @@ begin
     end;
 end;
 
-procedure TForm2.showVectors(ip:integer; const jde:Double; const Position,Speed:TCoord3D);
+procedure TForm2.showVectors(ip:integer; const jde:Double; const Position,Speed:TVector3D_D);
 begin
   Memo1.Lines.Add('');
   Memo1.Lines.Add( PLANET_NAMES[ip] );
@@ -196,7 +200,7 @@ end;
 
 
 procedure TForm2.btnTestsClick(Sender: TObject);
-var Position,Speed:TCoord3D; ip:integer; jde:double;
+var Position,Speed:TVector3D_D; ip:integer; jde:double;
 begin
   // calculation tests extracted from VSOP2013_ctl.txt
 
@@ -256,23 +260,31 @@ begin
 
 end;
 
-
-
 procedure TForm2.cbAnimatePlanetsSwitch(Sender: TObject);
 begin
   TimerAnimatePlanets.Enabled := cbAnimatePlanets.IsChecked;
   if TimerAnimatePlanets.Enabled then
-       fanimJDE := jd2000;    //start animation from jd2000
+     fanimJDE := StrToFloat(edJDE.Text);    //start animation from specified JD
+end;
+
+procedure TForm2.edDateChange(Sender: TObject);
+var D:TDatetime; aJD:Double;
+begin
+  D     := edDate.Date;
+  aJD   := DateToJD( D );
+  edJDE.Text := Format('%6.1f',[aJD]);
 end;
 
 // 200 ms = 5 ticks per second
 procedure TForm2.TimerAnimatePlanetsTimer(Sender: TObject);
-var ip:integer; aPosition,aSpeed:TCoord3D; Year:Double;
+var ip:integer; aPosition,aSpeed:TVector3D_D; Year:Double; D:TDatetime;
 begin
   if Assigned(fVSOPFile) then //upd
     begin
-      Year := (fanimJDE-jd2000)/365.2422+2000.0;  // more or less :)
-      labTime.Text := Format('%6.2f',[Year]);
+      // Year := (fanimJDE-jd2000)/365.2422+2000.0;  // more or less :)
+      // labTime.Text := Format('%6.2f',[Year]);
+      D := JulianToGregorianDate( fanimJDE );
+      labTime.Text := FormatDateTime('yyyy mm',D);
       for ip := 1 to NUM_PLANETS do
         begin
           try
@@ -292,12 +304,17 @@ end;
 
 // Loads vsop2013 ASCII file and performs a few calculations
 procedure TForm2.btnCalcClick(Sender: TObject);
-var Position,Speed:TCoord3D; ip:integer; jde:double;
+var Position,Speed:TVector3D_D; ip:integer; jde:double;
 begin
-  ip  := StrToInt(edPlanet.Text);
-  jde := StrToFloat(edJDE.Text);
+  ip  := StrToInt( edPlanet.Text );
+  jde := StrToFloat( edJDE.Text );
+
   if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}jde, {out:} Position, Speed) then
    showVectors(ip,jde,Position,Speed) else Memo1.Lines.Add('error');
+
+  // position chart
+  fanimJDE := jde;
+  TimerAnimatePlanetsTimer(nil);  // update planet chart to calc data
 end;
 
 procedure TForm2.btnLoadBinFileClick(Sender: TObject);

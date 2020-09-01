@@ -24,7 +24,9 @@ uses
   System.Math,           //NaN
   System.Classes,        //anonymous thread
   System.Math.Vectors,
-  System.SysUtils;
+  System.SysUtils,
+
+  doubleVector3D;  // 3D vectors with Double components
 
 const
   TXT_FILES_ROOT = './ephemerides/';
@@ -82,10 +84,7 @@ type
               );
     end;
 
-  // Delphi TVector3D components are Singles, not long enough to hold planet coordinates
-  TCoord3D=record    // 3d vector w/ Double components
-    x,y,z:Double;
-  end;
+
 
   // VSOP2013File loads a bin file and parses it into a Chebyshev Polynomial
   // indexing and evaluation machine.
@@ -135,23 +134,17 @@ type
 
     Procedure   Threaded_ReadBinaryFile(const aFilename: String);
 
-    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TCoord3D): boolean;
+    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TVector3D_D): boolean;
     function    getMetadata:String;
     property    OnLoadProgress:T_VSOP2013_LoadProgress read fOnLoadProgress  write fOnLoadProgress;
     property    OnLoadTerminate:TNotifyEvent           read fOnLoadTerminate write fOnLoadTerminate; //threaded loat terminate
 
   end;
 
-function Coord3D(const X, Y, Z: Double): TCoord3D;
+var
+  VSOP_File:T_VSOP2013_File=nil;     // global vsop2013 file
 
-implementation
-
-function Coord3D(const X, Y, Z: Double): TCoord3D;
-begin
-  Result.x := X;
-  Result.y := Y;
-  Result.z := Z;
-end;
+implementation            // ------------------
 
 
 { T_VSOP2013_Period }
@@ -454,7 +447,7 @@ begin
     end;
 end;
 
-function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TCoord3D):boolean;
+function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TVector3D_D):boolean;
 //         Attempt to calculate the position and velocity for the specified planet.
 //         :param ip: index of planet to perform calculation for
 //         :param jde: the julian date to perform the calculation for
@@ -531,8 +524,8 @@ begin
               end;
           end;
         // copy vectors
-        Position := Coord3D(r[1],r[2],r[3]);
-        Speed    := Coord3D(r[4],r[5],r[6]);
+        Position := Vector3D_D( r[1], r[2], r[3] );
+        Speed    := Vector3D_D( r[4], r[5], r[6] );
         result   := true;
       end
       else raise Exception.Create('period outside bounds');

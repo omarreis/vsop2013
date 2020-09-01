@@ -16,13 +16,13 @@ object Form2: TForm2
     StyledSettings = [Family, Style, FontColor]
     TextSettings.Font.Size = 14.000000000000000000
     Position.X = 8.000000000000000000
-    Position.Y = 240.000000000000000000
+    Position.Y = 272.000000000000000000
     Size.Width = 345.000000000000000000
-    Size.Height = 353.000000000000000000
+    Size.Height = 321.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     Viewport.Width = 341.000000000000000000
-    Viewport.Height = 349.000000000000000000
+    Viewport.Height = 317.000000000000000000
   end
   object btnLoadFile: TButton
     StyledSettings = [Family, Style, FontColor]
@@ -31,7 +31,7 @@ object Form2: TForm2
     Size.Width = 153.000000000000000000
     Size.Height = 30.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 4
     Text = 'Load Text File'
     TextSettings.Font.Size = 14.000000000000000000
     OnClick = btnLoadFileClick
@@ -43,7 +43,7 @@ object Form2: TForm2
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = '0%'
-    TabOrder = 5
+    TabOrder = 6
   end
   object pbChart: TPaintBox
     Position.X = 360.000000000000000000
@@ -79,7 +79,7 @@ object Form2: TForm2
     IsChecked = False
     Position.X = 16.000000000000000000
     Position.Y = 8.000000000000000000
-    TabOrder = 8
+    TabOrder = 9
     OnSwitch = cbAnimatePlanetsSwitch
   end
   object Label1: TLabel
@@ -91,7 +91,7 @@ object Form2: TForm2
     Size.PlatformDefault = False
     TextSettings.Font.Size = 16.000000000000000000
     Text = 'Animate'
-    TabOrder = 9
+    TabOrder = 10
   end
   object labTime: TLabel
     StyledSettings = [Family, FontColor]
@@ -101,7 +101,7 @@ object Form2: TForm2
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.HorzAlign = Trailing
     Text = '2000.0'
-    TabOrder = 12
+    TabOrder = 13
   end
   object tbScale: TTrackBar
     CanParentFocus = True
@@ -112,7 +112,7 @@ object Form2: TForm2
     Size.Width = 137.000000000000000000
     Size.Height = 19.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 14
+    TabOrder = 15
     Value = 10.000000000000000000
     OnChange = tbScaleChange
   end
@@ -120,7 +120,7 @@ object Form2: TForm2
     Position.X = 504.000000000000000000
     Position.Y = 7.000000000000000000
     Text = '10 pix/au'
-    TabOrder = 11
+    TabOrder = 12
   end
   object tbAnimationSpeed: TTrackBar
     CanParentFocus = True
@@ -132,7 +132,7 @@ object Form2: TForm2
     Size.Width = 145.000000000000000000
     Size.Height = 19.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 13
+    TabOrder = 14
     Value = 7.000000000000000000
     OnChange = tbAnimationSpeedChange
   end
@@ -143,11 +143,11 @@ object Form2: TForm2
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = '7 d/tick'
-    TabOrder = 10
+    TabOrder = 11
   end
   object edFilename: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 15
+    TabOrder = 16
     Text = '\vsop2013\VSOP2013.p2000'
     Position.X = 8.000000000000000000
     Position.Y = 64.000000000000000000
@@ -168,29 +168,29 @@ object Form2: TForm2
     Size.Width = 153.000000000000000000
     Size.Height = 28.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 17
+    TabOrder = 18
     Text = 'Run Tests'
     OnClick = btnTestsClick
   end
   object btnCalc: TButton
-    Position.X = 216.000000000000000000
-    Position.Y = 213.000000000000000000
-    Size.Width = 64.000000000000000000
+    Position.X = 248.000000000000000000
+    Position.Y = 245.000000000000000000
+    Size.Width = 105.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 18
+    TabOrder = 19
     Text = 'Calc'
     OnClick = btnCalcClick
   end
-  object Labw: TLabel
+  object C: TLabel
     Position.X = 8.000000000000000000
-    Position.Y = 216.000000000000000000
+    Position.Y = 248.000000000000000000
     Size.Width = 97.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     TextSettings.HorzAlign = Trailing
     Text = 'JDE:'
-    TabOrder = 2
+    TabOrder = 3
   end
   object edJDE: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -198,8 +198,8 @@ object Form2: TForm2
     Text = '2405730.5'
     TextSettings.Font.Size = 14.000000000000000000
     Position.X = 112.000000000000000000
-    Position.Y = 212.000000000000000000
-    Size.Width = 89.000000000000000000
+    Position.Y = 244.000000000000000000
+    Size.Width = 113.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     StyledSettings = [Family, Style, FontColor]
@@ -221,5 +221,24 @@ object Form2: TForm2
     Size.PlatformDefault = False
     Text = 'Load Bin File'
     OnClick = btnLoadBinFileClick
+  end
+  object edDate: TDateEdit
+    Date = 44074.000000000000000000
+    OnChange = edDateChange
+    Position.X = 112.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label3: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 219.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.HorzAlign = Trailing
+    Text = 'Date:'
+    TabOrder = 2
   end
 end
