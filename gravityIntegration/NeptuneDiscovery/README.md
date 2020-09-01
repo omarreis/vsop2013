@@ -48,12 +48,13 @@ then it starts to drift away. By 1846, time of Neptune discovery,
 Uranus longitude integration was already 140 arcsec off,
 a large difference that was certainly observable at the time.
 
-[chart of Uranus longitude without Neptune]
+
+![chart of Uranus longitude without Neptune](UranusLongitudeNoNeptune.png)
 
 If we put back Uranus into the integration, we see that the 
 longitude difference falls to 1.4 arcsec, or 1% of previous chart.
 
-[chart Uranus longitude with Neptune back]
+![chart Uranus longitude with Neptune back](UranusLongitudeWithNeptuneAdded.png)
 
 If we look at the actual positions chart of the planets in the period,
 we see that in 1781, Uranus was about one quarter of revolution
@@ -65,7 +66,7 @@ At this point, at a small distance, gravity force between planets
 is maximum, but the force direction points to the orbit radius,
 difficult to observe, and not affecting the planet's longitude. 
 
-[UranusNeptuneOrbits]
+![UranusNeptuneOrbits](UranusNeptune1871-1846.png)
 
 After 1820 however, faster Uranus picks the orbit lead, with Uranus 
 dragging it from behind. As time passes this drag from the unknown   
