@@ -35,12 +35,15 @@ By 1846, astronomers have recorded 77% of a Uranus revolution around the Sun.
 Still the planet was misbehaving to the eyes of the astronomers.
 
 To simulate the planet observations at the time, I'm going to use
-vsop2013 ephemerides.  And leapfrog integration will be used
-to simulate the calculations Verrier and Adams had.
-If there is a record of these, I don't know. Never seen.
+vsop2013 ephemerides.  
 
-   See leapfrog integration read-me: 
+Leapfrog integration will be used to simulate the calculations Verrier and Adams had.
+Not sure how they integrated their model. If there is a record of these I don't know  :o| 
+Planets unknown at the time (Neptune and Pluto) will be excluded from integration.
+
+   See leapfrog integration app read-me: 
    https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
+   
    
    
 ## gravityIntegration app
