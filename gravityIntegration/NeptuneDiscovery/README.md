@@ -30,18 +30,23 @@ So, by 1846, astronomers had about 65 years worth of Uranus observations.
 
 65 years = 23741 days
 
-Uranus revolution period (its "year") is 30684 Earth days, or 84 Earth yers. 
-By 1846, astronomers recorded have 77% of Uranus revolution around the Sun.  
-Still the planet was misbehaving to the eyes of the astronomer.
+Uranus revolution period (its "year") is 30684 Earth days long, or 84 Earth years. 
+By 1846, astronomers have recorded 77% of a Uranus revolution around the Sun.  
+Still the planet was misbehaving to the eyes of the astronomers.
 
 To simulate the planet observations at the time, I'm going to use
 vsop2013 ephemerides.  And leapfrog integration will be used
 to simulate the calculations Verrier and Adams had.
+If there is a record of these, I don't know. Never seen.
 
    See leapfrog integration read-me: 
    https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
+   
+   
+## gravityIntegration app
 
 Using the leapfrog integration app *gravityIntegration* select:
+
   * [x]Uranus chart
   * comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
   * click Pluto and Neptune out of existence ( select planets and uncheck *Exists* []checkbox )
