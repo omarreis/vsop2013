@@ -29,9 +29,8 @@ are more difficult to observe.
       M1, M2 = masses of the objects
       D = Distance between objects centers
     
-Summing the effect of all these forces can be tricky. Not only does each object (ex: a planet) 
-attracts all others, but the magnitude and direction of the forces change continuously
-as objects move. 
+When many objects are involved, summing the effect of all the forces can be tricky. Not only does each object (ex: a planet) 
+attracts all others, the magnitude and direction of the forces continuously change as they move. 
 
 One approach to calculate position and speed of a planet at a certain time is to divide 
 the time in small intervals DT, and calculate object state incrementally by adding DTs.
