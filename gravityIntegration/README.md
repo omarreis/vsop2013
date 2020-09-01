@@ -51,7 +51,7 @@ It also starts with P0 ( position at time T0 ), but uses V1/2 ( speed at time DT
 Because V1/2 is a much better estimate of mean speed in the T0->T1 interval
 than V0 is, leapfrog integration results are much better than Euler's.
 
-Note that there are even better integration methods, but leapfrog so simple and ellegant.   :)  
+Note that there are even better integration methods, but leapfrog is so simple and ellegant.   :)  
 
 The leapfrog integration algorithm goes like this:
 
@@ -67,9 +67,10 @@ a small enough DT.
 ![leapfrog integration](leapfrogIntegration.png)
 
 # Discovery of planet Neptune
+
 As an application of this leapfrog integration, I tried to reconstruct some of the 
 numbers that led to the discovery of planet Neptune in 1846, even when no one 
-had seen the planet before.  See:
+had seen it before.  See:
 
 https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
