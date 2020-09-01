@@ -18,7 +18,7 @@ Anyway, both are to be commended.
 
 Details of this amazing discovery are missing ( at least for me )
 so I did a numeric exercise to reconstruct some of the 
-numbers Verrier had. 
+numbers Verrier (may) had. 
 
 I should notice that I'm not an astronomer or historian.
 I just messing with planet ephemerides and numerical integration software.
