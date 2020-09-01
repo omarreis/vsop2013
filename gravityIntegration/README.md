@@ -16,7 +16,7 @@ You can chart differences in positions using heliocentric spherical coordinates:
 * longitude difference ( in arcsecs )
 
 Longitude is the most important property for us (Earth based astronomers),
-because it is easily observed with telescopes. Distances ( aka planet radius )
+because it is easily observed with telescopes. Distances (or planet orbit radius)
 are more difficult to observe.
 
 ## Leapfrog integration
