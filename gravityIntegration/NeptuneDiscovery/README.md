@@ -42,9 +42,9 @@ Using the leapfrog integration app *gravityIntegration* select:
   * [x]Uranus chart
   * comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
   * click Pluto and Neptune out of existence ( select planets and uncheck *Exists* []checkbox )
-  * click Build charts
+  * click [Build charts]
 
-In the resulting chart below we see that Uranus behaves ok up to 1820, 
+In the resulting chart below we see that Uranus behaves nicely up to 1820, 
 then it starts to drift away. By 1846, time of Neptune discovery, 
 Uranus longitude integration was already 140 arcsec off,
 a large difference that was certainly observable at the time.
@@ -56,7 +56,7 @@ longitude difference falls to 1.4 arcsec, or 1% of previous chart.
 
 ![chart Uranus longitude with Neptune back](UranusLongitudeWithNeptuneAdded.png)
 
-If we look at the actual positions chart of the planets in the period,
+If we look at the actual positions chart of the planets in the period (below),
 we see that in 1781, Uranus was about one quarter of revolution
 behind Neptune.  Uranus revolution, being closer to the Sun,
 is faster, so it catches up and eventualy, around 1820, 
@@ -68,8 +68,8 @@ difficult to observe, and not affecting the planet's longitude.
 
 ![UranusNeptuneOrbits](UranusNeptune1871-1846.png)
 
-After 1820 however, faster Uranus picks the orbit lead, with Uranus 
-dragging it from behind. As time passes this drag from the unknown   
+After 1820 however, faster Uranus picks the orbit lead, with Neptune
+dragging it from behind.  As time passes this drag from the unknown   
 planet accumulates.  In 1846 the planet longitude was more than 
 2 arc minutes too slow in relation to values expected by 
 integrating gravity forces.
@@ -78,9 +78,9 @@ This, I guess, is what made Verrier and Adams consider a new planet.
 They also relied on Kepler 3rd law. Since the new planet was 
 left behind by Uranus, its orbit was slower and hence more distant
 from the Sun.  Since the planets had meet around 1820, the new planet 
-must have been at the same longitude at that time. Since it moves more slowly 
-than Uranus, it must be closer to that point, say at 1/8 of the orbit 
-( in 1846 Uranus was already about 1/4 of the new orbit )
+must have been with similar longitude at that time. Since it moves more slowly 
+than Uranus, in 1846 it must be closer to that point, say at 1/8 of the orbit 
+( in 1846 Uranus was already about 1/4 into the new orbit )
 
 In the end, we know that Neptune revolution period is 60189 Earth days.
 Period between the 2 planet meetings (closest point) is 62594 Earth days.
