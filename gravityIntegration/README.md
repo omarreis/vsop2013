@@ -29,7 +29,7 @@ Summing the effect of all these forces can be tricky. Not only does objects (p.e
 attract all others, but the magnitude direction of the forces vary continuously with time,
 as objects move around. 
 
-One approach is to divide the time in small DT intervals, and calculate object
+One approach is to divide the time in small DT time intervals, and calculate object
 states incrementally:
 
      Ai = Sum (G*M/D^2)     <-- sumatory of gravity acceleration due to all objects
@@ -37,20 +37,22 @@ states incrementally:
      Vi+1 = Vi + Ai * DT    <-- speed vector acceleration 
      goto to next i 
   
-This is called *Euler* method. It looks ok, but speeds ends up being systematically 
-off the mark, resulting in continuous drift in positions from actual values.
+This is called *Euler* method. It may look ok, but with elliptical Kepler orbits, 
+speeds are systematically off the mark, resulting in continuous drift 
+in positions from actual values.
 
 A better calculation method is the so called *leapfrog* integration.
 It also starts with P0 ( position at time 0), but uses V1/2 ( speed at time DT/2 )
 instead of V0.  
 
-Because V1/2 is a much better estimate of mean speed in the interval T0 --> T1
-results using leapfrog integration are much better than Euler's.
+Because V1/2 is a much better estimate of mean speed in the T0->T1 interval  than V0, 
+results using leapfrog integration are much better than Euler's method.
+Note that there are even better methods today, but leapfrog is ellegant. 
 
 The leapfrog integration algorithm goes like this:
 
      Ai = Sum (G*M/D^2)            <-- sumatory of gravity acceleration due to all objects
-     Pi+1   = Pi + Vi+1/2 * DT     <-- position vector change using V in the middle of the segment
+     Pi+1   = Pi + Vi+1/2 * DT     <-- position vector change using V1/2, in the middle of the segment
      Vi+3/2 = Vi+1/2 + Ai * DT     <-- speed vector acceleration 
      goto to next i 
     
