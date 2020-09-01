@@ -47,7 +47,7 @@ If there is a record of these, I don't know. Never seen.
 
 Using the leapfrog integration app *gravityIntegration* select:
 
-  * [x]Uranus chart
+  * select *[x]Uranus* chart
   * comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
   * click Pluto and Neptune out of existence ( select planets and uncheck *Exists* []checkbox )
   * click [Build charts]
