@@ -1,5 +1,4 @@
 ## Urbain Le Verrier discovery of Neptune
-======================================
 
 In 1846, Urbain Le Verrier predicted the existence of a new planet,
 never seen before by astronomers. The planet was later named Neptune.
