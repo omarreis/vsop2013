@@ -67,11 +67,12 @@ a small enough DT.
 ![leapfrog integration](leapfrogIntegration.png)
 
 # Discovery of planet Neptune
-As an application of leapfrog integration, I tried to reconstruct some of the 
-numbers that led to the discovery of planet Neptune in 1846, even
-when no one had seen it before. See:
+As an application of this leapfrog integration, I tried to reconstruct some of the 
+numbers that led to the discovery of planet Neptune in 1846, even when no one 
+had seen the planet before.  See:
 
 https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
+
 
 
 
