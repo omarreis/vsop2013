@@ -6,11 +6,11 @@ Verrier guess was based on irregularities in the orbit of planet Uranus.
 He noticed perturbations in the orbit when compared 
 to expected Newton's gravity integration calculations.  
 
-Verrier guessed correctly that another large planet should exist
+Verrier guessed that another large planet should exist
 next to Uranus to justify the difference between expected and observed positions. 
 Not only that, he estimated the position of the new planet, 
 which was later confirmed by Berlin Observatory and reported to be 
-within one degree of Verrier's prediction.
+near Verrier's prediction.
 
 By the same time, english astronomer John Couch Adams was making
 similar predictions, but published his results a little later.
@@ -18,10 +18,10 @@ Anyway, both are to be commended.
 
 Details of this amazing discovery are missing ( at least for me )
 so I did a numeric exercise to reconstruct some of the 
-numbers Verrier had.
+numbers Verrier had. 
 
 I should notice that I'm not an astronomer or historian.
-I just working with planet ephemerides and integration software.
+I just messing with planet ephemerides and numerical integration software.
 
 ## some numbers
 
@@ -30,13 +30,16 @@ So, by 1846, astronomers had about 65 years worth of Uranus observations.
 
 65 years = 23741 days
 
-Uranus revolution period (its "year") is 30684 Earth days .
-By 1846, they had seem less than one Uranus orbit ( actually about 77% ) 
-Still the planet was misbehaving to the eyes of the accute astronomer.
+Uranus revolution period (its "year") is 30684 Earth days, or 84 Earth yers. 
+By 1846, astronomers recorded have 77% of Uranus revolution around the Sun.  
+Still the planet was misbehaving to the eyes of the astronomer.
 
 To simulate the planet observations at the time, I'm going to use
-vsop2013 ephemerides. And leapfrog integration will be used
+vsop2013 ephemerides.  And leapfrog integration will be used
 to simulate the calculations Verrier and Adams had.
+
+   See leapfrog integration read-me: 
+   https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
 
 Using the leapfrog integration app *gravityIntegration* select:
   * [x]Uranus chart
