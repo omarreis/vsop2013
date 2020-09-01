@@ -56,7 +56,16 @@ The leapfrog integration algorithm goes like this:
     
 While Euler integration is first order, leapfrog is second order (meaning that the error
 is proportional to 1/DT^2 instead of 1/DT ). So error reduces fast when we use
-a small DT.
+a small enough DT.
 
 ![leapfrog integration](leapfrogIntegration.png)
+
+# Discovery of planet Neptune
+As an application of leapfrog integration, I tried to reconstruct some of the 
+numbers that led to the discovery of planet Neptune in 1846, even
+when no one had seen it before. See:
+
+https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
+
+
 
