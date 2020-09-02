@@ -111,4 +111,8 @@ My 5 cents
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
 * Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
+## Installer for Windows 
+Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
+https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
+
 
