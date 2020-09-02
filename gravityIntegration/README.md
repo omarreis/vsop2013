@@ -7,13 +7,13 @@ between the 9 planets and the Sun.
 ![GravityIntegration screenshot](screenshotGravityIntegration.png)
 
 The app uses VSOP2013 ephemerides as basis for comparison, and produces charts 
-of differences between planet's calculated and "observed" positions.
+of diferences between planet's calculated and "observed" positions.
 
-You can chart differences in positions using heliocentric spherical coordinates: 
+You can chart diferences in positions using heliocentric spherical coordinates: 
 
-* radius difference ( in % of radius ) 
-* latitude difference ( in arcsecs )
-* longitude difference ( in arcsecs )
+* radius diference ( in % of radius ) 
+* latitude diference ( in arcsecs )
+* longitude diference ( in arcsecs )
 
 Longitude is the most important property for us (Earth based astronomers),
 because it is easily observed with telescopes. Distances (or planet orbit radius)
@@ -36,7 +36,7 @@ One approach to calculate position and speed of a planet at a certain time is to
 the time in small intervals DT, and calculate object state incrementally by adding DTs.
 This numerical integration starts at a known time-position-speed T0.
 
-     Ai = Sum (G*M/D^2)     <-- sumatory of gravity acceleration due to all objects ( N-to-N attraction)
+     Ai = ∑(G*M/D^2)        <-- sumatory of gravity acceleration due to all objects ( N-to-N attraction)
      Pi+1 = Pi + Vi * DT    <-- position vector change 
      Vi+1 = Vi + Ai * DT    <-- speed vector acceleration 
      goto to next i 
@@ -50,12 +50,12 @@ It also starts with P0 ( position at time T0 ), but uses V1/2 ( speed at time DT
 Because V1/2 is a much better estimate of mean speed in the T0->T1 interval
 than V0 is, leapfrog integration results are much better than Euler's.
 
-Note that there are even better integration methods, but leapfrog is so simple and ellegant.   :)  
+Note that there are even better integration methods, but leapfrog is so simple and elegant.   :)  
 
 The leapfrog integration algorithm goes like this:
 
      Pi+1   = Pi + Vi+1/2 * DT     <-- position vector change using V1/2, in the middle of the segment
-     Ai = Sum (G*M/D^2)            <-- sumatory of gravity acceleration due to all objects
+     Ai = ∑(G*M/D^2)               <-- sumatory of gravity acceleration due to all objects
      Vi+3/2 = Vi+1/2 + Ai * DT     <-- speed vector acceleration 
      goto to next i 
     
