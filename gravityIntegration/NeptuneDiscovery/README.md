@@ -91,10 +91,10 @@ I suppose they also relied on Kepler's 3rd law. Since the new planet was
 left behind by Uranus, its orbit was slower and hence more distant
 from the Sun.  
 
-Since the planets had meet around 1820, the new planet must have been 
+Since the planets had met around 1820, the new planet must have been 
 with similar longitude at that time. Since it moves more slowly 
 than Uranus, in 1846 its longitude must be closer to that point, 
-say at 1/8 of the orbit ( in 1846 Uranus was already about 1/4 into the new orbit )
+say at 1/8 into the new orbit ( in 1846 Uranus was already about 1/4 into the new orbit )
 
 In the end, we know that Neptune revolution period is 60189 Earth days.
 Period between the 2 planet meetings (closest point) is 62594 Earth days.
