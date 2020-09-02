@@ -83,7 +83,7 @@ difficult to observe from Earth, and not affecting the planet's longitude.
 
 After 1820 faster Uranus takes the lead in the orbit, 
 with Neptune dragging it from behind. As time passes this drag from 
-the unknown planet accumulates.  
+the unknown planet accumulates (see first chart).  
 
 In 1846 the planet longitude was more than 2 arc minutes too slow 
 in relation to expected. Like Kepler had problems with Mars orbit before, 
