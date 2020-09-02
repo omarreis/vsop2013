@@ -95,6 +95,11 @@ https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 ## app for iOS
 https://apps.apple.com/us/app/planet-fun/id1525941640
 
+## Installer for Windows
+
+Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
+https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
+
 ## videos
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
 * PlanetFun - https://www.tiktok.com/@omar_reis/video/6859411602031119622
