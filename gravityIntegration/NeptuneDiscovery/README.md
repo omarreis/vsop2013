@@ -50,8 +50,11 @@ Planets unknown at the time (Neptune and Pluto) will be excluded from integratio
 Using the leapfrog integration app *gravityIntegration* select:
 
   * select *[x]Uranus* chart
-  * comparison=Longitude, interval=2741 days, DT=0.5, starting 13/03/1781 
-  * click Pluto and Neptune out of existence ( select planets and uncheck *Exists* []checkbox )
+  * comparison=Longitude
+  * interval=23741 days, 
+  * DT=0.5 
+  * start date 13/03/1781 
+  * set Pluto and Neptune out of existence ( select planets and uncheck *Exists* checkbox )
   * click [Build charts]
 
 In the resulting chart below we see that Uranus behaves nicely up to 1820, 
