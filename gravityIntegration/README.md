@@ -63,8 +63,8 @@ While Euler integration is first order, leapfrog is second order (meaning that t
 is proportional to 1/DT^2 instead of 1/DT ). So error reduces fast when we use
 a small enough DT.
 
-For Mercury, the planet with shortest revolurion time (88 days), 
-I found using DT = 0.1 day reduced the longitude error (as opposed to default dt=0.5) 
+For Mercury, the planet with shortest revolution time (88 days), 
+I found using DT=0.1 day reduced the longitude error considerably (as opposed to default DT=0.5) 
 
 ![leapfrog integration](leapfrogIntegration.png)
 
