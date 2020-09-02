@@ -64,8 +64,7 @@ a large difference that was certainly observable at the time.
 
 ![chart of Uranus longitude without Neptune](UranusLongitudeNoNeptune.png)
 
-If we put back Uranus into the integration, we see that the 
-longitude difference falls to 1.4 arcsec, or 1% of previous chart.
+If we restore Uranus in the calculations, we see that the longitude difference falls to 1.4 arcsec, or 1/100 of previous results. 
 
 ![chart Uranus longitude with Neptune back](UranusLongitudeWithNeptuneAdded.png)
 
