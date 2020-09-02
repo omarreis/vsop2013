@@ -72,11 +72,12 @@ behind Neptune.  Uranus revolution, being closer to the Sun,
 is faster, so it catches up and eventually, around 1820, 
 they meet at closest point.   
 
-At this point, a relatively small distance, gravity forces between planets 
-are maximum magnitude, but direction is along the orbit radius,
+At this point, at a relatively small distance, gravity forces between planets 
+are of maximum magnitude, but direction is along the orbit radius,
 difficult to observe from Earth, and not affecting the planet's longitude. 
 
 ![UranusNeptuneOrbits](UranusNeptune1871-1846.png)
+*Earth is the blue dot !*
 
 After 1820 faster Uranus takes the lead in the orbit, 
 with Neptune dragging it from behind. As time passes this drag from 
@@ -85,6 +86,7 @@ the unknown planet accumulates.
 In 1846 the planet longitude was more than 2 arc minutes too slow 
 in relation to expected. Like Kepler had problems with Mars orbit before, 
 they struggled to fit Uranus' orbit into their model. 
+
 
 This, I guess, is what made Verrier and Adams consider a new planet.
 I suppose they also relied on Kepler's 3rd law. Since the new planet was 
