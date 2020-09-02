@@ -36,8 +36,9 @@ One approach to calculate position and speed of a planet at a certain time is to
 the time in small intervals DT, and calculate object state incrementally by adding DTs.
 This numerical integration starts at a known time-position-speed T0.
 
-     Ai = ∑(G*M/D^2)        <-- sumatory of gravity acceleration due to all objects ( N-to-N attraction)
+     start with i=0, P0 and V0 
      Pi+1 = Pi + Vi * DT    <-- position vector change 
+     Ai   = ∑(G*M/D^2)      <-- sumatory of gravity acceleration due to all objects ( N-to-N attraction)
      Vi+1 = Vi + Ai * DT    <-- speed vector acceleration 
      goto to next i 
   
@@ -47,16 +48,17 @@ from actual values.
 
 A better calculation method is the so called *leapfrog* integration.
 It also starts with P0 ( position at time T0 ), but uses V1/2 ( speed at time DT/2 ) instead of V0.  
-Because V1/2 is a much better estimate of mean speed in the T0->T1 interval
-than V0 is, leapfrog integration results are much better than Euler's.
+Because V1/2 is a much better estimate of mean speed in the T0->T1 interval than V0 is, 
+leapfrog integration results are much better than Euler's.
 
 Note that there are even better integration methods, but leapfrog is so simple and elegant.   :)  
 
 The leapfrog integration algorithm goes like this:
 
+     start with i=0, P0 and V1/2 
      Pi+1   = Pi + Vi+1/2 * DT     <-- position vector change using V1/2, in the middle of the segment
-     Ai = ∑(G*M/D^2)               <-- sumatory of gravity acceleration due to all objects
-     Vi+3/2 = Vi+1/2 + Ai * DT     <-- speed vector acceleration 
+     Ai+1   = ∑(G*M/D^2)           <-- sumatory of gravity acceleration due to all objects
+     Vi+3/2 = Vi+1/2 + Ai+1 * DT   <-- speed vector acceleration 
      goto to next i 
     
 While Euler integration is first order, leapfrog is second order (meaning that the error
