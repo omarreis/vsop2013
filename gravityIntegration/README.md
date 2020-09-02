@@ -47,9 +47,9 @@ speeds are systematically off the mark which results in continuous drift
 from actual values.
 
 A better calculation method is the so called *leapfrog* integration.
-It also starts with P0 ( position at time T0 ), but uses V1/2 ( speed at time DT/2 ) instead of V0.  
-Because V1/2 is a much better estimate of mean speed in the T0->T1 interval than V0 is, 
-leapfrog integration results are much better than Euler's.
+It also starts with P0 ( position at time T0 ), but uses V1/2 (speed at time DT/2) instead of V0. 
+V1/2 is much better estimate of mean speed in T0->T1 interval than V0, 
+and leapfrog integration results are better than Euler's.
 
 Note that there are even better integration methods, but leapfrog is so simple and elegant.   :)  
 
@@ -61,9 +61,8 @@ The leapfrog integration algorithm goes like this:
      Vi+3/2 = Vi+1/2 + Ai+1 * DT   <-- speed vector acceleration 
      goto to next i 
     
-While Euler integration is first order, leapfrog is second order (meaning that the error
-is proportional to 1/DT^2 instead of 1/DT ). So error reduces fast when we use
-a small enough DT.
+While Euler integration is first order, leapfrog is second order, 
+meaning that the error reduces fast when we use a small enough DT.
 
 For Mercury, the planet with shortest revolution time (88 days), 
 I found using DT=0.1 day reduced the longitude error considerably (as opposed to default DT=0.5) 
