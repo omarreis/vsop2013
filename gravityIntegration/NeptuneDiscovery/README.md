@@ -103,8 +103,10 @@ Period between the 2 planet meetings (closest point) is 62594 Earth days.
 
 My 5 cents
 
-## on this repository
-* vsop2013 for Delphi: https://github.com/omarreis/vsop2013
-* gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
-* planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun
+## also in this repository
+* vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
+* gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
+* planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
+* Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
+
 
