@@ -19,17 +19,14 @@ Anyway, both are to be commended.
 Details of this amazing discovery are missing ( at least for me )
 so I did a numeric exercise to try to reconstruct some of the 
 numbers Verrier had at the time (my numbers).  
-I should notice that I'm not an astronomer or historian.
-I'm just interested in understanding the problem.
 
 ## my numbers
 
 Uranus was discovered in 13/mar/1781 by William Herschel.
-So, by 1846 astronomers had about 65 years worth of Uranus observations.
-
+By 1846 astronomers had about 65 years worth of Uranus observations.
 65 years = 23741 days
 
-Uranus revolution period (its "year") is 30684 Earth days long, or 84 Earth years. 
+Uranus revolution around the Sun lenght (its "year") is 30684 Earth days long, or 84 Earth years. 
 By 1846, astronomers have recorded about 77% of the first Uranus lap around the Sun.  
 Still the planet was misbehaving.
 
