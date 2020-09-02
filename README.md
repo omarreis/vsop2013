@@ -43,6 +43,7 @@ Object T_VSOP2013_File in vsop2013.pas:
 Two sample apps are included. 
 * TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
 * PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file. PlanetFun is available as executable for Android and iOS in stores. See below.
+* gravityIntegration - Integrates planet positions using Newton's gravity law and compares to VSOP2013. Shows charts of diferences.
 
 # Sample app 1: TestVSOP2013
 *TestVSOP2013* is a Firemonkey app. To use it you have to download at least one of the data files mentioned above, from VSOP2013 FTP repository ( current file is VSOP2013.p2000 )  
@@ -89,16 +90,22 @@ In order to compile and run this app, you will need to:
 * Download VSOP2013.p2000 data file from VSOP2013 FTP repository. Convert it to binary format using TestVSOP2013
 * Download and include planet textures from 3rd party website
 
-## app for Android
+## PlanetFun app for Android
 https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 
-## app for iOS
+## PlanetFun app for iOS
 https://apps.apple.com/us/app/planet-fun/id1525941640
 
-## Installer for Windows
-
+## Installer for Windows 
 Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
 https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
+
+## Sample app 3: gravityIntegration 
+
+Integrates planet positions using Newton's gravity law and compares to VSOP2013. Shows charts of diferences.
+
+see: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
+
 
 ## videos
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
