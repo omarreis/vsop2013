@@ -30,7 +30,7 @@ Uranus revolution around the Sun lenght (its "year") is 30684 Earth days long, o
 By 1846, astronomers have recorded about 77% of the first Uranus lap around the Sun.  
 Still the planet was misbehaving.
 
-To simulate the planet observations at the time (whicjh I don't have), I'm going to use
+To simulate the planet observations at the time (which I don't have), I'm going to use
 vsop2013 ephemerides. 
 
    vsop2013 for Delphi. See: https://github.com/omarreis/vsop2013/
