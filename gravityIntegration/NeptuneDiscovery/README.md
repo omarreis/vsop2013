@@ -80,23 +80,30 @@ After 1820 faster Uranus takes the lead in the orbit,
 with Neptune dragging it from behind. As time passes this drag from 
 the unknown planet accumulates (see first chart).  
 
-In 1846 the planet longitude was more than 2 arc minutes too slow 
-in relation to expected. Like Kepler had problems with Mars orbit before, 
-they struggled to fit Uranus' orbit into their models. 
+By 1846 the planet longitude was more than 2 arc minutes too slow .
+Like Kepler before thjem, who had problems with Mars orbit, 
+they struggled to fit Uranus' orbit into their numeric models. 
 
 This, I guess, is what made Verrier and Adams consider a new planet.
 I suppose they also relied on Kepler's 3rd law. Since the new planet was 
-left behind by Uranus, its orbit was slower and hence more distant
-from the Sun.  
+left behind by Uranus, its orbit was slower and hence more distant from the Sun.  
 
-Since the planets had met around 1820, the new planet must have been 
-with similar longitude at that time. Since it moves more slowly 
-than Uranus, in 1846 its longitude must be closer to that point, 
-say at 1/8 into the new orbit ( in 1846 Uranus was already about 1/4 into the new orbit )
-That led to the estimated position of the suspect.
-
-In the end, we know that Neptune revolution period is 60189 Earth days.
+Since the planets sort of met around 1820, the new planet must have been 
+with similar longitude at the time. Since Neptune rotates more slowly than Uranus, 
+in 1846 its longitude must be closer to 1871 position, say 1/8 into the new orbit.
+They knew Uranus was already about 1/4 into the new orbit. 
+That hinted to the estimated position of the suspect.
+We now know that Neptune revolution period is 60189 Earth days.
 Period between the 2 planet meetings (closest point) is 62594 Earth days.
+
+As for the mass of the new planet, it should be large enough to affect Uranus so much.
+In fact Neptune is larger than Uranus, at 17.5 x the mass of Earth. 
+
+
+    Earth    radius:6378.1 km    mass:5.97e+24 kg    rotPer:0.99    revPer:365.26  
+    Uranus   radius:25559  km    mass:8.68e+25 kg    rotPer:0.72    revPer:30684  
+    Neptune' radius:24764  km    mass:1.02e+26 kg    rotPer:0.67    revPer:60189  
+
 
 My 5 cents
 
