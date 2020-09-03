@@ -30,7 +30,7 @@ are more difficult to observe.
       D = Distance between objects centers
     
 When many objects are involved, summing the effect of all the forces can be tricky. Not only does each object (ex: a planet) 
-attracts all others, the magnitude and direction of the forces continuously change as they move. 
+attracts all others, the magnitude and direction of the forces change continuously as they move. 
 
 One approach to calculate position and speed of a planet at a certain time is to divide 
 the time in small intervals DT, and calculate object state incrementally by adding DTs.
@@ -43,13 +43,13 @@ This numerical integration starts at a known time-position-speed T0.
      goto to next i 
   
 This is called *Euler* method. It may look ok, but with elliptical or parabolic orbits, 
-speeds are systematically off the mark which results in continuous drift 
-from actual values.
+speeds are systematically off the mark which results in continuous drift from actual values. 
+Total energy grows with time, since planet orbits get larger. Energy conservation is violated.
 
 A better calculation method is the so called *leapfrog* integration.
 It also starts with P0 ( position at time T0 ), but uses V1/2 (speed at time DT/2) instead of V0. 
-V1/2 is much better estimate of mean speed in T0->T1 interval than V0, 
-and leapfrog integration results are better than Euler's.
+V1/2 is a better estimate of mean speed in T0->T1 interval than V0, 
+and leapfrog integration results are much better than Euler's.
 
 Note that there are even better integration methods, but leapfrog is so simple and elegant.   :)  
 
