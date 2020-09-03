@@ -59,7 +59,7 @@ a large diference that was certainly observable at the time.
 
 ![chart of Uranus longitude without Neptune](UranusLongitudeNoNeptune.png)
 
-If we restore *Neptune* in the calculations, we see that the longitude diference falls to 1.4 arcsec, or 1/100 of previous results. 
+If we restore *Neptune* in the calculations, we see that the longitude diference falls to 1.4 arcsec, or 1/100 of previous results. Clearly Neptune's influence in Uranus orbit is large. 
 
 ![chart Uranus longitude with Neptune back](UranusLongitudeWithNeptuneAdded.png)
 
