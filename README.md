@@ -40,10 +40,10 @@ Object T_VSOP2013_File in vsop2013.pas:
 * calculates heliocentric rectangular position and speed ( in UA and UA/day)
 
 # Sample apps
-Two sample apps are included. 
+Three sample apps are included. 
 * TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
 * PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file. PlanetFun is available as executable for Android and iOS in stores. See below.
-* gravityIntegration - Integrates planet positions using Newton's gravity law and compares to VSOP2013. Shows charts of diferences.
+* gravityIntegration - Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
 
 # Sample app 1: TestVSOP2013
 *TestVSOP2013* is a Firemonkey app. To use it you have to download at least one of the data files mentioned above, from VSOP2013 FTP repository ( current file is VSOP2013.p2000 )  
@@ -102,7 +102,7 @@ https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.e
 
 ## Sample app 3: gravityIntegration 
 
-Integrates planet positions using Newton's gravity law and compares to VSOP2013. Shows charts of diferences.
+Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
 
 see: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
 
