@@ -81,8 +81,8 @@ with Neptune dragging it from behind. As time passes this drag from
 the unknown planet accumulates (see first chart).  
 
 By 1846 the planet longitude was more than 2 arc minutes too slow .
-Like Kepler before thjem, who had problems with Mars orbit, 
-they struggled to fit Uranus' orbit into their numeric models. 
+Like Kepler before them, who had problems with Mars orbit, 
+they struggled to fit Uranus' into their numeric models. 
 
 This, I guess, is what made Verrier and Adams consider a new planet.
 I suppose they also relied on Kepler's 3rd law. Since the new planet was 
@@ -101,8 +101,8 @@ In fact Neptune is larger than Uranus, at 17.5 x the mass of Earth.
 
 
     Earth    radius:6378.1 km    mass:5.97e+24 kg    rotPer:0.99    revPer:365.26  
-    Uranus   radius:25559  km    mass:8.68e+25 kg    rotPer:0.72    revPer:30684  
-    Neptune' radius:24764  km    mass:1.02e+26 kg    rotPer:0.67    revPer:60189  
+    Uranus   radius:25559 km     mass:8.68e+25 kg    rotPer:0.72    revPer:30684  
+    Neptune  radius:24764 km     mass:1.02e+26 kg    rotPer:0.67    revPer:60189  
 
 
 My 5 cents
