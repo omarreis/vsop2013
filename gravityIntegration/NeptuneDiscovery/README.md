@@ -121,7 +121,9 @@ Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2
 
 Windows installer signed by Carvalho e Reis Ltda (authenticode)
 
-## video
+## videos
 https://www.tiktok.com/@omar_reis/video/6868280053218823426
+
+https://www.facebook.com/watch/?v=927266577766578&extid=zL8tulVwXybECcdZ
 
 
