@@ -23,8 +23,7 @@ numbers Verrier had at the time (my numbers).
 ## my numbers
 
 Uranus was discovered in 13/mar/1781 by William Herschel.
-By 1846 astronomers had about 65 years worth of Uranus observations.
-65 years = 23741 days
+By 1846 astronomers had about 65 years worth of Uranus observations (23741 days)
 
 Uranus revolution around the Sun lenght (its "year") is 30684 Earth days long, or 84 Earth years. 
 By 1846, astronomers have recorded about 77% of the first Uranus lap around the Sun.  
@@ -33,17 +32,15 @@ Still the planet was misbehaving.
 To simulate the planet observations at the time (which I don't have), I'm going to use
 vsop2013 ephemerides. 
 
-   vsop2013 for Delphi. See: https://github.com/omarreis/vsop2013/
+    vsop2013 for Delphi. See: https://github.com/omarreis/vsop2013/
 
 Leapfrog integration of gravity forces will be used to simulate the calculations Verrier and Adams had.
 Not sure how they worked the integration. Certainly with painfull hand calculations. 
 
 Planets unknown at the time (Neptune and Pluto) will be excluded from integration in this exercise.
 
-   See leapfrog integration app read-me: 
-   https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
-   
-   
+    See leapfrog integration app read-me: 
+    https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
    
 ## gravityIntegration app
 
@@ -87,7 +84,7 @@ the unknown planet accumulates (see first chart).
 
 In 1846 the planet longitude was more than 2 arc minutes too slow 
 in relation to expected. Like Kepler had problems with Mars orbit before, 
-they struggled to fit Uranus' orbit into their model. 
+they struggled to fit Uranus' orbit into their models. 
 
 This, I guess, is what made Verrier and Adams consider a new planet.
 I suppose they also relied on Kepler's 3rd law. Since the new planet was 
