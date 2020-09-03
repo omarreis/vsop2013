@@ -7,7 +7,7 @@ orbit of Uranus not in conformity with Newton's Universal Gravitation formula.
 The planet was later named *Neptune*.
 
 Verrier guessed that another large planet should exist next to Uranus, 
-to justify the difference between its expected and observed positions. 
+to justify the diference between its expected and observed positions. 
 Not only that, he estimated the position of the new planet, 
 which was later confirmed by Berlin Observatory and reported to be 
 near Verrier's prediction.
@@ -56,11 +56,11 @@ Using the leapfrog integration app *gravityIntegration* select:
 In the resulting chart below we see that Uranus behaves nicely up to 1820, 
 then it starts to drift away. By 1846, time of Neptune discovery, 
 Uranus longitude integration was already 140 arcsec off,
-a large difference that was certainly observable at the time.
+a large diference that was certainly observable at the time.
 
 ![chart of Uranus longitude without Neptune](UranusLongitudeNoNeptune.png)
 
-If we restore Uranus in the calculations, we see that the longitude difference falls to 1.4 arcsec, or 1/100 of previous results. 
+If we restore Uranus in the calculations, we see that the longitude diference falls to 1.4 arcsec, or 1/100 of previous results. 
 
 ![chart Uranus longitude with Neptune back](UranusLongitudeWithNeptuneAdded.png)
 
