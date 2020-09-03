@@ -70,7 +70,7 @@ is faster, so it catches up and eventually, around 1820,
 they meet at closest point.   
 
 At this point, at a relatively small distance, gravity forces between planets 
-are of maximum magnitude, but direction is along the orbit radius,
+are of maximum magnitude, but force direction is along the orbit radius,
 difficult to observe from Earth, and not affecting the planet's longitude. 
 
 ![UranusNeptuneOrbits](UranusNeptune1871-1846.png)
