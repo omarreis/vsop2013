@@ -1,4 +1,4 @@
-## VSOP2013 for Delphi ( and PlanetFun app )
+## VSOP2013 for Delphi / PlanetFun app / gravityIntegration / discovery of Neptune
 
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
@@ -90,13 +90,13 @@ In order to compile and run this app, you will need to:
 * Download VSOP2013.p2000 data file from VSOP2013 FTP repository. Convert it to binary format using TestVSOP2013
 * Download and include planet textures from 3rd party website
 
-## PlanetFun app for Android
+# PlanetFun app for Android
 https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 
-## PlanetFun app for iOS
+# PlanetFun app for iOS
 https://apps.apple.com/us/app/planet-fun/id1525941640
 
-## Installer for Windows 
+# Installer for Windows 
 Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
 https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
 
@@ -104,7 +104,11 @@ https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.e
 
 Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
 
-see: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
+* see: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
+
+## discovery of planet Neptune
+Numbers related to the discovery of the planet:
+* see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
 
 ## videos
