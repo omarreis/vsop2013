@@ -71,8 +71,20 @@ I found using DT=0.1 day reduced the longitude error considerably (as opposed to
 
 # Dependencies
 
-Uses files from VSOP2013 repository:  https://github.com/omarreis/vsop2013
-Also requires downloading and installing VSOP2013.p2000 data file ( not in this repo, see VSOP2013 read-me )
+* Uses files from VSOP2013 repository:  https://github.com/omarreis/vsop2013
+
+Full Delphi source code  in this repository
+
+# Executables available
+
+* PlanetFun for iOS and Android ( search your app store )
+* PlanetFun, TestVSOP2013 and gravityIntegration for Windows (see below)
+
+## Installer for Windows 
+Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
+https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
+
+( authenticode signed by Carvalho e Reis ltda )
 
 # Discovery of planet Neptune
 
@@ -82,9 +94,6 @@ had seen it before.  See:
 
 https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
-## Installer for Windows 
-Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
-https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
 
 ## also in this repository
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
