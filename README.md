@@ -91,14 +91,14 @@ In order to compile and run this app, you will need to:
 * Download and include planet textures from 3rd party website
 
 # PlanetFun app for Android
-https://play.google.com/store/apps/details?id=com.omarreis.planetfun
+* https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 
 # PlanetFun app for iOS
-https://apps.apple.com/us/app/planet-fun/id1525941640
+* https://apps.apple.com/us/app/planet-fun/id1525941640
 
 # Installer for Windows 
 Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
-https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
+* https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
 
 ## Sample app 3: gravityIntegration 
 
