@@ -32,15 +32,14 @@ Still the planet was misbehaving.
 To simulate the planet observations at the time (which I don't have), I'm going to use
 vsop2013 ephemerides. 
 
-    vsop2013 for Delphi. See: https://github.com/omarreis/vsop2013/
+* see vsop2013 for Delphi: https://github.com/omarreis/vsop2013/
 
 Leapfrog integration of gravity forces will be used to simulate the calculations Verrier and Adams had.
 Not sure how they worked the integration. Certainly with painfull hand calculations. 
 
 Planets unknown at the time (Neptune and Pluto) will be excluded from integration in this exercise.
 
-    See leapfrog integration app read-me: 
-    https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
+* See leapfrog integration: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
    
 ## gravityIntegration app
 
