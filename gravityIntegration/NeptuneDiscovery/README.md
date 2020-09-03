@@ -37,7 +37,7 @@ vsop2013 ephemerides.
 Leapfrog integration of gravity forces will be used to simulate the calculations Verrier and Adams had.
 Not sure how they worked the integration. Certainly with painfull hand calculations. 
 
-Planets unknown at the time (Neptune and Pluto) will be excluded from integration in this exercise.
+Planets unknown at the time (Neptune and Pluto) were excluded from integration in this exercise.
 
 * See leapfrog integration: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/README.md 
    
