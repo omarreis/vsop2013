@@ -93,8 +93,13 @@ with similar longitude at the time. Since Neptune rotates more slowly than Uranu
 in 1846 its longitude must be closer to 1871 position, say 1/8 into the new orbit.
 They knew Uranus was already about 1/4 into the new orbit. 
 That hinted to the estimated position of the suspect.
+
 We now know that Neptune revolution period is 60189 Earth days.
 Period between the 2 planet meetings (closest point) is 62594 Earth days.
+
+If we look again at the first chart, we see that Uranus accelerated between 
+1800 and 1820 as it approached Neptune (negative longitude change),
+before the opposition.
 
 As for the mass of the new planet, it should be large enough to affect Uranus so much.
 In fact Neptune is larger than Uranus, at 17.5 x the mass of Earth. 
