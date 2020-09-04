@@ -98,8 +98,8 @@ We now know that Neptune revolution period is 60189 Earth days.
 Period between the 2 planet meetings (closest point) is 62594 Earth days.
 
 If we look again at the first chart, we see that Uranus accelerated between 
-1800 and 1820 as it approached Neptune (negative longitude change),
-before the opposition.
+1800 and 1820 as it approached Neptune (negative longitude diference change),
+before the opposition. Only the influence wasn't so big as after it.
 
 As for the mass of the new planet, it should be large enough to affect Uranus so much.
 In fact Neptune is larger than Uranus, at 17.5 x the mass of Earth. 
