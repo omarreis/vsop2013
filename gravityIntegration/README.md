@@ -96,7 +96,7 @@ https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDisco
 
 
 ## also in this repository
-* vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
+* vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013
 * gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
 * Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
