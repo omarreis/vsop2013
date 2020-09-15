@@ -105,9 +105,9 @@ antes da oposição. Só que a influência não foi tão grande como depois de 1
 Quanto à massa do novo planeta, deveria ser grande o suficiente para afetar tanto a órbita de Urano.
 De fato, Netuno é maior do que Urano, com 17,5x a massa da Terra.
 
-    Raio da Terra: 6378,1 km  massa: 5,97e + 24 kg  rotPer: 0,99  revPer: 365,26
-    Raio de Urano:  25559 km  massa: 8,68e + 25 kg  rotPer: 0,72  revPer: 30684
-    Raio de Netuno: 24764 km  massa: 1,02e + 26 kg  rotPer: 0,67  revPer: 60189
+    Raio da Terra: 6378,1 km  massa: 5,97E+24 kg  rotPer: 0,99  revPer: 365,26
+    Raio de Urano:  25559 km  massa: 8,68E+25 kg  rotPer: 0,72  revPer: 30684
+    Raio de Netuno: 24764 km  massa: 1,02E+26 kg  rotPer: 0,67  revPer: 60189
     
 ![PlanetFunNeptuneUranus.png](PlanetFunNeptuneUranus.png)
 
