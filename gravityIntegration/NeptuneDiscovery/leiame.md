@@ -56,11 +56,11 @@ No gráfico resultante abaixo, vemos que Urano se comporta bem até 1820, então
 Em 1846, época da descoberta de Netuno, a integração da longitude de Urano já estava do observado cerca de 140 segundos de arco,
 uma grande diferença, observável na época.
 
-! [gráfico de longitude de Urano sem Netuno] (UranusLongitudeNoNeptune.png)
+![gráfico de longitude de Urano sem Netuno](UranusLongitudeNoNeptune.png)
 
 Se restaurarmos *Neptuno* nos cálculos, vemos que a diferença de longitude cai para 1,4 segundos de arco, ou 1/100 dos resultados anteriores. Claramente, a influência de Netuno na órbita de Urano é grande. Plutão, por outro lado, é tão pequeno que não detectei nenhuma mudança ao incluí-lo ou não.
 
-! [traçar a longitude de Urano com Netuno de volta] (UranusLongitudeWithNeptuneAdded.png)
+![traçar a longitude de Urano com Netuno de volta](UranusLongitudeWithNeptuneAdded.png)
 
 Se olharmos para o gráfico de posições reais dos planetas no período (abaixo),
 vemos que, em 1781, Urano estava cerca de um quarto da revolução atrás de Netuno. 
@@ -71,7 +71,7 @@ Neste ponto, a uma distância relativamente pequena, as forças da gravidade ent
 são de magnitude máxima, mas a direção das forças é ao longo do raio da órbita,
 difícil de observar daqui da Terra e que não afeta a longitude do planeta.
 
-! [UranusNeptuneOrbits] (UranusNeptune1871-1846.png)
+![UranusNeptuneOrbits](UranusNeptune1871-1846.png)
 * A Terra é o ponto azul! *
 
 Depois de 1820, Urano assume a liderança na órbita,
@@ -106,7 +106,7 @@ De fato, Netuno é maior do que Urano, com 17,5x a massa da Terra.
     Raio de Urano:  25559 km  massa: 8,68e + 25 kg  rotPer: 0,72  revPer: 30684
     Raio de Netuno: 24764 km  massa: 1,02e + 26 kg  rotPer: 0,67  revPer: 60189
     
-! [PlanetFunNeptuneUranus.png] (PlanetFunNeptuneUranus.png)
+![PlanetFunNeptuneUranus.png](PlanetFunNeptuneUranus.png)
 
 
 Meus 5 centavos
