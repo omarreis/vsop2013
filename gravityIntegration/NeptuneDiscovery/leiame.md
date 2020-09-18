@@ -29,9 +29,9 @@ A revolução de Urano em torno do Sol (seu "ano") demora 30.684 dias terrestres
 Então em 1846 os astrônomos tinham registrado cerca de 77% da primeira volta de Urano ao redor do Sol.
 Mesmo assim, o planeta estava se comportando mal.
 
-Para simular as observações do planeta na época (o que eu tenho), usei as efemérides vsop2013.
+Para simular as observações do planeta na época (o que eu não tenho), foram usaDAS as efemérides vsop2013.
 
-* veja vsop2013 para Delphi neste repositório: https://github.com/omarreis/vsop2013/
+* veja "vsop2013 for Delphi" neste repositório: https://github.com/omarreis/vsop2013/ 
 
 A integração numérica tipo Leapfrog das forças de gravidade foi usada para simular os cálculos de Verrier e Adams.
 Não sei como eles fizeram essa integração. Certamente com cálculos manuais demorados e repetitivos.
