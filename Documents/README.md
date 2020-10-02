@@ -24,5 +24,9 @@ https://www.solarsystemscope.com/textures/
 * PlutoTexture.jpg    
 * 2k_moon.jpg    
 
+## Planet ephemeris
+* Generate with TestVSOP2013 and deploy file vsop2013.p2000.bin do Documents
+
 For iOS and Android, deploy to <documents> folder
 For Windows, deploy to <user\documents\vsop2013\>
+
