@@ -43,10 +43,10 @@ Steps to obtain planet ephemeris file:
 
 Resulting binary file is *only* 131 MB and doesn't require parsing to load. 
 
-The scale factor between astronomical units and the app's 3D world:     
-     1.0 AU = 10.0 3D-world-units  
+The scale factor between astronomical units and the app's 3D world is 1.0:     
+     1.0 AU = 1.0 3D-world-unit  
     
-ex: Earth orbit radius is ~around~ 10.0 3D-world-units
+ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 
 # Planet textures
 
@@ -71,7 +71,6 @@ Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 # Warning: not realistic
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
 * Moon position, speed, size and orbit size are not connected to real world coordinates yet. Anyway, Moon revolution ( 27.32 days) is so much faster than other celestial objects, it is all over the place when animated. In this illustration, it is animated on a circular orbit and with uniform, slow speed. Fake (TODO)
-* Stars background is too fuzzy to check texture placement. Only illustrative at this time. (TODO)
 * Planet rotation speeds are also not realistic (TODO). But Planet positions and revolutions are just fine!  :)
 
 # Dependencies
