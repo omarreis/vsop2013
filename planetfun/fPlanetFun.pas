@@ -1,8 +1,8 @@
 unit fPlanetFun;    //-----  planetary system 3d animation --------\\
 //-----------------//                                               \\
-// Source: github.com/omarreis/vsop2013/planetfun                    \\
+// Source: github.com/omarreis/vsop2013    folder planetfun          \\
 // History:                                                           \\
-//   v0.9 - jul20 - by oMAR                                            \\
+//   v1.0 - jul20 - by oMAR                                            \\
 //----------------------------------------------------------------------\\
 
 interface
@@ -18,8 +18,10 @@ uses
   FMX.Objects, FMX.Gestures, FMX.ScrollBox,
   FMX.Memo, FMX.Memo.Types, FMX.DateTimeCtrls,
 
-  PlanetData,     // secundary planet tables. physical data
-  vsop2013;    // VSOP 2013 ephemeris
+  doubleVector3D,    // TVector3D_D
+  PlanetData,        // secundary planet tables. physical data
+  CelestialObjects,  // celestial object db
+  vsop2013;          // VSOP 2013 ephemeris
 
 type
   TFormPlanetFun = class(TForm)
@@ -36,7 +38,6 @@ type
     TimerSolarSystem: TTimer;
     sphereJupiter: TSphere;
     comboTarget: TComboBox;
-    Label1: TLabel;
     tbDistanceToTarget: TTrackBar;
     labDistanceToTarget: TLabel;
     dummyMercury: TDummy;
@@ -63,7 +64,7 @@ type
     Label5: TLabel;
     tbAnimationSpeed: TTrackBar;
     labAnimationSpeed: TLabel;
-    colorMaterialSource: TColorMaterialSource;
+    colorPathMercury: TColorMaterialSource;
     diskSaturnDisks: TDisk;
     btnAddOrbitDots: TButton;
     colorSun: TColorMaterialSource;
@@ -91,14 +92,14 @@ type
     rectToast: TRectangle;
     labToast: TLabel;
     LightMaterialSource1: TLightMaterialSource;
-    rectMainMenu: TRectangle;
+    rectTime: TRectangle;
     Label7: TLabel;
     labAbout: TLabel;
     Label9: TLabel;
     labAngleOfView: TLabel;
     Label10: TLabel;
-    btnCloseMenu: TSpeedButton;
-    btnMenu: TSpeedButton;
+    btnCloseTime: TSpeedButton;
+    btnToggleCameraSettings: TSpeedButton;
     rectControlPanel: TRectangle;
     Label11: TLabel;
     labJDE2: TLabel;
@@ -113,12 +114,12 @@ type
     rectBGCombo: TRectangle;
     lightMaterialTextureMercury: TLightMaterialSource;
     lightMaterialTextureUranus: TLightMaterialSource;
-    lightMaterialNeptune: TLightMaterialSource;
+    lightMaterialTextureNeptune: TLightMaterialSource;
     lightMaterialTextureSaturnDisks: TLightMaterialSource;
     imgPlanetFunBanner: TImage;
     lightMaterialTextureBannerPlanetFun: TLightMaterialSource;
     planeBanner: TPlane;
-    btnEditJDE: TButton;
+    btnEditJDE: TSpeedButton;
     rectEditJDE: TRectangle;
     Label13: TLabel;
     dateeditJDE: TDateEdit;
@@ -126,6 +127,29 @@ type
     btnOkJDE: TSpeedButton;
     btnCloseEditJDE: TSpeedButton;
     btnJDENow: TSpeedButton;
+    tbAngleOfView: TTrackBar;
+    Label1: TLabel;
+    cbConstLinesNames: TSwitch;
+    colorPathVenus: TColorMaterialSource;
+    colorPathEarth: TColorMaterialSource;
+    colorPathMars: TColorMaterialSource;
+    colorPathJupiter: TColorMaterialSource;
+    colorPathSaturn: TColorMaterialSource;
+    colorPathNeptune: TColorMaterialSource;
+    colorPathUranus: TColorMaterialSource;
+    colorPathPluto: TColorMaterialSource;
+    spherePolaris: TSphere;
+    btnCloseAboutBox2: TSpeedButton;
+    rectVisibility: TRectangle;
+    btnCloseVisibility: TSpeedButton;
+    rectCamera: TRectangle;
+    btnCloseCamera: TSpeedButton;
+    btnToggleTimeSettings: TSpeedButton;
+    imgTime: TImage;
+    btnToggleVisibilitySettings: TSpeedButton;
+    imgEye: TImage;
+    imgCamera: TImage;
+    dummyPolaris: TDummy;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -141,8 +165,8 @@ type
     procedure btnAddOrbitDotsClick(Sender: TObject);
     procedure cbOrbitDotsSwitch(Sender: TObject);
     procedure cbAxisVisibleSwitch(Sender: TObject);
-    procedure btnCloseMenuClick(Sender: TObject);
-    procedure btnMenuClick(Sender: TObject);
+    procedure btnCloseTimeClick(Sender: TObject);
+    procedure btnToggleCameraSettingsClick(Sender: TObject);
     procedure SolarSystemViewport3DGesture(Sender: TObject;
       const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure labAboutClick(Sender: TObject);
@@ -153,10 +177,18 @@ type
     procedure btnCloseEditJDEClick(Sender: TObject);
     procedure btnOkJDEClick(Sender: TObject);
     procedure btnJDENowClick(Sender: TObject);
+    procedure tbAngleOfViewChange(Sender: TObject);
+    procedure cbConstLinesNamesSwitch(Sender: TObject);
+    procedure MemoAboutApplyStyleLookup(Sender: TObject);
+    procedure btnCloseVisibilityClick(Sender: TObject);
+    procedure btnCloseCameraClick(Sender: TObject);
+    procedure btnToggleTimeSettingsClick(Sender: TObject);
+    procedure btnToggleVisibilitySettingsClick(Sender: TObject);
   private
+    fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
     fMousePt:TPointF;
-    fVSOPFile:T_VSOP2013_File;
+    // VSOP_File:T_VSOP2013_File;     // moved to vsop2013.pas
     fJDE:Double;
 
     fPlanetOrbitPoints:TList;  //save 3D dots created at runtime
@@ -176,6 +208,7 @@ type
     procedure HandleZoom(const EventInfo: TGestureEventInfo);
     procedure HandleRotate(const EventInfo: TGestureEventInfo);
     procedure checkSphereSkyVisibility;
+    procedure LoadPlanetTextures;
   public
   end;
 
@@ -191,6 +224,7 @@ implementation   // ---x--xx-xxx........................
 procedure TFormPlanetFun.FormCreate(Sender: TObject);
 var Y,M,D:word;
 begin
+  fFirstShow := true;
   FormatSettings.DecimalSeparator  := '.';  // vsop2013 files use dots as decimal separator
   FormatSettings.ThousandSeparator := ',';
 
@@ -199,7 +233,7 @@ begin
 
   DecodeDate( Date, {out:}Y,M,D);
   fJDE      := JD(Y, M, D, 0);     // current Julian date = Now
-  fVSOPFile := nil;  //no file yet
+  VSOP_File := nil;    // no file yet
 
   fPlanetOrbitPoints := TList.Create;  // list of orbit dots
 
@@ -335,7 +369,7 @@ end;
 
 procedure TFormPlanetFun.labAboutClick(Sender: TObject);
 begin
-  rectMainMenu.Visible := false; //hide menu to show About
+  rectTime.Visible := false; //hide menu to show About
 
   rectAboutPlanetFun.Visible := not rectAboutPlanetFun.Visible;  //toggle about
 
@@ -360,6 +394,29 @@ begin
   fJDE  := JD(Y, M, D, H*24);     // current Julian date = Now
 
   PositionPlanets;  // re pos with new jde
+end;
+
+// set about TMemo background color
+procedure TFormPlanetFun.MemoAboutApplyStyleLookup(Sender: TObject);
+var Obj: TFmxObject; Rectangle1: TRectangle;
+begin
+     Obj := MemoAbout.FindStyleResource('background');
+     if Obj <> nil then
+     begin
+          TControl(Obj).Margins   := TBounds.Create(TRectF.Create(-2,-2,+2,+2));
+          Rectangle1              := TRectangle.Create(Obj);
+          Obj.AddObject(Rectangle1);
+          Rectangle1.Align        := TAlignLayout.Client;
+          Rectangle1.Fill.Color   := TAlphaColors.Black;    //black memo w/ green text
+          Rectangle1.Stroke.Color := TAlphaColorRec.Black;
+          Rectangle1.Stroke.Kind  := TBrushKind.None;
+
+          Rectangle1.HitTest      := False;
+          Rectangle1.YRadius      := 0;
+          Rectangle1.XRadius      := 0;
+
+          Rectangle1.SendToBack;
+     end;
 end;
 
 // interactive gestures for mobile ( on Windows use mouse events combined with shift keys. See MouseMove() event )
@@ -388,7 +445,7 @@ begin
   rectToast.Visible  := true;
 end;
 
-procedure TFormPlanetFun.SizePlanets;     // set objects to their proportioinal sizes
+procedure TFormPlanetFun.SizePlanets;     // set objects proportional to real sizes
 var r,sc,k:Double;
 const SCALE_PLANETS=true;
 begin    // 3d coordinates are in AU
@@ -397,7 +454,7 @@ begin    // 3d coordinates are in AU
         sc := tbPlanetScale.Value;   // scale planets, so they don't look so small as they really are..
         // The Sun is much larger than the planets.
         // Applied a log formula to reduce that difference when showing
-        sc := sc/10;  //ad hoc
+        sc := sc/100;                // ad hoc factor
 
         // The problem w/ viewing the solar system is that the Sun is very large when compared to tiny planets.
         // And distances between bodies are even larger. When the whole Sun is visible, planets are small.
@@ -423,12 +480,11 @@ begin    // 3d coordinates are in AU
         r := LN(360000/k)*sc /2.0;               //size moon orbit . ad hoc factor applied again
         dummyMoon.Position.Point := Point3D( r, 0, 0);
         // Pluto
-        //diskSaturnDisks.Scale.Point := Point3D(r,r,r);
     end
     else begin  //planet real sizes ( cannot see most of them. too small )
         sc := tbPlanetScale.Value;   // scale planets, so they don't look so small as they really are..
         sc := Exp((sc-1)/15);        // Exponential scale in range  1..785
-        sc := sc*10;                 // 1 au = 10 3d units
+        sc := sc*1;                  // 1 au = 1 3d unit   //era *10
 
         r := PLANET_DATA[0].radius/AUtoKm  *sc;  sphereSun.Scale.Point     := Point3D(r,r,r);
         r := PLANET_DATA[1].radius/AUtoKm  *sc;  sphereMercury.Scale.Point := Point3D(r,r,r);
@@ -441,33 +497,33 @@ begin    // 3d coordinates are in AU
         r := PLANET_DATA[8].radius/AUtoKm  *sc;  sphereNeptune.Scale.Point := Point3D(r,r,r);
         r := PLANET_DATA[9].radius/AUtoKm  *sc;  spherePluto.Scale.Point   := Point3D(r,r,r);
         r := PLANET_DATA[10].radius/AUtoKm *sc;  sphereMoon.Scale.Point    := Point3D(r,r,r);
-        dummyMoon.Position.Point := sc* Point3D( 360000.0/AUtoKm*10, 0, 0); //size moon orbit . ad hoc factor applied
+        dummyMoon.Position.Point := sc* Point3D( 360000.0/AUtoKm, 0, 0);    // size moon orbit . ad hoc factor applied
         // Pluto
     end;
 
-  // set planets obliquities. Check: apply obliquity to which axis ??
-  sphereMercury.RotationAngle.y := - PLANET_DATA[1].Obliq;
-  sphereVenus.RotationAngle.y   := - PLANET_DATA[2].Obliq;
+  // set planets obliquities. Check: apply obliquity to which axis ?    -x
+  sphereMercury.RotationAngle.x := - PLANET_DATA[1].Obliq;
+  sphereVenus.RotationAngle.x   := - PLANET_DATA[2].Obliq;
                               r := - PLANET_DATA[3].Obliq;  // Earth obliquity
-  sphereEarth.RotationAngle.y            := r;    // apply to Earth axis and to orbit of the Moon. Is this right ?
-  dummyMoonOrbitCenter.RotationAngle.y   := r;
-  sphereMars.RotationAngle.y    := - PLANET_DATA[4].Obliq;
-  sphereJupiter.RotationAngle.y := - PLANET_DATA[5].Obliq;
-  sphereSaturn.RotationAngle.y  := - PLANET_DATA[6].Obliq;
-  sphereUranus.RotationAngle.y  := - PLANET_DATA[7].Obliq;
-  sphereNeptune.RotationAngle.y := - PLANET_DATA[8].Obliq;
-  spherePluto.RotationAngle.y   := - PLANET_DATA[9].Obliq;
+  sphereEarth.RotationAngle.x            := r;    // apply to Earth axis and to orbit of the Moon. Is this right ?
+  // dummyMoonOrbitCenter.RotationAngle.x   := r;
+  sphereMars.RotationAngle.x    := - PLANET_DATA[4].Obliq;
+  sphereJupiter.RotationAngle.x := - PLANET_DATA[5].Obliq;
+  sphereSaturn.RotationAngle.x  := - PLANET_DATA[6].Obliq;
+  sphereUranus.RotationAngle.x  := - PLANET_DATA[7].Obliq;
+  sphereNeptune.RotationAngle.x := - PLANET_DATA[8].Obliq;
+  spherePluto.RotationAngle.x   := - PLANET_DATA[9].Obliq;
 end;
 
-procedure TFormPlanetFun.PositionPlanets;  // according to vsop2013 and fJDE
-var ip:integer; aPosition,aSpeed:TCoord3d; aDummy:TDummy; Year:Double; aPosition3d:TPoint3d; aUT:TDatetime;
+procedure TFormPlanetFun.PositionPlanets;   // according to vsop2013 at epoch fJDE
+var ip:integer; aPosition,aSpeed:TVector3D_D; aDummy:TDummy; Year:Double; aPosition3d:TPoint3d; aUT:TDatetime;
 begin
-  if not ( Assigned(fVSOPFile) and fVSOPFile.fLoaded ) then exit;  //sanity test. File must be loaded
+  if not ( Assigned(VSOP_File) and VSOP_File.fLoaded ) then exit;  //sanity test. File must be loaded
 
   for ip := 1 to NUM_PLANETS do   // all vsop2013 planets
     begin
       // vsop2013 returns rectangular heliocentric coordinates x,y,z in UA
-      if fVSOPFile.calculate_coordinates( {ip:}ip , {jde:}fJDE, {out:} aPosition, aSpeed) then
+      if VSOP_File.calculate_coordinates( {ip:}ip , {jde:}fJDE, {out:} aPosition, aSpeed) then
             begin
               // translate between Astronomical coordinates and 3D world
               aPosition3d := Point3D(   // 3DWorld   Universe
@@ -491,7 +547,7 @@ begin
               if Assigned(aDummy) then
                 begin
                   //position planet
-                  aDummy.Position.Point := 10*aPosition3d;   // 10 = scale --> 1 au = 10 3D world units ??
+                  aDummy.Position.Point := aPosition3d;   // 1 = scale --> 1 au = 1.0 3D world unit
                 end;
             end;
     end;
@@ -566,12 +622,11 @@ begin
       v1 := mjTomCamera.Position.Point.Normalize;   // camera pointing versor
       t := tbDistanceToTarget.Value;     // value in range 1..101
       d := ( exp(t/60)-1.0 )*20.0;       // d in au  range 0.32..88 au
-      d := d*10;                         // convert au to 3D units  ( 1 au = 10.0 3D units )
       mjTomCamera.Position.Point := d*v1;
 
       checkSphereSkyVisibility;
 
-      labDistanceToTarget.Text := Format('%5.2f',[d/10])+ ' au';
+      labDistanceToTarget.Text := Format('%5.2f',[d] )+ ' au';
     end;
 end;
 
@@ -581,7 +636,7 @@ var aCamPos:TPoint3D;
 begin
   // if camera outside the sphere w/ stars, we dont want it to be visible and obstruct vision of the little planets
   aCamPos := dummyCamera.Position.Point + mjTomCamera.Position.Point;  // heliocentric position of our camera
-  sphereSky.Visible := (aCamPos.Length < sphereSky.Scale.x*0.5 ); //hide the sky sphere before we go out
+  // sphereSky.Visible := (aCamPos.Length < sphereSky.Scale.x*0.5 );      //hide the sky sphere before we go out
 end;
 
 
@@ -591,6 +646,17 @@ begin
   sc := tbPlanetScale.Value;   // 1..101
   labPlanetScale.Text := Trim( Format('%6.1f',[sc]) );
   SizePlanets;  //acording to new scale
+end;
+
+procedure TFormPlanetFun.tbAngleOfViewChange(Sender: TObject);
+var a:Single;
+begin
+  a := tbAngleOfView.Value;      //change camera AngleOfView
+  if ( a>0) and (a<360) then     //sanity test
+    begin
+      mjTomCamera.AngleOfView := a;
+      labAngleOfView.Text := Trim( Format('%5.0f°',[a]));
+    end;
 end;
 
 procedure TFormPlanetFun.tbAnimationSpeedChange(Sender: TObject);
@@ -606,11 +672,11 @@ end;
 
 procedure TFormPlanetFun.btnAddOrbitDotsClick(Sender: TObject);
 var aDot:TSphere; x,y,z:Double; i,ip:integer; aProxy:TProxyObject;
-    yearLen,weekLen,aJDE,radiusDot:Double; aPos,aSpeed:TCoord3d;
+    yearLen,weekLen,aJDE,radiusDot:Double; aPos,aSpeed:TVector3D_D;
     aPoint3d:TPoint3d;
 begin
   x := 0;    y := 0;   z := 0;
-  if not ( Assigned(fVSOPFile) and fVSOPFile.fLoaded ) then exit; //sanity
+  if not ( Assigned(VSOP_File) and VSOP_File.fLoaded ) then exit; //sanity
 
   // SolarSystemViewport3D.BeginUpdate;
   try
@@ -623,14 +689,14 @@ begin
 
           // dot size proportional to Log of month len, so that far planets have larger dots and is visible
           // when the whole orbit is visible
-          radiusDot := LN( weekLen )/8;     // can range from a ew days to many years. ad hoc factor applied
+          radiusDot := LN( weekLen )/8/7;     // can range from a ew days to many years. ad hoc factor applied
 
           // create dot orbits for each planet
           aDot := nil;
           for i:= 1 to 52 do      // calc one position for each month of the "year". Drop a ball on each
               begin
                 aJDE := fJDE + i*weekLen;  //calc data
-                if fVSOPFile.calculate_coordinates(ip, aJDE, {out:} aPos,aSpeed) then
+                if VSOP_File.calculate_coordinates(ip, aJDE, {out:} aPos,aSpeed) then
                   begin
                     // translate between Astronomical coordinates and 3D world coordinates
                     aPoint3d := Point3D(   // 3DWorld   Universe
@@ -643,10 +709,23 @@ begin
                         aDot := TSphere.Create( Self );
                         SolarSystemViewport3D.AddObject(aDot);
                         x := i;
-                        aDot.Position.Point := 10* aPoint3d;    //
+                        aDot.Position.Point := aPoint3d;    //
                         aDot.Scale.Point    := Point3D( radiusDot,radiusDot,radiusDot );
-                        aDot.MaterialSource := colorSun;
-                        aDot.Opacity        := 0.3;      //transparent
+                        case ip of
+                          1: aDot.MaterialSource := colorPathMercury;  // colorPathxx contains the texture color
+                          2: aDot.MaterialSource := colorPathVenus;
+                          3: aDot.MaterialSource := colorPathEarth;
+                          4: aDot.MaterialSource := colorPathMars;
+                          5: aDot.MaterialSource := colorPathJupiter;
+                          6: aDot.MaterialSource := colorPathSaturn;
+                          7: aDot.MaterialSource := colorPathUranus;
+                          8: aDot.MaterialSource := colorPathNeptune;
+                          9: aDot.MaterialSource := colorPathPluto;
+                        else
+                          aDot.MaterialSource := colorPathPlanet;  //generic
+                        end;
+
+                        aDot.Opacity        := 0.20;      //transparent
 
                         fPlanetOrbitPoints.Add( aDot );
                       end
@@ -656,9 +735,9 @@ begin
 
                         aProxy.SourceObject := aDot;
                         x := i;
-                        aProxy.Position.Point := 10*aPoint3d;
+                        aProxy.Position.Point := aPoint3d;
                         aProxy.Scale.Point    := Point3D( radiusDot,radiusDot,radiusDot );
-                        aProxy.Opacity        := 0.3;
+                        aProxy.Opacity        := 0.20;
 
                         fPlanetOrbitPoints.Add( aProxy );
                       end;
@@ -698,20 +777,30 @@ begin
   rectAboutPlanetFun.Visible := false;
 end;
 
+procedure TFormPlanetFun.btnCloseCameraClick(Sender: TObject);
+begin
+  rectCamera.Visible := false;
+end;
+
 procedure TFormPlanetFun.btnCloseEditJDEClick(Sender: TObject);
 begin
   rectEditJDE.Visible:= false;
 end;
 
-procedure TFormPlanetFun.btnCloseMenuClick(Sender: TObject);
+procedure TFormPlanetFun.btnCloseTimeClick(Sender: TObject);
 begin
 //  mvPlanetFun.HideMaster; //close multiview (menu)
-  rectMainMenu.Visible := false;
+  rectTime.Visible := false;
+end;
+
+procedure TFormPlanetFun.btnCloseVisibilityClick(Sender: TObject);
+begin
+  rectVisibility.Visible := false;
 end;
 
 procedure TFormPlanetFun.btnEditJDEClick(Sender: TObject);
 begin
-  rectMainMenu.Visible := false;
+  rectTime.Visible := false;
   rectEditJDE.Visible := true;
 end;
 
@@ -731,9 +820,10 @@ const sVSOP2013file = 'VSOP2013.p2000.bin';  // custom binary format
 begin
   labFileMetadata.Text := 'loading.. wait..';  //wait
 
-  fVSOPFile := T_VSOP2013_File.Create;   // vsop file parser and position calculator
+  if not Assigned(VSOP_File) then
+    VSOP_File := T_VSOP2013_File.Create;   // vsop file parser and position calculator
 
-  // fVSOPFile.OnLoadProgress := Form2LoadPropgress;
+  // VSOP_File.OnLoadProgress := Form2LoadPropgress;
   // reads and parses long ASCII file: wait..
 
   // file 'VSOP2013.p2000'  1500-3000. ( includes current time )
@@ -741,7 +831,10 @@ begin
 
   {$ifdef MsWindows}
   // TODO: set a folder app documents
-  aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000'  1500-3000. ( includes current time )
+  // aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000'  1500-3000. ( includes current time )
+  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+
+         'vsop2013'+ System.SysUtils.PathDelim+  //    /users/<username>/Documents/vsop2013/vsop2013.p2000.bin'
+         sVSOP2013file;
   {$endif MsWindows}
 
   {$ifdef Android}
@@ -754,18 +847,34 @@ begin
 
   if FileExists(aFN) then  // load
     begin
-      fVSOPFile.OnLoadTerminate := FileLoadTerminate;
-      fVSOPFile.Threaded_ReadBinaryFile( aFN );       // load data file on a separate thread ( takes some time )
+      VSOP_File.OnLoadTerminate := FileLoadTerminate;
+      VSOP_File.Threaded_ReadBinaryFile( aFN );       // load data file on a separate thread ( takes some time )
       showToastMessage('Loading VSOP2013 data.  Wait..');
-    end;
-
+    end
+    else showToastMessage('VSOP2013 file not found');
   // Memo1.Lines.Add(aFN+' Loaded');   //not so fast
   // PositionPlanets;
 end;
 
-procedure TFormPlanetFun.btnMenuClick(Sender: TObject);
+procedure TFormPlanetFun.btnToggleCameraSettingsClick(Sender: TObject);
 begin
-  rectMainMenu.Visible := not rectMainMenu.Visible;  //toggle menu
+  rectTime.Visible := false;
+  rectVisibility.Visible := false;
+  rectCamera.Visible := not rectCamera.Visible;  //toggle time settings
+end;
+
+procedure TFormPlanetFun.btnToggleTimeSettingsClick(Sender: TObject);
+begin
+  rectVisibility.Visible := false;
+  rectCamera.Visible := FALSE;
+  rectTime.Visible:= not rectTime.Visible;
+end;
+
+procedure TFormPlanetFun.btnToggleVisibilitySettingsClick(Sender: TObject);
+begin
+  rectTime.Visible := false;
+  rectCamera.Visible := FALSE;
+  rectVisibility.Visible := not rectVisibility.Visible;
 end;
 
 procedure TFormPlanetFun.btnOkJDEClick(Sender: TObject);
@@ -788,7 +897,7 @@ end;
 procedure TFormPlanetFun.FileLoadTerminate(Sender:TObject);
 var S:String;
 begin
-  if fVSOPFile.fLoaded then
+  if VSOP_File.fLoaded then
     begin
       S := S+'VSOP2013.p2000.bin loaded';
     end
@@ -796,12 +905,12 @@ begin
 
   showToastMessage( S );  // notify finished loading
 
-  if fVSOPFile.fLoaded then
+  if VSOP_File.fLoaded then
     begin
       textPlanetFunTitle.Visible := false;     // hide app title after the file is loaded, and we are open for business
       planeBanner.Visible := false;
 
-      labFileMetadata.Text := fVSOPFile.getMetadata;  //show vsop file metadata ( header )
+      labFileMetadata.Text := VSOP_File.getMetadata;  //show vsop file metadata ( header )
       labJDEClick(nil);    // sets fJDE to current and repos planets
     end
     else labFileMetadata.Text := 'ops..some error loading file';
@@ -810,6 +919,74 @@ end;
 procedure TFormPlanetFun.cbAxisVisibleSwitch(Sender: TObject);
 begin
    Self.Grid3D1.Visible := cbAxisVisible.IsChecked;
+end;
+
+const
+  planetTextureFiles:Array[1..NUM_PLANETS+1] of String= (
+    '2k_mercury.jpg',        // 1:Mercury;
+    '2k_venus_surface.jpg',  // 2:Venus;
+    '2k_earth_daymap.jpg',   // 3:Earth;
+    '2k_mars.jpg',           // 4:Mars;
+    '2k_jupiter.jpg',        // 5:Jupiter;
+    '2k_saturn.jpg',         // 6:Saturn;
+    '2k_uranus.jpg',         // 7:Uranus;
+    '2k_neptune.jpg',        // 8:Neptune;
+    'PlutoTexture.jpg',      // 9:Pluto;
+    '2k_moon.jpg' );         // 10:Moon
+// not used yet
+//    '2k_earth_clouds.jpg'
+//    '2k_earth_nightmap.jpg'
+//    '2k_venus_atmosphere.jpg'
+//    '2k_saturn_ring_alpha.png'
+
+procedure TFormPlanetFun.LoadPlanetTextures;  //Loads
+var aPath, aFN:String; ip:integer;
+    aMaterial:TLightMaterialSource;
+begin
+  // on Windows 10 it is  'C:\Users\<user>\OneDrive\Documentos\vsop2013\'
+  aPath := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim; // mk file path
+  {$IFDEF MsWindows}
+  aPath := aPath +'vsop2013'+ System.SysUtils.PathDelim;  // for Windows there is an extra 'vsop2013\'
+  {$ENDIF MsWindows}
+  for ip := 1 to NUM_PLANETS+1 do
+    begin
+      aFN := aPath + planetTextureFiles[ip];
+      if FileExists(aFN) then      //sanity test
+        begin
+          case ip of
+            1: aMaterial := lightMaterialTextureMercury;
+            2: aMaterial := lightMaterialTextureVenus;
+            3: aMaterial := lightMaterialTextureEarth;
+            4: aMaterial := lightMaterialTextureMars;
+            5: aMaterial := lightMaterialTextureJupiter;
+            6: aMaterial := lightMaterialTextureSaturn;
+            7: aMaterial := lightMaterialTextureUranus;
+            8: aMaterial := lightMaterialTextureNeptune;
+            9: aMaterial := lightMaterialTexturePluto;
+            10:aMaterial := lightMaterialTextureMoon;
+          else aMaterial := nil;
+          end;
+          if Assigned( aMaterial ) then aMaterial.Texture.LoadFromFile(aFN);
+        end;
+        // else
+    end;
+end;
+
+procedure TFormPlanetFun.cbConstLinesNamesSwitch(Sender: TObject);
+var aFN:String;
+begin
+  // on (my) Windows 10 it is  'C:\Users\<user>\OneDrive\Documentos\vsop2013\'
+  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim; // mk file path
+  {$IFDEF MsWindows}
+  aFN := aFN +'vsop2013'+ System.SysUtils.PathDelim;  // for Windows there is an extra 'vsop2013\'
+  {$ENDIF MsWindows}
+  if cbConstLinesNames.IsChecked then aFN:=aFN+'SkyMapLinesNames.png'
+    else aFN:=aFN+'SkyMapPlain.png';
+  if FileExists(aFN) then      //sanity test
+    begin
+      textureStars.Texture.LoadFromFile(aFN);
+      sphereSky.Visible := true;
+    end;
 end;
 
 procedure TFormPlanetFun.cbOrbitDotsSwitch(Sender: TObject);
@@ -846,29 +1023,22 @@ end;
 
 procedure TFormPlanetFun.FormActivate(Sender: TObject);
 begin
-   TimerSolarSystem.Enabled := true;  // and God said: may Time start...now !
-   SizePlanets;
-   Grid3D1.Visible := false;        //didn't manage to do that as design time
+   if fFirstShow then  // once:  load vsop2013 ephemerides binary file ( threaded load )
+     begin
+       TimerSolarSystem.Enabled := true;  // and God said: may Time start...now !
+       SizePlanets;
+       Grid3D1.Visible := false;        //didn't manage to do that as design time
+       rectTime.Visible := false;      // menus starts hiden
 
-   rectMainMenu.Visible := false;   // menu starts hiden
+       LoadPlanetTextures;            // load planet texture images from Documents
+       cbConstLinesNamesSwitch(nil);  // this loads defaut sky texture from file
 
-   {$ifdef Android}
-   btnLoadFileClick(nil);         // load data file on start
-   btnLoadFile.Visible := false;  // hide filename editor
-   edFilename.Visible := false;   // and associated btn
-   {$endif Android}
+       btnLoadFileClick(nil);         // load data file on startup
+       btnLoadFile.Visible := false;  // hide filename editor ( for debug only)
+       edFilename.Visible := false;   // and associated btn
 
-   {$ifdef iOS}             //same for ios
-   btnLoadFileClick(nil);
-   btnLoadFile.Visible := false;
-   edFilename.Visible := false;
-   {$endif iOS}
-
-   {$ifdef MsWindows}             //same for Windows
-   btnLoadFileClick(nil);   //TODO: set correct location for production
-   btnLoadFile.Visible := false;
-   edFilename.Visible := false;
-   {$endif MsWindows}
+       fFirstShow:= false;
+     end;
 end;
 
 procedure TFormPlanetFun.TimerSolarSystemTimer(Sender: TObject); // 100 or 200 ms ticks
