@@ -1,4 +1,4 @@
-# Planet fun files to deploy 
+# PlanetFun files to deploy 
 In order to run PlanetFun, you must deploy the following files twith the program:
 
 Note: previous version (up to 1.1) used the textures loaded in the form's FMX file, which was very large.
