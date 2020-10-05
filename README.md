@@ -1,5 +1,14 @@
 ## VSOP2013 for Delphi / PlanetFun app / gravityIntegration / discovery of Neptune
 
+This repository started as a Delphi port of a planet ephemerides database VSOP2013.
+With time it grew to include:
+* Planet data tests.
+* binary data file utility.
+* N-to-N gravity integration by leapfrog method
+* app "PlanetFun" ( 3d  simulation )
+
+#VSOP2013 for Delphi
+
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
 This is a Delphi port of original Fortran code by the theory authors.  
@@ -42,7 +51,7 @@ Object T_VSOP2013_File in vsop2013.pas:
 # Sample apps
 Three sample apps are included. 
 * TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
-* PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file. PlanetFun is available as executable for Android and iOS in stores. See below.
+* PlanetFun - More complex 3D app. Requires downloading and deploying planet textures from 3rd party site and VSOP2013 binary file. PlanetFun is available as executable for Windows (see below). For Android and iOS download from stores. 
 * gravityIntegration - Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
 
 # Sample app 1: TestVSOP2013
