@@ -7,7 +7,7 @@ With time it grew to include:
 * N-to-N gravity integration by leapfrog method
 * app "PlanetFun" ( 3d  simulation )
 
-#VSOP2013 for Delphi
+# VSOP2013 for Delphi
 
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
