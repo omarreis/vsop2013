@@ -90,7 +90,8 @@ I did not test the original Fortran code, so I used the results on original file
 ## Sample app 2: PlanetFun
 ![screenshot](planetfun/bannerPlanetFun.png)
 
-Planet Fun is a Firemonkey 3D solar system working model app. It uses VSOP2013 to calculate planet positions.
+Planet Fun is a Firemonkey solar system 4D simulation. 
+It uses VSOP2013 to calculate planet positions for the 9 Planets ( or 8 planets + Pluto ).
 
 Source code:  
     https://github.com/omarreis/vsop2013/tree/master/planetfun
