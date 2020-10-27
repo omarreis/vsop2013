@@ -22,6 +22,7 @@ Full app source code is available at:
 * Solar system heliocentric axis (x and z)
 * VSOP2013 planet ephemeris usage sample
 * Current catalog is small: Sun, 9 planets and Moon
+* Sensor fusion allows positioning the light house on GPS position, and set phone attitude acording to gyro and compass
 
 # Planet positions
 
@@ -74,7 +75,8 @@ Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 * Planet rotation speeds are also not realistic (TODO). But Planet positions and revolutions are just fine!  :)
 
 # Dependencies
-*  Uses file vsop2013.pas from https://github.com/omarreis/vsop2013/
+*  Uses astronomy files from https://github.com/omarreis/vsop2013/
+*  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
 
 # Julian date formulas
 from Astronomical Algorithms. Jean Meeus
