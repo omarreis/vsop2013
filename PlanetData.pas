@@ -102,59 +102,8 @@ const        // approximate values..
 // Pluto 	  1.2500e+22
 // Moon 	  7.3490e+22
 
-// date utils
-Function JD(Y,M,D,UT:Double):Double;  // encode Julian date
-Function JulianToGregorianDate(const JD:Double):TDatetime;
-Function DateToJD(const D:TDatetime):Double;
 
 implementation  // --------------------------------------------
 
-
-// Some date utils
-// from astronomical algorithms - J. Meeus
-Function JD(Y,M,D,UT:Double):Double;  // encode Julian date
-var A,B:double;
-begin
-  if (M<=2) then
-    begin
-      Y := Y-1;
-      M := M+12;
-    end;
-  A := Int(Y/100);
-  B := 2-A+Int(A/4);
-  Result := Int(365.25*(Y+4716))+Int(30.6001*(M+1))+D+B-1524.5+UT/24;
-end;
-
-Function DateToJD(const D:TDatetime):Double;
-var YY,MM,DD:Word; H:Double;
-begin
-  DecodeDate( Trunc(D), {out:}YY,MM,DD);
-  Result := JD(YY,MM,DD,{UT:}0 );
-end;
-
-
-// Julian number to Gregorian Date. Astronomical Algorithms - J. Meeus
-Function JulianToGregorianDate(const JD:Double):TDatetime;
-var A,B,F:Double; alpha,C,E:integer; D,Z:longint; dd,mm,yy:word;
-begin
-  Z := trunc(JD + 0.5);
-  F := (JD + 0.5) - Z;
-  if (Z<2299161.0) then A:=Z
-    else begin
-      alpha := trunc( (Z-1867216.25)/36524.25);
-      A := Z+1+alpha-(alpha div 4);
-    end;
-  B := A + 1524;
-  C := trunc( (B - 122.1) / 365.25);
-  D := trunc( 365.25 * C);
-  E := trunc((B - D) / 30.6001);
-  dd := Trunc(B - D - int(30.6001 * E) + F);
-  if (E<14) then mm := E - 1
-    else mm := E - 13;
-  if mm > 2 then yy := C - 4716
-    else yy := C - 4715;
-
-  Result := EncodeDatetime(yy,mm,dd,0,0,0,0);   // ignore time
-end;
 
 end.

@@ -151,7 +151,7 @@ object Form2: TForm2
     Text = '\vsop2013\VSOP2013.p2000'
     Position.X = 8.000000000000000000
     Position.Y = 64.000000000000000000
-    Size.Width = 281.000000000000000000
+    Size.Width = 337.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
   end
