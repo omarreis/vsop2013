@@ -3,7 +3,7 @@ object FormPlanetFun: TFormPlanetFun
   Top = 0
   Caption = 'PlanetFun'
   ClientHeight = 720
-  ClientWidth = 349
+  ClientWidth = 340
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -20,7 +20,7 @@ object FormPlanetFun: TFormPlanetFun
     Align = Client
     Camera = mjTomCamera
     Color = claBlack
-    Size.Width = 349.000000000000000000
+    Size.Width = 340.000000000000000000
     Size.Height = 720.000000000000000000
     Size.PlatformDefault = False
     UsingDesignCamera = False
@@ -86,6 +86,48 @@ object FormPlanetFun: TFormPlanetFun
         SubdivisionsHeight = 24
         MaterialSource = lightMaterialTextureEarth
         Quanternion = '(0.199367895722389,0,0,-0.979924738407135)'
+        object dummyLighthouse: TDummy
+          Width = 1.000000000000000000
+          Height = 1.000000000000000000
+          Depth = 1.000000000000000000
+          object cylinderLighthouse: TCylinder
+            Position.X = 0.699999988079071000
+            RotationAngle.Z = 90.000000000000000000
+            Width = 0.100000001490116100
+            Height = 0.400000005960464500
+            Depth = 0.100000001490116100
+            MaterialSource = lightMaterialTextureFarol
+            Quanternion = '(0,0,-0.707106709480286,-0.707106709480286)'
+            object dummyPhone: TDummy
+              Position.Y = -0.400000005960464500
+              Width = 1.000000000000000000
+              Height = 1.000000000000000000
+              Depth = 1.000000000000000000
+              object cubePhone: TCube
+                Scale.X = 0.500000000000000000
+                Scale.Y = 0.500000000000000000
+                Scale.Z = 0.500000000000000000
+                Width = 0.300000011920929000
+                Height = 0.500000000000000000
+                Depth = 0.050000000745058060
+                Opacity = 0.800000011920929000
+                MaterialSource = lightMaterialTexturePhone
+                object dummyPhoneTarget: TDummy
+                  Width = 1.000000000000000000
+                  Height = 1.000000000000000000
+                  Depth = 1.000000000000000000
+                end
+                object planePhoneBack: TPlane
+                  Position.Z = 0.029999999329447750
+                  Width = 0.300000011920929000
+                  Height = 0.500000000000000000
+                  Depth = 0.001000000047497451
+                  MaterialSource = lightMaterialTexturePhoneBack
+                end
+              end
+            end
+          end
+        end
       end
       object dummyMoonOrbitCenter: TDummy
         Width = 1.000000000000000000
@@ -1388,11 +1430,39 @@ object FormPlanetFun: TFormPlanetFun
     Left = 240
     Top = 144
   end
-  object LightMaterialSource1: TLightMaterialSource
+  object lightMaterialTexturePhoneBack: TLightMaterialSource
     Diffuse = claWhite
     Ambient = xFF404040
-    Emissive = claNull
+    Emissive = xFFA0A0A0
     Specular = xFF606060
+    Texture.PNG = {
+      89504E470D0A1A0A0000000D4948445200000061000000C80806000000F8158F
+      85000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      02EB49444154785EEDDAE16DD3400080D1C210ACC014998799982753B0024B00
+      16119460A78EE3365FAEEF49555D29CA8FFB72E7F3351F8EC7E38F27EEEAE3E9
+      37772442800801220488102042C06E5BD4C3E170BAFAEBD77B9FAEB8E4E60873
+      837F4E8CCB6E5A8ED60498AC7DDD7BB539C2B5032BC43237E6804D11963ED55F
+      BF7DFFF333C76C98B7DB4C381FF8A510FCCF72142042C06E11BE7CFE74BAFAED
+      FC6F966D7E58DB7293F5D036CF7214B039C2B59F6AB360D94D3361EDC00A7059
+      FE14F5FC7D470C9AFDB6C54B37FE9162246FCC6B765E5B766755B908D70CEE28
+      211E7E8B3A42885484A501BD74323B82FC4C783EF8A38678F8E56804F908CF0F
+      02473D144C4558DAFB4F833FF2A9ECC32F47233CB4BDEAB1C564CB20ADDD768E
+      F2D4FC265FFE9A5C3B602FBDEF280126372D476B034CAE79EDE4D2208F1460F2
+      A6FF599B8C36807BF09C10B069262CCD82F327DAA56DA5D9F0AFDD66C2DC91C2
+      C8E73D7BB21C058810B05B84B9F57FE4A3863DD9A206588E023647D8F289360B
+      E6DD3413AE19540196254F51DF9BDD22B09D1B73800801220488102042800801
+      2204881020428008012204881020428008012204881020428008012204881020
+      4280080122048810204280080122048810204280080122048810204280080122
+      0488102042800801220488102042800801220488102042800801220488102042
+      8008012204881020428008012204881020428008012204881020428008012204
+      8810204280080122048810204280080122048810204280080122048810204280
+      0801220488102042800801220488102042800801220488102042800801220488
+      1020428008012204881020428008012204881020428008012204881020428008
+      0122048810204280080122048810204280080122048810204280080122048810
+      2042800801220488102042800801220488102042800801220488102042800801
+      2204881020428008012204881020428008012204881020428008012204881020
+      4280080122048870774F4F3F01F7FC9DAE4A318CFA0000000049454E44AE4260
+      82}
     Shininess = 30
     Left = 208
     Top = 200
@@ -1401,10 +1471,10 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     Fill.Color = xFF202020
     Opacity = 0.699999988079071000
-    Position.X = 156.000000000000000000
-    Position.Y = 8.000000000000000000
+    Position.X = 148.000000000000000000
+    Position.Y = 5.000000000000000000
     Size.Width = 185.000000000000000000
-    Size.Height = 46.000000000000000000
+    Size.Height = 69.000000000000000000
     Size.PlatformDefault = False
     Stroke.Color = claDarkslategray
     XRadius = 10.000000000000000000
@@ -1439,9 +1509,9 @@ object FormPlanetFun: TFormPlanetFun
     end
     object labStatus: TLabel
       StyledSettings = [Family, Style]
-      Position.X = -4.000000000000000000
-      Position.Y = 21.000000000000000000
-      Size.Width = 193.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 18.000000000000000000
+      Size.Width = 177.000000000000000000
       Size.Height = 21.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 11.000000000000000000
@@ -1449,6 +1519,30 @@ object FormPlanetFun: TFormPlanetFun
       TextSettings.HorzAlign = Center
       Text = 'Planet Fun'
       TabOrder = 2
+    end
+    object labStatus2: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 8.000000000000000000
+      Position.Y = 33.000000000000000000
+      Size.Width = 177.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
+      TextSettings.FontColor = claBisque
+      TextSettings.HorzAlign = Center
+      Text = '...'
+    end
+    object labStatus3: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 8.000000000000000000
+      Position.Y = 49.000000000000000000
+      Size.Width = 177.000000000000000000
+      Size.Height = 21.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
+      TextSettings.FontColor = claBisque
+      TextSettings.HorzAlign = Center
+      Text = '...'
     end
   end
   object lightMaterialTextureMercury: TLightMaterialSource
@@ -9125,87 +9219,6 @@ object FormPlanetFun: TFormPlanetFun
     Left = 272
     Top = 192
   end
-  object rectEditJDE: TRectangle
-    Anchors = [akTop]
-    Fill.Color = xFFA0A0A0
-    Position.X = 16.000000000000000000
-    Position.Y = 64.000000000000000000
-    Size.Width = 329.000000000000000000
-    Size.Height = 217.000000000000000000
-    Size.PlatformDefault = False
-    Stroke.Color = claCoral
-    Stroke.Thickness = 2.000000000000000000
-    Visible = False
-    XRadius = 15.000000000000000000
-    YRadius = 15.000000000000000000
-    object Label13: TLabel
-      StyledSettings = [Family]
-      Position.X = 12.000000000000000000
-      Position.Y = 13.000000000000000000
-      Size.Width = 301.000000000000000000
-      Size.Height = 31.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Size = 14.000000000000000000
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
-      TextSettings.FontColor = claSienna
-      TextSettings.HorzAlign = Center
-      Text = 'Set date/time (Local)'
-      TabOrder = 0
-    end
-    object dateeditJDE: TDateEdit
-      Date = 44048.000000000000000000
-      Position.X = 16.000000000000000000
-      Position.Y = 59.000000000000000000
-      Size.Width = 224.000000000000000000
-      Size.Height = 30.000000000000000000
-      Size.PlatformDefault = False
-      StyledSettings = [Family, Style]
-      TextSettings.Font.Size = 14.000000000000000000
-    end
-    object btnOkJDE: TSpeedButton
-      StyledSettings = [Family]
-      Position.X = 208.000000000000000000
-      Position.Y = 165.000000000000000000
-      Text = 'Ok'
-      TextSettings.Font.Size = 16.000000000000000000
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
-      TextSettings.FontColor = claSienna
-      OnClick = btnOkJDEClick
-    end
-    object btnCloseEditJDE: TSpeedButton
-      StyledSettings = [Family]
-      Position.X = 48.000000000000000000
-      Position.Y = 165.000000000000000000
-      Text = 'Cancel'
-      TextSettings.Font.Size = 16.000000000000000000
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
-      TextSettings.FontColor = claSienna
-      OnClick = btnCloseEditJDEClick
-    end
-    object btnJDENow: TSpeedButton
-      StyledSettings = [Family]
-      Position.X = 248.000000000000000000
-      Position.Y = 72.000000000000000000
-      Size.Width = 65.000000000000000000
-      Size.Height = 44.000000000000000000
-      Size.PlatformDefault = False
-      Text = 'Now!'
-      TextSettings.Font.Size = 16.000000000000000000
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
-      TextSettings.FontColor = claSienna
-      OnClick = btnJDENowClick
-    end
-    object timeEditJDE: TTimeEdit
-      Time = 0.502553310185185200
-      Position.X = 16.000000000000000000
-      Position.Y = 107.000000000000000000
-      Size.Width = 225.000000000000000000
-      Size.Height = 30.000000000000000000
-      Size.PlatformDefault = False
-      StyledSettings = [Family, Style]
-      TextSettings.Font.Size = 14.000000000000000000
-    end
-  end
   object colorPathVenus: TColorMaterialSource
     Color = claTomato
     Left = 88
@@ -9252,7 +9265,7 @@ object FormPlanetFun: TFormPlanetFun
     Position.X = 2.000000000000000000
     Position.Y = 64.000000000000000000
     Size.Width = 341.000000000000000000
-    Size.Height = 169.000000000000000000
+    Size.Height = 218.000000000000000000
     Size.PlatformDefault = False
     Stroke.Color = claDarkslategray
     Stroke.Thickness = 2.000000000000000000
@@ -9324,174 +9337,22 @@ object FormPlanetFun: TFormPlanetFun
       TextSettings.HorzAlign = Trailing
       Text = 'constellation lines && names'
     end
-  end
-  object rectCamera: TRectangle
-    Fill.Color = xFF0A0B0C
-    Opacity = 0.699999988079071000
-    Position.X = 5.000000000000000000
-    Position.Y = 59.000000000000000000
-    Size.Width = 341.000000000000000000
-    Size.Height = 242.000000000000000000
-    Size.PlatformDefault = False
-    Stroke.Color = claDarkslategray
-    Stroke.Thickness = 2.000000000000000000
-    Visible = False
-    XRadius = 20.000000000000000000
-    YRadius = 20.000000000000000000
-    object btnCloseCamera: TSpeedButton
-      Anchors = [akTop, akRight]
-      StyledSettings = [Family]
-      Position.X = 275.000000000000000000
-      Position.Y = 5.000000000000000000
-      Scale.X = 1.399999976158142000
-      Size.Width = 52.000000000000000000
-      Size.Height = 44.000000000000000000
+    object label8: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 49.000000000000000000
+      Position.Y = 165.000000000000000000
+      Size.Width = 142.000000000000000000
+      Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      Text = 'X'
-      TextSettings.Font.Size = 30.000000000000000000
-      TextSettings.FontColor = claCadetblue
-      OnClick = btnCloseCameraClick
-    end
-    object Label10: TLabel
-      StyledSettings = [Family]
-      Position.X = -19.000000000000000000
-      Position.Y = 13.000000000000000000
-      Size.Width = 144.000000000000000000
-      Size.Height = 31.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
       TextSettings.FontColor = claBisque
       TextSettings.HorzAlign = Trailing
-      Text = 'Camera Target:'
+      Text = 'sensors'
     end
-    object rectBGCombo: TRectangle
-      Position.X = 134.000000000000000000
-      Position.Y = 13.000000000000000000
-      Size.Width = 126.000000000000000000
-      Size.Height = 33.000000000000000000
-      Size.PlatformDefault = False
-      object comboTarget: TComboBox
-        Align = Client
-        Items.Strings = (
-          'Sun'
-          'Mercury'
-          'Venus'
-          'Earth '
-          'Mars  '
-          'Jupiter'
-          'Saturn'
-          'Uranus'
-          'Neptune'
-          'Pluto')
-        ItemIndex = 0
-        Size.Width = 126.000000000000000000
-        Size.Height = 30.000000000000000000
-        Size.PlatformDefault = False
-        StyleLookup = 'comboboxstyle'
-        OnChange = comboTargetChange
-      end
-    end
-    object labDistanceToTarget: TLabel
-      StyledSettings = [Family]
-      Position.X = 261.000000000000000000
-      Position.Y = 76.000000000000000000
-      Size.Width = 82.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
-      TextSettings.FontColor = claBisque
-      Text = '3.0'
-    end
-    object Label7: TLabel
-      StyledSettings = [Family, Style]
-      Position.X = 20.000000000000000000
-      Position.Y = 57.000000000000000000
-      Size.Width = 233.000000000000000000
-      Size.Height = 17.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.FontColor = claBisque
-      Text = 'Distance'
-    end
-    object tbDistanceToTarget: TTrackBar
-      CanParentFocus = True
-      Max = 200.000000000000000000
-      Min = 1.000000000000000000
-      Orientation = Horizontal
-      Position.X = 18.000000000000000000
-      Position.Y = 78.000000000000000000
-      Size.Width = 232.000000000000000000
-      Size.Height = 36.000000000000000000
-      Size.PlatformDefault = False
-      Value = 3.000000000000000000
-      OnChange = tbDistanceToTargetChange
-    end
-    object labAngleOfView: TLabel
-      StyledSettings = [Family]
-      Position.X = 262.000000000000000000
-      Position.Y = 129.000000000000000000
-      Size.Width = 74.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.StyleExt = {00070000000000000004000000}
-      TextSettings.FontColor = claBisque
-      Text = '35'#176
-    end
-    object Label5: TLabel
-      StyledSettings = [Family, Style]
-      Position.X = 18.000000000000000000
-      Position.Y = 167.000000000000000000
-      Size.Width = 160.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.FontColor = claBisque
-      Text = 'Planet Scale'
-    end
-    object Label9: TLabel
-      StyledSettings = [Family, Style]
-      Position.X = 17.000000000000000000
-      Position.Y = 111.000000000000000000
-      Size.Width = 129.000000000000000000
-      Size.Height = 24.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.FontColor = claBisque
-      Text = 'Angle of View'
-    end
-    object labPlanetScale: TLabel
-      StyledSettings = [Family, Style]
-      Position.X = 232.000000000000000000
-      Position.Y = 189.000000000000000000
-      Size.Width = 81.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.FontColor = claBisque
-      TextSettings.HorzAlign = Center
-      Text = '5.0'
-    end
-    object tbAngleOfView: TTrackBar
-      CanParentFocus = True
-      Max = 120.000000000000000000
-      Min = 1.000000000000000000
-      Orientation = Horizontal
-      Position.X = 17.000000000000000000
-      Position.Y = 133.000000000000000000
-      Size.Width = 233.000000000000000000
-      Size.Height = 36.000000000000000000
-      Size.PlatformDefault = False
-      Value = 35.000000000000000000
-      OnChange = tbAngleOfViewChange
-    end
-    object tbPlanetScale: TTrackBar
-      CanParentFocus = True
-      Max = 15.000000000000000000
-      Min = 1.000000000000000000
-      Orientation = Horizontal
-      Position.X = 16.000000000000000000
-      Position.Y = 192.000000000000000000
-      Size.Width = 234.000000000000000000
-      Size.Height = 36.000000000000000000
-      Size.PlatformDefault = False
-      Value = 3.000000000000000000
-      OnChange = tbPlanetScaleChange
+    object cbSensorsOn: TSwitch
+      IsChecked = True
+      Position.X = 209.000000000000000000
+      Position.Y = 163.000000000000000000
+      OnSwitch = cbSensorsOnSwitch
     end
   end
   object rectTime: TRectangle
@@ -10079,9 +9940,9 @@ object FormPlanetFun: TFormPlanetFun
   object rectAboutPlanetFun: TRectangle
     Anchors = [akTop]
     Fill.Color = claBlack
-    Position.X = 3.505614519119263000
-    Position.Y = 12.000000000000000000
-    Size.Width = 342.000000000000000000
+    Position.X = 1.000000000000000000
+    Position.Y = 77.000000000000000000
+    Size.Width = 337.000000000000000000
     Size.Height = 585.000000000000000000
     Size.PlatformDefault = False
     Stroke.Color = claDarkslategray
@@ -10092,7 +9953,7 @@ object FormPlanetFun: TFormPlanetFun
     object btnCloseAbout: TSpeedButton
       Anchors = [akTop, akRight]
       StyledSettings = [Family]
-      Position.X = 137.000000000000000000
+      Position.X = 132.000000000000000000
       Position.Y = 529.000000000000000000
       Scale.X = 1.500000000000000000
       Size.Width = 41.000000000000000000
@@ -10127,18 +9988,18 @@ object FormPlanetFun: TFormPlanetFun
       TextSettings.FontColor = claAqua
       Position.X = 6.000000000000000000
       Position.Y = 267.000000000000000000
-      Size.Width = 331.000000000000000000
+      Size.Width = 325.000000000000000000
       Size.Height = 261.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       OnApplyStyleLookup = MemoAboutApplyStyleLookup
-      Viewport.Width = 323.000000000000000000
+      Viewport.Width = 317.000000000000000000
       Viewport.Height = 253.000000000000000000
     end
     object btnCloseAboutBox2: TSpeedButton
       Anchors = [akTop, akRight]
       StyledSettings = [Family]
-      Position.X = 265.000000000000000000
+      Position.X = 260.000000000000000000
       Position.Y = 7.000000000000000000
       Scale.X = 1.500000000000000000
       Size.Width = 41.000000000000000000
@@ -11119,10 +10980,424 @@ object FormPlanetFun: TFormPlanetFun
         Size.PlatformDefault = False
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.FontColor = claAntiquewhite
-        Text = 'v 1.2.1'
+        Text = 'v 1.3.1'
         TabOrder = 1
       end
+      object btnCloseAbout2: TSpeedButton
+        Anchors = [akTop, akRight]
+        StyledSettings = [Family]
+        Position.X = 263.000000000000000000
+        Position.Y = -1.000000000000000000
+        Scale.X = 1.500000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'X'
+        TextSettings.Font.Size = 24.000000000000000000
+        TextSettings.FontColor = claBisque
+        OnClick = btnCloseAboutClick
+      end
     end
+  end
+  object btnTest: TSpeedButton
+    Position.X = 8.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'city'
+    Visible = False
+    OnClick = btnTestClick
+  end
+  object lightMaterialTextureFarol: TLightMaterialSource
+    Diffuse = claWhite
+    Ambient = xFF202020
+    Emissive = xFF2A3A4A
+    Specular = xFF606060
+    Texture.PNG = {
+      89504E470D0A1A0A0000000D49484452000000640000019008060000005896C5
+      EF000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      054A49444154785EEDDC316E63551880D13C7A9A418C040A5DA06009D3B2052A
+      16300D9BC826686601546C81962550C0742090409986058458BAD108B03D4EF2
+      629F1BBED3E4464E24FB7EEFB79FE3A72C57E717D76761BC37BE065110CC3F9E
+      B29EFDF2F358CDE1CD279F8ED57EEAE3DA76FF9B104C413005C1140453104C41
+      30F73AED7DF5D39F63755A5F7EF162ACF6FBEEFB1FC6EA745E7EF6E158BDD569
+      EF040A822908A6209882600A822908A6209882600A822908A6209882608E16E4
+      E547CFC72AFB34212B58F3603BCE65407F2D63B1AE379F5F8CD57ECF7E7C3D56
+      8FE8FDBB5F00DAE721132808A6209882600A8279F2418E7286B5A27B9FF6DEE5
+      52A0CD79FAABDFFF18DFADE7D0CB800E8D729FFB78FB1EE490DFFDF7A540DB4E
+      7B8F12E4B11C1C643CAEC7B8CF6B07E93504539007DA4CC69A4FC705C1140453
+      104C413005C1140453104C413005C1FCAFFE96A559F58F8B826D0F689B6983E4
+      F47A0DC114045310CC727D63AC0368423005C1140453104C413005C114045310
+      4C413005C1140453104C413005C1140453104C413005C1140453104C413005C1
+      140453104C413005C1140453104C413005C1140453104C413005C1140453104C
+      413005C1140453104C413005C1140453104C413005C1140453104C413005C114
+      04D3FFEDC534219882600A822908A6209882600A822908A6209882600A822908
+      A6209882600A822908A6209882600A822908A6209882600A822908A620988260
+      0A822908A6209882600A822908A6209882600A822908A6209882600A822908A6
+      209882600A822908A6209882600A822908A6209882600A822908A62098826096
+      EB1B631D4013822908A6209882600A822908A6209882600A8299F29DFAE5E5E5
+      58FDD7BEDB66305590BB6CF6AC61A608F290CD9D2D0CFF1AF2D00D2DC88AD6DA
+      CC99A2B04F59EFDAC48FBFFA7AACDEFAEDDB6FC66ABB19C24C77DABB09B12DC6
+      C6BEDB664106D975241FBAD9BB7EAE0959D15D8FFC5927850BF2D847B13E2553
+      4CC87D8FF619A764BA17F5A7AE209882600A829922C8BBDE81EF72DFDF3B252E
+      48A7BD93B8EBD13EE3746C9041761DC5876EF2AE9FD3A76363BA17F5CD66EFDA
+      F07DB7CD82FEC470CD237A86E9D8A02764AD4D9C25C606FF94F5D0CD9C29C646
+      579D60A60A726BDF66CF1AE2D694419EB2E94E7B9FBA82600A822908A6209882
+      600A822908A6209882600A822908A6209882600A822908A62098826096ABF38B
+      3EC28534219882600A822908A6209882600A822908A6209882600A822908A620
+      9882600A822908A6209882600A822908A6209882600A822908A6209882600A82
+      2908A6209882600A822908A6209882600A822908A6209882600A822908A62098
+      82600A822908A6209882600A822908A6209882600A822908A6209882600A8229
+      08A6209882600A822908A6209882600A822908A62098826096EB1B631D401382
+      2908A6209882600A822908A6209882600A822908A6209882600A822908A62098
+      82600A822908A6209882600A822908A6209882600A822908A6209882600A8229
+      08A6209882600A822908A6209882600A822908A6209882600A82290866B93ABF
+      E85F6B409A104C413005C1140453104C413005C1140453104C413005C1140453
+      104C413005C1140453104C413005C1140453104C413005C150D7657DF0EBEBB1
+      3AAE9B3D18ABD36B423005C1140453104C413005C1140453104C413005C11404
+      53104C413005C1140453104C413005C1140453104C413005C1140453104C4130
+      05C1140453104C4130CBF58DB13EB96559C6EAB8A02D68423405C1140453104C
+      413005C1140453104C413005C1140453104C413005C1140453104C413005C114
+      0453104C413005A19C9DFD0D5C4FEED89FE2CC0D0000000049454E44AE426082}
+    Shininess = 10
+    Left = 88
+    Top = 88
+  end
+  object lightMaterialTexturePhone: TLightMaterialSource
+    Diffuse = claWhite
+    Ambient = xFF202020
+    Emissive = xFFA0A0A0
+    Specular = xFFA0A0A0
+    Texture.PNG = {
+      89504E470D0A1A0A0000000D4948445200000064000000C808060000001E3C44
+      C1000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      023949444154785EEDD9418A834010405133F7EAD3F7C1320908034316268BF0
+      0AFEDBD88B6CE2B76CD4DBDEFB7E84F1731E832808E6E52D6BAD75AEF20D8F06
+      E7AA09E1140453104C413005C1140453104C413005C1140453104C413005C114
+      0453104C413005C1140453104C413005C1140453104C413005C1140453104C41
+      3005C1140453104C413005C1140453104C413005C1140453104C413005C11404
+      53104C413005C1140453104C413005C1140453104C413005C1140453104C4130
+      05C1140453104C413005C1140453104C413005C1140453104C413005C1140453
+      104C413005C1140453104C413005C1140453104C413005C1140453104C413005
+      C1140453104C413005C1140453104C413005C1140453104C413005C114045310
+      4C413005C1140453104C413005C1140453104C413005C1140453104C413005C1
+      140453104C413005C1140453104C413005C1140453104C413005C1140453104C
+      413005C1140453104C413005C1140453104C413005C1140453104C413005C114
+      0453104C413005C1140453104C413005C1140453104C413005C1140453104C41
+      3005C1140453104C413005C1140453104C413005C1140453104C413005C11404
+      53104C413005C1DCF6DEF7731D4013822908A620988260466EEA6BAD73F5E7F1
+      3FCED56CA382BC0AF1DFF430636E5957623C5DFD9D6A4490774FF2E4286DEA18
+      3EC8A757FBD42969423005C1140453100C1FE4D307BDA90F884D0866449077AF
+      F6C9AF4FC64CC8D5933C39C6536F7B317D53C7B4A9630A42398E5F4CFF368276
+      0BBFDE0000000049454E44AE426082}
+    Shininess = 30
+    Left = 80
+    Top = 272
+  end
+  object rectEditJDE: TRectangle
+    Anchors = [akTop, akRight]
+    Fill.Color = xFFA0A0A0
+    Position.X = 12.000000000000000000
+    Position.Y = 86.000000000000000000
+    Size.Width = 322.000000000000000000
+    Size.Height = 217.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claCoral
+    Stroke.Thickness = 2.000000000000000000
+    Visible = False
+    XRadius = 15.000000000000000000
+    YRadius = 15.000000000000000000
+    object Label13: TLabel
+      StyledSettings = [Family]
+      Position.X = 12.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 301.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claSienna
+      TextSettings.HorzAlign = Center
+      Text = 'Set date/time (Local)'
+      TabOrder = 0
+    end
+    object dateeditJDE: TDateEdit
+      Date = 44048.000000000000000000
+      Position.X = 39.000000000000000000
+      Position.Y = 59.000000000000000000
+      Size.Width = 193.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style]
+      TextSettings.Font.Size = 14.000000000000000000
+    end
+    object btnOkJDE: TSpeedButton
+      StyledSettings = [Family]
+      Position.X = 184.000000000000000000
+      Position.Y = 165.000000000000000000
+      Text = 'Ok'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claSienna
+      OnClick = btnOkJDEClick
+    end
+    object btnCloseEditJDE: TSpeedButton
+      StyledSettings = [Family]
+      Position.X = 56.000000000000000000
+      Position.Y = 165.000000000000000000
+      Text = 'Cancel'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claSienna
+      OnClick = btnCloseEditJDEClick
+    end
+    object btnJDENow: TSpeedButton
+      StyledSettings = [Family]
+      Position.X = 239.000000000000000000
+      Position.Y = 72.000000000000000000
+      Size.Width = 65.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Now!'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claSienna
+      OnClick = btnJDENowClick
+    end
+    object timeEditJDE: TTimeEdit
+      Time = 0.502553310185185200
+      Position.X = 39.000000000000000000
+      Position.Y = 107.000000000000000000
+      Size.Width = 194.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style]
+      TextSettings.Font.Size = 14.000000000000000000
+    end
+  end
+  object rectCamera: TRectangle
+    Fill.Color = xFF0A0B0C
+    Opacity = 0.699999988079071000
+    Position.X = 1.000000000000000000
+    Position.Y = 67.000000000000000000
+    Size.Width = 333.000000000000000000
+    Size.Height = 242.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claDarkslategray
+    Stroke.Thickness = 2.000000000000000000
+    Visible = False
+    XRadius = 20.000000000000000000
+    YRadius = 20.000000000000000000
+    object btnCloseCamera: TSpeedButton
+      Anchors = [akTop, akRight]
+      StyledSettings = [Family]
+      Position.X = 267.000000000000000000
+      Position.Y = 5.000000000000000000
+      Scale.X = 1.399999976158142000
+      Size.Width = 52.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'X'
+      TextSettings.Font.Size = 30.000000000000000000
+      TextSettings.FontColor = claCadetblue
+      OnClick = btnCloseCameraClick
+    end
+    object Label10: TLabel
+      StyledSettings = [Family]
+      Position.X = -19.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 31.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claBisque
+      TextSettings.HorzAlign = Trailing
+      Text = 'Camera'
+    end
+    object rectBGCombo: TRectangle
+      Position.X = 96.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      object comboTarget: TComboBox
+        Align = Client
+        Items.Strings = (
+          'Sun'
+          'Mercury'
+          'Venus'
+          'Earth '
+          'Mars  '
+          'Jupiter'
+          'Saturn'
+          'Uranus'
+          'Neptune'
+          'Pluto'
+          'Lighthouse'
+          'Phone')
+        ItemIndex = 0
+        Size.Width = 129.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'comboboxstyle'
+        OnChange = comboTargetChange
+      end
+    end
+    object labDistanceToTarget: TLabel
+      StyledSettings = [Family]
+      Position.X = 261.000000000000000000
+      Position.Y = 76.000000000000000000
+      Size.Width = 82.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claBisque
+      Text = '3.0'
+    end
+    object Label7: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 20.000000000000000000
+      Position.Y = 57.000000000000000000
+      Size.Width = 233.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claBisque
+      Text = 'Distance'
+    end
+    object tbDistanceToTarget: TTrackBar
+      CanParentFocus = True
+      Max = 200.000000000000000000
+      Min = 1.000000000000000000
+      Orientation = Horizontal
+      Position.X = 18.000000000000000000
+      Position.Y = 78.000000000000000000
+      Size.Width = 232.000000000000000000
+      Size.Height = 36.000000000000000000
+      Size.PlatformDefault = False
+      Value = 3.000000000000000000
+      OnChange = tbDistanceToTargetChange
+    end
+    object Label5: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 18.000000000000000000
+      Position.Y = 167.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claBisque
+      Text = 'Planet Scale'
+    end
+    object Label9: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 17.000000000000000000
+      Position.Y = 111.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 24.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claBisque
+      Text = 'Angle of View'
+    end
+    object labPlanetScale: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 232.000000000000000000
+      Position.Y = 189.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claBisque
+      TextSettings.HorzAlign = Center
+      Text = '5.0'
+    end
+    object tbAngleOfView: TTrackBar
+      CanParentFocus = True
+      Max = 120.000000000000000000
+      Min = 1.000000000000000000
+      Orientation = Horizontal
+      Position.X = 17.000000000000000000
+      Position.Y = 133.000000000000000000
+      Size.Width = 233.000000000000000000
+      Size.Height = 36.000000000000000000
+      Size.PlatformDefault = False
+      Value = 35.000000000000000000
+      OnChange = tbAngleOfViewChange
+    end
+    object tbPlanetScale: TTrackBar
+      CanParentFocus = True
+      Max = 15.000000000000000000
+      Min = 1.000000000000000000
+      Orientation = Horizontal
+      Position.X = 16.000000000000000000
+      Position.Y = 192.000000000000000000
+      Size.Width = 234.000000000000000000
+      Size.Height = 36.000000000000000000
+      Size.PlatformDefault = False
+      Value = 3.000000000000000000
+      OnChange = tbPlanetScaleChange
+    end
+    object labAngleOfView: TLabel
+      StyledSettings = [Family]
+      Position.X = 262.000000000000000000
+      Position.Y = 129.000000000000000000
+      Size.Width = 74.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claBisque
+      Text = '35'#176
+    end
+    object btnPhoneCamera: TSpeedButton
+      Tag = 4
+      GroupName = 'TOOLS'
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 229.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 49.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 10.000000000000000000
+      OnClick = btnPhoneCameraClick
+      object imgBtnPhone: TImage
+        MultiResBitmap = <
+          item
+            Width = 60
+            Height = 98
+            PNG = {
+              89504E470D0A1A0A0000000D494844520000003C0000006208060000000C78B0
+              F5000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              01D649444154785EED9B4B8E8330104461EEC58E63B3CBC1C8B4C646A4E34F7B
+              848D5DD493A21085487EA9727BC53C4DD3FEFBCAB2EFA6DB6E619E45C34656B8
+              67518D45FCC7BD07194956B0AC379AB0FE71496D5A12924CAD3598F028B242E9
+              DA9295167A96F5E835A6AAFD257CBE7904598F75ADD98447E22C1D4BF94378D4
+              744B804A58134A194E38D74CF9F6F81B52957EBD5EEEAA3F966571577FA43C82
+              09A3EE5FE1108E4D35348E4AE726F4B9D2DBB6B9ABFB58D7D55D5D5069642085
+              53338809A3436174288C0E85D1A1303A144687C2E850181D0AA3436174288C0E
+              85D1A1303A144687C2E850181D0AA3436174288C0E85D1A1303A144687C2E850
+              181D0AA3F338E17F3DD5D21BFAA916C1FBF0A916F7FE18CC951E0D56DAC14A0B
+              B52A1D9AF4A1097B05B14A3711B61C69578BDFB687ADE777AB73BEF91E9624FD
+              EB0EAA0AEBD4B4A4FEDC22E56609C712AD91F4791E691E772C35138ED5B5D5B0
+              F25415CEEDD1DC1EAFC1710E0B35CEE29204AF124E7954AFB455A245BA42F584
+              CF84D2BE5A544F68EDD154B805398768A5F53F85C287F0A8A97A2C212587D6C8
+              29C7C2FB12D6378E229DDBBB9E60C2A34997AC4FCCA2778F58E9DC1C4AEEE1DC
+              8F7BC3B2DE64C29EDE932E09C6248C44B2D2883C4C789ADE17D5BCCF6039E0D0
+              0000000049454E44AE426082}
+          end>
+        Align = Client
+        HitTest = False
+        Opacity = 0.500000000000000000
+        Size.Width = 49.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+  end
+  object timerStartSensorsiOS: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = timerStartSensorsiOSTimer
+    Left = 24
+    Top = 336
   end
   object GestureManager1: TGestureManager
     Sensitivity = 80.000000000000000000
