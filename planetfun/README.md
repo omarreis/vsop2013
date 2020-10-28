@@ -99,6 +99,7 @@ Other planets orbits are nearly parallel to Earth's, so planets Z coordinates ar
 # Dependencies
 *  Uses astronomy files from https://github.com/omarreis/vsop2013/
 *  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
+*  Uses sensor code by DelphiWorlds (files with DW. prefix, included in this repo) 
 
 # Julian date formulas
 from Astronomical Algorithms. Jean Meeus
