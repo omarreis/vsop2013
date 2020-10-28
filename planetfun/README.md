@@ -2,7 +2,7 @@
 
 Planet Fun is a solar system working model in 3D.  
 Program is a Delphi Firemonkey 3D app. 
-Tested on Windows, Android and iOS (w/ Delphi 10.4).
+Tested on Windows, Android and iOS (currently Delphi 10.4)
 
 Full app source code is available at:
 
@@ -10,10 +10,11 @@ Full app source code is available at:
 
 # Oct-20 - PlanetFun version 1.3 for iOS and Android released
 New in this version:
-* Integrated phone sensors to the 3D simulation ( GPS, accelerometer and mag compass)
-* A *lighthouse* is positioned at your GPS position
+* Integrated phone sensors to the 3D simulation ( GPS, accelerometer and mag compass )
+* A fairly large *lighthouse* is positioned at your GPS position
 * On the lighthouse there is a phone. The virtual phone attitude (Azimuth,Elevation and Roll) is controlled by phone sensors 
 * If you attach the Camera to the phone you create a phonecentric universe ( augmented reality ) 
+* Permission for "sensor use while using the app" is required
 
 Search for "PlanetFun" on your app store.
 
@@ -81,10 +82,19 @@ PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Document
 
 Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 
+# Star background texture
+The sky background is a flat jpg image mapped to a sphere of radius 200 au.
+It was generated using Hipparcos Input Catalogue (118k stars)
+Only objects with mag<8.0 where kept, resulting in 40k stars.
+Two star background maps: one with names and lines and one with plain stars.
+
+The 3d world coordinates uses ecliptic coordinates.
+This means that both the Earth and Celestial sphere are tilted by 23°26′ ( Earth's obliquity )
+Other planets orbits nearly parallel to Earths, so planet's Z coordinates are small ( except for Pluto which has a much larger obliquity ) 
+
 # Warning: not realistic
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
 * Moon position, speed, size and orbit size are not connected to real world coordinates yet. Anyway, Moon revolution ( 27.32 days) is so much faster than other celestial objects, it is all over the place when animated. In this illustration, it is animated on a circular orbit and with uniform, slow speed. Fake (TODO)
-* Planet rotation speeds are also not realistic (TODO). But Planet positions and revolutions are just fine!  :)
 
 # Dependencies
 *  Uses astronomy files from https://github.com/omarreis/vsop2013/
