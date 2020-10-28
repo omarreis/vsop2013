@@ -18,6 +18,8 @@ New in this version:
 
 Search for "PlanetFun" on your app store.
 
+![planetfun 1.3](earthLighthousePhone.png)
+
 # TODO list
 * Apply correct Moon ephemeris ( not this fake movement ) 
 
