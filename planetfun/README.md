@@ -91,11 +91,11 @@ Follow *Solar System Scope* license conditions ( Attribution 4.0 )
 # Star background texture
 The sky background is a flat jpg image mapped to a sphere of radius 200 au.
 It was generated using Hipparcos Input Catalogue (118k stars)
-Only objects with mag<8.0 where kept, resulting in 40k stars.
-Two star background maps: one with names and lines and one with plain stars.
+Only objects with mag<8.0 were kept, resulting in 42k stars.
+Two star background maps available: with names and lines or plain stars.
 
-The 3d world uses ecliptic coordinates. This means that both the Earth and Celestial sphere are tilted 23°26′ ( Earth's obliquity )
-Other planets orbits are nearly parallel to Earth's, so planets Z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
+The 3d world uses ecliptic coordinates (x,y,z) in au. This means that both the Earth and Celestial spheres are tilted 23°26′ ( Earth's obliquity )
+Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
 
 # Warning: not realistic
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
