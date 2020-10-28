@@ -26,7 +26,7 @@ Search for "PlanetFun" on your app store.
 # Program features
 * Multi platform: Android, iOS and Windows
 * Solar system *animation* with configurable speed
-* Choose camera target (Sun or planets)
+* Choose camera target (Sun, planets, lighthouse or phone)
 * Set date/time bewteen years 1500 and 3000
 * Configurable camera distance-to-target
 * Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
@@ -35,7 +35,11 @@ Search for "PlanetFun" on your app store.
 * Solar system heliocentric axis (x and z)
 * VSOP2013 planet ephemeris usage sample
 * Current catalog is small: Sun, 9 planets and Moon
+* Sky background with 40k stars
+* Star and constellation names
+* constellation lines
 * Sensor fusion allows positioning the light house on GPS position, and set phone attitude acording to gyro and compass
+* Attach camera to the phone to enter augmented reality mode
 
 # Planet positions
 
