@@ -96,7 +96,7 @@ Only objects with mag<8.0 were kept, resulting in 42k stars.
 Two star background maps available: with names and lines or plain stars.
 
 # 3d world 
-The 3d world uses ecliptic coordinates (x,y,z) in au. This is the same convention as vsop2013 results (planet ephemeris). This means that both the Earth and Celestial spheres are tilted 23°26′ (Earth's obliquity). Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
+The 3d world in this simulation uses ecliptic coordinates (x,y,z) in au. This is the same convention as vsop2013 results (the planet ephemeris used). This means that both the Earth and Star background spheres are tilted by 23°26′ (Earth's obliquity). Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
 
 # Warning: not realistic
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
@@ -108,8 +108,8 @@ The 3d world uses ecliptic coordinates (x,y,z) in au. This is the same conventio
 *  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
 *  Uses sensor code and KastriFree by DelphiWorlds (files with DW. prefix, included in this repo) 
 
-# Julian date formulas
-Many formulas and algorithms from the book Astronomical Algorithms, by Jean Meeus
+# Astronomical Algorithms formulas
+Many formulas and algorithms for dates and astronomy from the book "Astronomical Algorithms" by Jean Meeus.
 See file Om.AstronomicalAlgorithms.pas
 
 # video
