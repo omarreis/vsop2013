@@ -46,22 +46,23 @@ Search for "PlanetFun" on your app store.
 # Planet positions
 
 Planet positions are calculated using VSOP2013 ephemerides ( see https://github.com/omarreis/vsop2013 ) 
-This library calculates planet's heliocentric coordinates between epochs 1500 to 3000.
+This library calculates planet's heliocentric coordinates for epochs 1500 to 3000.
 ( VSOP2013 by Francou and Simon )
 
     see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
-VSOP2013 data files are not in this repository. 
-For speed and bundle size, PlanetFun app uses a custom binary version of VSOP2013 data ( same idea as original code )
+VSOP2013 data files are not in this repository. Download from FTP .
 
-Steps to obtain planet ephemeris file:
+For speed and bundle size, PlanetFun app uses a custom binary version of VSOP2013 data ( same idea as original vsop2013 but with a different implementation )
+
+So the steps to obtain planet ephemeris file are:
 
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB text file) 
 * Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
 * Save binary file VSOP2013.p2000.bin.   Do *not* use binary files from original FTP repository.  Binary files for this app use a different custom format.
-* Deploy file VSOP2013.p2000.bin to PlanetFun app documents folder. 
+* Deploy file VSOP2013.p2000.bin to app's documents folder. 
 
-Resulting binary file is *only* 131 MB and doesn't require parsing to load. 
+Resulting binary file is *only* 131 MB and doesn't require parsing to load. Loads much faster. 
 
 The scale factor between astronomical units and the app's 3D world is 1.0:     
      1.0 AU = 1.0 3D-world-unit  
