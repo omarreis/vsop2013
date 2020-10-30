@@ -72,8 +72,9 @@ ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
 The Texture property is a bitmap that is mapped to the sphere, on a reverse-Mercator projection.  
+Most planet textures are *not* included in this repository ( TForm planets have blank textures )
+Except for sky background textures, which is included ( see Documents folder for deployment info )
 
-Planet textures are *not* included in this repository ( repository TForm planets have blank textures )
 You can find suitable and free textures on this website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
@@ -94,21 +95,22 @@ It was generated using Hipparcos Input Catalogue (118k stars)
 Only objects with mag<8.0 were kept, resulting in 42k stars.
 Two star background maps available: with names and lines or plain stars.
 
-The 3d world uses ecliptic coordinates (x,y,z) in au. This means that both the Earth and Celestial spheres are tilted 23°26′ ( Earth's obliquity )
-Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
+# 3d world 
+The 3d world uses ecliptic coordinates (x,y,z) in au. This is the same convention as vsop2013 results (planet ephemeris). This means that both the Earth and Celestial spheres are tilted 23°26′ (Earth's obliquity). Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
 
 # Warning: not realistic
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
 * Moon position, speed, size and orbit size are not connected to real world coordinates yet. Anyway, Moon revolution ( 27.32 days) is so much faster than other celestial objects, it is all over the place when animated. In this illustration, it is animated on a circular orbit and with uniform, slow speed. Fake (TODO)
-* Version 1.3 includes realistic texture for sky background 
+* Version 1.3 includes sky background textures ( with and w/o names and lines )
 
 # Dependencies
 *  Uses astronomy files from https://github.com/omarreis/vsop2013/
 *  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
-*  Uses sensor code by DelphiWorlds (files with DW. prefix, included in this repo) 
+*  Uses sensor code and KastriFree by DelphiWorlds (files with DW. prefix, included in this repo) 
 
 # Julian date formulas
-from Astronomical Algorithms. Jean Meeus
+Many formulas and algorithms from the book Astronomical Algorithms, by Jean Meeus
+See file Om.AstronomicalAlgorithms.pas
 
 # video
 https://www.tiktok.com/@omar_reis/video/6859411602031119622
