@@ -1,16 +1,17 @@
 # PlanetFun files to deploy 
 
-In order to run PlanetFun, you must deploy the following files with the program:
+In order to run PlanetFun you must deploy the following files with the program:
 
 Note: previous version (up to 1.1) used the textures loaded in the form's FMX file, which made that file very large.
 From version 1.2+ textures are deployed as external files. 
 This reduced the bundle size ( important for Android because of the 150 MB limit )
 and made it easier to deploy app source code to this repository.
+As of v1.3 smaller textures are still embedded in fPlanetFun.fmx textures. 
 
 Some of the deployment files are in this repo, some are available from 3rd party sites:
 
 ## from this repository:
-Sky background textures
+Custom sky background textures:
 * SkyMapLinesNames.png
 * SkyMapPlain.png
 
@@ -39,4 +40,4 @@ Deploy textures and vsop2013 binary file to app's *Documents* folder:
 
 * For Android to .\assets\internal
 * For iOS to StartUp\Documents
-* For Windows to c:\Users\username\OneDrive\Documents\vsop2013\    <--  or something like that  
+* Duments for Windows  c:\Users\username\OneDrive\Documents\vsop2013\    <--  or something like that (installer creates vsop2013\ )
