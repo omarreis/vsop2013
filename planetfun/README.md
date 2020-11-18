@@ -8,13 +8,19 @@ Full app source code is available at:
 
 * https://github.com/omarreis/vsop2013/tree/master/planetfun
 
-# Oct-20 - PlanetFun version 1.3 for iOS and Android released
+# nov-20 - PlanetFun version 1.4 released
+* Added toolbar for camera manipulation
+* Moon correct position unsing Astronomical Algorithm 
+* release for iOS and Android 
+
+# Oct-20 - PlanetFun version 1.3 released
 New in this version:
 * Integrated phone sensors to the 3D simulation ( GPS, accelerometer and mag compass )
 * A fairly large *lighthouse* is positioned at your GPS position
 * On the lighthouse there is a phone. The virtual phone attitude (Azimuth,Elevation and Roll) is controlled by phone sensors 
 * If you attach the Camera to the phone you create a phonecentric universe ( augmented reality ) 
 * Permission for "sensor use while using the app" is required
+* release for iOS and Android 
 
 Search for "PlanetFun" on your app store.
 
