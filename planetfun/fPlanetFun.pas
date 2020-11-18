@@ -3,8 +3,12 @@ unit fPlanetFun;    //-----  planetary system 3d animation --------\\
 // Source: github.com/omarreis/vsop2013    folder planetfun          \\
 // History:                                                           \\
 //   v1.0 - jul20 - by oMAR                                            \\
-//   v1.3 - oct20 Om Added lighthouse, phoine and sensors              \\
-//          augmented reality                                          \\
+//   v1.3 - oct20 Om Added lighthouse, virtual phone and sensors       \\
+//          augmented reality mode if camera attached to the phone     \\
+//   v1.4 - nov20 Om Added Moon correct positioning                    \\
+//          from Astronomical Algorithms - ELP2000 Chapront-Touze      \\
+//          Andreas Hörstemeier TMoon V 2.0                            \\
+//          see http://www.hoerstemeier.com/moon.htm                   \\
 //---------------------------------------------------------------------\\
 
 interface
@@ -177,6 +181,10 @@ type
     imgBtnPhone: TImage;
     timerStartSensorsiOS: TTimer;
     btnCloseAbout2: TSpeedButton;
+    labStatus4: TLabel;
+    Label12: TLabel;
+    cbShowLightHouseAndPhone: TSwitch;
+    imgCameraManipulationToolbar: TImage;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -194,8 +202,7 @@ type
     procedure cbAxisVisibleSwitch(Sender: TObject);
     procedure btnCloseTimeClick(Sender: TObject);
     procedure btnToggleCameraSettingsClick(Sender: TObject);
-    procedure SolarSystemViewport3DGesture(Sender: TObject;
-      const EventInfo: TGestureEventInfo; var Handled: Boolean);
+    procedure SolarSystemViewport3DGesture(Sender: TObject;  const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure labAboutClick(Sender: TObject);
     procedure btnCloseAboutClick(Sender: TObject);
     procedure labJDEClick(Sender: TObject);
@@ -215,6 +222,9 @@ type
     procedure cbSensorsOnSwitch(Sender: TObject);
     procedure btnPhoneCameraClick(Sender: TObject);
     procedure timerStartSensorsiOSTimer(Sender: TObject);
+    procedure cbShowLightHouseAndPhoneSwitch(Sender: TObject);
+    procedure imgCameraManipulationToolbarMouseDown(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Single);
   private
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
@@ -247,8 +257,6 @@ type
     procedure PermissionsResultHandler(Sender: TObject; const ARequestCode: Integer; const AResults: TPermissionResults);
     {$ENDIF Android}
 
-    procedure PositionPlanets;        // according to vsop2013
-    procedure SizePlanets;
     procedure ClearOrbitDots;
     procedure showToastMessage(const S: String);
     procedure FileLoadTerminate(Sender: TObject);
@@ -259,7 +267,14 @@ type
     procedure LoadPlanetTextures;
     procedure doPositionLighthouse(const aLat, aLon: Double);
     procedure getRandomTestPlace(var aLat, aLon: Double);
-    procedure PositionEarthDailyRotation;    // on Earth surface
+
+    procedure SizePlanets;
+    procedure PositionPlanets;            // according to vsop2013
+    procedure PositionEarthDailyRotation; // Earth rotation according to hour angle
+    procedure PositionMoon;
+    procedure DoMoveCamera(const step: TPointF);
+    procedure DoRotateCamera(const step: integer);
+    procedure DoCameraDolly(const step: integer);               // Using AA chapter 45
   public
   end;
 
@@ -268,9 +283,15 @@ var
 
 implementation   // ---x--xx-xxx........................
 
+// solar system setup . Key properties to get the balls right
+//  sphereEarth.RotationAngle.X = 336.566666666667    ( Obliquity 360-(23+26/60)    E=23o26'
+//  sphereSky.RotationAngle.X = 336.566666666667      (same obliquity as the earth. Same equator by definition.
+
 uses
   Om.AstronomicalAlgorithms,   // astronomical algorithm formulas from Meeus book
-  quaternionRotations;
+  Ah.Moon,                     // Moon positions ( from AA chapter 45 and Andreas Hörstemeier TMoon }
+  quaternionRotations,
+  CameraMovementToolbar;
 
 {$R *.fmx}
 
@@ -387,26 +408,6 @@ begin
   MemoAbout.Lines.Add(aMsg);
 end;
 
-function floatToLatitudeStr(const a:Double):String;
-var ang:Double; Sulfix:String;
-begin
-  if      (a>0) then Sulfix:='N'
-  else if (a<0) then Sulfix:='S'
-  else Sulfix:='';   // 0 --> '00.00'
-  ang := Abs(a);
-  Result := Trim( Format('%5.1f°',[ang]) )+Sulfix;
-end;
-
-function floatToLongitudeStr(const a:Double):String;
-var ang:Double; Sulfix:String;
-begin
-  if      (a>0) then Sulfix:='E'
-  else if (a<0) then Sulfix:='W'
-  else Sulfix:='';   // 0 --> '00.00'
-  ang := Abs(a);
-  Result := Trim( Format('%6.1f°',[ang]) )+Sulfix;
-end;
-
 // handler for sensor fusion readings ( phone attitude chg )
 procedure TFormPlanetFun.FusionSensorHeadingAltitudeChanged(Sender:TObject);
 var aAlt,aHead,aRoll,aLat,aLon:Single; s:String;  aSignal:integer;
@@ -453,7 +454,7 @@ begin
    s := floatToLatitudeStr(fMagAccelFusion.fLocationLat) +'  '+
         floatToLongitudeStr(fMagAccelFusion.fLocationLon)+'  d:'+
         Format('%5.1f°', [fMagAccelFusion.fMagDeclination]);
-   labStatus3.Text := s;
+   labStatus3.Text := s;  // show geographical coordinates (GPS)
 
    // targeting the camera to the phone enters augmented reality mode
 
@@ -536,7 +537,6 @@ begin
     end;
 end;
 
-
 procedure TFormPlanetFun.HandleZoom(const EventInfo:TGestureEventInfo);
 var
   aOldLoc,aNewLoc,aVC,aOldCenter,aNewCenter:TPointF;
@@ -562,11 +562,9 @@ begin
       aOldLoc  := FLastZoomPosition;    //save previous states
       aNewLoc  := EventInfo.Location;   //gesture center location
 
-
       aOldDist := FLastZoomDistance;
       aNewDist := EventInfo.Distance;
       aDelta   := (aNewDist-aOldDist);
-
 
       if (aDelta<>0) then
         begin
@@ -578,6 +576,68 @@ begin
       FLastZoomDistance := EventInfo.Distance; //save new previous
       fLastZoomPosition := EventInfo.Location;
     end;
+end;
+
+procedure TFormPlanetFun.DoRotateCamera(const step:integer);  // step +1 or -1
+var aOldAng,aNewAng,da:Single;
+begin
+  aOldAng := fLastRotationAngle;
+  aNewAng := aOldAng + step*5;      // 5 deg each click
+  da      := (aNewAng-aOldAng);     // angle delta. (angle in rads ? )
+  dummyCamera.RotationAngle.Z := dummyCamera.RotationAngle.Z + da; //incremental rotation in target direction axis ??
+  fLastRotationAngle := aNewAng;
+end;
+
+procedure TFormPlanetFun.DoMoveCamera(const step:TPointF);  //2d camera movement
+var   aOldLoc,aNewLoc,aDelta:TPointF;
+begin
+  // labStatus.Text := 'pan..';
+
+  aOldLoc  := fLastPanPosition;     //save previous states
+  aNewLoc  := aOldLoc + step*0.5;   //gesture center location
+  aDelta   := aNewLoc-aOldLoc;
+
+  if (aDelta.Length<>0) then
+   begin
+     dummyCamera.RotationAngle.Y := dummyCamera.RotationAngle.Y - aDelta.X;
+     dummyCamera.RotationAngle.X := dummyCamera.RotationAngle.X - aDelta.Y;
+   end;
+   fLastPanPosition := aNewLoc;
+end;
+
+procedure TFormPlanetFun.DoCameraDolly(const step:integer);  // camera near <--> far   step +1/-1
+var aOldDist,aNewDist,aDelta:Single; aOldLoc,aNewLoc:TPointF; v1:TPoint3D;
+begin
+  aOldDist := mjTomCamera.Position.Point.Length;
+  aNewDist := aOldDist+step*0.5;
+  if (aNewDist>0) then
+    begin
+      aDelta  := (aNewDist-aOldDist);
+      v1      := mjTomCamera.Position.Point.Normalize;     // get camera pointing versor
+      mjTomCamera.Position.Point := mjTomCamera.Position.Point + (aDelta*v1);
+      checkSphereSkyVisibility;
+    end;
+end;
+
+procedure TFormPlanetFun.imgCameraManipulationToolbarMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+var ix:integer;
+begin
+  x := x*5;    // original bmp=400x500  toolbar size=80x100 (5x)
+  y := y*5;
+  //map img click to btn action
+  ix := toolbarCameraManipulation_mapClickToButton(x,y);  // CameraMovementToolbar.pas
+  case ix of
+    0: DoRotateCamera(+1);              // 0 rot left      <-- camera roll
+    1: DoRotateCamera(-1);              // 1 rot right
+    2: DoMoveCamera( PointF(0,+1) );    // 2 move up       <-- camera Az and elev
+    3: DoMoveCamera( PointF(+1,0) );    // 3 move right
+    4: DoMoveCamera( PointF(0,-1) );    // 4 move down
+    5: DoMoveCamera( PointF(-1,0) );    // 5 move left
+    6: DoCameraDolly(+1);    // 6 plus move far            <-- camera dolly ( change distance to target )
+    7: DoCameraDolly(-1);    // 7 minus move near
+  end;
+  // labStatus.Text := IntToStr(ix)+' - '+FloatToStr(x)+','+FloatToStr(y);  //teste
 end;
 
 procedure TFormPlanetFun.imgPlanetFunBannerClick(Sender: TObject);
@@ -613,6 +673,7 @@ begin
 
   PositionPlanets;  // re pos with new jde
   PositionEarthDailyRotation;
+  PositionMoon;
 end;
 
 procedure TFormPlanetFun.PositionEarthDailyRotation;    // rotate earth according to hour angle
@@ -715,7 +776,7 @@ begin    // 3d coordinates are in AU
         r := LN( PLANET_DATA[9].radius/k  )*sc ;  spherePluto.Scale.Point   := Point3D(r,r,r);
         r := LN( PLANET_DATA[10].radius/k )*sc ;  sphereMoon.Scale.Point    := Point3D(r,r,r);
 
-        r := LN(360000/k)*sc /2.0;               //size moon orbit . ad hoc factor applied again
+        r := LN(360000/k)*sc /1.0;               //size moon orbit . ad hoc factor applied again
         dummyMoon.Position.Point := Point3D( r, 0, 0);
         // Pluto
     end
@@ -788,6 +849,44 @@ begin
   dummyLighthouse.RotationAngle.z := -aLat;      // rotate lat
   // this shoud position the Lighthouse standing in earth surface at <---- GPS position
   // the phone is over it, with phone sensors rotations
+end;
+
+procedure TFormPlanetFun.PositionMoon; // according to AA chapter 45 at epoch fJDE
+var  aUT:TDatetime;  aCoord:t_coord; k,r,sha,aRot:double;
+begin
+  aUT    := JDtoDatetime( fJDE );
+  aCoord := moon_coordinate( aUT );  // use
+  // Memo1.Lines.Add( 'rad: '+Format('%9.2f',[aCoord.radius   ]) );
+  // Memo1.Lines.Add( 'lat: '+floatToGMSD(aCoord.latitude ) );
+  // Memo1.Lines.Add( 'lon: '+floatToGMSD(aCoord.longitude) );
+  // Memo1.Lines.Add( 'RA:  '+ floatToHHMMSS(aCoord.rektaszension) );
+  // Memo1.Lines.Add( 'Decl:'+ floatToGMSD(aCoord.declination) );
+
+  // dummyMoon.RotationAngle.Y     := dummyMoon.RotationAngle.Y + rot;
+  // AUtoKm=AUtoM/1000;     // 1 AU = 149.598.787 Km   (~ 150M km)
+
+  // k := aCoord.radius/EarthRadius;   //keep scale between earth radious and moon distance
+
+  // dummyMoon.Position.x := 3;  // km --> au
+
+  dummyMoonOrbitCenter.RotationAngle.z := 0;          // reset lat before applying Lon
+  dummyMoonOrbitCenter.RotationAngle.y := -aCoord.longitude;  // rotate lon
+  dummyMoonOrbitCenter.RotationAngle.z := -aCoord.latitude;      // rotate lat
+
+  aRot := aCoord.longitude;   // greenwich meridian is in the middle of the texture ( rot=180 )
+  // 180+ was removed ad hoc
+  AngleTo0_360(aRot);
+  // y = moon rotation axis
+  // Moon rotates so the same part of the surface points to earth ( light face )
+  sphereMoon.RotationAngle.Y  := aRot; //rotate Moon as it revolves
+
+  // labStatus3.Text := 'Moon:'+floatToGMSD( aCoord.latitude )+ //teste
+  //                    '  '+floatToGMSD( aCoord.longitude );
+  // sha := 360-aCoord.rektaszension*15;    // ra in  hours, sha in degrees
+  // AngleTo0_360(sha);                    // 0..sha..360
+  // labStatus4.Text := 'R:'+ floatToHHMMSS(aCoord.rektaszension)+
+  //                    'D:' + floatToGMSD(aCoord.declination)    +
+  //                    's:' + floatToGMSD(sha);
 end;
 
 procedure TFormPlanetFun.PositionPlanets;   // according to vsop2013 at epoch fJDE
@@ -894,18 +993,21 @@ begin
   aTarget := mjTomCamera.Target;
   if Assigned(aTarget) then
     begin
-      v1 := mjTomCamera.Position.Point.Normalize;   // camera pointing versor
-      t := tbDistanceToTarget.Value;     // value in range 1..101
-      d := ( exp(t/60)-1.0 )*20.0;       // d in au  range 0.32..88 au
-      mjTomCamera.Position.Point := d*v1;
+      // camera hierarchy:   dummyCamera --> mjTomCamera ( the main camera )
+      // mjTomCamera.Position is in relation to dummyCamera ( its parent )
+      // since mjTomCamera.Target = dummyCamera, the camera always point to dummyCamera
+      v1 := mjTomCamera.Position.Point.Normalize;   // get previous camera pointing versor
+      t  := tbDistanceToTarget.Value;     // value in range 1..101
+      d  := ( exp(t/60)-1.0 )*20.0;       // d in au range 0.32..88 au ( the exponent formula increases granularity when camera is near )
 
-      checkSphereSkyVisibility;
+      mjTomCamera.Position.Point := d*v1; // set distance from camera to target
+      checkSphereSkyVisibility;  // make sure the sky background is not visible from outside the celestial sphere
 
       labDistanceToTarget.Text := Format('%5.2f',[d] )+ ' au';
     end;
 end;
 
-// call after camera position change ( pan )
+// call after camera distance change
 procedure TFormPlanetFun.checkSphereSkyVisibility;
 var aCamPos:TPoint3D;
 begin
@@ -914,13 +1016,12 @@ begin
   // sphereSky.Visible := (aCamPos.Length < sphereSky.Scale.x*0.5 );      //hide the sky sphere before we go out
 end;
 
-
 procedure TFormPlanetFun.tbPlanetScaleChange( Sender: TObject );
 var sc,aLat,aLon:Double;
 begin
   sc := tbPlanetScale.Value;   // 1..101
   labPlanetScale.Text := Trim( Format('%6.1f',[sc]) );
-  SizePlanets;  //acording to new scale
+  SizePlanets;        //resize according to new scale
 
   // aLat := -23.5;  //Lighthouse at home
   // aLon := -46.5;
@@ -941,7 +1042,7 @@ end;
 
 procedure TFormPlanetFun.tbAnimationSpeedChange(Sender: TObject);
 begin
-  labAnimationSpeed.Text := Format('%4.0f',[tbAnimationSpeed.Value])+' days/tick (t=100ms)';
+  labAnimationSpeed.Text := Trim(Format('%4.1f',[ tbAnimationSpeed.Value/10] ))+' days/s';
 end;
 
 procedure TFormPlanetFun.tbDateChange(Sender: TObject);
@@ -949,6 +1050,7 @@ begin
   fJDE := jd2000+tbDate.Value;      // in days
   PositionPlanets;
   // PositionEarthDailyRotation;   this makes earth spin crazy - suppresed
+  PositionMoon;
 end;
 
 function TFormPlanetFun.AppEventHandler(AAppEvent: TApplicationEvent; AContext: TObject): Boolean;
@@ -1208,14 +1310,15 @@ begin
   fJDE  := JD( YY, MM, DD, H*24);     // current Julian date = Now
   PositionPlanets;
   PositionEarthDailyRotation;
+  PositionMoon;
 
   rectEditJDE.Visible:= false;
 end;
 
 procedure TFormPlanetFun.btnPhoneCameraClick(Sender: TObject);
 const
-  ixLightHouseTarget=10;
-  ixPhoneTarget=11;
+  ixLightHouseTarget=11;
+  ixPhoneTarget=12;
 begin
   // btn toggles between target = phone and lighthouse
   if (comboTarget.ItemIndex=ixPhoneTarget) then
@@ -1342,28 +1445,36 @@ begin
   {$ENDIF MsWindows}
 end;
 
+procedure TFormPlanetFun.cbShowLightHouseAndPhoneSwitch(Sender: TObject);
+begin
+  dummyLighthouse.Visible := cbShowLightHouseAndPhone.IsChecked;  // show/hide LH n phone
+end;
+
 procedure TFormPlanetFun.comboTargetChange(Sender: TObject);
 var aDummy:TDummy;
 begin
-  case comboTarget.ItemIndex of
-    0: aDummy := dummySun;
-    1: aDummy := dummyMercury;
-    2: aDummy := dummyVenus;
-    3: aDummy := dummyEarth;
-    4: aDummy := dummyMars;
-    5: aDummy := dummyJupiter;
-    6: aDummy := dummySaturn;
-    7: aDummy := dummyUranus;
-    8: aDummy := dummyNeptune;
-    9: aDummy := dummyPluto;
-    10: aDummy := dummyLighthouse;
-    11: aDummy := dummyPhoneTarget;
+  case comboTarget.ItemIndex of           // combo items:
+    0: aDummy := dummySun;                // Sun
+    1: aDummy := dummyMercury;            // Mercury
+    2: aDummy := dummyVenus;              // Venus
+    3: aDummy := dummyEarth;              // Earth
+    4: aDummy := dummyMoon;               // Moon
+    5: aDummy := dummyMars;               // Mars
+    6: aDummy := dummyJupiter;            // Jupiter
+    7: aDummy := dummySaturn;             // Saturn
+    8: aDummy := dummyUranus;             // Uranus
+    9: aDummy := dummyNeptune;            // Neptune
+    10: aDummy := dummyPluto;             // Pluto
+    11: aDummy := dummyLighthouse;        // Lighthouse
+    12: aDummy := dummyPhoneTarget;       // Phone
     else exit;
   end;
 
   dummyCamera.Parent := aDummy;  //parent dummyCamera to target planet dummy
   // move camera to 0,0,0  (on parent scale)
-  dummyCamera.Position.Point := Point3d(0,0,0);   // aDummy.Position.Point;  // move camera to position. TODO: animate camera shift
+  dummyCamera.Position.Point := Point3d(0,0,0);          // aDummy.Position.Point;  // move camera to position. TODO: animate camera shift
+  dummyCamera.RotationAngle.Point := Point3d(0,0,0);  // aDummy.Position.Point;  // reset camera angles ?
+  // DoCameraDolly(+1);   // get far from
 
   // move camera ( TODO: animate that )
   // mjTomCamera.Target  := aDummy; //camera pointing to dummy
@@ -1389,14 +1500,19 @@ var aLat,aLon:Double;
 begin
    if fFirstShow then  // once:  load vsop2013 ephemerides binary file ( threaded load )
      begin
+       // init date/time edit filds with now
+       dateeditJDE.Date := Date;
+       timeeditJDE.Time := Time; //local
+
        {$IFDEF Android}  // request permissions to work
        DoRequestSensorPermissionsToAndroid;  // sensors are started when perm recvd
        //  On Android, sensors are started after permission is checked
        {$ENDIF Android}
 
-       {$IFDEF IOS}
-       // I found that one cannot start LocationSensor from FormActivate, or the sensor breaks
-       // used a Timer to defer sensor start a couple seconds
+       {$IFDEF IOS}  //
+       // On D10.4.1 I found that one cannot start LocationSensor from FormActivate,
+       // or the sensor feed doesnt start
+       // used a Timer to defer sensor start 2 seconds
        timerStartSensorsiOS.Enabled := true;
        {$ENDIF IOS}
 
@@ -1404,7 +1520,7 @@ begin
        fMagAccelFusion.StartStopSensors({bStart:} true );  // for Windows, start simulated sensor feed (timer )
        {$ENDIF MsWindows}
 
-       TimerSolarSystem.Enabled := true;  // and God said: may Time start...now !
+       TimerSolarSystem.Enabled := true;  // ..and God said: may Time start...now !
        SizePlanets;
        // aLat := -23.5;  //Lighthouse at home   23.5S / 46.5W
        // aLon := -46.5;
@@ -1451,15 +1567,17 @@ begin
       if planeBanner.Visible  then   //and that
          planeBanner.RotationAngle.Y :=  planeBanner.RotationAngle.Y +1.2*rot;
 
-      dummyMoon.RotationAngle.Y     := dummyMoon.RotationAngle.Y + rot;
-      dummyMoonOrbitCenter.RotationAngle.Y := dummyMoonOrbitCenter.RotationAngle.Y - rot;  //move moon in its orbit
+      // dummyMoon.RotationAngle.Y     := dummyMoon.RotationAngle.Y + rot;
+      // dummyMoonOrbitCenter.RotationAngle.Y := dummyMoonOrbitCenter.RotationAngle.Y - rot;  //move moon in its orbit
 
       if cbAnimatePlanets.IsChecked then
         begin
-          fJDE := fJDE + tbAnimationSpeed.Value;     // tbAnimationSpeed.Value = time/"100ms timer tick"
+          fJDE := fJDE + tbAnimationSpeed.Value/10;     // tbAnimationSpeed.Value = time change/s
           try
             PositionPlanets;  // reposition planet ephemeris every 200 ms
-            // PositionEarthDailyRotation;   // not rotating earth here
+            // test uncommented below
+            PositionEarthDailyRotation;   // not rotating earth here
+            PositionMoon;                 // not rotating the moon either ??
           except
             cbAnimatePlanets.IsChecked := false; // error.. probably time outside ephemeris range.. stop animation
             Raise;
