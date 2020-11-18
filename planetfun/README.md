@@ -75,6 +75,11 @@ The scale factor between astronomical units and the app's 3D world is 1.0:
     
 ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 
+# Moon position 
+
+Moon position uses calculations and coefficients from ELP2000 ( Chapront-Touze ) described in Meeus' Astronomical Algorithms (chapter 45)
+Code from TMoon v2.0 component by Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
+
 # Planet textures
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
@@ -107,7 +112,7 @@ The 3d world in this simulation uses ecliptic coordinates (x,y,z) in au. This is
 
 # Warning: not realistic
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
-* Moon position, speed, size and orbit size are not connected to real world coordinates yet. Anyway, Moon revolution ( 27.32 days) is so much faster than other celestial objects, it is all over the place when animated. In this illustration, it is animated on a circular orbit and with uniform, slow speed. Fake (TODO)
+* Moon orbit size is not realistic. But Moon celestial lat and lon are ( since v1.4 )   
 * Version 1.3 includes sky background textures ( with and w/o names and lines )
 
 # Dependencies
