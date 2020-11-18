@@ -26,9 +26,6 @@ Search for "PlanetFun" on your app store.
 
 ![planetfun 1.3](earthLighthousePhone.png)
 
-# TODO list
-* Apply correct Moon ephemeris ( not this fake movement ) 
-
 ![screenshots](screenshotsPlanetFun.png)
 
 # Program features
@@ -42,6 +39,7 @@ Search for "PlanetFun" on your app store.
 * Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it is 1 dot per week) )
 * Solar system heliocentric axis (x and z)
 * VSOP2013 planet ephemeris usage sample
+* realistic Moon position ( except for orbit size )
 * Current catalog is small: Sun, 9 planets and Moon
 * Sky background with 40k stars
 * Star and constellation names
@@ -77,8 +75,8 @@ ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 
 # Moon position 
 
-Moon position uses calculations and coefficients from ELP2000 ( Chapront-Touze ) described in Meeus' Astronomical Algorithms (chapter 45)
-Code from TMoon v2.0 component by Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
+Moon position calculations and coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45)
+TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
 # Planet textures
 
