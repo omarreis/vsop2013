@@ -61,6 +61,7 @@ type
 
 const        // approximate values..
   UnivGravConst = 6.67408E-11;  //  6.67408E-11 N . m^2/Kg^2 Universal Gravitational Constant
+  EarthRadius = 6378.1;
 
   PLANET_DATA: Array[0..NUM_OBJS-1] of TpfRec=(       // planet sizes
     (name: 'Sun'    ; radius:696340; mass:1.98847e+30; rotPer:0;    revPer:0      ; Obliq: 0.0),   // 0
