@@ -75,8 +75,8 @@ ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 
 # Moon position 
 
-Moon position calculations and coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45)
-TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
+Moon position calculations and coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
+Pascal code TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
 # Planet textures
 
