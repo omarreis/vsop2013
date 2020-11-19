@@ -1,9 +1,10 @@
-# Planet Fun      ![banner](bannerPlanetFun.png)
+# PlanetFun      ![banner](bannerPlanetFun.png)
 
 *PlanetFun* is a 3d solar system working model.  
 Celestial objects ( "balls" ) are rigged to astronomical ephemerides,
-resulting in realistic positions.
+resulting in realistic positions and movements.
 
+The app is developed in object Pascal ( Delphi )
 It uses standard Firemonkey 3d infrastructure. 
 Tested on Windows, Android and iOS (currently Delphi 10.4)
 
@@ -25,7 +26,7 @@ New in this version:
 * Permission for "sensor use while using the app" is required
 * release for iOS and Android 
 
-Search for "PlanetFun" on your app store.
+Search for "PlanetFun" on your device app store.
 
 ![planetfun 1.3](earthLighthousePhone.png)
 
@@ -58,11 +59,11 @@ This library calculates planet's heliocentric coordinates for epochs 1500 to 300
 
     see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
-VSOP2013 data files are not in this repository. Download from FTP .
+VSOP2013 data files are not in this repository. Download from FTP repo.
 
-For speed and bundle size, PlanetFun app uses a custom binary version of VSOP2013 data ( same idea as original vsop2013 but with a different implementation )
+For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data ( same idea as original vsop2013 but with a different implementation )
 
-So the steps to obtain planet ephemeris file are:
+The steps to obtain planet ephemeris data file are:
 
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB text file) 
 * Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
@@ -119,7 +120,7 @@ Still remain:
 * Version 1.3 includes sky background textures ( two maps, with and without names & lines )
 
 # Permissons
-PlanetFun uses permissons for location, gyro and mag sensors.
+PlanetFun uses permissons for location, gyro and magnetic sensors.
 Program works without these with limited features.
 
 # Dependencies
