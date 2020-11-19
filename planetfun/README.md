@@ -1,7 +1,10 @@
 # Planet Fun      ![banner](bannerPlanetFun.png)
 
-Planet Fun is a solar system working model in 3D.  
-Program is a Delphi Firemonkey 3D app. 
+*PlanetFun* is a 3d solar system working model.  
+Celestial objects ( "balls" ) are rigged to astronomical ephemerides,
+resulting in realistic positions.
+
+It uses standard Firemonkey 3d infrastructure. 
 Tested on Windows, Android and iOS (currently Delphi 10.4)
 
 Full app source code is available at:
@@ -10,7 +13,7 @@ Full app source code is available at:
 
 # nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
-* Moon correct position unsing Astronomical Algorithm 
+* Moon correct position ( using Astronomical Almanac )
 * release for iOS and Android 
 
 # Oct-20 - PlanetFun version 1.3 released
@@ -76,7 +79,7 @@ ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 # Moon position 
 
 Moon position calculations and coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
-Pascal code TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
+Delphi 6 TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
 # Planet textures
 
@@ -109,14 +112,20 @@ Two star background maps available: with names and lines or plain stars.
 The 3d world in this simulation uses ecliptic coordinates (x,y,z) in au. This is the same convention as vsop2013 results (the planet ephemeris used). This means that both the Earth and Star background spheres are tilted by 23°26′ (Earth's obliquity). Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
 
 # Warning: not realistic
-* Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a log formula to Sun and planet sizes so that the Sun is only about 4x the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
-* Moon orbit size is not realistic. But Moon celestial lat and lon are ( since v1.4 )   
-* Version 1.3 includes sky background textures ( with and w/o names and lines )
+A number of cheats introduced in version 1.0 were corrected in subsequent versions. 
+Still remain:
+* Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a custom log formula to Sun and planet sizes, so that the Sun is only about 4 times the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
+* Moon orbit size is not realistic. But Moon celestial lat and lon are ok ( since v1.4 )   
+* Version 1.3 includes sky background textures ( two maps, with and without names & lines )
+
+# Permissons
+PlanetFun uses permissons for location, gyro and mag sensors.
+Program works without these with limited features.
 
 # Dependencies
-*  Uses astronomy files from https://github.com/omarreis/vsop2013/
+*  Uses astronomy code from from https://github.com/omarreis/vsop2013/
 *  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
-*  Uses sensor code and KastriFree by DelphiWorlds (files with DW. prefix, included in this repo) 
+*  Uses native sensor code and KastriFree by DelphiWorlds (files with DW. prefix, included in this repo) 
 
 # Astronomical Algorithms formulas
 Many formulas and algorithms for dates and astronomy from the book "Astronomical Algorithms" by Jean Meeus.
