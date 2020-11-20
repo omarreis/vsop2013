@@ -127,6 +127,7 @@ Program works without these with limited features.
 *  Uses astronomy code from from https://github.com/omarreis/vsop2013/
 *  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
 *  Uses native sensor code and KastriFree by DelphiWorlds (files with DW. prefix, included in this repo) 
+*  TMoon v2.0 component by Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
 # Astronomical Algorithms formulas
 Many formulas and algorithms for dates and astronomy from the book "Astronomical Algorithms" by Jean Meeus.
