@@ -124,10 +124,12 @@ PlanetFun uses permissons for location, gyro and magnetic sensors.
 Program works without these with limited features.
 
 # Dependencies
-*  Uses astronomy code from from https://github.com/omarreis/vsop2013/
-*  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
-*  Uses native sensor code and KastriFree by DelphiWorlds (files with DW. prefix, included in this repo) 
+*  Uses native sensor code from KastriFree
+   DelphiWorlds (files with DW. prefix) 
+   http://www.delphiworlds.com 
 *  TMoon v2.0 component by Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
+*  Uses astronomy code from https://github.com/omarreis/vsop2013/
+*  Uses sensor fusion component from https://github.com/omarreis/FiremonkeySensorFusion
 
 # Astronomical Algorithms formulas
 Many formulas and algorithms for dates and astronomy from the book "Astronomical Algorithms" by Jean Meeus.
