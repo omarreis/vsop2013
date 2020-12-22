@@ -1,8 +1,6 @@
 # PlanetFun      ![banner](bannerPlanetFun.png)
 
-*PlanetFun* is a 3d solar system working model.  
-Celestial objects ( "balls" ) are rigged to astronomical ephemerides,
-resulting in realistic positions and movements.
+## tl;dr - *PlanetFun* is a 4d solar system working model.  Celestial objects ( "balls" ) are rigged to astronomical ephemerides, resulting in realistic positions and movements. Download app for iOS and Android from stores
 
 The app is developed in object Pascal ( Delphi )
 It uses standard Firemonkey 3d infrastructure. 
