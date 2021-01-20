@@ -1,6 +1,6 @@
 # PlanetFun      ![banner](bannerPlanetFun.png)
 
-## tl;dr - *PlanetFun* is a 4d solar system working model.  Celestial objects ( "balls" ) are rigged to astronomical ephemerides, resulting in realistic positions and movements. Download app for iOS and Android from stores
+### tl;dr - *PlanetFun* is a 4d solar system working model.  Celestial objects ( "balls" ) are rigged to astronomical ephemerides, resulting in realistic positions and movements. Download app for iOS and Android from stores
 
 The app is developed in object Pascal ( Delphi )
 It uses standard Firemonkey 3d infrastructure. 
@@ -117,10 +117,6 @@ Still remain:
 * Moon orbit size is not realistic. But Moon celestial lat and lon are ok ( since v1.4 )   
 * Version 1.3 includes sky background textures ( two maps, with and without names & lines )
 
-# Permissons
-PlanetFun uses permissons for location, gyro and magnetic sensors.
-Program works without these with limited features.
-
 # Dependencies
 *  Uses native sensor code from KastriFree
    DelphiWorlds (files with DW. prefix) 
@@ -132,6 +128,22 @@ Program works without these with limited features.
 # Astronomical Algorithms formulas
 Many formulas and algorithms for dates and astronomy from the book "Astronomical Algorithms" by Jean Meeus.
 See file Om.AstronomicalAlgorithms.pas
+
+# Augmented Reality
+On the surface of Earth sphere, at actual GPS position, there is a large lighthouse.  On top of the lighthouse there is a phone. 
+The position of the phone reflects actual phone sensors ( location, gyro and magnetometer ) and should mimic its attitude (move with the phone). 
+
+What happens when you attach the scene camera to the phone ?  
+The simulation starts moving in sync with actual Universe.
+The image on the screen matches the actual point you are targeting the phone to.
+More or less...
+
+![planetfun 1.3](earthLighthousePhone.png)
+
+# Permissions
+PlanetFun uses permissions for location, gyro and magnetic sensors.
+Program works without these with limited features.
+
 
 # video
 https://www.tiktok.com/@omar_reis/video/6859411602031119622
