@@ -130,13 +130,16 @@ Many formulas and algorithms for dates and astronomy from the book "Astronomical
 See file Om.AstronomicalAlgorithms.pas
 
 # Augmented Reality
-On the surface of Earth sphere, at actual GPS position, there is a large lighthouse.  On top of the lighthouse there is a phone. 
-The position of the phone reflects actual phone sensors ( location, gyro and magnetometer ) and should mimic its attitude (move with the phone). 
+On the surface of Earth's sphere, at your GPS position, there is a large lighthouse.  On top of that lighthouse is a phone. 
+The position of the phone reflects actual device sensors ( location, gyro and magnetometer ) and should mimic its attitude (move with the phone). 
+The app uses FiremonkeySensorFusion component to mix sensor readings.
 
 What happens when you attach the scene camera to the phone ?  
-The simulation starts moving in sync with actual Universe.
+The simulation starts to move in sync with actual Universe.
 The image on the screen matches the actual point you are targeting the phone to.
 More or less...
+
+To enter AR mode, click [Camera] and set Camera Target to "phone" (  ore click the phone icon ) 
 
 ![planetfun 1.3](earthLighthousePhone.png)
 
