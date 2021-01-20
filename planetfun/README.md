@@ -131,10 +131,9 @@ See file Om.AstronomicalAlgorithms.pas
 
 # Augmented Reality
 On the surface of Earth's sphere, at your GPS position, there is a large lighthouse.  On top of that lighthouse is a phone. 
-The position of the phone reflects actual device sensors ( location, gyro and magnetometer ) and should mimic its attitude (move with the phone). 
-The app uses FiremonkeySensorFusion component to mix sensor readings.
+The position of the phone reflects actual device sensors ( location, gyro and magnetometer ) and should mimic its attitude (move with the real phone).  The app uses *FiremonkeySensorFusion* component to mix sensor readings ( see dependencies)
 
-What happens when you attach the scene camera to the phone ?  
+What happens when you attach the scene *camera* to the *phone* ?  
 The simulation starts to move in sync with actual Universe.
 The image on the screen matches the actual point you are targeting the phone to.
 More or less...
