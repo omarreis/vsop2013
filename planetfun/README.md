@@ -138,7 +138,7 @@ The simulation starts to move in sync with actual Universe.
 The image on the screen matches the actual point you are targeting the phone to.
 More or less...
 
-To enter AR mode, click [Camera] and set Camera Target="phone" (  or click the phone icon ) 
+To enter AR mode, click [Camera] to open camera settings. Set Camera Target to "phone" (  or click the phone icon ) 
 
 ![planetfun 1.3](earthLighthousePhone.png)
 
