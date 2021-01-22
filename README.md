@@ -9,18 +9,18 @@ With time it grew to include:
 
 # VSOP2013 for Delphi
 
-VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
+VSOP 2013 (French: Variat Fortran code and dataions Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCO Fortran code and dataU & J.-L. SIMON (MAY 2013)
 
 This is a Delphi port of original Fortran code by the theory authors.  
 It is a large set of tables of  Chebyshev polynomial coeficients. 
-Algorithm uses clever indexing to manage a large number of tables of Doubles, while keeping data file sizes minimum.
+VSOP2013 Algorithm uses clever indexing to manage a large number of tables of Doubles, while keeping data file sizes minimum.
 Tested with D10.3.3, D10.4 on Win32, iOS and Android. Tests are for Firemonkey, but should work with VCL and console app as well.
 
-VSOP 2013 original files can be found at:
+VSOP 2013 original Fortran code and data files can be found at:
 
     ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
  
-README: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/README.pdf
+VSOP2013 README: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/README.pdf
  
 VSOP2013 data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind coeficients. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
@@ -36,23 +36,23 @@ It is organized in 6 files, covering a 9,000 year period in all, as follows:
 Each file is divided in 17122, 32 day intervals. Each interval has 978 coeficients, arranged in groups of 6 per line. File header contains a table of indexes into coeficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
 Planet Chebyshev polynomials can have from 7 to 14 terms. There are 6 components: 3 for position and 3 for speed.
 
-The FTP repository also contains Fortran code:
+The FTP repository contains Fortran code:
 * VSOP2013_binfile.f - Parses text file into binary file that allows fast random access.
 * VSOP2013_compute.f - Retrieves 32d interval from binary file and computes planet data ( position and speed )
 
 In this Delphi port, the whole ASCII file is loaded into memory tables, for even faster access. 
 Once loaded, computations are very fast. 
 
-Object T_VSOP2013_File in vsop2013.pas:
+Object T_VSOP2013_File in pas:
 * Parses a data file - Use only files in original format, as the parser relies on fixed positions.
 * Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
-* calculates heliocentric rectangular position and speed ( in UA and UA/day)
+* calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
 
 # Sample apps
 Three sample apps are included in this repository. 
 * TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
 * PlanetFun - Planetary system 3D simulation. Requires downloading and deploying planet textures from 3rd party site plus VSOP2013 binary file (see below). PlanetFun is available as executable for Windows. For Android and iOS download from stores (search "PlanetFun"). 
-* gravityIntegration - Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
+* gravityIntegration - Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.. Planets Almanac. 
 
 # Sample app 1: TestVSOP2013
 *TestVSOP2013* is a Firemonkey app. 
