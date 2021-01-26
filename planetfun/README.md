@@ -149,6 +149,9 @@ Program works without these with limited features.
 # video
 https://www.tiktok.com/@omar_reis/video/6859411602031119622
 
+# Facebook
+FB page: https://www.facebook.com/vrtoolsoftware
+
 keywords: solar system planet astronomy vsop2013 Delphi Firemonkey
 
 ## download Android app
