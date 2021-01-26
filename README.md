@@ -5,15 +5,15 @@ With time it grew to include:
 * Planet data tests.
 * binary data file utility.
 * N-to-N gravity integration by leapfrog method
-* app "PlanetFun" ( 3d  simulation )
+* Firemonkey application "PlanetFun" ( a 4d  simulation with augmented reality )
 
 # VSOP2013 for Delphi
 
-VSOP 2013 (French: Variat Fortran code and dataions Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCO Fortran code and dataU & J.-L. SIMON (MAY 2013)
+VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
+This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
 
-This is a Delphi port of original Fortran code by the theory authors.  
-It is a large set of tables of  Chebyshev polynomial coeficients. 
-VSOP2013 Algorithm uses clever indexing to manage a large number of tables of Doubles, while keeping data file sizes minimum.
+VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a certain time. Algorithm uses optimized indexing to manage a large number of tables of Double coeficients, while keeping file sizes minimum.
+
 Tested with D10.3.3, D10.4 on Win32, iOS and Android. Tests are for Firemonkey, but should work with VCL and console app as well.
 
 VSOP 2013 original Fortran code and data files can be found at:
@@ -22,7 +22,7 @@ VSOP 2013 original Fortran code and data files can be found at:
  
 VSOP2013 README: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/README.pdf
  
-VSOP2013 data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind coeficients. 
+Data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind *coeficients*. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
   
      range                file
@@ -34,7 +34,7 @@ It is organized in 6 files, covering a 9,000 year period in all, as follows:
      +3000 to +4500       VSOP2013.p4000
 
 Each file is divided in 17122, 32 day intervals. Each interval has 978 coeficients, arranged in groups of 6 per line. File header contains a table of indexes into coeficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
-Planet Chebyshev polynomials can have from 7 to 14 terms. There are 6 components: 3 for position and 3 for speed.
+Each planet has a number of Chebyshev polynomial terms (between 7 to 14 terms). Results are two 3D vectors: position and speed.
 
 The FTP repository contains Fortran code:
 * VSOP2013_binfile.f - Parses text file into binary file that allows fast random access.
