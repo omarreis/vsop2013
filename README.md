@@ -12,9 +12,10 @@ With time it grew to include:
 VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
 This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
 
-VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a certain time. Algorithm uses optimized indexing to manage a large number of tables of Double coeficients, while keeping file sizes minimum.
+VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time (inside a 9000y range). Algorithm uses optimized indexing to manage a number of tables of Double coeficients while keeping file sizes minimum.
 
-Tested with D10.3.3, D10.4 on Win32, iOS and Android. Tests are for Firemonkey, but should work with VCL and console app as well.
+Tested with D10.3.3, D10.4.1 on Win32, iOS and Android. 
+Tests are for Firemonkey, but should work with VCL and console app as well.
 
 VSOP 2013 original Fortran code and data files can be found at:
 
@@ -123,6 +124,8 @@ Windows app. Integrates planet positions using Newton's universal gravity law an
 Numbers related to the discovery of the planet Neptune, in 1846. 
 * see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
+##Facebook
+https://www.facebook.com/vrtoolsoftware
 
 ## videos
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
