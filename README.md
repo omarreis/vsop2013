@@ -124,8 +124,8 @@ Windows app. Integrates planet positions using Newton's universal gravity law an
 Numbers related to the discovery of the planet Neptune, in 1846. 
 * see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
-##Facebook
-https://www.facebook.com/vrtoolsoftware
+## Facebook
+FB page: https://www.facebook.com/vrtoolsoftware
 
 ## videos
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
