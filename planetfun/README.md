@@ -1,8 +1,10 @@
 # PlanetFun      ![banner](bannerPlanetFun.png)
 
-### tl;dr - *PlanetFun* is a 4d solar system working model.  Celestial objects ( "balls" ) are rigged to astronomical ephemerides, resulting in realistic positions and movements. Download app for iOS and Android from stores
+### tl;dr - *PlanetFun* is a 4d solar system working model with augmenmted reality. Celestial object "balls" are rigged to astronomical almanac, resulting in realistic positions and movements. 
 
-The app is developed in object Pascal ( Delphi )
+*Download app for iOS and Android from your app store*
+
+The app is developed in Pascal ( Delphi )
 It uses standard Firemonkey 3d infrastructure. 
 Tested on Windows, Android and iOS (currently Delphi 10.4)
 
@@ -10,21 +12,21 @@ Full app source code is available at:
 
 * https://github.com/omarreis/vsop2013/tree/master/planetfun
 
-# nov-20 - PlanetFun version 1.4 released
+# recent actions
+
+nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
 * Moon correct position ( using Astronomical Almanac )
 * release for iOS and Android 
 
-# Oct-20 - PlanetFun version 1.3 released
-New in this version:
+Oct-20 - PlanetFun version 1.3 released
 * Integrated phone sensors to the 3D simulation ( GPS, accelerometer and mag compass )
 * A fairly large *lighthouse* is positioned at your GPS position
 * On the lighthouse there is a phone. The virtual phone attitude (Azimuth,Elevation and Roll) is controlled by phone sensors 
-* If you attach the Camera to the phone you create a phonecentric universe ( augmented reality ) 
-* Permission for "sensor use while using the app" is required
-* release for iOS and Android 
+* Target (=attach) the *camera* to the *phone* to enter augmented reality mode.  
+* Permissions for "sensor use while using the app" required
 
-Search for "PlanetFun" on your device app store.
+Search for "PlanetFun" on your app store.
 
 ![planetfun 1.3](earthLighthousePhone.png)
 
@@ -51,17 +53,13 @@ Search for "PlanetFun" on your device app store.
 
 # Planet positions
 
-Planet positions are calculated using VSOP2013 ephemerides ( see https://github.com/omarreis/vsop2013 ) 
-This library calculates planet's heliocentric coordinates for epochs 1500 to 3000.
-( VSOP2013 by Francou and Simon )
+Planet positions are calculated using VSOP2013 planet database ( see https://github.com/omarreis/vsop2013 ). This library calculates planet's heliocentric coordinates for epochs 1500 to 3000  ( VSOP2013 by Francou and Simon )
 
-    see ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+    VSOP2013 original FTP repository: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
-VSOP2013 data files are not in this repository. Download from FTP repo.
+For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data. This is the same idea as original vsop2013 theory (i.e. using a fixed size bynary record to allow fast record search ), but with a different implementation, as it is difficult to share binary record formats across different languages ( Fortran and Pascal ). 
 
-For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data ( same idea as original vsop2013 but with a different implementation )
-
-The steps to obtain planet ephemeris data file are:
+Steps to obtain VSOP2013 binary data file for deploying with *PlanetFun*:
 
 * Download VSOP2013.p2000 from the FTP repository above ( a 400 MB text file) 
 * Use program *TestVSOP2013* to Load VSOP2013.p2000 text file.
@@ -74,6 +72,22 @@ The scale factor between astronomical units and the app's 3D world is 1.0:
      1.0 AU = 1.0 3D-world-unit  
     
 ex: Earth orbit radius is ~around~ 1.0 3D-world-units
+
+# 3D Hierarchy
+
+The planet system 3D machinery is assembled by means of a hierarchy of 3D objects,
+mostly TDummys and TSpheres.    
+
+![planetfun 3d hierarchy](PlanetFun_3D_hierarchy.png.png)
+
+VSOP2013 planet data provides heliocentric planet positions (X,Y,Z),
+in astronomical units (AU). This convention was adopted by this app
+for the 3D simulation.
+
+For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radius ) 
+These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
+
+
 
 # Moon position 
 
