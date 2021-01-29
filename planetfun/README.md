@@ -54,7 +54,7 @@ Planet positions are calculated using VSOP2013 planet database ( see https://git
 
     VSOP2013 original FTP repository: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
 
-For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data. This is the same idea as original vsop2013 theory (i.e. using a fixed size bynary record to allow fast record search ), but with a different implementation, as it is difficult to share binary record formats across different languages ( Fortran and Pascal ). 
+For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data. This is the same idea as original vsop2013 theory (i.e. using a fixed size binary record to allow fast record access), but with a different implementation, as it is difficult to share binary record formats across different languages ( Fortran and Pascal ). 
 
 Steps to obtain VSOP2013 binary data file for deploying with *PlanetFun*:
 
