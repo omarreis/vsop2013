@@ -102,7 +102,10 @@ which leads to upleasent gymbal locks. A helper class was set for manipulating t
 Scene uses only one light: a Sun centered ambient light.
 This results in correct object ilumination (ex: Moon disk ilumination) as a secondary result of the model :)
 
-TODO: add eclipse shadows
+dummyCamera is the camera target. The camera is parented to it, at a certain distance.
+Targetting the camera means parenting dummyCamera to other objects, at position (0,0,0)
+
+TODO: Planet transits can be seen, but they don't cast shadows on other objects at this time.
 
 # Moon positions 
 
