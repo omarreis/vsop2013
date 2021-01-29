@@ -1,32 +1,29 @@
 # PlanetFun      ![banner](bannerPlanetFun.png)
 
-### tl;dr - *PlanetFun* is a 4d solar system working model with augmenmted reality. Celestial object "balls" are rigged to astronomical almanac, resulting in realistic positions and movements. 
+### tl;dr - *PlanetFun* is a 4d solar system simulation with augmented reality. Celestial object spheres are rigged to astronomical almanac, resulting in realistic positions and movements. 
 
-*Download app for iOS and Android from your app store*
+*Download app for iOS or Android from your app store. search for "PlanetFun"*
 
-The app is developed in Pascal ( Delphi )
-It uses standard Firemonkey 3d infrastructure. 
-Tested on Windows, Android and iOS (currently Delphi 10.4)
+The app is developed in Pascal ( Delphi ). It uses standard Firemonkey 3d infrastructure. 
+Tested on Windows, Android and iOS (currently Delphi 10.4.1)
 
 Full app source code is available at:
 
 * https://github.com/omarreis/vsop2013/tree/master/planetfun
 
-# recent actions
+# recent releases
 
-nov-20 - PlanetFun version 1.4 released
+* nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
 * Moon correct position ( using Astronomical Almanac )
 * release for iOS and Android 
 
-Oct-20 - PlanetFun version 1.3 released
+* oct-20 - PlanetFun version 1.3 released
 * Integrated phone sensors to the 3D simulation ( GPS, accelerometer and mag compass )
 * A fairly large *lighthouse* is positioned at your GPS position
 * On the lighthouse there is a phone. The virtual phone attitude (Azimuth,Elevation and Roll) is controlled by phone sensors 
 * Target (=attach) the *camera* to the *phone* to enter augmented reality mode.  
 * Permissions for "sensor use while using the app" required
-
-Search for "PlanetFun" on your app store.
 
 ![planetfun 1.3](earthLighthousePhone.png)
 
@@ -82,17 +79,18 @@ mostly TDummys and TSpheres.
 
 VSOP2013 planet data provides heliocentric planet positions (X,Y,Z),
 in astronomical units (AU). This convention was adopted by this app
-for the 3D simulation.
+for the 3D simulation. Planets consist of a TSphere parented to a TDummy.
+Planet position is set by TDummy.Position. Planet rotation
+uses TSphere.RotationAngle.
 
 For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radius ) 
 These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
+This makes the Moon rotate around Earth. 
 
-
-
-# Moon position 
+# Moon positions 
 
 Moon position calculations and coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
-Delphi 6 TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
+Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
 # Planet textures
 
