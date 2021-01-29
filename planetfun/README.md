@@ -11,14 +11,14 @@ Full app source code is available at:
 
 * https://github.com/omarreis/vsop2013/tree/master/planetfun
 
-# recent releases
+# release notes
 
-* nov-20 - PlanetFun version 1.4 released
+nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
 * Moon correct position ( using Astronomical Almanac )
 * release for iOS and Android 
 
-* oct-20 - PlanetFun version 1.3 released
+oct-20 - PlanetFun version 1.3 released
 * Integrated phone sensors to the 3D simulation ( GPS, accelerometer and mag compass )
 * A fairly large *lighthouse* is positioned at your GPS position
 * On the lighthouse there is a phone. The virtual phone attitude (Azimuth,Elevation and Roll) is controlled by phone sensors 
@@ -75,7 +75,7 @@ ex: Earth orbit radius is ~around~ 1.0 3D-world-units
 The planet system 3D machinery is assembled by means of a hierarchy of 3D objects,
 mostly TDummys and TSpheres.    
 
-![planetfun 3d hierarchy](PlanetFun_3D_hierarchy.png.png)
+![planetfun 3d hierarchy](PlanetFun_3D_hierarchy.png)
 
 VSOP2013 planet data provides heliocentric planet positions (X,Y,Z),
 in astronomical units (AU). This convention was adopted by this app
