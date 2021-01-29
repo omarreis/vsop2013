@@ -81,15 +81,15 @@ VSOP2013 planet data provides heliocentric ecliptic cartesian planet positions (
 in astronomical units (AU).  The p´lane of the Ecliptic for equinox JD2000 is Z=0.
 Similar convention was adopted by this app for the 3D simulation. 
 
-Planets consist of TSpheres parented to a TDummys.
+Planets consist of TSpheres parented to TDummys.
 Planet position is set using TDummy.Position. 
 Planet rotation uses TSphere.RotationAngle.
 
 For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radius ) 
 These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
-This makes the Moon rotate around Earth. 
+This makes the Moon rotate around Earth. Moon orbit radius is not used at this time ( a fake larger orbit is used )
 
-Earth sphere rotation is based on GAST, for realistic rotation. 
+Earth rotation is based on GAST (Greenwitch Apparent Sideral Time). 
 
 Both the Earth and Star background spheres are tilted by 23°26′ (Earth's ecliptic obliquity). 
 Other planets orbit's are nearly parallel to Earth's, so planets Z coordinates are usualy small 
