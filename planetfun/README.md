@@ -100,7 +100,7 @@ to set 3D phone corresponding attitude. Used quaternion rotation instead of mani
 which leads to upleasent gymbal locks. A helper class was set for manipulating the 3d object transformation Matrix )
 
 Scene uses only one light: a Sun centered ambient light.
-This results in correct object ilumination (ex: Moon disk ilumination).
+This results in correct object ilumination (ex: Moon disk ilumination) as a secondary result of the model :)
 
 TODO: add eclipse shadows
 
