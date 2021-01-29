@@ -77,15 +77,32 @@ mostly TDummys and TSpheres.
 
 ![planetfun 3d hierarchy](PlanetFun_3D_hierarchy.png)
 
-VSOP2013 planet data provides heliocentric planet positions (X,Y,Z),
-in astronomical units (AU). This convention was adopted by this app
-for the 3D simulation. Planets consist of a TSphere parented to a TDummy.
-Planet position is set by TDummy.Position. Planet rotation
-uses TSphere.RotationAngle.
+VSOP2013 planet data provides heliocentric ecliptic cartesian planet positions (X,Y,Z)
+in astronomical units (AU).  The p´lane of the Ecliptic for equinox JD2000 is Z=0.
+Similar convention was adopted by this app for the 3D simulation. 
+
+Planets consist of TSpheres parented to a TDummys.
+Planet position is set using TDummy.Position. 
+Planet rotation uses TSphere.RotationAngle.
 
 For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radius ) 
 These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
 This makes the Moon rotate around Earth. 
+
+Earth sphere rotation is based on GAST, for realistic rotation. 
+
+Both the Earth and Star background spheres are tilted by 23°26′ (Earth's ecliptic obliquity). 
+Other planets orbit's are nearly parallel to Earth's, so planets Z coordinates are usualy small 
+(except for Pluto which has a large obliquity) 
+
+Augmented reality mode uses phone azimuth-elevation-roll sensor properties ( FiremonkeySensorFusion component )
+to set 3D phone corresponding attitude. Used quaternion rotation instead of manipulating RotationAngle vector ( Euler angles ) ,
+which leads to upleasent gymbal locks. A helper class was set for manipulating the 3d object transformation Matrix )
+
+Scene uses only one light: a Sun centered ambient light.
+This results in correct object ilumination (ex: Moon disk ilumination).
+
+TODO: add eclipse shadows
 
 # Moon positions 
 
@@ -118,9 +135,6 @@ The sky background is a flat jpg image mapped to a sphere of radius 200 au.
 It was generated using Hipparcos Input Catalogue (118k stars)
 Only objects with mag<8.0 were kept, resulting in 42k stars.
 Two star background maps available: with names and lines or plain stars.
-
-# 3d world 
-The 3d world in this simulation uses ecliptic coordinates (x,y,z) in au. This is the same convention as vsop2013 results (the planet ephemeris used). This means that both the Earth and Star background spheres are tilted by 23°26′ (Earth's obliquity). Other planets orbit's are nearly parallel to Earth's, so planets z coordinates are usualy small ( except for Pluto which has a much larger obliquity ) 
 
 # Warning: not realistic
 A number of cheats introduced in version 1.0 were corrected in subsequent versions. 
