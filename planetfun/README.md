@@ -138,6 +138,8 @@ It was generated using Hipparcos Input Catalogue (118k stars)
 Only objects with mag<8.0 were kept, resulting in 42k stars.
 Two star background maps available: with names and lines or plain stars.
 
+    sky texture bmp: https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
+
 # Warning: not realistic
 A number of cheats introduced in v1.0 were corrected in subsequent versions. 
 Still remain:
