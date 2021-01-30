@@ -11,7 +11,7 @@ Full app source code is available at:
 
 * https://github.com/omarreis/vsop2013/tree/master/planetfun
 
-# release notes
+## release notes
 
 nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
@@ -102,14 +102,14 @@ which leads to upleasent gymbal locks. A helper class was set for manipulating t
 Scene uses only one light: a Sun centered ambient light.
 This results in correct object ilumination (ex: Moon disk ilumination) as a secondary result of the model :)
 
-dummyCamera is the camera target. The camera is parented to it, at a certain distance.
-Targetting the camera means parenting dummyCamera to other objects, at position (0,0,0)
+dummyCamera is the camera *target*. The camera is parented to it, at a certain distance.
+Targetting the camera means parenting dummyCamera to other objects at position (0,0,0).
+Camera Target, distance and other config can be set from Camera settings.
 
-TODO: Planet transits can be seen, but they don't cast shadows on other objects at this time.
+TODO: Planet transits can be seen, but they don't cast shadows on other objects at this time. 
 
 # Moon positions 
-
-Moon position calculations and coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
+Moon position calculations and data coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
 Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
 # Planet textures
@@ -117,13 +117,13 @@ Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörste
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
 The Texture property is a bitmap that is mapped to the sphere, on a reverse-Mercator projection.  
 Most planet textures are *not* included in this repository ( TForm planets have blank textures )
-Except for sky background textures, which is included ( see Documents folder for deployment info )
+Except for sky background texture, which is included ( see Documents folder for deployment info )
 
-You can find suitable and free textures on this website:
+I used textures from this website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
 
-steps to complete PlanetFun assets:
+Steps to complete PlanetFun assets:
 
 * Download texture images: ex: 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
 * Deploy these files to Documents folder 
@@ -131,7 +131,7 @@ steps to complete PlanetFun assets:
 
 PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Documents
 
-Follow *Solar System Scope* license conditions ( Attribution 4.0 )
+Follow *Solar System Scope* license conditions
 
 # Star background texture
 The sky background is a flat jpg image mapped to a sphere of radius 200 au.
@@ -140,15 +140,14 @@ Only objects with mag<8.0 were kept, resulting in 42k stars.
 Two star background maps available: with names and lines or plain stars.
 
 # Warning: not realistic
-A number of cheats introduced in version 1.0 were corrected in subsequent versions. 
+A number of cheats introduced in v1.0 were corrected in subsequent versions. 
 Still remain:
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a custom log formula to Sun and planet sizes, so that the Sun is only about 4 times the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
-* Moon orbit size is not realistic. But Moon celestial lat and lon are ok ( since v1.4 )   
+* Moon orbit size is not realistic. Used a larger fake size. But Moon geocentric GHA and declination are ok ( since v1.4 )   
 * Version 1.3 includes sky background textures ( two maps, with and without names & lines )
 
 # Dependencies
-*  Uses native sensor code from KastriFree
-   DelphiWorlds (files with DW. prefix) 
+*  Uses native sensor code from KastriFree. DelphiWorlds (files with DW. prefix) 
    http://www.delphiworlds.com 
 *  TMoon v2.0 component by Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 *  Uses astronomy code from https://github.com/omarreis/vsop2013/
