@@ -89,15 +89,14 @@ For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radiu
 These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
 This makes the Moon rotate around Earth. Moon orbit radius is not used at this time ( a fake larger orbit is used )
 
-Earth rotation is based on GAST (Greenwitch Apparent Sideral Time). 
+Earth rotation is based on GAST (Greenwitch Apparent Sidereal Time). 
 
 Both the Earth and Star background spheres are tilted by 23°26′ (Earth's ecliptic obliquity). 
-Other planets orbit's are nearly parallel to Earth's, so planets Z coordinates are usualy small 
-(except for Pluto which has a large obliquity) 
+Other planets orbit's are nearly parallel to Earth's, so planets Z coordinate are usualy small.
 
 Augmented reality mode uses phone azimuth-elevation-roll sensor properties ( FiremonkeySensorFusion component )
-to set 3D phone corresponding attitude. Used quaternion rotation instead of manipulating RotationAngle vector ( Euler angles ) ,
-which leads to upleasent gymbal locks. A helper class was set for manipulating the 3d object transformation Matrix )
+to set 3D phone corresponding attitude. Used quaternion rotation instead of manipulating RotationAngle (Euler angles),
+which leads to upleasant gymbal locks. A helper class was set for manipulating the 3d object's transformation Matrix instead. 
 
 Scene uses only one light: a Sun centered ambient light.
 This results in correct object ilumination (ex: Moon disk ilumination) as a secondary result of the model :)
