@@ -127,8 +127,9 @@ Numbers related to the discovery of the planet Neptune, in 1846.
 ## Facebook
 FB page: https://www.facebook.com/vrtoolsoftware
 
-## videos
+## tiktok videos
+
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
 * PlanetFun - https://www.tiktok.com/@omar_reis/video/6859411602031119622
-*             https://www.tiktok.com/@omar_reis/video/6923560996493659398
+            - https://www.tiktok.com/@omar_reis/video/6923560996493659398
 
