@@ -130,6 +130,5 @@ FB page: https://www.facebook.com/vrtoolsoftware
 ## tiktok videos
 
 * TestVSOP2013 - https://www.tiktok.com/@omar_reis/video/6850534226689805574
-* PlanetFun - https://www.tiktok.com/@omar_reis/video/6859411602031119622
-            - https://www.tiktok.com/@omar_reis/video/6923560996493659398
-
+* PlanetFun1 https://www.tiktok.com/@omar_reis/video/6859411602031119622
+* PlanetFun2 https://www.tiktok.com/@omar_reis/video/6923560996493659398
