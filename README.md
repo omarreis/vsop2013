@@ -1,11 +1,11 @@
 ## VSOP2013 for Delphi / PlanetFun app / gravityIntegration / discovery of Neptune
 
-This repository started as a Delphi port of a planet ephemerides database VSOP2013.
+This repository started as a Delphi port of planet ephemerides database VSOP2013.
 With time it grew to include:
-* Planet data tests.
+* Planet data calculation tests.
 * binary data file utility.
-* N-to-N gravity integration by leapfrog method
-* Firemonkey application "PlanetFun" ( a 4d  simulation with augmented reality )
+* N-to-N gravity integration by leapfrog method.
+* Firemonkey application "PlanetFun" ( a 4d  simulation with augmented reality ).
 
 # VSOP2013 for Delphi
 
