@@ -123,6 +123,7 @@ Windows app. Integrates planet positions using Newton's universal gravity law an
 ## discovery of planet Neptune
 Numbers related to the discovery of the planet Neptune, in 1846. 
 * see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
+* O descobrimento de Netuno (portugues): https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/leiame.md 
 
 ## Facebook
 FB page: https://www.facebook.com/vrtoolsoftware
