@@ -95,11 +95,13 @@ Both the Earth and Star background spheres are tilted by 23°26′ (Earth's ecli
 Other planets orbit's are nearly parallel to Earth's, so planets Z coordinate are usualy small.
 
 Augmented reality mode uses phone azimuth-elevation-roll sensor properties ( FiremonkeySensorFusion component )
-to set 3D phone corresponding attitude. Used quaternion rotation instead of manipulating RotationAngle (Euler angles),
-which leads to upleasant gymbal locks. A helper class was set for manipulating the 3d object's transformation Matrix instead. 
+to set 3D phone corresponding attitude. Used quaternions to apply rotation in multiple exis, 
+instead of manipulating object's Euler angles.  
+A helper class was set for manipulating the transformation Matrix. 
 
 Scene uses only one light: a Sun centered ambient light.
-This results in correct object ilumination (ex: Moon disk ilumination) as a secondary result of the model :)
+This results in correct object ilumination phenomena (ex: Moon disk ilumination) 
+as a secondary result of the model  :)
 
 dummyCamera is the camera *target*. The camera is parented to it, at a certain distance.
 Targetting the camera means parenting dummyCamera to other objects at position (0,0,0).
