@@ -5,7 +5,7 @@ With time it grew to include:
 * Planet data calculation tests.
 * binary data file utility.
 * N-to-N gravity integration by leapfrog method.
-* Firemonkey application "PlanetFun" ( a 4d planet system simulation with augmented reality ).
+* Firemonkey application "PlanetFun" ( a 4d solar system simulation with augmented reality ).
 
 # VSOP2013 for Delphi
 
