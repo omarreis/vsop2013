@@ -83,7 +83,9 @@ Similar convention was adopted by this app for the 3D simulation.
 
 Planets consist of TSpheres parented to TDummys.
 Planet position is set using TDummy.Position. 
-Planet rotation uses TSphere.RotationAngle.
+Planet rotation uses TSphere.RotationAngle
+Its ok to use RotationAngle if you changing only 2 angles
+( if changing 3, use quaternion for rotations )
 
 For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radius ) 
 These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
