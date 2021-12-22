@@ -117,6 +117,9 @@ TODO: Planet transits can be seen, but they don't cast shadows on other objects 
 Moon position calculations and data coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
 Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
+Andreas Hörstemeier's TMoon component was released to public domain according to component help file.
+Code in ahMoon.pas is derived from TMoon component.
+
 # Planet textures
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
