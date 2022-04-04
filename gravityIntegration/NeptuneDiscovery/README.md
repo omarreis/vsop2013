@@ -114,7 +114,7 @@ In fact Neptune is larger than Uranus, at 17.5 x the mass of Earth.
 My 5 cents
 
 ## also in this repository
-* vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
+* vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013
 * gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
 * Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
