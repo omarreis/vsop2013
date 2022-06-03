@@ -5,16 +5,16 @@ With time it grew to include:
 * Planet data calculation tests.
 * binary data file utility.
 * N-to-N gravity integration by leapfrog method.
-* Firemonkey application "PlanetFun" ( a 4d solar system simulation with augmented reality ).
+* Firemonkey application "PlanetFun" ( a 4d solar system simulation with augmented reality - The app is available from iOS and android stores.
 
 # VSOP2013 for Delphi
 
 VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
 This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
 
-VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time (inside a 9000y range). Algorithm uses optimized indexing to manage a number of tables of Double coeficients while keeping file sizes minimum.
+VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time (inside a 9000y range). Algorithm uses optimized indexing to manage a number of tables of coeficients while keeping file sizes minimum.
 
-Tested with D10.3.3, D10.4.1 on Win32, iOS and Android. 
+Tested with D10.3.3, D10.4.1, D11.1 on Win32, iOS and Android. 
 Tests are for Firemonkey, but should work with VCL and console app as well.
 
 VSOP 2013 original Fortran code and data files can be found at:
