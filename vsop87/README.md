@@ -22,7 +22,7 @@ See *Demo* folder
 
 Parameters:
 
-* select Star name
+* select Planet
 * set Date ( Universal Time a.k.a GMT ) 
 * set navigator Assumed Position ( Lat and Lon )
 
