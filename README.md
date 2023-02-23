@@ -52,10 +52,14 @@ Object T_VSOP2013_File in pas:
 * Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
 * calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
 
-## VSOP87
+## Astronomical Algorithms
+
+Most algorithms are from the book "Astronomical Algorithms" by Jean Meeus ( 1st and 2nd editions )
+
+## VSOP 87
 
 VSOP 87 is described in Meeus book and implemented here in Pascal.
-It is similar to VSOP2013, with lower precision, but smaller data footprint.
+It is similar to VSOP2013, with a lower precision but also a smaller data footprint.
 It is precise enough for most applications.
 
 See *VSOP87* and *VSOP87/Demo* folders
