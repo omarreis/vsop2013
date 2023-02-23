@@ -1,7 +1,12 @@
-unit quaternionRotations;  // by oMAR Quaternions are used to rotate a 3d object
+unit quaternionRotations;  // Quaternions are used to rotate a 3d object
+ //-----------------------//
 // in multiple axis.
 // Warning: Using RotationAngle (Euler angles) can generate gymbal locks and weird movements
-// set20:
+// source: github.com/omarreis/vsop2013/
+// programmed by oMAR
+// Hisory:
+// set20: start
+//------------------------------------------------------------------------------------
 
 interface
 

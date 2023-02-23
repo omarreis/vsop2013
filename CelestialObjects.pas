@@ -1,9 +1,15 @@
-unit CelestialObjects;      //--  Celestial objects  --\\
- //------------------------//
-//   github.com/omarreis/vsop2013/planetfun
-//   by oMAR
-//   History:
-//     ago20: Om: v1.0
+unit CelestialObjects;      //--- Celestial objects ---\\
+ //------------------------//                           \\---\\
+//   github.com/omarreis/vsop2013/planetfun                   \\
+//   by oMAR                                                   \\
+// TCelestialObject holds object ephemeris(VSOP2013 calculated) \\
+// Leapfrog gravity integration                                  \\
+//                                                                ||
+//                                                               //
+//                                                              //
+//   History:                                                  //
+//     ago20: Om: v1.0                                        //
+//-----------------------------------------------------------//
 
 interface
 
@@ -15,8 +21,8 @@ uses
   System.Generics.Collections,
 
   doubleVector3D,   // TVector3D_D
-  vsop2013,        // planetary ephemeris.  TVector3D_D
-  PlanetData;     // planets physical data
+  vsop2013,        // VSOP2013 planetary ephemeris.  TVector3D_D
+  PlanetData;     // planets extra physical data
 
 type
 
@@ -43,7 +49,7 @@ type
     vJDE   :Double;           // time Julian date
     vPos   :TVector3D_D;      // heliocentric coordinates in AU  from VSOP2013
     vSpd   :TVector3D_D;      // speed in AU/day from VSOP2013
-    // temporary storage, so we can calculate all Forces, than move all planets at once
+    // temporary storage, so during integration we can calculate all Forces, than move all planets at once
     tJDE   :Double;           // time Julian date
     tPos   :TVector3D_D;      // heliocentric coordinates in AU  from VSOP2013
     tSpd   :TVector3D_D;      // speed in AU/day from VSOP2013

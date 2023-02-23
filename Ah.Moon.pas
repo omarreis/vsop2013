@@ -32,6 +32,7 @@ function moon_coordinate(const aDate:TDateTime):t_coord;  // aDate in UT
 implementation  //---------------------------------------
 
 uses
+  Om.Trigonometry,
   Om.AstronomicalAlgorithms;  // Om: date functions 
 
 { Coordinate functions }

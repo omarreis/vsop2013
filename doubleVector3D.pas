@@ -1,4 +1,6 @@
 unit doubleVector3D;  // TVector3D_D - 3D vector w/ Double components ( RTL TVector3D has Single components )
+//-------------------//
+
 interface
 
 uses

@@ -1,13 +1,15 @@
-unit PlanetData;  // PlanetFun planet data & date utils
- //--------------//
-//   github.com/omarreis/vsop2013/planetfun
-//
-//   History:
-//     jul20: Om: v1.0
+unit PlanetData;  // PlanetFun planet data & date utils -------------//
+ //--------------//                                                 //
+//   github.com/omarreis/vsop2013/                                 //
+//                                                                //
+//   History:                                                    //
+//     jul20: Om: v1.0                                          //
+//-------------------------------------------------------------//
+
 interface
 
 uses
-  System.SysUtils, System.DateUtils;
+  System.DateUtils;
 
 // Planet equatorial radius in Km
 // from: https://www.smartconversion.com/otherinfo/Equatorial_Radius_of_planets_and_the_sun.aspx
@@ -42,13 +44,13 @@ const
   NUM_OBJS=NUM_PLANETS+2;   // Sun is included as planet # zero. Moon also included
 
   // Astronomical Unit is the mean distance between Sun and Earth
+  //AUtoKm=149598000.0;   // 1 AU = 149.598.000 Km   (~ 150M km)
   AUtoM =149597870700;   // since 2012, according to https://en.wikipedia.org/wiki/Astronomical_unit
   AUtoKm=AUtoM/1000;     // 1 AU = 149.598.787 Km   (~ 150M km)
   // 1 AU in KM = 149,598,000 kilometers . From https://www.universetoday.com/41974/1-au-in-km/
   Day2Sec=24.0*3600;
   // convert m/s^2 --> AU/day^2
   M_S2toAU_day2=Day2Sec*Day2Sec/AUtoM;   // M_S2toAU_day2 ~ 0.049900175484
-
 type
   TpfRec=record      //yet another planet data record
     name:String;     // 'Jupiter'
@@ -59,10 +61,10 @@ type
     Obliq:Double;    // Obliquity in degrees (from http://solarviews.com/cap/misc/obliquity.htm)
   end;
 
-const        // approximate values..
-  UnivGravConst = 6.67408E-11;  //  6.67408E-11 N . m^2/Kg^2 Universal Gravitational Constant
+const   // approximate values..
+  UnivGravConst = 6.67408E-11;  //  6.67408E-11 N . m^2/Kg^2 Universal Gravitational Constant ( Newton invented that ! )
   EarthRadius = 6378.1;
-
+  
   PLANET_DATA: Array[0..NUM_OBJS-1] of TpfRec=(       // planet sizes
     (name: 'Sun'    ; radius:696340; mass:1.98847e+30; rotPer:0;    revPer:0      ; Obliq: 0.0),   // 0
     (name: 'Mercury'; radius:2439.7; mass:3.30100e+23; rotPer:58.6; revPer:87.97  ; Obliq: 0.1),   // 1
@@ -76,6 +78,12 @@ const        // approximate values..
     (name: 'Pluto'  ; radius:1195  ; mass:1.47100e+22; rotPer:6.39; revPer:90797  ; Obliq: 16.11), // 9
     (name: 'Moon'   ; radius:1737.1; mass:7.34600e+22; rotPer:28  ; revPer:28     ; Obliq: 0) );   // 10
 
+// date utils
+Function JD(Y,M,D,UT:Double):Double;  // encode Julian date
+Function JulianToGregorianDate(const JD:Double):TDatetime;
+
+
+implementation  // --------------------------------------------
 // from  https://en.wikipedia.org/wiki/Planetary_mass ( in Kg )
 // IAU best estimates (2009) ( DE405 for Sun and Earth )
 // Sun      1.98847e+30    from https://en.wikipedia.org/wiki/Solar_mass
@@ -103,8 +111,43 @@ const        // approximate values..
 // Pluto 	  1.2500e+22
 // Moon 	  7.3490e+22
 
+// Some date utils
+// from astronomical algorithms - J. Meeus
+Function JD(Y,M,D,UT:Double):Double;  // encode Julian date
+var A,B:double;
+begin
+  if (M<=2) then
+    begin
+      Y := Y-1;
+      M := M+12;
+    end;
+  A := Int(Y/100);
+  B := 2-A+Int(A/4);
+  Result := Int(365.25*(Y+4716))+Int(30.6001*(M+1))+D+B-1524.5+UT/24;
+end;
 
-implementation  // --------------------------------------------
+// Julian number to Gregorian Date. Astronomical Algorithms - J. Meeus
+Function JulianToGregorianDate(const JD:Double):TDatetime;
+var A,B,F:Double; alpha,C,E:integer; D,Z:longint; dd,mm,yy:word;
+begin
+  Z := trunc(JD + 0.5);
+  F := (JD + 0.5) - Z;
+  if (Z<2299161.0) then A:=Z
+    else begin
+      alpha := trunc( (Z-1867216.25)/36524.25);
+      A := Z+1+alpha-(alpha div 4);
+    end;
+  B := A + 1524;
+  C := trunc( (B - 122.1) / 365.25);
+  D := trunc( 365.25 * C);
+  E := trunc((B - D) / 30.6001);
+  dd := Trunc(B - D - int(30.6001 * E) + F);
+  if (E<14) then mm := E - 1
+    else mm := E - 13;
+  if mm > 2 then yy := C - 4716
+    else yy := C - 4715;
 
+  Result := EncodeDatetime(yy,mm,dd,0,0,0,0);   // ignore time
+end;
 
 end.

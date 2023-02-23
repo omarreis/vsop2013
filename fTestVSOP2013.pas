@@ -1,4 +1,13 @@
-unit fTestVSOP2013;
+unit fTestVSOP2013;   //-----------------------------------------//
+//-------------------//                                         //
+// Test app and utility for VSOP2013 calculations              //
+// Delphi Firemonkey app - tested on Windows                  //
+//                                                           //
+// programmed by oMAR                                       //
+//      repository: github.com/omarreis/VSOP2013           //
+//   History:                                             //
+//      jul20: Om: v1.0                                  //
+//------------------------------------------------------//
 
 interface
 
@@ -13,7 +22,8 @@ uses
 
   vsop2013,
   doubleVector3D,
-  PlanetData;
+  Om.AstronomicalAlgorithms,
+  PlanetData;       // VSOP2013
 
 type
   TForm2 = class(TForm)
@@ -149,7 +159,7 @@ begin
        //convert to screen coordinates
        aScP := Vector( C.x+aPos.x*aScale,C.Y+aPos.y*aScale);  //convert au-->pix
 
-       aRadius := PLANET_RADIUS[ip];
+       aRadius := PLANET_RADIUS[ip]/2;
 
        aR := RectF(aScP.X-aRadius, aScP.Y-aRadius, aScP.X+aRadius, aScP.Y+aRadius);
        fBitmap.Canvas.Fill.Color := PLANET_COLORS[ip];
@@ -271,7 +281,7 @@ procedure TForm2.edDateChange(Sender: TObject);
 var D:TDatetime; aJD:Double;
 begin
   D     := edDate.Date;
-  aJD   := DateToJD( D );
+  aJD   := DatetimeToJD( D );
   edJDE.Text := Format('%6.1f',[aJD]);
 end;
 

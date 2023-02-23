@@ -1,4 +1,5 @@
-unit vsop2013;       // Delphi implementation of theory VSOP2013
+unit vsop2013;       //---Delphi implementation of theory VSOP2013
+ //-----------------//
 // This is Delphi port from original Fortran code by FRANCOU & SIMON
 // VSOP original files:
 //   ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
@@ -7,16 +8,19 @@ unit vsop2013;       // Delphi implementation of theory VSOP2013
 // There are 6 coefs/line ( 163 x )
 // The file header constains a table loc[,] of indexes into the coefs[] array
 // Each planet has a number of coefs.
-// Source: github.com/omarreis/vsop2013
-
+//
+//  programmed by oMAR
+//  Source: github.com/omarreis/vsop2013
+//---------------------------------------------------------------------
 //
 // History:
 //   jun 2020: Loose port v0.9 from Fortran by oMAR
 //     this code loads coefs from ASCII file and builds memory tables (instead of original BIN files)
 //     note: Fortran language is '1 based' (array indexes all start with 1 (at least this code is) )
-//   jul 2020: For reasons of max bundle size and load speed om mobile, I adopted a custom binary format
+//   jul 2020: For reasons of max bundle size and load speed on mobile, I adopted a custom binary format
 //             ( same solution as VSOP2013 authors, however w/ a different approach )
 //             This cut the database size from 400 MB to 130 MB :)
+//---------------------------------------------------------------------
 
 interface
 
