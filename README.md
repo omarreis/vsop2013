@@ -3,13 +3,12 @@
 This repository started as a Delphi port of planet ephemerides database VSOP2013.
 With time it grew to include:
 
-* VSOP2013 planet data calculation tests.+
-* VSOP2013 binary data file utility.
+* VSOP2013 planet data calculation tests and binary data file utility.
 * N-to-N gravity integration by leapfrog method.
 * Delphi application "PlanetFun" ( a 3d solar system simulation with augmented reality - The app is available on iOS Appstore and Android Google Play ).
 * Hipparchus 150 star position calculations ( 150 brightest stars )
 * VSOP87 planet position theory - Another planet theory, with smaller data footprint.
-* Moon position calculations ( adapted from TMoon component, by Andreas Hörstemeier
+* Moon position calculations ( adapted from TMoon component, by Andreas Hörstemeier )
 
 # VSOP2013 for Delphi
 
