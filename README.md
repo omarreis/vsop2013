@@ -2,10 +2,14 @@
 
 This repository started as a Delphi port of planet ephemerides database VSOP2013.
 With time it grew to include:
-* Planet data calculation tests.
-* binary data file utility.
+
+* VSOP2013 planet data calculation tests.+
+* VSOP2013 binary data file utility.
 * N-to-N gravity integration by leapfrog method.
-* Delphi FMX application "PlanetFun" ( a 4d solar system simulation with augmented reality - The app is available on iOS Appstore and Android Google Play store ).
+* Delphi application "PlanetFun" ( a 3d solar system simulation with augmented reality - The app is available on iOS Appstore and Android Google Play ).
+* Hipparchus 150 star position calculations ( 150 brightest stars )
+* VSOP87 planet position theory - Another planet theory, with smaller data footprint.
+* Moon position calculations ( adapted from TMoon component, by Andreas Hörstemeier
 
 # VSOP2013 for Delphi
 
@@ -126,6 +130,16 @@ Windows app. Integrates planet positions using Newton's universal gravity law an
 Numbers related to the discovery of the planet Neptune, in 1846. 
 * see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 * O descobrimento de Netuno (portugues): https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/leiame.md 
+
+## VSOP87
+
+VSOP 87 is described in Meeus book and implemented here in Pascal.
+See *VSOP87* and *VSOP87/Demo* folders
+
+## Hipparchus 150 stars
+
+A star position calculation.
+See *TestH150* folder.
 
 ## Facebook
 FB page: https://www.facebook.com/vrtoolsoftware
