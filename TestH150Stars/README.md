@@ -3,6 +3,8 @@
 *TestH150Stars* App for Delphi Firemonkey platform.
 This app tests code implemented in StarData.pas
 
+![screenshot](TestH150Stars.png)
+
 Uses Hipparchus 150 Stars ( the most visible stars )
 Star position data for J2000.0 is embedded in StarData.pas, so no data file is necessary.
 Star positions are corrected for proper motion, Aberration, Nutation and precession.
@@ -37,8 +39,4 @@ At navigator's Earth position:
 ## Dependencies  
 
 Uses files from /omarreis/vsop2013
-
-## Screenshot
-
-![screenshot](TestH150Stars.png)
 
