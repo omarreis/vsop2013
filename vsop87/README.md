@@ -8,11 +8,11 @@
 
 Note that this repository also contains newer VSOP2013 theory, more precise.
 VSOP2013 includes 9 planets and larger time domain.
-However VSOP2013 requires a large 100 MB table of coeficients, which makes it
+However VSOP2013 requires a large 100 MB table of coefficients, which makes it
 difficult to use in mobile devices.
 
-VSOP87 gives good enough results for most apps, using a smaller set of data coeficients.
-In this implementation the coeficients are embedded as code constants, rather than a separate file ( as in VSOP2013 )
+VSOP87 gives good enough results for most apps, using a smaller set of data coefficients.
+In this implementation the coefficients are embedded as code constants, rather than a separate file ( as in VSOP2013 )
 
 ## Demo app
 
