@@ -18,5 +18,5 @@ In this implementation the coeficients are embedded as code constants, rather th
 
 See ../Demo folder
 
-![screenshot](TestVSOP87.png)
+![screenshot](screenshotTestVSOP87.png)
 
