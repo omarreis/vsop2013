@@ -6,6 +6,7 @@ uses
   FMX.Forms,
   fPlanetFun in 'fPlanetFun.pas' {FormPlanetFun},
   PlanetData in 'PlanetData.pas',
+  StarData in '..\StarData.pas',
   vsop2013 in '..\vsop2013.pas',
   CameraMovementToolbar in 'CameraMovementToolbar.pas';
 

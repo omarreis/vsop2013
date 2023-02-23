@@ -11,6 +11,9 @@ unit fPlanetFun;    //-----  planetary system 3d animation --------\\
 //          see http://www.hoerstemeier.com/moon.htm                   \\
 //---------------------------------------------------------------------\\
 
+// version history:
+// dec22: Om: 1.6.1 - fixed startup crash on Android 13 ( w/ D11.2 )
+
 interface
 
 uses
@@ -88,6 +91,7 @@ type
     Light1: TLight;
     lightMaterialTextureMoon: TLightMaterialSource;
     lightMaterialTextureEarth: TLightMaterialSource;
+    LightMaterialTextureEarthNight: TLightMaterialSource;
     lightMaterialTextureJupiter: TLightMaterialSource;
     lightMaterialTextureMars: TLightMaterialSource;
     lightMaterialTextureSaturn: TLightMaterialSource;
@@ -185,6 +189,7 @@ type
     Label12: TLabel;
     cbShowLightHouseAndPhone: TSwitch;
     imgCameraManipulationToolbar: TImage;
+    sphereEarthNight: TSphere;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -225,6 +230,7 @@ type
     procedure cbShowLightHouseAndPhoneSwitch(Sender: TObject);
     procedure imgCameraManipulationToolbarMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+    procedure On3dObjClick(Sender: TObject);
   private
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
@@ -288,6 +294,7 @@ implementation   // ---x--xx-xxx........................
 //  sphereSky.RotationAngle.X = 336.566666666667      (same obliquity as the earth. Same equator by definition.
 
 uses
+  Om.Trigonometry,
   Om.AstronomicalAlgorithms,   // astronomical algorithm formulas from Meeus book
   Ah.Moon,                     // Moon positions ( from AA chapter 45 and Andreas Hörstemeier TMoon }
   quaternionRotations,
@@ -690,7 +697,9 @@ begin
   // labStatus3.Text:= 'RA='+Trim( Format('%5.1f',[aRA]) )+' rot='+Trim( Format('%5.1f',[aRot]) ) ;
 
   // y = Earth rotation axis
-  sphereEarth.RotationAngle.Y  := aRot; //rotate earth    Ad hoc factor to make earth spin fast
+  sphereEarth.RotationAngle.Y       := aRot; //rotate earth    Ad hoc factor to make earth spin fast
+  sphereEarthNight.RotationAngle.Y  := aRot; //rotate earth night in sync
+
   // labStatus.Text := Format('%5.1f',[aRot]);
 end;
 
@@ -715,6 +724,21 @@ begin
 
           Rectangle1.SendToBack;
      end;
+end;
+
+procedure TFormPlanetFun.On3dObjClick(Sender: TObject);    // clicked a 3d sphere. show object data...
+begin                                                      // object must have HitTest = true
+  if      (Sender=sphereMoon)    then showToastMessage('Moon'    )
+  else if (Sender=sphereEarth)   then showToastMessage('Earth'   )
+  else if (Sender=sphereMercury) then showToastMessage('Mercury' )
+  else if (Sender=sphereVenus)   then showToastMessage('Venus'   )
+  else if (Sender=sphereMars)    then showToastMessage('Mars'    )
+  else if (Sender=sphereJupiter) then showToastMessage('Jupiter' )
+  else if (Sender=sphereSaturn)  then showToastMessage('Saturn'  )
+  else if (Sender=sphereUranus)  then showToastMessage('Uranus'  )
+  else if (Sender=sphereNeptune) then showToastMessage('Neptune' )
+  else if (Sender=spherePluto)   then showToastMessage('Pluto'   );
+  // else ..
 end;
 
 // interactive gestures for mobile ( on Windows use mouse events combined with shift keys. See MouseMove() event )
@@ -768,6 +792,7 @@ begin    // 3d coordinates are in AU
         r := LN( PLANET_DATA[1].radius/k  )*sc ;  sphereMercury.Scale.Point := Point3D(r,r,r);
         r := LN( PLANET_DATA[2].radius/k  )*sc ;  sphereVenus.Scale.Point   := Point3D(r,r,r);
         r := LN( PLANET_DATA[3].radius/k  )*sc ;  sphereEarth.Scale.Point   := Point3D(r,r,r);
+                                             sphereEarthNight.Scale.Point   := Point3D(r,r,r); //same scale
         r := LN( PLANET_DATA[4].radius/k  )*sc ;  sphereMars.Scale.Point    := Point3D(r,r,r);
         r := LN( PLANET_DATA[5].radius/k  )*sc ;  sphereJupiter.Scale.Point := Point3D(r,r,r);
         r := LN( PLANET_DATA[6].radius/k  )*sc ;  sphereSaturn.Scale.Point  := Point3D(r,r,r);
@@ -789,6 +814,7 @@ begin    // 3d coordinates are in AU
         r := PLANET_DATA[1].radius/AUtoKm  *sc;  sphereMercury.Scale.Point := Point3D(r,r,r);
         r := PLANET_DATA[2].radius/AUtoKm  *sc;  sphereVenus.Scale.Point   := Point3D(r,r,r);
         r := PLANET_DATA[3].radius/AUtoKm  *sc;  sphereEarth.Scale.Point   := Point3D(r,r,r);
+                                              sphereEarthNight.Scale.Point := Point3D(r,r,r);
         r := PLANET_DATA[4].radius/AUtoKm  *sc;  sphereMars.Scale.Point    := Point3D(r,r,r);
         r := PLANET_DATA[5].radius/AUtoKm  *sc;  sphereJupiter.Scale.Point := Point3D(r,r,r);
         r := PLANET_DATA[6].radius/AUtoKm  *sc;  sphereSaturn.Scale.Point  := Point3D(r,r,r);
@@ -804,7 +830,8 @@ begin    // 3d coordinates are in AU
   sphereMercury.RotationAngle.x := - PLANET_DATA[1].Obliq;
   sphereVenus.RotationAngle.x   := - PLANET_DATA[2].Obliq;
                               r := - PLANET_DATA[3].Obliq;  // Earth obliquity
-  sphereEarth.RotationAngle.x   := r;    // apply to Earth axis and to orbit of the Moon. Is this right ?
+  sphereEarth.RotationAngle.x      := r; // apply to Earth axis and to orbit of the Moon. Is this right ?
+  sphereEarthNight.RotationAngle.x := r;
   // dummyMoonOrbitCenter.RotationAngle.x   := r;
 
   // set other planets approximate obliquities
@@ -890,7 +917,10 @@ begin
 end;
 
 procedure TFormPlanetFun.PositionPlanets;   // according to vsop2013 at epoch fJDE
-var ip:integer; aPosition,aSpeed:TVector3D_D; aDummy:TDummy; Year:Double; aPosition3d:TPoint3d; aUT:TDatetime;
+var ip:integer;  aPosition,aSpeed:TVector3D_D;
+    aDummy:TDummy; Year:Double; aPosition3d:TPoint3d; aUT:TDatetime; SunEarthVec:TVector3D;
+const
+  AUinKm=149598000;    // au in km: 150M
 begin
   if not ( Assigned(VSOP_File) and VSOP_File.fLoaded ) then exit;  //sanity test. File must be loaded
 
@@ -898,32 +928,33 @@ begin
     begin
       // vsop2013 returns rectangular heliocentric coordinates x,y,z in UA
       if VSOP_File.calculate_coordinates( {ip:}ip , {jde:}fJDE, {out:} aPosition, aSpeed) then
-            begin
-              // translate between Astronomical coordinates and 3D world
-              aPosition3d := Point3D(   // 3DWorld   Universe
-                 aPosition.x,           //   x          x
-                -aPosition.z,           //   y         -z
-                 aPosition.y  );        //   z          y
+         begin
+           // translate between Astronomical coordinates and 3D world
+           aPosition3d := Point3D(   // 3DWorld   Universe
+              aPosition.x,           //   x          x
+             -aPosition.z,           //   y         -z
+              aPosition.y  );        //   z          y
 
-              aDummy := nil;
-              case ip of
-                //0: aDummy := dummySun;
-                1: aDummy := dummyMercury;
-                2: aDummy := dummyVenus;
-                3: aDummy := dummyEarth;
-                4: aDummy := dummyMars;
-                5: aDummy := dummyJupiter;
-                6: aDummy := dummySaturn;
-                7: aDummy := dummyUranus;
-                8: aDummy := dummyNeptune;
-                9: aDummy := dummyPluto;
-              end;
-              if Assigned(aDummy) then
-                begin
-                  //position planet
-                  aDummy.Position.Point := aPosition3d;   // 1 = scale --> 1 au = 1.0 3D world unit
-                end;
-            end;
+           aDummy := nil;
+           case ip of
+             //0: aDummy := dummySun;
+             1: aDummy := dummyMercury;
+             2: aDummy := dummyVenus;
+             3: aDummy := dummyEarth;
+             4: aDummy := dummyMars;
+             5: aDummy := dummyJupiter;
+             6: aDummy := dummySaturn;
+             7: aDummy := dummyUranus;
+             8: aDummy := dummyNeptune;
+             9: aDummy := dummyPluto;
+           end;
+           if Assigned(aDummy) then  //position planet
+             aDummy.Position.Point := aPosition3d;   // 1 = scale --> 1 au = 1.0 3D world unit
+         end;
+
+      // displace earthNight 100 km away from the Sun
+      SunEarthVec := dummyEarth.Position.Vector;
+      // sphereEarthNight.Position.Point := -SunEarthVec/100;   //*1000/AUinKm;
     end;
 
   // show date
@@ -1366,6 +1397,8 @@ const
     '2k_neptune.jpg',        // 8:Neptune;
     'PlutoTexture.jpg',      // 9:Pluto;
     '2k_moon.jpg' );         // 10:Moon
+
+  EarthNigthTex='2k_earth_nightmap.jpg';
 // not used yet
 //    '2k_earth_clouds.jpg'
 //    '2k_earth_nightmap.jpg'
@@ -1403,6 +1436,10 @@ begin
         end;
         // else
     end;
+
+  // night texture
+  aFN := aPath + EarthNigthTex;
+  lightMaterialTextureEarthNight.Texture.LoadFromFile(aFN);
 end;
 
 procedure TFormPlanetFun.cbConstLinesNamesSwitch(Sender: TObject);
@@ -1466,7 +1503,7 @@ begin
     9: aDummy := dummyNeptune;            // Neptune
     10: aDummy := dummyPluto;             // Pluto
     11: aDummy := dummyLighthouse;        // Lighthouse
-    12: aDummy := dummyPhoneTarget;       // Phone
+    12: aDummy := dummyPhoneTarget;       // Phone ( Augmented Reality mode )
     else exit;
   end;
 
