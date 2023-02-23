@@ -60,7 +60,7 @@ It is precise enough for most applications.
 
 See *VSOP87* and *VSOP87/Demo* folders
 
-    https://github.com/omarreis/vsop2013/tree/master/vsop87
+https://github.com/omarreis/vsop2013/tree/master/vsop87
 
 ## Hipparchus 150 stars
 
@@ -68,7 +68,7 @@ A star position calculation. Lists 150 brightest stars and implements coordinate
 
 See *TestH150* folder for test app.
 
-   https://github.com/omarreis/vsop2013/tree/master/TestH150Stars
+https://github.com/omarreis/vsop2013/tree/master/TestH150Stars
 
 # Sample apps
 Three sample apps are included in this repository. 
