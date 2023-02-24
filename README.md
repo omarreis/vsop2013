@@ -8,9 +8,9 @@ With time it grew to include:
 * Delphi application "PlanetFun" ( a 3d solar system simulation with augmented reality - The app is available on iOS Appstore and Android Google Play ).
 * Hipparchus 150 star position calculations ( 150 brightest stars )
 * VSOP87 planet position theory - Another planet theory, with smaller data footprint.
-* Moon position calculations ( adapted from TMoon component, by Andreas Hörstemeier )
+* Moon position calculations ( ELP2000. Code was adapted from TMoon component by Andreas Hörstemeier )
 
-# VSOP2013 for Delphi
+# VSOP 2013 
 
 VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
 This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
@@ -48,6 +48,7 @@ In this Delphi port, the whole ASCII file is loaded into memory tables, for even
 Once loaded, computations are very fast. 
 
 Object T_VSOP2013_File in pas:
+
 * Parses a data file - Use only files in original format, as the parser relies on fixed positions.
 * Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
 * calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
@@ -56,10 +57,18 @@ Object T_VSOP2013_File in pas:
 
 Most algorithms are from the book "Astronomical Algorithms" by Jean Meeus ( 1st and 2nd editions )
 
+## Moon positions
+
+Moon position calculations use theory ELP2000 ( AA chapter 47 ). ELP (Éphéméride Lunaire Parisienne) is a lunar theory developed by Jean Chapront, Michelle Chapront-Touzé, on the Bureau des Longitudes.
+
+The implementation in Ah.Moon.pas was extracted from TMoon component by Andreas Hörstemeier.
+
+see http://www.hoerstemeier.com/moon.htm 
+
 ## VSOP 87
 
-VSOP 87 is described in Meeus book and implemented here in Pascal.
-It is similar to VSOP2013, with a lower precision but also a smaller data footprint.
+An older version of VSOP is described in Meeus book: VSOP 87
+It is similar to VSOP 2013, with a lower precision but also a much smaller data footprint.
 It is precise enough for most applications.
 
 See *VSOP87* and *VSOP87/Demo* folders
