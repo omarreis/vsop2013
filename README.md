@@ -85,9 +85,11 @@ https://github.com/omarreis/vsop2013/tree/master/TestH150Stars
 
 # Sample apps
 Three sample apps are included in this repository. 
-* TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
+* TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary data file utility (converts txt data to floating point). 
 * PlanetFun - Planetary system 3D simulation. Requires downloading and deploying planet textures from 3rd party site plus VSOP2013 binary file (see below). PlanetFun is available as executable for Windows. For Android and iOS download from stores (search "PlanetFun"). 
 * gravityIntegration - Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.. Planets Almanac. 
+* TestVSOP87 - Planet position calculations.
+* TestH150 - Hipparchus 150 star position calculations.
 
 # Sample app 1: TestVSOP2013
 *TestVSOP2013* is a Firemonkey app. 
