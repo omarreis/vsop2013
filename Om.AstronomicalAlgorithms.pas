@@ -15,6 +15,8 @@ uses
 const
   SegToSec = (1/(86400.0*36525.0));   // secs to para centuries conversion
 
+
+
 // date utils
 Function JD(Y,M,D,UT:Double):Double;                // encode Julian date from UT
 Function JDtoDatetime(const JD:Double):TDatetime;
@@ -131,7 +133,7 @@ begin {Efeito da aberracao}
 end;
 
 // JD - Julian Day - Astro Algorithms J.Meeus, pg 61 formula 7.1
-// Implementada em Jul/04 para ter maior validade que a do Alm For Comp
+// Implementada em Jul/04 para ter maior validade que a do Alm For Computers
 // alguns usuarios reclamaram que a formula acima não funciona para 1800 !
 Function JD(Y,M,D,UT:Double):Double;
 var A,B:double;
@@ -147,9 +149,10 @@ begin
   Result := Int(365.25*(Y+4716))+Int(30.6001*(M+1))+D+B-1524.5+UT/24;
 end;
 
+// TJ2000 in seculae since 1-jan-2000 12 UT, using years of 365.25 days
 Function TJ2000(K,M,I,UT:Double):Double; {Time in centuries since  J2000.0}
 begin
-  TJ2000 := (JD(K,M,I,UT)-2451545.0)/36525.0;
+  TJ2000 := (JD(K,M,I,UT)-2451545.0)/36525.0;       // 2451545.0 = JD2000
 end;
 
 // H in hours UT

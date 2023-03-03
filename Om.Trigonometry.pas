@@ -38,6 +38,8 @@ Function R2GMD(R:Double;var GM:Double; Sufx:String):String; {Double --> 'GGGøMM.
 // angle/hour normalization ( set to range )
 Procedure AjustaHora(var H:Double);                 // retuns H in range 0..24
 Procedure AjustaAngulo(var R:Double);              // returns angle R in range 0..360
+Procedure AjustaAngulo2(var R:Double);            // same as above, faster for large R
+
 Procedure PoeEmRange(var R:Double; RMax:Double);  // Coloca R in range 0..RMax
 
 implementation //------------------------------------------------------------------------------
@@ -57,6 +59,10 @@ begin  PoeEmRange(H,24.0);  end;
 Procedure AjustaAngulo(var R:Double); {Coloca R no range entre 0 e 360.0}
 begin  PoeEmRange(R,360); end;
 
+Procedure AjustaAngulo2(var R:Double); {Coloca R no range entre 0 e 360.0}
+begin
+  R := Frac(R/360.0)*360.0;
+end;
 
 Function Sing(const G:Double):Double;  { Sin() using degrees}
 begin Sing := Sin(G*Pi/180); end;
@@ -84,13 +90,13 @@ end;
 Function ATan2(y,x:Double):Double; {Arco tangente com quadrante correto em graus}
 var t:Double;    {Tan=Sin/cos=y/x}
 begin
-  t:=ArcTan(y/x)*180/Pi; {Calcula tangente no range -90..+90 }
+  t := ArcTan(y/x)*180/Pi;     {Calcula tangente no range -90..+90 }
   if x>0 then
     begin
-      if y<0 then t:=360.0+t; {4o quadrante (t<0)}
+      if y<0 then t:=360.0+t;  {4o quadrante (t<0)}
       {else t:=t  1o quadrante, nao muda}
     end
-    else t:=t+180.0;   {3o e 4o quadrante}
+    else t:=t+180.0;          {3o e 4o quadrante}
   Atan2:=t;
 end;
 
