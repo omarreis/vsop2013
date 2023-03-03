@@ -2,7 +2,7 @@ object FormStarEphemeris: TFormStarEphemeris
   Left = 0
   Top = 0
   Caption = 'Star position calculation'
-  ClientHeight = 509
+  ClientHeight = 599
   ClientWidth = 332
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -17,22 +17,24 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Width = 79.000000000000000000
     Size.Height = 36.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 0
+    TabOrder = 2
     Text = 'Calc'
     OnClick = btnCalcStarClick
   end
   object Memo1: TMemo
     Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
     DataDetectorTypes = []
+    StyledSettings = [Size, Style, FontColor]
+    TextSettings.Font.Family = 'Courier New'
     Anchors = [akLeft, akTop, akRight, akBottom]
     Position.X = 8.000000000000000000
-    Position.Y = 208.000000000000000000
+    Position.Y = 288.000000000000000000
     Size.Width = 316.000000000000000000
-    Size.Height = 295.000000000000000000
+    Size.Height = 303.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 3
     Viewport.Width = 312.000000000000000000
-    Viewport.Height = 291.000000000000000000
+    Viewport.Height = 299.000000000000000000
   end
   object edDate: TDateEdit
     Date = 44971.000000000000000000
@@ -42,7 +44,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
     StyledSettings = [Family, Style, FontColor]
-    TabOrder = 3
+    TabOrder = 5
   end
   object edTime: TTimeEdit
     Time = 0.698664884259259200
@@ -53,7 +55,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
     StyledSettings = [Family, Style, FontColor]
-    TabOrder = 7
+    TabOrder = 10
   end
   object Label3: TLabel
     StyledSettings = [Family, FontColor]
@@ -64,7 +66,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.PlatformDefault = False
     TextSettings.VertAlign = Leading
     Text = 'This app calculates Hipparcos 150 stars positions'
-    TabOrder = 4
+    TabOrder = 6
   end
   object btnNow: TButton
     Anchors = [akTop, akRight]
@@ -74,7 +76,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Width = 54.000000000000000000
     Size.Height = 36.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 13
+    TabOrder = 16
     Text = 'Now'
     OnClick = btnNowClick
   end
@@ -84,7 +86,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Width = 143.000000000000000000
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 15
+    TabOrder = 18
   end
   object Label1: TLabel
     StyledSettings = [Family, FontColor]
@@ -97,7 +99,7 @@ object FormStarEphemeris: TFormStarEphemeris
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.HorzAlign = Trailing
     Text = 'UT:'
-    TabOrder = 12
+    TabOrder = 15
   end
   object Label2: TLabel
     StyledSettings = [Family, FontColor]
@@ -110,7 +112,7 @@ object FormStarEphemeris: TFormStarEphemeris
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.HorzAlign = Trailing
     Text = 'Star:'
-    TabOrder = 11
+    TabOrder = 14
   end
   object Label8: TLabel
     StyledSettings = [Family, FontColor]
@@ -122,7 +124,7 @@ object FormStarEphemeris: TFormStarEphemeris
     TextSettings.Font.Size = 14.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Assumed Position'
-    TabOrder = 5
+    TabOrder = 7
   end
   object Label4: TLabel
     StyledSettings = [Family, FontColor]
@@ -135,11 +137,11 @@ object FormStarEphemeris: TFormStarEphemeris
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.HorzAlign = Trailing
     Text = 'Lat:'
-    TabOrder = 14
+    TabOrder = 17
   end
   object edLat: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 19
+    TabOrder = 22
     Text = '-23.5'
     TextSettings.Font.Size = 14.000000000000000000
     Position.X = 64.000000000000000000
@@ -157,7 +159,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     Text = '(N=positive, S=negative)'
-    TabOrder = 9
+    TabOrder = 12
   end
   object Label7: TLabel
     StyledSettings = [Family, FontColor]
@@ -167,11 +169,11 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     Text = '(W=positive, E=negative)'
-    TabOrder = 6
+    TabOrder = 9
   end
   object edLon: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 16
+    TabOrder = 19
     Text = '46.5'
     TextSettings.Font.Size = 14.000000000000000000
     Position.X = 64.000000000000000000
@@ -192,7 +194,7 @@ object FormStarEphemeris: TFormStarEphemeris
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.HorzAlign = Trailing
     Text = 'Lon:'
-    TabOrder = 10
+    TabOrder = 13
   end
   object Label9: TLabel
     StyledSettings = [Family, FontColor]
@@ -202,6 +204,47 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     Text = 'coordinates in decimal'
+    TabOrder = 11
+  end
+  object btnH150Almanac: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 200.000000000000000000
+    Position.Y = 212.000000000000000000
+    Size.Width = 124.000000000000000000
+    Size.Height = 29.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'H150 Almanac'
+    OnClick = btnH150AlmanacClick
+  end
+  object btnNavigatorAlmanac: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 36.000000000000000000
+    Position.Y = 212.000000000000000000
+    Size.Width = 124.000000000000000000
+    Size.Height = 29.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Nav Almanac'
+    OnClick = btnNavigatorAlmanacClick
+  end
+  object cbUseRigorousPrecession: TSwitch
+    IsChecked = False
+    Position.X = 15.000000000000000000
+    Position.Y = 253.000000000000000000
+    TabOrder = 23
+    OnSwitch = cbUseRigorousPrecessionSwitch
+  end
+  object Label10: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 101.000000000000000000
+    Position.Y = 247.000000000000000000
+    Size.Width = 196.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Use rigorous precession'
     TabOrder = 8
   end
 end
