@@ -22,9 +22,13 @@ Tests are for Firemonkey, but should work with VCL and console app as well.
 
 VSOP 2013 original Fortran code and data files can be found at:
 
-    ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+    https://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
  
-VSOP2013 README: ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/README.pdf
+VSOP2013 README:   
+
+    https://ftp.imcce.fr/pub/ephem/planets/vsop2013/solution/README.pdf
+
+  
  
 Data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind *coeficients*. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
