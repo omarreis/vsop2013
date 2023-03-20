@@ -15,12 +15,12 @@ With time it grew to include:
 VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
 This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
 
-VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time (inside a 9000y range). Algorithm uses optimized indexing to manage a number of tables of fficients while keeping file sizes minimum.
+VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time, inside a 9000 years range. 
 
-Tested with D10.3.3, D10.4.1, D11.1 on Win32, iOS and Android. 
+Tested with D10.4.1 and D11.1 on Win32 iOS and Android. 
 Tests are for Firemonkey, but should work with VCL and console app as well.
 
-VSOP 2013 original Fortran code and data files can be found at:
+VSOP 2013 original paper with Fortran code and data files can be found at:
 
 * https://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
  
@@ -46,18 +46,18 @@ The FTP repository contains Fortran code:
 * VSOP2013_binfile.f - Parses text file into binary file that allows fast random access.
 * VSOP2013_compute.f - Retrieves 32d interval from binary file and computes planet data ( position and speed )
 
-In this Delphi port, the whole ASCII file is loaded into memory tables, for even faster access. 
-Once loaded, computations are very fast. 
+In this Delphi port, the whole ASCII file is loaded into memory tables, for fast access. 
 
-Object T_VSOP2013_File in pas:
+Object T_VSOP2013_File encapsulates VSOP 2013 machine:
 
-* Parses a data file - Use only files in original format, as the parser relies on fixed positions.
-* Save and Load data in custom binary format files, smaller and fast to load (Android apps have a 150MB bundle size limit)
-* calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
+* Parse original data files in text - Use only files in original format as the parser relies on fixed positions.
+* Save and Load data in custom binary format, more compact and fast to load ( Android apps have a 150MB bundle size limit )
+* Calculator: calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
 
 ## Astronomical Algorithms
 
-Most algorithms are from the book "Astronomical Algorithms" by Jean Meeus ( 1st and 2nd editions )
+Most algorithms used for dealing with dates and astronomy are from the book "Astronomical Algorithms" by Jean Meeus ( AA 1st and 2nd editions )
+Some formulas are from the "Almanac For Computers" publication by USNO  ( marked AfC ).  
 
 ## Moon positions
 
