@@ -15,7 +15,7 @@ With time it grew to include:
 VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
 This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
 
-VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time (inside a 9000y range). Algorithm uses optimized indexing to manage a number of tables of coeficients while keeping file sizes minimum.
+VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time (inside a 9000y range). Algorithm uses optimized indexing to manage a number of tables of fficients while keeping file sizes minimum.
 
 Tested with D10.3.3, D10.4.1, D11.1 on Win32, iOS and Android. 
 Tests are for Firemonkey, but should work with VCL and console app as well.
@@ -28,7 +28,7 @@ VSOP2013 README:
 
 * https://ftp.imcce.fr/pub/ephem/planets/vsop2013/solution/README.pdf
  
-Data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind *coeficients*. 
+Data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind *coefficients*. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
   
      range                file
@@ -39,7 +39,7 @@ It is organized in 6 files, covering a 9,000 year period in all, as follows:
      +1500 to +3000       VSOP2013.p2000
      +3000 to +4500       VSOP2013.p4000
 
-Each file is divided in 17122, 32 day intervals. Each interval has 978 coeficients, arranged in groups of 6 per line. File header contains a table of indexes into coeficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+Each file is divided in 17122, 32 day intervals. Each interval has 978 coefficients, arranged in groups of 6 per line. File header contains a table of indexes into coefficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
 Each planet has a number of Chebyshev polynomial terms (between 7 to 14 terms). Results are two 3D vectors: position and speed.
 
 The FTP repository contains Fortran code:
