@@ -20,13 +20,15 @@ uses
   FMX.Memo, FMX.Objects, FMX.Edit, FMX.Memo.Types,
   FMX.DateTimeCtrls,
 
-  vsop2013,
   doubleVector3D,
+  vsop2013,
+  VSOP2013.Planet,
+
   Om.AstronomicalAlgorithms,
   PlanetData;       // VSOP2013
 
 type
-  TForm2 = class(TForm)
+  TFormVSOP2013Tests = class(TForm)
     Memo1: TMemo;
     btnLoadFile: TButton;
     labPercent: TLabel;
@@ -50,6 +52,12 @@ type
     btnLoadBinFile: TButton;
     edDate: TDateEdit;
     Label3: TLabel;
+    pnlTopAnimation: TPanel;
+    pnlRight: TPanel;
+    Splitter1: TSplitter;
+    pnlLeft: TPanel;
+    Label4: TLabel;
+    lblClear: TLabel;
     procedure btnLoadFileClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cbAnimatePlanetsSwitch(Sender: TObject);
@@ -63,25 +71,27 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure btnLoadBinFileClick(Sender: TObject);
     procedure edDateChange(Sender: TObject);
+    procedure pbChartResize(Sender: TObject);
+    procedure lblClearClick(Sender: TObject);
   private
     procedure Form2LoadPropgress(Sender: TObject; aPerc: integer);
     procedure showVectors(ip: integer; const jde: Double; const Position,Speed: TVector3D_D);
   public
     fVSOPFile:T_VSOP2013_File;
-    fBitmap:TBitmap;             // Sky chart
+    fBitmap:TBitmap;                   // solar system chart bitmap
     fPosPlanets:Array[1..NUM_PLANETS] of TVector3D_D;
 
     fanimJDE:double;
   end;
 
 var
-  Form2: TForm2;
+  FormVSOP2013Tests: TFormVSOP2013Tests;
 
 implementation
 
 {$R *.fmx}
 
-procedure TForm2.FormCreate(Sender: TObject);
+procedure TFormVSOP2013Tests.FormCreate(Sender: TObject);
 var i:integer;
 begin
   fVSOPFile := T_VSOP2013_File.Create;
@@ -91,10 +101,15 @@ begin
   fBitmap := TBitmap.Create;
 end;
 
-procedure TForm2.FormDestroy(Sender: TObject);
+procedure TFormVSOP2013Tests.FormDestroy(Sender: TObject);
 begin
   fVSOPFile.Free;
 
+end;
+
+procedure TFormVSOP2013Tests.lblClearClick(Sender: TObject);
+begin
+  Memo1.Lines.Clear;
 end;
 
 const
@@ -110,7 +125,7 @@ const
       TAlphaColorRec.Bisque        // 9 Pluto
     );
 
-  PLANET_RADIUS:Array[1..NUM_PLANETS] of integer=  //in pixels
+  PLANET_RADIUS:Array[1..NUM_PLANETS] of integer=  // in pixels
     ( 2,     // 1 Mercury
       3,     // 2 Venus
       3,     // 3 Earth
@@ -123,22 +138,33 @@ const
     );
 
 
-procedure TForm2.pbChartPaint(Sender: TObject; Canvas: TCanvas);
+procedure TFormVSOP2013Tests.pbChartPaint(Sender: TObject; Canvas: TCanvas);
 var ip:integer; aPos:TVector3D_D; aScP:TVector; aR:TRectF; C:TVector; aScale,aRadius:Double;
+    Sz:TControlSize;  aPlanetName:String;  aColor:TAlphaColor;
 begin
   // paint fBitmap
-  C := Vector(300,300); //center of chart = Sun pos (heliocantric coordinates)
+  Sz := pbChart.Size;
+
+  // C := Vector(300,300); //center of chart = Sun pos (heliocantric coordinates)
+  C := Vector(Sz.Width/2,Sz.Height/2); //center of chart = Sun pos (heliocantric coordinates)
 
   if (fBitmap.Width=0) then //first paint
     begin
-      fBitmap.SetSize(600,600);
+      fBitmap.SetSize(Trunc(Sz.Width),Trunc(Sz.Height));
       fBitmap.Canvas.BeginScene;
       fBitmap.Canvas.Clear( TAlphacolorRec.Black );  //reset
     end
     else begin
+      if (fBitmap.Width<>Sz.Width) or (fBitmap.Height<>Sz.Height) then
+        begin
+          fBitmap.SetSize(Trunc(Sz.Width),Trunc(Sz.Height));   //resize cleans shadows ?
+          fBitmap.Clear( TAlphacolorRec.Black );               // clear shadows
+        end;
+
       fBitmap.Canvas.BeginScene;
-      aR := RectF(0,0,600,600);
-      fBitmap.Canvas.Fill.Color := $08000000;   // draw transparent dark rect to darken the past gradually
+
+      aR := RectF(0,0,Sz.Width,Sz.Height);
+      fBitmap.Canvas.Fill.Color := $08000000;          // draw transparent dark rect to darken the past gradually
       fBitmap.Canvas.FillRect(aR,0,0,AllCorners,1.0);
      end;
 
@@ -171,18 +197,43 @@ begin
            fBitmap.Canvas.DrawLine( PointF(aScP.X-8,aScP.Y), PointF(aScP.X+8,aScP.Y), 1.0);;
          end;
      end;
+
    fBitmap.Canvas.EndScene;
 
-   aR := RectF(0,0,600,600);           //copy to pb
+   //copy bitmap to paintbox canvas
+   aR := RectF(0,0,Sz.Width,Sz.Height);
    Canvas.DrawBitmap(fBitmap,aR,aR,1.0);
+
+   //   write planet names direct on paintbox canvas.. so text leaves no shadow
+   Canvas.BeginScene;
+   for ip := 1 to NUM_PLANETS do
+     begin
+       aPos := fPosPlanets[ip];
+       //convert to screen coordinates
+       aScP := Vector( C.x+aPos.x*aScale,C.Y+aPos.y*aScale);  //convert au-->pix
+       aR := RectF(aScP.X+3, aScP.Y+3, aScP.X+120, aScP.Y+20);
+       aColor := PLANET_COLORS[ip];
+       aPlanetName := PLANET_DATA[ip].Name;
+       Canvas.Font.Size  := 9;
+       Canvas.Fill.Color := aColor;    // paint a small planet name w/ opacity = 0.7
+       Canvas.FillText(aR, aPlanetName,{WordWrap=}False, 0.7, [],TTextAlign.Leading,TTextAlign.Center);
+     end;
+   Canvas.EndScene;
+
 end;
 
-procedure TForm2.tbAnimationSpeedChange(Sender: TObject);
+procedure TFormVSOP2013Tests.pbChartResize(Sender: TObject);
+begin
+  if Assigned(fBitmap) then
+    fBitmap.Clear(TAlphacolors.Black);
+end;
+
+procedure TFormVSOP2013Tests.tbAnimationSpeedChange(Sender: TObject);
 begin
   labAnimationSpeed.Text := Format('%4.0f',[tbAnimationSpeed.Value])+' days/tick (t=200ms)';
 end;
 
-procedure TForm2.tbScaleChange(Sender: TObject);
+procedure TFormVSOP2013Tests.tbScaleChange(Sender: TObject);
 begin
   labScale.Text := IntToStr( Trunc(tbScale.Value) )+' pix/au';
   if (fBitmap.Width<>0) then
@@ -193,7 +244,7 @@ begin
     end;
 end;
 
-procedure TForm2.showVectors(ip:integer; const jde:Double; const Position,Speed:TVector3D_D);
+procedure TFormVSOP2013Tests.showVectors(ip:integer; const jde:Double; const Position,Speed:TVector3D_D);
 begin
   Memo1.Lines.Add('');
   Memo1.Lines.Add( PLANET_NAMES[ip] );
@@ -209,7 +260,7 @@ begin
 end;
 
 
-procedure TForm2.btnTestsClick(Sender: TObject);
+procedure TFormVSOP2013Tests.btnTestsClick(Sender: TObject);
 var Position,Speed:TVector3D_D; ip:integer; jde:double;
 begin
   // calculation tests extracted from VSOP2013_ctl.txt
@@ -270,14 +321,14 @@ begin
 
 end;
 
-procedure TForm2.cbAnimatePlanetsSwitch(Sender: TObject);
+procedure TFormVSOP2013Tests.cbAnimatePlanetsSwitch(Sender: TObject);
 begin
   TimerAnimatePlanets.Enabled := cbAnimatePlanets.IsChecked;
   if TimerAnimatePlanets.Enabled then
      fanimJDE := StrToFloat(edJDE.Text);    //start animation from specified JD
 end;
 
-procedure TForm2.edDateChange(Sender: TObject);
+procedure TFormVSOP2013Tests.edDateChange(Sender: TObject);
 var D:TDatetime; aJD:Double;
 begin
   D     := edDate.Date;
@@ -286,7 +337,7 @@ begin
 end;
 
 // 200 ms = 5 ticks per second
-procedure TForm2.TimerAnimatePlanetsTimer(Sender: TObject);
+procedure TFormVSOP2013Tests.TimerAnimatePlanetsTimer(Sender: TObject);
 var ip:integer; aPosition,aSpeed:TVector3D_D; Year:Double; D:TDatetime;
 begin
   if Assigned(fVSOPFile) then //upd
@@ -313,7 +364,7 @@ begin
 end;
 
 // Loads vsop2013 ASCII file and performs a few calculations
-procedure TForm2.btnCalcClick(Sender: TObject);
+procedure TFormVSOP2013Tests.btnCalcClick(Sender: TObject);
 var Position,Speed:TVector3D_D; ip:integer; jde:double;
 begin
   ip  := StrToInt( edPlanet.Text );
@@ -327,7 +378,7 @@ begin
   TimerAnimatePlanetsTimer(nil);  // update planet chart to calc data
 end;
 
-procedure TForm2.btnLoadBinFileClick(Sender: TObject);
+procedure TFormVSOP2013Tests.btnLoadBinFileClick(Sender: TObject);
 var aFN:String;
 begin
   aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000.bno'  1500-3000. ( includes current time )
@@ -335,7 +386,7 @@ begin
      else Memo1.Lines.Add(aFN+' write error');
 end;
 
-procedure TForm2.btnLoadFileClick(Sender: TObject);
+procedure TFormVSOP2013Tests.btnLoadFileClick(Sender: TObject);
 var aFN:String;
 begin
   fVSOPFile.OnLoadProgress := Form2LoadPropgress;
@@ -348,7 +399,7 @@ begin
 
 end;
 
-procedure TForm2.btnSaveBinFileClick(Sender: TObject);
+procedure TFormVSOP2013Tests.btnSaveBinFileClick(Sender: TObject);
 var aFN:String;
 begin
   aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000.bin'  1500-3000. ( includes current time )
@@ -356,7 +407,7 @@ begin
      else Memo1.Lines.Add(aFN+' write error');
 end;
 
-procedure TForm2.Form2LoadPropgress(Sender:TObject; aPerc:integer);
+procedure TFormVSOP2013Tests.Form2LoadPropgress(Sender:TObject; aPerc:integer);
 begin
   labPercent.Text := IntToStr(aPerc)+'%';
   labPercent.Repaint;

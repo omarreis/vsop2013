@@ -1,23 +1,25 @@
 unit Ah.Moon;  // Moon calculations ---------------------------------------}
 {-------------//                                                            }
 { This code was adapted from Andreas Hörstemeier TMoon component v2.0        }
-{ for Delphi 6  - Original (c) statement                                     }
-{ Copyright 1997-2001 Andreas Hörstemeier            Version 2.0 2001-07-07  }
-{ this component is public domain - please check the file moon.hlp for       }
-{ more detailed info on usage and distributing                               }
-{ see http://www.hoerstemeier.com/delphi.htm                                 }
+{ for Delphi 6  - Original (c) statement                                      }
+{ Copyright 1997-2001 Andreas Hörstemeier            Version 2.0 2001-07-07    }
+{ this component is public domain - please check the file moon.hlp for          }
+{ more detailed info on usage and distributing                                 }
+{ see http://www.hoerstemeier.com/delphi.htm                                  }
 { Algorithms from the book "Astronomical Algorithms" by Jean Meeus           }
-{   - ELP2000 - Chapront-Touze                                               }
-{   - Astronomical Algorithms, Jean Meeus (1991) Ed I                        }
-{   - AA - 2nd edition         (1998) <- much expanded and corrected        }
-{  Om: TMoon functionality was adapted to newer compiler and               }
-{     merged w/ other AA code                                             }
-{------------------------------------------------------------------------}
+{   - ELP2000 - Chapront-Touze                                              }
+{   - Astronomical Algorithms, Jean Meeus (1991) Ed I                      }
+{   - AA - 2nd edition         (1998) <- much expanded and corrected      }
+{  Om: TMoon functionality was adapted to newer compiler and             }
+{     merged w/ other AA code                                           }
+{----------------------------------------------------------------------}
 
 interface
 
 uses
-  System.SysUtils, System.Math;
+  System.SysUtils, System.Math, System.Classes,
+  StarData;       // TCelObjBase
+
 
 type
   t_coord = record      // custom record format for returning coordinates
@@ -27,13 +29,31 @@ type
     elevation, azimuth: extended;          (* h, A *)
   end;
 
+  TMoon=Class(TCelObjBase)
+  private
+  public
+    fSD:Double;                {Semidiametro da Moon}
+    fParallax:Double;          {Paralax Pi da Moon}
+    Constructor Create;
+    Procedure   calcCoordinates(const aDia,aMes,aAno,aHora:Double); override;
+    Procedure   GetObjectData(SL:TStrings); override;
+    Function    HorizontalParallax:Double;     // parallax in minutes
+  end;
+
 function moon_coordinate(const aDate:TDateTime):t_coord;  // aDate in UT
+
+var
+  Moon:TMoon=nil;
+
+Procedure CreateMoon;
+Procedure FreeMoon;
 
 implementation  //---------------------------------------
 
 uses
+  Om.DeltaT,
   Om.Trigonometry,
-  Om.AstronomicalAlgorithms;  // Om: date functions 
+  Om.AstronomicalAlgorithms;  // Om: date functions
 
 { Coordinate functions }
 { Based upon Chapter 13 (12) and 22 (21) of Meeus }
@@ -350,7 +370,7 @@ const  // tables of Moon orbit coefs (60 terms)
         107
     );
 
-function moon_coordinate(const aDate:TDateTime):t_coord;
+function moon_coordinate(const aDate:TDateTime):t_coord; // aDate in UT
 var
   t,d,m,ms,f,e,ls,aJD : extended;
   sr,sl,sb,temp: extended;
@@ -359,30 +379,29 @@ var
   Eps,DPhy,DEps,ax,ay,aRA,aDecl:Double;
   i: integer;
 begin
-  // t:= (julian_date(date)-2451545)/36525;
-  aJD := DatetimeToJD( aDate ); //use dynamic time ( w/ DeltaT ) 
-    
-  t := (aJD-2451545)/36525;   //in centuries since j2000
+  aJD := DatetimeToJD( aDate ); //use dynamic time w/ DeltaT
+
+  t := (aJD-2451545)/36525;   // t in centuries since j2000
   // calc Moon orbit elements
-  (* mean elongation of the moon *)
+  // mean elongation of the moon
   d := 297.8502042+(445267.1115168+(-0.0016300+(1/545868-1/113065000*t)*t)*t)*t;
-  (* mean anomaly of the sun *)
+  // mean anomaly of the sun
   m := 357.5291092+(35999.0502909+(-0.0001536+1/24490000*t)*t)*t;
-  (* mean anomaly of the moon *)
+  // mean anomaly of the moon
   ms:= 134.9634114+(477198.8676313+(0.0089970+(1/69699-1/1471200*t)*t)*t)*t;
-  (* argument of the longitude of the moon *)
+  // argument of the longitude of the moon
   f := 93.2720993+(483202.0175273+(-0.0034029+(-1/3526000+1/863310000*t)*t)*t)*t;
-  (* correction term due to excentricity of the earth orbit *)
+  // correction term due to excentricity of the earth orbit
   e := 1.0+(-0.002516-0.0000074*t)*t;
-  (* mean longitude of the moon *)
+  // mean longitude of the moon
   ls := 218.3164591+(481267.88134236+(-0.0013268+(1/538841-1/65194000*t)*t)*t)*t;
 
-  (* arguments of correction terms *)
+  // arguments of correction terms
   a1 := 119.75+131.849*t;
   a2 := 53.09+479264.290*t;
   a3 := 313.45+481266.484*t;
 
-  (*  sr := ä r_i cos(d,m,ms,f);   !!!  gives different value than in Meeus *)
+  //  sr := ä r_i cos(d,m,ms,f);   !!!  gives different value than in Meeus
   sr:=0;
   for i:=0 to 59 do begin
     temp:=sigma_r[i]*cosg( arg_lr[i,0]*d
@@ -393,43 +412,43 @@ begin
     if abs(arg_lr[i,1])=2 then temp:=temp*e*e;
     sr:=sr+temp;
   end;
-  (* sl := ä l_i sin(d,m,ms,f); *)
+  // sl := ä l_i sin(d,m,ms,f);
   sl:=0;
   for i:=0 to 59 do
-  begin
-    temp:=sigma_l[i]*sing( arg_lr[i,0]*d
-                           +arg_lr[i,1]*m
-                           +arg_lr[i,2]*ms
-                           +arg_lr[i,3]*f);
-    if abs(arg_lr[i,1])=1 then temp:=temp*e;
-    if abs(arg_lr[i,1])=2 then temp:=temp*e*e;
-    sl:=sl+temp;
-  end;
+    begin
+      temp:=sigma_l[i]*sing( arg_lr[i,0]*d
+                             +arg_lr[i,1]*m
+                             +arg_lr[i,2]*ms
+                             +arg_lr[i,3]*f);
+      if abs(arg_lr[i,1])=1 then temp:=temp*e;
+      if abs(arg_lr[i,1])=2 then temp:=temp*e*e;
+      sl:=sl+temp;
+    end;
 
-  (* correction terms *)
+  // correction terms
   sl:=sl +3958*sing(a1)
          +1962*sing(ls-f)
           +318*sing(a2);
-  (* sb := ä b_i sin(d,m,ms,f); *)
+  // sb := ä b_i sin(d,m,ms,f);
   sb:=0;
-  for i:=0 to 59 do begin
-    temp:=sigma_b[i]*sing( arg_b[i,0]*d
-                           +arg_b[i,1]*m
-                           +arg_b[i,2]*ms
-                           +arg_b[i,3]*f);
-    if abs(arg_b[i,1])=1 then temp:=temp*e;
-    if abs(arg_b[i,1])=2 then temp:=temp*e*e;
-    sb:=sb+temp;
-  end;
+  for i:=0 to 59 do
+    begin
+      temp:=sigma_b[i]*sing( arg_b[i,0]*d
+                             +arg_b[i,1]*m
+                             +arg_b[i,2]*ms
+                             +arg_b[i,3]*f);
+      if abs(arg_b[i,1])=1 then temp:=temp*e;
+      if abs(arg_b[i,1])=2 then temp:=temp*e*e;
+      sb:=sb+temp;
+    end;
 
-  (* correction terms *)
+  // correction terms
   sb:=sb -2235*sing(ls)
           +382*sing(a3)
           +175*sing(a1-f)
           +175*sing(a1+f)
           +127*sing(ls-ms)
           -115*sing(ls+ms);
-  (*@\\\*)
 
   lambda := ls+sl/1000000;
   lambda := getAngleTo0_360(lambda);
@@ -456,6 +475,65 @@ begin
 
   result.rektaszension := aRA/360*24;     // RA degrees --> hours
   result.declination   := aDecl;
+end;
+
+
+{ TMoon }
+Constructor TMoon.Create;
+begin
+  Inherited Create('Moon');
+  fAltitudeOfObjectAtRise := +0.125;
+  fMagnitude   := -7;
+  fSD:=0;
+  fParallax:=0;
+end;
+
+Procedure TMoon.calcCoordinates(const aDia,aMes,aAno,aHora:Double);
+var T,DeltaT:Double; aCoord:t_coord;
+begin
+  // T := TJ2000(aAno,aMes,aDia,aHora);  // T em julian centuries since J2000
+  // DeltaT := calcDeltaT(T);
+  // T := T + DeltaT*SegToSec;           //convert T from UT to TD
+  T := EncodeDate(Trunc(aAno), Trunc(aMes), Trunc(aDia))+aHora/24;  // T in UT
+  aCoord := moon_coordinate(T);
+
+  fRA       := aCoord.rektaszension*15;  // 15 -> convert hours to degrees
+  fDecl     := aCoord.declination;
+  fParallax := aCoord.parallax;
+  fSD       := aCoord.radius/2;
+end;
+
+Function TMoon.HorizontalParallax:Double;
+begin HorizontalParallax:=fParallax*60.0; end;   // converte de graus p/ minutos
+
+Procedure  TMoon.GetObjectData(SL:TStrings);
+var aSHA,aDummy:Double;
+begin
+  SL.Add(Name);
+  SL.Add('');
+  SL.Add('at time='+ FormatDateTime('dd/mmm/yyyy hh:nn:ss', fGMT) +' UT' );     // GMT = Universal Time
+  aSHA := 360.0 - fRA;                     // SHA and RA are the same thing, but with a different convention
+  SL.Add('SHA= '+  floatToGMSD(aSHA)+ ' ('+ R2GMD(aSHA,aDummy,' -')  +')' );
+
+  SL.Add('RA=  '+ floatToGMSD(fRA) +' ( '+ floatToHHMMSS(fRA*24/360)+')' );   // degrees (hours)
+  SL.Add('Decl='+ floatToGMSD_Lat(fDecl) + ' ('+ R2GMD(fDecl,aDummy,'NS')  +')' );
+  SL.Add('GHA= '+ floatToGMSD(fGHA) );
+
+  SL.Add('Mag= '+ Format('%5.2f',[fMagnitude]) );
+  SL.Add('Prlx='+ Format('%5.1f',[fParallax]) );
+  SL.Add('SD=  '+ Format('%5.1f',[fSD]) );
+end;
+
+//--------------------------------------------------
+
+Procedure CreateMoon;
+begin
+  Moon := TMoon.Create;
+end;
+
+Procedure FreeMoon;
+begin
+  Moon.Free;
 end;
 
 end.

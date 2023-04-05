@@ -1,7 +1,9 @@
-﻿Unit Om.DeltaT; //- DeltaT is the correction between UT (Universal Time) and DT (Dynamical Time)
- //------------//
-// Universal Time is not uniform. The Earth is slowing down and extra seconds are added to the UT year.
-// Dynamical Time is uniform, good for measuring time intervals.
+﻿Unit Om.DeltaT; //- DeltaT is the correction between UT (Universal Time) and TDT (Dynamical Time)
+ //------------//              DeltaT = TDT - UTC
+// Universal Time is not uniform. The Earth is slowing down and extra leap seconds are added to the UT year periodically.
+// TDT Dynamical Time is uniform, good for measuring time intervals.
+// There is also TDB (Time Dynamical Baricentric ) a clock imagined to be located on solar system baricenter.
+// That would run a little different from a clock in Paris.
 //
 // Expanded the table below from  1994 to 2018 usando valores obtidos em ftp://maia.usno.navy.mil/ser7/deltat.preds
 // Om: sep20: revised and expanded table from 2020 to 2058 using formula
@@ -10,7 +12,7 @@
 //---------------------------------------------------------------------------------------
 interface
 
-function calcDeltaT(const T : Double) : Double;  // T in centuries since J2000
+function calcDeltaT(const T : Double) : Double;  // T in centuries since J2000   - Result in seconds
 
 implementation  //-------------------------------------------------
 
@@ -85,7 +87,7 @@ const
 // calcDeltaT(T)
 // Param:    T : number of Julian centuries since J2000
 // Returns:  DeltaT in seconds
-function calcDeltaT(const T:Double) : Double;  //T em seculos desde 2000
+function calcDeltaT(const T:Double) : Double;      // T in seculae since 2000
 var
   y, DDT, F : Double;
   Index : integer;

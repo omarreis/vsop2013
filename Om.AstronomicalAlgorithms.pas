@@ -1,11 +1,13 @@
-unit Om.AstronomicalAlgorithms;   // implementation of Astronomical Algorithms ----//
+unit Om.AstronomicalAlgorithms;   //--implementation of Astronomical Algorithms ---//
  //------------------------------//                                               //
 // from excelent book "Astronomical Algorithms" by Jean Meeus                    //
 // most formulas come from first edition ( some corrected w/ the second ed)     //
 // AA page references in code are from the 1st ed (1991)                       //
 // mostly programmed by oMAR                                                  //
 //      repository: github.com/omarreis/VSOP2013                             //
-// -------------------------------------------------------------------------//
+// AfC refers to USNO publication Almanac for Computers                     //
+// see github.com/omarreis/vsop2013                                        //
+// -----------------------------------------------------------------------//
 
 interface
 
@@ -13,22 +15,25 @@ uses
   System.SysUtils;
 
 const
-  SegToSec = (1/(86400.0*36525.0));   // secs to para centuries conversion
-
+  SegToSec = (1/(86400.0*36525.0));   // seconds to centuries conversion  ( 86400s = 24h*3600s/h )
 
 
 // date utils
-Function JD(Y,M,D,UT:Double):Double;                // encode Julian date from UT
+Function JD(const Y,M,D,UT:Double):Double;                // encode Julian date from UT
 Function JDtoDatetime(const JD:Double):TDatetime;
 Function DatetimeToJD(const D:TDatetime):Double;
-Function TJ2000(K,M,I,UT:Double):Double;            // Time in centuries since  J2000.0
+Function TJ2000(const K,M,I,UT:Double):Double;            // Time in centuries since  J2000.0
+
+// mar/23: UTCtoTDB() is a work in progress. Not ready for use !!
+function UTCtoTDB(const aUTC:TDatetime):Double;     // Universal Time UTC to TDB Time Dynamical Baricentric
+
 // Sidereal time calculation
-Procedure SiderealTime(D,M,A,H:Double;{out:} var GMST,GAST:Double); {AA pag.83}
+Procedure SiderealTime(D,M,A,H:Double;{out:} var GMST,GAST:Double);     {AA pag.83}
 
 // Nutation. T in centuries since j2000
 Procedure NutationCorrection(const T,aRAi,aDecli:Double; {out:} var DAlfaNu,DDeltaNu:Double);
 
-// Nutation correction ( aka: the Nutella correction :)
+// Nutation correction. the Nutella correction :)
 Procedure CorrNut(const T:Double; var Eps,DPhy,DEps:Double);
 
 // zenital
@@ -37,12 +42,11 @@ Procedure geoPositionToCelestial(aDay,aMonth,aYear:word; const aGMTTime,aLat,aLo
 // celestial coordinates (RA,Decl) of Greenwitch apparent position
 Procedure GreenwitchToCelestial(const aUT:TDatetime; {out:} var aRA,aDecl:double);
 
-
-
 implementation //--------------------------------------
 
 uses
   Om.Trigonometry,
+  Om.DeltaT,
   System.Math;
 
 
@@ -109,13 +113,13 @@ end;
 
 Procedure AberrationCorrection(const T,aRAi,aDecli:Double; var DAlfaAbe,DDeltaAbe:Double);
 var Teta,e,Pi_,T2,T3:Double; {Teta=Sun True Longitude}
-    CA,SA,Eps0,CEp,SEp,STt,CTt,SDl,CDl,SPi,CPi,K1,K2:Double; {Vars auxiliares}
-    Omega:Double;
+    CA,SA,Eps0,CEp,STt,CTt,SDl,CDl,SPi,CPi,K1,K2:Double; {Vars auxiliares}
+    // Omega:Double;
 const  Kapa=20.49552; {Constante de aberracao}
 
 begin {Efeito da aberracao}
   T2    := T*T;  T3 := T*T2;
-  Omega := 125.04452-1934.136261*T;
+  // Omega := 125.04452-1934.136261*T;
   Eps0  := 23.4392911+(-46.8150*T-0.00059*T2+0.001813*T3)/3600;
   CalculaSunTrueLongitude(T,Teta);
   e     := 0.016708617-0.00004237*T-0.0000001236*T2;
@@ -123,7 +127,7 @@ begin {Efeito da aberracao}
   { memoise trigs }
   CA :=Cosg(aRAi);   SA :=Sing(aRAi);
   CTt:=Cosg(Teta);   STt:=Sing(Teta);
-  CEp:=Cosg(Eps0);   SEp:=Sing(Eps0);
+  CEp:=Cosg(Eps0);   //SEp:=Sing(Eps0);
   CDl:=Cosg(aDecli); SDl:=Sing(aDecli);
   CPi:=Cosg(Pi_);    SPi:=Sing(Pi_);
 
@@ -135,25 +139,99 @@ end;
 // JD - Julian Day - Astro Algorithms J.Meeus, pg 61 formula 7.1
 // Implementada em Jul/04 para ter maior validade que a do Alm For Computers
 // alguns usuarios reclamaram que a formula acima não funciona para 1800 !
-Function JD(Y,M,D,UT:Double):Double;
-var A,B:double;
+Function JD(const Y,M,D,UT:Double):Double;
+var A,B,aM,aY:double;
 begin
-  if (M<=2) then
+  aM := M;
+  aY := Y;
+  if (aM<=2) then
     begin
-      Y:=Y-1;
-      M:=M+12;
+      aY := aY-1;
+      aM := aM+12;
     end;
-  A:=Int(Y/100);
-  B:=2-A+Int(A/4); //Gregoriano
-  //B:=0;          //Juliano
-  Result := Int(365.25*(Y+4716))+Int(30.6001*(M+1))+D+B-1524.5+UT/24;
+  A := Int(aY/100);
+  B := 2-A+Int(A/4); //Gregoriano
+  //B:=0;           //Juliano
+  Result := Int(365.25*(aY+4716))+Int(30.6001*(aM+1))+D+B-1524.5+UT/24;
 end;
 
 // TJ2000 in seculae since 1-jan-2000 12 UT, using years of 365.25 days
-Function TJ2000(K,M,I,UT:Double):Double; {Time in centuries since  J2000.0}
+Function TJ2000(const K,M,I,UT:Double):Double; // returns time in centuries since J2000.0
 begin
   TJ2000 := (JD(K,M,I,UT)-2451545.0)/36525.0;       // 2451545.0 = JD2000
 end;
+
+// function UTCtoJD(const aUTC:TDatetime):Double;  // Universal Time UTC to Julian Date
+// var ay,am,ad:word; H:Double;
+// begin
+//   H := Frac(aUTC)*24;          // hour 0..24
+//   DecodeDate(Trunc(aUTC),{out:} ay,am,ad );
+//   Result := JD(ay,am,ad,H);
+// end;
+
+// mar/23 - my first experience with chatgpt: nice work.. I guess..
+// Define a function that estimates TDB - UTC in seconds
+// function tdb_utc_diff(utc):
+//   // Convert UTC to Julian date using some library or algorithm
+//   jd = utc_to_jd(utc)
+//   // Define some constants
+//   T0 = 2451545 // JD2000
+//   TAI_TT = 32.184 // difference between TAI and TT in seconds
+//   leap_seconds = 37 // difference between TAI and UTC in seconds as of March 13, 2023
+//   offset = 69.184 // constant offset in seconds
+//   // Calculate L and g using formulas from https://lweb.cfa.harvard.edu/~jzhao/times.html
+//   L = (1.657e-3 * sin(6283.07585 * (jd - T0) + 6.24006)) + (6.6e-4 * sin(6283.07585 * (jd - T0) /2 +4))
+//   g = radians((357.5277233 +35999*(jd-T0)) %360)
+//   // Estimate TDB - UTC using formula from https://www.timeanddate.com/time/terrestrial-dynamic-time.html
+//   tdb_utc = offset + TAI_TT + leap_seconds + L * sin(g)
+//   return tdb_utc
+// Hum.. not so good.
+
+
+// TDB is difficult to calculate. There are some simplified formulas, good to a point ( like the one below )
+// However difference between TDB and TT ( former TDT ) is small enough to be ignored by some applications.
+// TDB relates to relativistic corrections ( a clock on the solar system baricenter, near the Sun,
+// runs differently from one in Paris.
+
+// from Wikipedia and https://www.timeanddate.com/time/terrestrial-dynamic-time.html
+function UTCtoTDB(const aUTC:TDatetime):Double;  // Universal Time UTC to TDB Time Dynamical Baricentric // work in progress. Do not use..
+var ajd,T0,TAI_TT,leap_seconds,offset,L,g,aDelta,aJD_T0:Double;
+begin
+  // Convert UTC to Julian date using some library or algorithm
+  //  jd = utc_to_jd(utc)
+  ajd := DatetimeToJD(aUTC);
+  // Define some constants
+  T0      := 2451545;                 // JD2000
+  TAI_TT  := 32.184;                  // difference between TAI and TT in seconds
+  leap_seconds := 37;                 // difference between TAI and UTC in seconds as of March 13, 2023
+  offset  := 69.184;                  // constant offset in seconds
+  // Calculate L and g using formulas from https://lweb.cfa.harvard.edu/~jzhao/times.html
+  aJD_T0 := ajd - T0;                 // memoise frequently used result for the formula below
+  L := (1.657e-3*sing(6283.07585*aJD_T0+6.24006))+(6.6e-4*sing(6283.07585*aJD_T0/2 +4));      // seconds
+  g := (357.5277233 +35999*aJD_T0)/360;                                                       // degrees
+  // Estimate TDB - UTC using formula from
+  //   https://www.timeanddate.com/time/terrestrial-dynamic-time.html
+  aDelta := offset + TAI_TT + leap_seconds + L * sing(g);  // in secs
+
+  Result := aUTC + aDelta/24/3600;  // correct time
+end;
+
+// function UTCtoTDB(const aUTC:TDatetime):Double;  // Universal Time UTC to TDB Time Dynamical Baricentric
+// var ay,am,ad:word; H,DeltaT,g,Delta:Double; t,TT,aJD:Double;
+// begin
+//   H := Frac(aUTC)*24;          // hour 0..24
+//   DecodeDate(Trunc(aUTC),{out:} ay,am,ad );
+//   t := TJ2000(ay,am,ad,H);            // T = UT in seculae since J2000
+//   DeltaT := calcDeltaT(t);           // UT to TD
+//   TT  := aUTC+DeltaT/3600/24;       // to TD
+//   aJD := UTCtoJD(TT);
+//
+//   g := 357.53 + 0.9856003*(aJD - 2451545);   //degrees.
+//
+//   Delta := 0.001658*sing(g) + 0.000014*sing(2*g);  // seconds
+//
+//   Result := TT + Delta/3600/24;
+// end;
 
 // H in hours UT
 // GMST - Greenwitch Mean Sideral Time
@@ -183,13 +261,13 @@ begin
   AngleTo0_360(aRA);       // Ajusta o angulo colocando entre 0 e 360°
 end;
 
-// returns celestial coordinates (RA,Decl) of Greenwitch apparent position
+// returns celestial coordinates (RA,Decl) of Greenwitch apparent geographical position
 Procedure GreenwitchToCelestial(const aUT:TDatetime; {out:} var aRA,aDecl:double);  // RA and dec returns in degrees
 var aGHA,aGMST,aGAST,aHour:Double; YY,MM,DD:word; D:TDatetime;
 begin
   D     := Trunc( aUT );
   DecodeDate( D, {out:} YY,MM,DD);
-  aHour := Frac(aUT)*24;        // in hours
+  aHour := Frac(aUT)*24;    // in hours
 
   SiderealTime(DD,MM,YY,aHour,{out:} aGMST,aGAST);  //calc GAST (in hours)
   aDecl:= 0;  //
@@ -212,7 +290,7 @@ end;
 Function JDtoDatetime(const JD:Double):TDatetime;            // convert JD to UT ( TDatetime )
 var A,B,F,H:Double; alpha,C,E:integer; D,Z:longint; dd,mm,yy:word;
 begin
-  H := Frac(JD+0.5);    // JD zeroes at noon  ( go figure... )
+  H := Frac(JD+0.5);        // JD starts at noon
 
   Z := trunc(JD + 0.5);
   F := (JD + 0.5) - Z;

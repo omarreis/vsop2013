@@ -158,6 +158,7 @@ function TSphericalTriangle.CheckValidity(aa,ab,ac:double):boolean;
 begin
   if (aa<0) or (ab<0) or (ac<0) then
     Raise Exception.Create('TSphericalTriangle: invalid parameter in calculation');
+  Result := true; //??
 end;
 
 function TSphericalTriangle.CalcSideA: double;
@@ -169,10 +170,9 @@ begin
 end;
 
 function TSphericalTriangle.CalcVerticeA: double;
-var aVA:double;
 begin
   CheckValidity(VB,VC,LA);
-  aVA:=-cosg(VB)*cosg(VC)+sing(VB)*sing(VC)*cosg(LA);
+  Result := -cosg(VB)*cosg(VC)+sing(VB)*sing(VC)*cosg(LA);
 end;
 
 end.

@@ -1,26 +1,26 @@
-unit vsop2013;       //---Delphi implementation of theory VSOP2013
- //-----------------//
-// This is Delphi port from original Fortran code by FRANCOU & SIMON
-// VSOP original files:
-//   ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
-//   VSOP2013.m2000, VSOP2013.m1000, VSOP2013.p1000,VSOP2013.p2000,VSOP2013.p4000
-//   Files are large 400 MB ASCII containing chebyshev polynomial 1st kind coeficients.
-// There are 6 coefs/line ( 163 x )
-// The file header constains a table loc[,] of indexes into the coefs[] array
-// Each planet has a number of coefs.
-//
-//  programmed by oMAR
-//  Source: github.com/omarreis/vsop2013
-//---------------------------------------------------------------------
-//
-// History:
-//   jun 2020: Loose port v0.9 from Fortran by oMAR
-//     this code loads coefs from ASCII file and builds memory tables (instead of original BIN files)
-//     note: Fortran language is '1 based' (array indexes all start with 1 (at least this code is) )
-//   jul 2020: For reasons of max bundle size and load speed on mobile, I adopted a custom binary format
-//             ( same solution as VSOP2013 authors, however w/ a different approach )
-//             This cut the database size from 400 MB to 130 MB :)
-//---------------------------------------------------------------------
+unit vsop2013;       //---Delphi implementation of theory VSOP2013 ----------------\
+ //-----------------//                                                              \
+// This is Delphi port from original Fortran code by FRANCOU & SIMON                 \
+// VSOP original files:                                                               \
+//   ftp://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/                        \
+//   VSOP2013.m2000, VSOP2013.m1000, VSOP2013.p1000,VSOP2013.p2000,VSOP2013.p4000       \
+//   Files are large 400 MB ASCII containing chebyshev polynomial 1st kind coeficients.  \
+// There are 6 coefs/line ( 163 x )                                                      /
+// The file header constains a table loc[,] of indexes into the coefs[] array           /
+// Each planet has a number of coefs.                                                  /
+//                                                                                    /
+//  programmed by oMAR                                                               /
+//  Source: github.com/omarreis/vsop2013                                            /
+//---------------------------------------------------------------------------------+
+//                                                                                  \
+// History:                                                                          \-----------------\
+//   jun 2020: Loose port v0.9 from Fortran by oMAR                                                     \
+//     this code loads coefs from ASCII file and builds memory tables (instead of original BIN files)    \
+//     note: Fortran language is '1 based' (array indexes all start with 1 (at least this code is) )      \
+//   jul 2020: For reasons of max bundle size and load speed on mobile, I adopted a custom binary format  /
+//             ( same solution as VSOP2013 authors, however w/ a different approach )                    /
+//             This cut the database size from 400 MB to 130 MB :)                                      /
+//-----------------------------------------------------------------------------------------------------/
 
 interface
 
@@ -29,8 +29,7 @@ uses
   System.Classes,        //anonymous thread
   System.Math.Vectors,
   System.SysUtils,
-
-  doubleVector3D;  // 3D vectors with Double components
+  doubleVector3D;  // TVector3D_D - 3D vectors with Double components
 
 const
   TXT_FILES_ROOT = './ephemerides/';
@@ -39,7 +38,6 @@ const
   NUM_PLANETS=9;
   //
   // NUM_PERIODS=17122;
-
 
 var
    // original file names. Each of these files is 400 MB !
@@ -66,12 +64,12 @@ type
 
 var
    DATE_RANGES: Array[1..NUM_FILES] of TDateRange = (
-                  (ti:77294.5   ;tf: 625198.5),       // -4500 to -3000       VSOP2013.m4000
-                  (ti:625198.5  ;tf: 1173102.5),      // -3000 to -1500       VSOP2013.m2000
-                  (ti:1173102.5 ;tf: 1721006.5),      // -1500 to 0           VSOP2013.m1000
-                  (ti:1721006.5 ;tf: 2268910.5),      // 0 to +1500           VSOP2013.p1000
-                  (ti:2268910.5 ;tf: 2816814.5),      // +1500 to +3000       VSOP2013.p2000
-                  (ti:2816814.5 ;tf: 3364718.5));     // +3000 to +4500       VSOP2013.p4000
+        (ti:77294.5  ; tf: 625198.5 ),   // -4500 to -3000       VSOP2013.m4000
+        (ti:625198.5 ; tf: 1173102.5),   // -3000 to -1500       VSOP2013.m2000
+        (ti:1173102.5; tf: 1721006.5),   // -1500 to 0           VSOP2013.m1000
+        (ti:1721006.5; tf: 2268910.5),   // 0 to +1500           VSOP2013.p1000
+        (ti:2268910.5; tf: 2816814.5),   // +1500 to +3000       VSOP2013.p2000
+        (ti:2816814.5; tf: 3364718.5) ); // +3000 to +4500       VSOP2013.p4000
 
 type
   // binary file record format, for faster access and smaller files (than  text)
@@ -87,8 +85,6 @@ type
                 coef:Array[1..NUM_COEFS] of Double;    // 978 coefs / period
               );
     end;
-
-
 
   // VSOP2013File loads a bin file and parses it into a Chebyshev Polynomial
   // indexing and evaluation machine.
@@ -112,10 +108,10 @@ type
     procedure DoNotifyTerminate;
   public
     //header
-    idf:integer;   // file identification.  Should read 2013
-    t1,t2:Double;  // file time range in JD
-    delta:Double;  // =32.0  number of days per period
-    nintv:integer; // =number of 32d periods ( formerly NUM_PERIODS )
+    idf:integer;       // file identification.  Should read 2013
+    t1,t2:Double;     // file time range in JD
+    delta:Double;    // =32.0  number of days per period
+    nintv:integer;  // =number of 32d periods ( formerly NUM_PERIODS )
     ncoef:integer; // =0978 number of Chebyshev coeficients / period
 
     loc:Array[1..3,1..9] of integer;     // indexes into coeficient arrays
@@ -138,7 +134,7 @@ type
 
     Procedure   Threaded_ReadBinaryFile(const aFilename: String);
 
-    function    calculate_coordinates(ip: integer;const jde:Double; var Position, Speed: TVector3D_D): boolean;
+    function    calculate_coordinates(ip: integer; const jde:Double; var Position, Speed: TVector3D_D): boolean;
     function    getMetadata:String;
     property    OnLoadProgress:T_VSOP2013_LoadProgress read fOnLoadProgress  write fOnLoadProgress;
     property    OnLoadTerminate:TNotifyEvent           read fOnLoadTerminate write fOnLoadTerminate; //threaded loat terminate
@@ -146,7 +142,7 @@ type
   end;
 
 var
-  VSOP_File:T_VSOP2013_File=nil;     // global vsop2013 file
+  VSOP_File:T_VSOP2013_File=nil;     // global vsop2013 file. When created, stores coeffs in memory for fast calculations
 
 implementation            // ------------------
 
@@ -451,12 +447,11 @@ begin
     end;
 end;
 
-function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TVector3D_D):boolean;
 //         Attempt to calculate the position and velocity for the specified planet.
 //         :param ip: index of planet to perform calculation for
-//         :param jde: the julian date to perform the calculation for
-//         :return: an array of the X, Y, and Z heliocentric position of the planet and the X', Y', and Z' heliocentric velocity
-//         ( units au and au/d )
+//         :param jde: the julian date
+//         :return: an array of the X,Y,Z heliocentric position of the planet and  X',Y',Z' heliocentric velocity ( units au and au/d )
+function T_VSOP2013_File.calculate_coordinates( ip:integer; const jde:Double; {out:} var Position,Speed:TVector3D_D):boolean;
 
 var i,j,ifile,iper,iad,ncf,nsi,ik,iloc,jt,jp:integer;
     r1,rng:TDateRange;
@@ -494,6 +489,7 @@ begin
   //       raise Exception.Create('Invalid jde');
 
   iper := Trunc( (jde - t1) / delta)+1;  // calc 32d period index ( 1 based )
+
   if (iper>0) and (iper<=nintv) then
       begin
         aPeriod := Periods[iper];  //get period containing jde
@@ -513,17 +509,16 @@ begin
         // build Chebyshev terms
         tn[1] := 1.0;
         tn[2] := x;
-        for i := 3 to ncf do
-          tn[i] := 2.0*x*tn[i-1]-tn[i-2];
+        for i := 3 to ncf do tn[i] := 2.0*x*tn[i-1]-tn[i-2];
         // calculate planet pos & speed
-        for i:=1 to 6 do  // 6 vars ( pos and speed)
+        for i:=1 to 6 do        // 6 vars ( pos and speed)
           begin
-            r[i]:=0;            //zero sumatory
-            for j:=1 to ncf do  //loop ncf terms
+            r[i]:=0;            // zero sum
+            for j:=1 to ncf do  // loop ncf terms
               begin
                 jp   := ncf-j+1;               //index into tn[], work backwards ??
                 jt   := iloc+ncf*(i-1)+jp-1;   //index into coef[]
-                if (jt<1) or (jt>nintv) then raise Exception.Create('invalid coef index'); //sanity check index
+                if (jt<1) or (jt>nintv) then raise Exception.Create('invalid coef index');     //sanity check index
                 r[i] := r[i] + tn[jp]*aPeriod.coef[jt];
               end;
           end;
