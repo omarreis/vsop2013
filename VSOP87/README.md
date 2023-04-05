@@ -1,2 +1,5 @@
-VSOP 87 
-code data and demo
+# VSOP 87 planet ephemeris
+
+From the book Astronomical Algorithms by J Meeus
+
+See Demo app 
