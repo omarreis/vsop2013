@@ -3,7 +3,7 @@
 *TestH150Stars* App for Delphi Firemonkey platform.
 This app tests code implemented in StarData.pas
 
-![screenshot](TestH150Stars.png)
+![screenshot](AlmanacStar.png)
 
 Uses Hipparchus 150 Stars ( the most visible stars )
 Star position data for J2000.0 is embedded in StarData.pas, so no data file is necessary.
