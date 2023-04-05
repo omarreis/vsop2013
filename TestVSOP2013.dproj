@@ -276,7 +276,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fTestVSOP2013.pas">
-            <Form>Form2</Form>
+            <Form>FormVSOP2013Tests</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="vsop2013.pas"/>
