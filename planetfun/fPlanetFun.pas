@@ -1,18 +1,25 @@
-unit fPlanetFun;    //-----  planetary system 3d animation --------\\
+unit fPlanetFun;    //-----  planetary system simulation in 4D ----\\
 //-----------------//                                               \\
-// Source: github.com/omarreis/vsop2013    folder planetfun          \\
+// App for delphi firemonkey ( Win32, iOS, Android )                ||
+// Source: github.com/omarreis/vsop2013  ->   folder planetfun       \\
 // History:                                                           \\
 //   v1.0 - jul20 - by oMAR                                            \\
-//   v1.3 - oct20 Om Added lighthouse, virtual phone and sensors       \\
+//   v1.3 - oct20 Om Added lighthouse, virtual phone and sensors       //
 //          augmented reality mode if camera attached to the phone     \\
-//   v1.4 - nov20 Om Added Moon correct positioning                    \\
+//   v1.4 - nov20 Om Added Moon correct positioning                    //
 //          from Astronomical Algorithms - ELP2000 Chapront-Touze      \\
-//          Andreas Hörstemeier TMoon V 2.0                            \\
-//          see http://www.hoerstemeier.com/moon.htm                   \\
-//---------------------------------------------------------------------\\
-
-// version history:
-// dec22: Om: 1.6.1 - fixed startup crash on Android 13 ( w/ D11.2 )
+//          Andreas Hörstemeier TMoon V 2.0                            //
+//          see http://www.hoerstemeier.com/moon.htm                  //
+//   v1.6. -  dec22: Om: fixed startup crash on Android 13 (w/ D11.2) \\
+//   v1.7 - * Added the brightest stars to the celestial sphere       ||
+//            Stars are spheres at R=200 ( the same radious           ||
+//            of the sky background image, so stars are               ||
+//            half-in,half-out the big celestial sphere               ||
+//          * added a new form with Almanac w/ various                ||
+//            calculation engines for Sun, Moon, Planets and stars    ||
+//            vsop2013, vsop87, ELP2000, epoch reduction              ||
+//          * solar system animation                                  //
+//-------------------------------------------------------------------//
 
 interface
 
@@ -33,9 +40,11 @@ uses
   DW.PermissionsRequester,   // include /DelphiWorlds/KastriFree for Android permissions
   DW.PermissionsTypes,       // Android API Level 26+ permissions handling
   {$ENDIF ANDROID}
-  MagnetometerAccelerometerFusion,  // TMagnetoAccelerometerFusion - include path \dpr4\???
+  MagnetometerAccelerometerFusion,  // TMagnetoAccelerometerFusion object ( augmented reality )
 
+  fPlanetFunAlmanac,  // Almanac Form
   doubleVector3D,    // TVector3D_D - vector w/ 3 doubles ( instead of the 3 Singles in TVector3D )
+  StarData,          // Hipparcos 150 and Navigation stars
   PlanetData,        // secundary planet tables. physical data
   CelestialObjects,  // celestial object database ( Currently w/ Sun, planets and Moon )
   vsop2013;          // VSOP 2013 ephemeris
@@ -157,7 +166,6 @@ type
     colorPathUranus: TColorMaterialSource;
     colorPathPluto: TColorMaterialSource;
     spherePolaris: TSphere;
-    btnCloseAboutBox2: TSpeedButton;
     rectVisibility: TRectangle;
     btnCloseVisibility: TSpeedButton;
     rectCamera: TRectangle;
@@ -170,7 +178,6 @@ type
     dummyPolaris: TDummy;
     cylinderLighthouse: TCylinder;
     dummyLighthouse: TDummy;
-    btnTest: TSpeedButton;
     lightMaterialTextureFarol: TLightMaterialSource;
     dummyPhone: TDummy;
     cubePhone: TCube;
@@ -184,12 +191,32 @@ type
     btnPhoneCamera: TSpeedButton;
     imgBtnPhone: TImage;
     timerStartSensorsiOS: TTimer;
-    btnCloseAbout2: TSpeedButton;
     labStatus4: TLabel;
     Label12: TLabel;
     cbShowLightHouseAndPhone: TSwitch;
     imgCameraManipulationToolbar: TImage;
     sphereEarthNight: TSphere;
+    RectAnimation1: TRectAnimation;
+    btnAlmanac: TSpeedButton;
+    ImgAlmanac: TImage;
+    RectAnimation2: TRectAnimation;
+    labAlmanac: TLabel;
+    labTimeBtn: TLabel;
+    labView: TLabel;
+    labCamera: TLabel;
+    btnAddStars: TSpeedButton;
+    Label14: TLabel;
+    cbSkyBGImage: TSwitch;
+    Label15: TLabel;
+    cbStars: TSwitch;
+    btnCloseAbout2: TSpeedButton;
+    rectBigToast: TRectangle;
+    labBigToast: TLabel;
+    labBigToastTitle: TLabel;
+    btnCloseBigToast: TSpeedButton;
+    dummyBanner: TDummy;
+    Label16: TLabel;
+    cbShowBanner: TSwitch;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -223,7 +250,7 @@ type
     procedure btnCloseCameraClick(Sender: TObject);
     procedure btnToggleTimeSettingsClick(Sender: TObject);
     procedure btnToggleVisibilitySettingsClick(Sender: TObject);
-    procedure btnTestClick(Sender: TObject);
+    procedure btnAlmanacClick(Sender: TObject);
     procedure cbSensorsOnSwitch(Sender: TObject);
     procedure btnPhoneCameraClick(Sender: TObject);
     procedure timerStartSensorsiOSTimer(Sender: TObject);
@@ -231,14 +258,20 @@ type
     procedure imgCameraManipulationToolbarMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Single);
     procedure On3dObjClick(Sender: TObject);
+    procedure btnAddStarsClick(Sender: TObject);
+    procedure cbSkyBGImageSwitch(Sender: TObject);
+    procedure cbStarsSwitch(Sender: TObject);
+    procedure btnCloseBigToastClick(Sender: TObject);
+    procedure cbShowBannerSwitch(Sender: TObject);               // Using AA chapter 45
   private
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
     fMousePt:TPointF;
-    // VSOP_File:T_VSOP2013_File;     // moved to vsop2013.pas
     fJDE:Double;
 
     fPlanetOrbitPoints:TList;  //save 3D dots created at runtime
+    fStarDots:TList;          //save 3D dots created at runtime
+
 
     // Gesture related
     FLastZoomDistance:Single;
@@ -265,7 +298,6 @@ type
 
     procedure ClearOrbitDots;
     procedure showToastMessage(const S: String);
-    procedure FileLoadTerminate(Sender: TObject);
     procedure HandlePan(const EventInfo: TGestureEventInfo);
     procedure HandleZoom(const EventInfo: TGestureEventInfo);
     procedure HandleRotate(const EventInfo: TGestureEventInfo);
@@ -280,24 +312,28 @@ type
     procedure PositionMoon;
     procedure DoMoveCamera(const step: TPointF);
     procedure DoRotateCamera(const step: integer);
-    procedure DoCameraDolly(const step: integer);               // Using AA chapter 45
+    procedure DoCameraDolly(const step: integer);
+    procedure ClearStarDots;
   public
+    procedure FileLoadTerminate(Sender: TObject);
   end;
 
 var
-  FormPlanetFun: TFormPlanetFun;
+  FormPlanetFun: TFormPlanetFun=nil;
 
 implementation   // ---x--xx-xxx........................
 
 // solar system setup . Key properties to get the balls right
 //  sphereEarth.RotationAngle.X = 336.566666666667    ( Obliquity 360-(23+26/60)    E=23o26'
-//  sphereSky.RotationAngle.X = 336.566666666667      (same obliquity as the earth. Same equator by definition.
+//  sphereSky.RotationAngle.X = 336.566666666667      ( same obliquity as the earth. Same equator by definition.
 
 uses
   Om.Trigonometry,
   Om.AstronomicalAlgorithms,   // astronomical algorithm formulas from Meeus book
   Ah.Moon,                     // Moon positions ( from AA chapter 45 and Andreas Hörstemeier TMoon }
   quaternionRotations,
+
+
   CameraMovementToolbar;
 
 {$R *.fmx}
@@ -328,9 +364,9 @@ begin
   DecodeDate( Date, {out:}Y,M,D);
   UT        := Time*24;             // in hours
   fJDE      := JD(Y, M, D, UT);     // current Julian date = Now
-  VSOP_File := nil;    // no file yet
 
   fPlanetOrbitPoints := TList.Create;  // list of orbit dots
+  fStarDots          := TList.Create;  // list star dots
 
   // gesture related vars
   FLastZoomDistance := 0;
@@ -387,6 +423,52 @@ begin
 end;
 {$ENDIF Android}
 
+procedure TFormPlanetFun.btnLoadFileClick(Sender: TObject);
+// var aFN:String;
+// const sVSOP2013file = 'VSOP2013.p2000.bin';  // custom binary format
+begin
+  labFileMetadata.Text := 'loading.. wait..';  //wait
+
+  //  defer vsop data file load ( the Almanac does that )
+
+  //  if not Assigned(VSOP_File) then
+  //    VSOP_File := T_VSOP2013_File.Create;   // vsop file parser and position calculator
+  //
+  //  // VSOP_File.OnLoadProgress := Form2LoadPropgress;
+  //  // reads and parses long ASCII file: wait..
+  //
+  //  // file 'VSOP2013.p2000'  1500-3000. ( includes current time )
+  //  // loaded on a thread  at activation
+  //
+  //  {$ifdef MsWindows}
+  //  // TODO: set a folder app documents
+  //  // aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000'  1500-3000. ( includes current time )
+  //  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+
+  //         'vsop2013'+ System.SysUtils.PathDelim+  //    /users/<username>/Documents/vsop2013/vsop2013.p2000.bin'
+  //         sVSOP2013file;
+  //  {$endif MsWindows}
+  //
+  //  {$ifdef Android}
+  //  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+sVSOP2013file;
+  //  {$endif Android}
+
+  //  {$ifdef iOS}
+  //  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+sVSOP2013file;
+  //  {$endif iOS}
+
+  //  if FileExists(aFN) then  // load
+  //    begin
+  //      VSOP_File.OnLoadTerminate := FileLoadTerminate;
+  //      VSOP_File.Threaded_ReadBinaryFile( aFN );       // load data file on a separate thread ( takes some time )
+  //      showToastMessage('Loading VSOP2013 data.  Wait..');
+  //    end
+  //    else showToastMessage('VSOP2013 file not found');
+
+  // Memo1.Lines.Add(aFN+' Loaded');   //not so fast
+  // PositionPlanets;
+
+end;
+
 //------------------------------------------
 //       phone attitude axis ( Euler angles )
 //          -Y     Z       altitude X up positive
@@ -439,35 +521,39 @@ begin
   aAlt  := fMagAccelFusion.fAltitude;
   aRoll := fMagAccelFusion.fRoll;
 
-  s := 'Az:'+    Trim(Format('%5.0f°', [aHead] ))+
-       ' H:'+    Trim(Format('%5.0f°', [aAlt ] ))+
-       ' Roll:'+ Trim(Format('%5.0f°', [aRoll] ));   // roll  -- az
+  s := ' Az:'+     Trim(Format('%5.0f°', [aHead] ))+
+       ' Ele:'+    Trim(Format('%5.0f°', [aAlt ] ))+
+       ' Roll:'+   Trim(Format('%5.0f°', [aRoll] ));   // roll  -- az
   labStatus2.Text := s;
 
   // use quaternion to apply sensor fusion readings
   ToQuaternion( aRoll, aHead-90 , aAlt, Q );
+  // ToQuaternion( aRoll, aHead+90 , aAlt, Q );
 
   Self.SolarSystemViewport3D.BeginUpdate;  //needed ??
   try
-   cubePhone.SetMatrix(Q);   // rotate phone cube using quaternion
+   cubePhone.SetMatrix( Q );   // rotate phone model using the quaternion
 
    // dummySeaDisk.RotationAngle.Y := aSensorVec.Y;       // rotate compass disk
 
    // getRandomTestPlace(aLat,aLon);
    aLat := fMagAccelFusion.fLocationLat;
    aLon := fMagAccelFusion.fLocationLon;
-   doPositionLighthouse(aLat,aLon);   //position lighthouse and phone using GPS position
+
+   doPositionLighthouse(aLat,aLon);        // position lighthouse and phone on GPS position ( me )
 
    s := floatToLatitudeStr(fMagAccelFusion.fLocationLat) +'  '+
         floatToLongitudeStr(fMagAccelFusion.fLocationLon)+'  d:'+
         Format('%5.1f°', [fMagAccelFusion.fMagDeclination]);
+
    labStatus3.Text := s;  // show geographical coordinates (GPS)
 
-   // targeting the camera to the phone enters augmented reality mode
+   // attach virtual camera to the phone .._ enter augmented reality mode..
 
   finally
     Self.SolarSystemViewport3D.EndUpdate;
   end;
+
 end;
 
 procedure TFormPlanetFun.FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer; var Handled: Boolean);
@@ -726,19 +812,43 @@ begin
      end;
 end;
 
-procedure TFormPlanetFun.On3dObjClick(Sender: TObject);    // clicked a 3d sphere. show object data...
+procedure TFormPlanetFun.On3dObjClick(Sender: TObject);    // clicked a 3d obj. show object data...
+var aObjName:String; aOBj:TCelObjBase; aGMT:TDatetime;
+    SL:TStringList;
 begin                                                      // object must have HitTest = true
-  if      (Sender=sphereMoon)    then showToastMessage('Moon'    )
-  else if (Sender=sphereEarth)   then showToastMessage('Earth'   )
-  else if (Sender=sphereMercury) then showToastMessage('Mercury' )
-  else if (Sender=sphereVenus)   then showToastMessage('Venus'   )
-  else if (Sender=sphereMars)    then showToastMessage('Mars'    )
-  else if (Sender=sphereJupiter) then showToastMessage('Jupiter' )
-  else if (Sender=sphereSaturn)  then showToastMessage('Saturn'  )
-  else if (Sender=sphereUranus)  then showToastMessage('Uranus'  )
-  else if (Sender=sphereNeptune) then showToastMessage('Neptune' )
-  else if (Sender=spherePluto)   then showToastMessage('Pluto'   );
+  aObjName:='';
+  if ((Sender as TControl3D).TagString<>'') then     //stars etc
+      aObjName := (Sender as TControl3D).TagString
+  else if (Sender=sphereMoon)    then aObjName := 'Moon'
+  else if (Sender=sphereEarth)   then aObjName := 'Earth'
+  else if (Sender=sphereMercury) then aObjName := 'Mercury'
+  else if (Sender=sphereVenus)   then aObjName := 'Venus'
+  else if (Sender=sphereMars)    then aObjName := 'Mars'
+  else if (Sender=sphereJupiter) then aObjName := 'Jupiter'
+  else if (Sender=sphereSaturn)  then aObjName := 'Saturn'
+  else if (Sender=sphereUranus)  then aObjName := 'Uranus'
+  else if (Sender=sphereNeptune) then aObjName := 'Neptune'
+  else if (Sender=spherePluto)   then aObjName := 'Pluto';
   // else ..
+  if (aObjName<>'') then
+    begin
+      aObj := FrmPlanetFunAlmanac.getCelObjByName(aObjName);   // generic obj query
+      if Assigned(aObj) then
+        begin
+          aObj.GMT := JDtoDatetime( fJDE );  // to UT
+          SL := TStringList.Create;
+          aObj.GetObjectData(SL);        // get obj text
+          if SL.Count>1 then
+             begin
+               labBigToastTitle.Text := aObj.Name;
+               SL.Delete(0);   //delete o nome. vou repor maior em outro label
+               labBigToast.Text      := SL.Text;
+               rectBigToast.Visible := true;
+               rectBigToast.BringToFront;
+             end;
+          SL.Free;
+        end;
+    end;
 end;
 
 // interactive gestures for mobile ( on Windows use mouse events combined with shift keys. See MouseMove() event )
@@ -783,7 +893,9 @@ begin    // 3d coordinates are in AU
         // When the whole solar system is visible, most planets are too small to be seen.
         // So I applyed a log transformation to planet sizes. The Sun becomes 3 times larger than the Earth.
         // Better for visualization, but is a cheat...
+
         k := 700;  // this k was adjusted so that, w/ formula R=LN(radiusKm/k)*sc  (w/ sc in range 0.1..1.0 )
+
         // 1- Size of celestial bodyes are proportional to LN() of size
         // 2- when earth size set to 1 --> Sun size~3, jupiter~2 and pluto~0.23
 
@@ -1121,10 +1233,10 @@ begin
 
   // SolarSystemViewport3D.BeginUpdate;
   try
-     for ip := 1 to 9 do // build orbiots for all planets
+     for ip := 1 to 9 do // build orbits with dots, for all planets
         begin
           yearLen  := PLANET_DATA[ip].revPer;  // rev period = planet "year"
-          weekLen := yearLen/52;             // = planet week len in days
+          weekLen := yearLen/52;              // = planet week len in days
 
           // was  := 0.2*Point3D( 0.5, 0.5, 0.5 );   // scale 0.5 --> small dot
 
@@ -1162,15 +1274,14 @@ begin
                           7: aDot.MaterialSource := colorPathUranus;
                           8: aDot.MaterialSource := colorPathNeptune;
                           9: aDot.MaterialSource := colorPathPluto;
-                        else
-                          aDot.MaterialSource := colorPathPlanet;  //generic
+                        else aDot.MaterialSource := colorPathPlanet;  //generic
                         end;
 
                         aDot.Opacity        := 0.20;      //transparent
 
                         fPlanetOrbitPoints.Add( aDot );
                       end
-                      else begin  //other 119 dots are proxies
+                      else begin    // other 119 dots are proxies
                         aProxy := TProxyObject.Create(Self);
                         SolarSystemViewport3D.AddObject(aProxy);
 
@@ -1191,6 +1302,105 @@ begin
     // SolarSystemViewport3D.EndUpdate;
   end;
 
+end;
+
+
+// Adds a number of spheres at radius = 200 AU
+// Since the sky sphere also has r=200,
+// the stars are half-in half-out the celestial sphere
+// so that they can be seen from inside and outside the 200 au sky ball.
+
+procedure TFormPlanetFun.btnAddStarsClick(Sender: TObject);
+var aStarSphere:TSphere; i,ip:integer; aProxy:TProxyObject;
+    yearLen,weekLen,aJDE,radiusDot:Double; aPos,aSpeed:TVector3D_D;
+    aPoint3d:TPoint3d;
+    aStar:TStarH150; aGMT:TDAtetime;
+    A,B,C:Double;
+
+begin
+   if not ( Assigned(VSOP_File) and VSOP_File.fLoaded ) then exit; //sanity
+
+   aGMT := JDtoDatetime( fJDE );  // to UT
+
+   // SolarSystemViewport3D.BeginUpdate;
+   try
+       for i:=1 to NumH150stars do
+         begin
+           aStar := StarsH150[i];
+
+           radiusDot := 4.0-aStar.fMagnitude;
+           if ( radiusDot<0.5 ) then continue;  //too small ... don't include
+
+           aStar.GMT := aGMT;        // calc coordinates
+
+           A := aStar.fRA;
+           B := aStar.fDecl;
+           C := 200-radiusDot/2;       // external sky sphere has radius 200, so dots are half in half out
+           // to heliocentric cartesian :
+           aPos.x := (C * cosg(B)) * cosg(A);
+           aPos.y := (C * cosg(B)) * sing(A);
+           aPos.z := (C * sing(B));
+
+           aPoint3d := Point3D(   // 3DWorld   Universe
+           aPos.x,                //   x          x
+          -aPos.z,                //   y         -z
+           aPos.y  );             //   z          y
+
+           if (i=1) then     // 1st star is a sphere, other are proxys of that 1st star.
+             begin
+               aStarSphere := TSphere.Create( Self );
+
+               SolarSystemViewport3D.AddObject(aStarSphere);
+               aStarSphere.Position.Point := aPoint3d;    //
+               aStarSphere.Scale.Point    := Point3D( radiusDot,radiusDot,radiusDot );
+
+               aStarSphere.TagString := aStar.Name;       // save starname. When a star is clicked, its Almanac data is shown
+
+               aStarSphere.MaterialSource := colorSun;
+
+               aStarSphere.Opacity    := 0.5;      //semi transparent
+               aStarSphere.HitTest    := true;
+               aStarSphere.OnClick    := On3dObjClick;
+
+               fStarDots.Add( aStarSphere );   // fStarDots contains the 3d dots
+             end
+             else begin    // other 119 dots are proxies
+               aProxy := TProxyObject.Create(Self);
+               SolarSystemViewport3D.AddObject(aProxy);
+
+               aProxy.SourceObject := aStarSphere;
+               aProxy.Position.Point := aPoint3d;
+               aProxy.Scale.Point    := Point3D( radiusDot, radiusDot, radiusDot );
+               aProxy.Opacity        := 0.5;
+               aProxy.TagString      := aStar.Name;
+               aProxy.HitTest        := true;
+               aProxy.OnClick        := On3dObjClick;
+
+               fStarDots.Add( aProxy );
+             end;
+         end;
+
+   finally
+     // SolarSystemViewport3D.EndUpdate;
+   end;
+end;
+
+procedure TFormPlanetFun.ClearStarDots;
+var aObj:TControl3D; i:integer;
+begin
+  // SolarSystemViewport3D.BeginUpdate;
+  try
+      // delete all dots
+      for i:=0 to fStarDots.Count-1 do
+        begin
+          aObj := TControl3D(fStarDots.Items[i]);
+          SolarSystemViewport3D.RemoveObject( aObj );
+          // call aObj.Free; //??
+        end;
+      fStarDots.Clear;
+  finally
+    // SolarSystemViewport3D.EndUpdate;
+  end;
 end;
 
 procedure TFormPlanetFun.ClearOrbitDots;
@@ -1216,6 +1426,11 @@ end;
 procedure TFormPlanetFun.btnCloseAboutClick(Sender: TObject);
 begin
   rectAboutPlanetFun.Visible := false;
+end;
+
+procedure TFormPlanetFun.btnCloseBigToastClick(Sender: TObject);
+begin
+  rectBigToast.Visible := false;
 end;
 
 procedure TFormPlanetFun.btnCloseCameraClick(Sender: TObject);
@@ -1255,55 +1470,25 @@ begin
   timeEditJDE.Time := T;
 end;
 
-procedure TFormPlanetFun.btnLoadFileClick(Sender: TObject);
-var aFN:String;
-const sVSOP2013file = 'VSOP2013.p2000.bin';  // custom binary format
+//  procedure TFormPlanetFun.btnAlmanacClick(Sender: TObject);
+//  var sc,aLat,aLon:Double;
+//  begin
+//    // aLat := -23.5;  //Lighthouse at home
+//    // aLon := -46.5;
+//    getRandomTestPlace(aLat,aLon);
+//    doPositionLighthouse(aLat,aLon);
+//  end;
+//
+
+procedure TFormPlanetFun.btnAlmanacClick(Sender: TObject);
 begin
-  labFileMetadata.Text := 'loading.. wait..';  //wait
-
-  if not Assigned(VSOP_File) then
-    VSOP_File := T_VSOP2013_File.Create;   // vsop file parser and position calculator
-
-  // VSOP_File.OnLoadProgress := Form2LoadPropgress;
-  // reads and parses long ASCII file: wait..
-
-  // file 'VSOP2013.p2000'  1500-3000. ( includes current time )
-  // loaded on a thread  at activation
-
-  {$ifdef MsWindows}
-  // TODO: set a folder app documents
-  // aFN := Trim( edFilename.Text )+'.bin';    // '\dpr4\vsop2013\VSOP2013.p2000'  1500-3000. ( includes current time )
-  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+
-         'vsop2013'+ System.SysUtils.PathDelim+  //    /users/<username>/Documents/vsop2013/vsop2013.p2000.bin'
-         sVSOP2013file;
-  {$endif MsWindows}
-
-  {$ifdef Android}
-  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+sVSOP2013file;
-  {$endif Android}
-
-  {$ifdef iOS}
-  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim+sVSOP2013file;
-  {$endif iOS}
-
-  if FileExists(aFN) then  // load
+  if Assigned(FrmPlanetFunAlmanac) then
     begin
-      VSOP_File.OnLoadTerminate := FileLoadTerminate;
-      VSOP_File.Threaded_ReadBinaryFile( aFN );       // load data file on a separate thread ( takes some time )
-      showToastMessage('Loading VSOP2013 data.  Wait..');
-    end
-    else showToastMessage('VSOP2013 file not found');
-  // Memo1.Lines.Add(aFN+' Loaded');   //not so fast
-  // PositionPlanets;
-end;
-
-procedure TFormPlanetFun.btnTestClick(Sender: TObject);
-var sc,aLat,aLon:Double;
-begin
-  // aLat := -23.5;  //Lighthouse at home
-  // aLon := -46.5;
-  getRandomTestPlace(aLat,aLon);
-  doPositionLighthouse(aLat,aLon);
+      FrmPlanetFunAlmanac.Show;
+      {$IFNDEF MsWindows}      // On Win32 we don't hide the main form as we show the almanac form ( the two remain visible )
+      Hide;
+      {$ENDIF MsWindows}
+    end;
 end;
 
 procedure TFormPlanetFun.btnToggleCameraSettingsClick(Sender: TObject);
@@ -1350,32 +1535,42 @@ procedure TFormPlanetFun.btnPhoneCameraClick(Sender: TObject);
 const
   ixLightHouseTarget=11;
   ixPhoneTarget=12;
+var S:String;
 begin
-  // btn toggles between target = phone and lighthouse
+  // btn toggles between target = phone and lighthouse ( one attached to the phone sensors, one fixed )
+  S:='';
   if (comboTarget.ItemIndex=ixPhoneTarget) then
-         comboTarget.ItemIndex := ixLightHouseTarget
-    else comboTarget.ItemIndex := ixPhoneTarget;
-
+    begin
+      S :='target = lighthouse';
+      comboTarget.ItemIndex := ixLightHouseTarget
+    end
+    else begin
+      S :='target = phone';
+      comboTarget.ItemIndex := ixPhoneTarget;
+    end;
+  showToastMessage( S );
 end;
 
-procedure TFormPlanetFun.FileLoadTerminate(Sender:TObject);
-var S:String;
+procedure TFormPlanetFun.FileLoadTerminate(Sender:TObject);   // thread load of VSOP2013.p2000.bin terminated
+var S:String;                                                // ready to calculate ephemeris
 begin
   if VSOP_File.fLoaded then
     begin
-      S := S+'VSOP2013.p2000.bin loaded';
+      S := S+'VSOP2013.p2000.bin loaded'+ #13#10+
+             'Dates between 1500 and 3000';
     end
-    else S := ' vsop file read error';
+    else S := ' vsop file read error';       //not supposed to happen.....
 
-  showToastMessage( S );  // notify finished loading
+  showToastMessage( S );  // notify finished download
 
   if VSOP_File.fLoaded then
     begin
       textPlanetFunTitle.Visible := false;     // hide app title after the file is loaded, and we are open for business
-      planeBanner.Visible        := false;
+      // planeBanner.Visible        := false;  //keep banner visible in space..
 
       labFileMetadata.Text := VSOP_File.getMetadata;  //show vsop file metadata ( header )
       labJDEClick(nil);    // sets fJDE to current and repos planets
+      Self.btnAddStarsClick(nil);     //add big star dots
     end
     else labFileMetadata.Text := 'ops..some error loading file';
 end;
@@ -1452,10 +1647,11 @@ begin
   {$ENDIF MsWindows}
   if cbConstLinesNames.IsChecked then aFN:=aFN+'SkyMapLinesNames.png'
     else aFN:=aFN+'SkyMapPlain.png';
+
   if FileExists(aFN) then      //sanity test
     begin
-      textureStars.Texture.LoadFromFile(aFN);
-      sphereSky.Visible := true;
+      textureStars.Texture.LoadFromFile(aFN);     //load
+      sphereSky.Visible := cbSkyBGImage.IsChecked;
     end;
 end;
 
@@ -1482,9 +1678,26 @@ begin
   {$ENDIF MsWindows}
 end;
 
+procedure TFormPlanetFun.cbShowBannerSwitch(Sender: TObject);
+begin
+  dummyBanner.Visible := cbShowBanner.IsChecked;   // banner is a TPlane with app's About image
+end;
+
 procedure TFormPlanetFun.cbShowLightHouseAndPhoneSwitch(Sender: TObject);
 begin
   dummyLighthouse.Visible := cbShowLightHouseAndPhone.IsChecked;  // show/hide LH n phone
+end;
+
+procedure TFormPlanetFun.cbSkyBGImageSwitch(Sender: TObject);
+begin
+   sphereSky.Visible := cbSkyBGImage.IsChecked;
+end;
+
+procedure TFormPlanetFun.cbStarsSwitch(Sender: TObject);
+begin
+  if cbStars.IsChecked then
+    btnAddStarsClick(nil)
+    else self.ClearStarDots;
 end;
 
 procedure TFormPlanetFun.comboTargetChange(Sender: TObject);
@@ -1504,13 +1717,16 @@ begin
     10: aDummy := dummyPluto;             // Pluto
     11: aDummy := dummyLighthouse;        // Lighthouse
     12: aDummy := dummyPhoneTarget;       // Phone ( Augmented Reality mode )
+    13: aDummy := dummyBanner;            // PlanetFun plate ..
     else exit;
   end;
 
   dummyCamera.Parent := aDummy;  //parent dummyCamera to target planet dummy
   // move camera to 0,0,0  (on parent scale)
   dummyCamera.Position.Point := Point3d(0,0,0);          // aDummy.Position.Point;  // move camera to position. TODO: animate camera shift
-  dummyCamera.RotationAngle.Point := Point3d(0,0,0);  // aDummy.Position.Point;  // reset camera angles ?
+  dummyCamera.RotationAngle.Point := Point3d(0,0,0);    // aDummy.Position.Point;  // reset camera angles
+
+  tbDistanceToTarget.Value := 30;    // 30 = 15% of the trackbar - set camera at small distance from target ( but not too close )
   // DoCameraDolly(+1);   // get far from
 
   // move camera ( TODO: animate that )
@@ -1530,6 +1746,8 @@ procedure TFormPlanetFun.timerStartSensorsiOSTimer(Sender: TObject);
 begin
   fMagAccelFusion.StartStopSensors({bStart:} true );  //start ios sensor feed
   timerStartSensorsiOS.Enabled := false;              //once
+
+  // planeBanner.Visible        := false;  //keep banner visible in space..
 end;
 
 procedure TFormPlanetFun.FormActivate(Sender: TObject);

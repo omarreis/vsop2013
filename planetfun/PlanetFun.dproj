@@ -6,7 +6,7 @@
         <MainSource>PlanetFun.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Android64</Platform>
         <TargetedPlatforms>693267</TargetedPlatforms>
         <AppType>Application</AppType>
         <PlatformSDK Condition="'$(PlatformSDK)'=='' And '$(Platform)'=='Android64'">AndroidSDK25.2.5_64bit.sdk</PlatformSDK>
@@ -156,7 +156,7 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <SanitizedProjectName>PlanetFun</SanitizedProjectName>
-        <DCC_UnitSearchPath>\dpr4\BoatAttitude\SensorFusion;\dpr4\KastriFree-master;\dpr4\KastriFree-master\;\dpr4\KastriFree-master\Core;\dpr4\KastriFree-master\Lib;\dpr4\KastriFree-master\API;\dpr4\vsop2013;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>\dpr4\BoatAttitude\SensorFusion;\dpr4\KastriFree-master;\dpr4\KastriFree-master\;\dpr4\KastriFree-master\Core;\dpr4\KastriFree-master\Lib;\dpr4\KastriFree-master\API;\dpr4\vsop2013;\dpr4\vsop2013\PlanetFunAlmanac\;\dpr4\vsop2013\vsop87\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;bindcompdbx;IndyIPCommon;RESTComponents;DBXInterBaseDriver;IndyIPServer;IndySystem;tethering;fmxFireDAC;FireDAC;bindcompfmx;FireDACSqliteDriver;FMXTee;soaprtl;DbxCommonDriver;FmxTeeUI;FireDACIBDriver;fmx;xmlrtl;soapmidas;rtl;DbxClientDriver;CustomIPTransport;dbexpress;IndyCore;bindcomp;dsnap;FireDACCommon;IndyIPClient;RESTBackendComponents;soapserver;dbxcds;bindengine;CloudService;dsnapxml;dbrtl;IndyProtocols;FireDACCommonDriver;inet;$(DCC_UsePackage)</DCC_UsePackage>
@@ -304,12 +304,16 @@
     <PropertyGroup Condition="'$(Cfg_1_Android)'!=''">
         <VerInfo_Build>1</VerInfo_Build>
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
-        <VerInfo_Keys>package=com.omarreis.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <VerInfo_Keys>package=com.omarreis.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.7.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <PF_KeyStore>AndroidKeystore\PlanetFun2.keystore</PF_KeyStore>
+        <PF_KeyStorePass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_KeyStorePass>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android64)'!=''">
         <VerInfo_Build>1</VerInfo_Build>
-        <VerInfo_Keys>package=com.omarreis.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <VerInfo_Keys>package=com.omarreis.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.7.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
+        <PF_KeyStore>AndroidKeystore\PlanetFun2.keystore</PF_KeyStore>
+        <PF_KeyStorePass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_KeyStorePass>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_iOSDevice64)'!=''">
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -324,12 +328,14 @@
         <iPad_Setting58>Images\iconPlanetFunt_58.png</iPad_Setting58>
         <iPad_AppIcon167>Images\iconPlanetFunt_167.png</iPad_AppIcon167>
         <VerInfo_Build>1</VerInfo_Build>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.1;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSLocationAlwaysAndWhenInUseUsageDescription=The reason for accessing the location information of the user;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=The reason for accessing the accelerometer;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers</VerInfo_Keys>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.7.1;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSLocationAlwaysAndWhenInUseUsageDescription=The reason for accessing the location information of the user;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=The reason for accessing the accelerometer;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers</VerInfo_Keys>
         <iPhone_Notification60>Images\iconPlanetFunt_60.png</iPhone_Notification60>
         <iPhone_Setting87>Images\iconPlanetFunt_87.png</iPhone_Setting87>
         <iPhone_Notification40>Images\iconPlanetFunt_40.png</iPhone_Notification40>
         <iPhone_Setting58>Images\iconPlanetFunt_58.png</iPhone_Setting58>
         <iPad_Notification40>Images\iconPlanetFunt_40.png</iPad_Notification40>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
+        <iOS_AppStore1024>Images\iconPlanetFunt_1024.png</iOS_AppStore1024>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_iOSSimARM64)'!=''">
         <Cfg_1>true</Cfg_1>
@@ -367,7 +373,7 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
-        <VerInfo_Build>12</VerInfo_Build>
+        <VerInfo_Build>13</VerInfo_Build>
         <Android_LauncherIcon36>Images\iconPlanetFunt_36.png</Android_LauncherIcon36>
         <Android_LauncherIcon48>Images\iconPlanetFunt_48.png</Android_LauncherIcon48>
         <Android_LauncherIcon72>Images\iconPlanetFunt_72.png</Android_LauncherIcon72>
@@ -383,7 +389,7 @@
         <Android_NotificationIcon72>Images\iconPlanetFunt_72.png</Android_NotificationIcon72>
         <Android_NotificationIcon96>Images\iconPlanetFunt_96.png</Android_NotificationIcon96>
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
-        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=12;versionName=1.6.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=13;versionName=1.7.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <PF_KeyStore>AndroidKeystore\PlanetFun2.keystore</PF_KeyStore>
         <PF_KeyStorePass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_KeyStorePass>
         <PF_AliasKey>planet fun</PF_AliasKey>
@@ -398,13 +404,13 @@
     </PropertyGroup>
     <Import Project="Images\PFAndroid.optset" Condition="'$(Cfg_2_Android64)'!='' And Exists('Images\PFAndroid.optset')"/>
     <PropertyGroup Condition="'$(Cfg_2_Android64)'!=''">
-        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=12;versionName=1.6.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=13;versionName=1.7.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <PF_KeyStore>AndroidKeystore\PlanetFun2.keystore</PF_KeyStore>
         <PF_KeyStorePass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_KeyStorePass>
         <PF_AliasKey>planet fun</PF_AliasKey>
         <DCC_GenerateAndroidAppBundleFile>true</DCC_GenerateAndroidAppBundleFile>
         <PF_AliasKeyPass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_AliasKeyPass>
-        <VerInfo_Build>12</VerInfo_Build>
+        <VerInfo_Build>13</VerInfo_Build>
         <AUP_CAMERA>false</AUP_CAMERA>
         <AUP_CALL_PHONE>false</AUP_CALL_PHONE>
         <AUP_WRITE_EXTERNAL_STORAGE>false</AUP_WRITE_EXTERNAL_STORAGE>
@@ -426,8 +432,8 @@
         <iPad_SpotLight80>Images\iconPlanetFunt_80.png</iPad_SpotLight80>
         <iPad_Setting58>Images\iconPlanetFunt_58.png</iPad_Setting58>
         <iPad_AppIcon167>Images\iconPlanetFunt_167.png</iPad_AppIcon167>
-        <VerInfo_Build>1</VerInfo_Build>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=com.omarreis.planetfun;CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.4.1;CFBundleShortVersionString=1.4;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=No need for GPS when in background;NSLocationWhenInUseUsageDescription=Uses sensors and GPS to position the sky;NSLocationAlwaysAndWhenInUseUsageDescription=Uses sensors and GPS to position the sky;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=Uses sensors and GPS to position the sky;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;UIUserInterfaceStyle=Light</VerInfo_Keys>
+        <VerInfo_Build>2</VerInfo_Build>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=com.omarreis.planetfun;CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.7.2;CFBundleShortVersionString=1.7;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=No need for GPS when in background;NSLocationWhenInUseUsageDescription=Uses sensors and GPS to position the sky;NSLocationAlwaysAndWhenInUseUsageDescription=Uses sensors and GPS to position the sky;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=Uses sensors and GPS to position the sky;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;UIUserInterfaceStyle=Light</VerInfo_Keys>
         <DCC_GenerateUniversalBinaryFile>false</DCC_GenerateUniversalBinaryFile>
         <iPhone_Launch2x>Images\PlanetFunSplashh_640x480.png</iPhone_Launch2x>
         <iPhone_LaunchDark2x>Images\PlanetFunSplashh_640x480.png</iPhone_LaunchDark2x>
@@ -436,13 +442,14 @@
         <iPad_Launch2x>Images\PlanetFunSplashh_1024x768.png</iPad_Launch2x>
         <iPad_LaunchDark2x>Images\PlanetFunSplashh_1024x768.png</iPad_LaunchDark2x>
         <iOS_BackgroundColor>FF000000</iOS_BackgroundColor>
-        <VerInfo_MinorVer>4</VerInfo_MinorVer>
-        <BT_BuildType>AppStore</BT_BuildType>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
         <iPhone_Notification60>Images\iconPlanetFunt_60.png</iPhone_Notification60>
         <iPhone_Setting87>Images\iconPlanetFunt_87.png</iPhone_Setting87>
         <iPhone_Notification40>Images\iconPlanetFunt_40.png</iPhone_Notification40>
         <iPhone_Setting58>Images\iconPlanetFunt_58.png</iPhone_Setting58>
         <iPad_Notification40>Images\iconPlanetFunt_40.png</iPad_Notification40>
+        <BT_BuildType>AppStore</BT_BuildType>
+        <iOS_AppStore1024>Images\iconPlanetFunt_1024.png</iOS_AppStore1024>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_iOSSimARM64)'!=''">
         <Cfg_2>true</Cfg_2>
@@ -474,7 +481,6 @@
         <iPad_Notification40>Images\iconPlanetFunt_40.png</iPad_Notification40>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -500,9 +506,8 @@
         <DCCReference Include="PlanetData.pas"/>
         <DCCReference Include="..\StarData.pas"/>
         <DCCReference Include="..\vsop2013.pas"/>
-        <DCCReference Include="CameraMovementToolbar.pas">
-            <Form>$R *.res</Form>
-        </DCCReference>
+        <DCCReference Include="..\PlanetFunAlmanac\fPlanetFunAlmanac.pas"/>
+        <DCCReference Include="CameraMovementToolbar.pas"/>
         <None Include="ModelSupport_PlanetFun\default.txaPackage"/>
         <None Include="CelestialObjects.pas"/>
         <BuildConfiguration Include="Base">
@@ -532,19 +537,34 @@
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Debug" Class="Android_LauncherIcon144"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Debug" Class="Android_LauncherIcon144"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Debug" Class="Android_LauncherIcon192"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Debug" Class="Android_LauncherIcon192"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Debug" Class="Android_LauncherIcon48"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Debug" Class="Android_LauncherIcon48"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Debug" Class="Android_LauncherIcon72"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Debug" Class="Android_LauncherIcon72"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Debug" Class="Android_LauncherIcon96"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Debug" Class="Android_LauncherIcon96"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Debug" Class="Android_NotificationIcon24"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Debug" Class="Android_NotificationIcon24"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Debug" Class="Android_NotificationIcon36"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Debug" Class="Android_NotificationIcon36"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Debug" Class="Android_NotificationIcon48"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Debug" Class="Android_NotificationIcon48"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Debug" Class="Android_NotificationIcon72"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Debug" Class="Android_NotificationIcon72"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Debug" Class="Android_NotificationIcon96"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Debug" Class="Android_NotificationIcon96"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Debug" Class="Android_SplashImage426"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Debug" Class="Android_SplashImage426"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Debug" Class="Android_SplashImage470"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Debug" Class="Android_SplashImage470"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Debug" Class="Android_SplashImage640"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Debug" Class="Android_SplashImage640"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Debug" Class="Android_SplashImage960"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Debug" Class="Android_SplashImage960"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_144x144.png" Configuration="Debug" Class="iPad_AppIcon144"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png" Configuration="Debug" Class="iPad_AppIcon152"/>
@@ -600,7 +620,10 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_58x58.png" Configuration="Debug" Class="iPhone_Spotlight58"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png" Configuration="Debug" Class="iPhone_Spotlight80"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiv7aFile"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiv7aFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiv7aFile"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiv7aFile"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile">
@@ -609,6 +632,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
@@ -617,6 +642,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\release\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
@@ -631,11 +657,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Release" Class="AndroidGDBServer">
-                    <Platform Name="Android">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1054,12 +1075,20 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Android64\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest"/>
+                <DeployFile LocalName="Android64\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest"/>
+                <DeployFile LocalName="Android64\Debug\colors.xml" Configuration="Debug" Class="Android_Colors"/>
                 <DeployFile LocalName="Android64\Debug\colors.xml" Configuration="Debug" Class="Android_Colors"/>
                 <DeployFile LocalName="Android64\Debug\libPlanetFun.so" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Android64\Debug\libPlanetFun.so" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Android64\Debug\PlanetFun.classes" Configuration="Debug" Class="AndroidClasses"/>
                 <DeployFile LocalName="Android64\Debug\PlanetFun.classes" Configuration="Debug" Class="AndroidClasses"/>
                 <DeployFile LocalName="Android64\Debug\splash_image_def.xml" Configuration="Debug" Class="AndroidSplashImageDef"/>
+                <DeployFile LocalName="Android64\Debug\splash_image_def.xml" Configuration="Debug" Class="AndroidSplashImageDef"/>
+                <DeployFile LocalName="Android64\Debug\strings.xml" Configuration="Debug" Class="Android_Strings"/>
                 <DeployFile LocalName="Android64\Debug\strings.xml" Configuration="Debug" Class="Android_Strings"/>
                 <DeployFile LocalName="Android64\Debug\styles-v21.xml" Configuration="Debug" Class="AndroidSplashStylesV21"/>
+                <DeployFile LocalName="Android64\Debug\styles-v21.xml" Configuration="Debug" Class="AndroidSplashStylesV21"/>
+                <DeployFile LocalName="Android64\Debug\styles.xml" Configuration="Debug" Class="AndroidSplashStyles"/>
                 <DeployFile LocalName="Android64\Debug\styles.xml" Configuration="Debug" Class="AndroidSplashStyles"/>
                 <DeployFile LocalName="Android64\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest"/>
                 <DeployFile LocalName="Android64\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest">
@@ -1139,6 +1168,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Android\Release\libPlanetFun.so" Configuration="Release" Class="ProjectOutput_Android32">
+                    <Platform Name="Android64">
+                        <RemoteName>libPlanetFun.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Android\Release\PlanetFun.classes" Configuration="Release" Class="AndroidClasses"/>
                 <DeployFile LocalName="Android\Release\PlanetFun.classes" Configuration="Release" Class="AndroidClasses">
                     <Platform Name="Android">
@@ -1173,9 +1208,9 @@
                 </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_100.png" Configuration="Debug" Class="iPad_SpotLight100"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_100.png" Configuration="Release" Class="iPad_SpotLight100"/>
-                <DeployFile LocalName="Images\iconPlanetFunt_1024.png" Configuration="Release" Class="File">
+                <DeployFile LocalName="Images\iconPlanetFunt_1024.png" Configuration="Release" Class="iOS_AppStore1024"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_1024.png" Configuration="Release" Class="iOS_AppStore1024">
                     <Platform Name="iOSDevice64">
-                        <RemoteName>iconPlanetFunt_1024.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1183,6 +1218,11 @@
                 <DeployFile LocalName="Images\iconPlanetFunt_114.png" Configuration="Release" Class="iPhone_AppIcon114"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_120.png" Configuration="Debug" Class="iPhone_Spotlight120"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_120.png" Configuration="Release" Class="iPhone_Spotlight120"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_120.png" Configuration="Release" Class="iPhone_Spotlight120">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_144.png" Configuration="Debug" Class="iPad_AppIcon144"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_144.png" Configuration="Release" Class="Android_LauncherIcon144">
                     <Platform Name="Android">
@@ -1198,11 +1238,26 @@
                 </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_144.png" Configuration="Release" Class="iPad_AppIcon144"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_152.png" Configuration="Debug" Class="iPad_AppIcon152"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_152.png" Configuration="Release" Class="iPad_AppIcon152">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_152.png" Configuration="Release" Class="UWP_DelphiLogo150"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_167.png" Configuration="Debug" Class="iPad_AppIcon167"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_167.png" Configuration="Release" Class="iPad_AppIcon167"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_167.png" Configuration="Release" Class="iPad_AppIcon167">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_180.png" Configuration="Debug" Class="iPhone_AppIcon180"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_180.png" Configuration="Release" Class="iPhone_AppIcon180"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_180.png" Configuration="Release" Class="iPhone_AppIcon180">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_192.png" Configuration="Release" Class="Android_LauncherIcon192"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_192.png" Configuration="Release" Class="Android_LauncherIcon192">
                     <Platform Name="Android">
@@ -1245,6 +1300,11 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_40.png" Configuration="Debug" Class="iPad_SpotLight40"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_40.png" Configuration="Release" Class="iPad_Notification40">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_40.png" Configuration="Release" Class="iPad_SpotLight40"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_48.png" Configuration="Release" Class="Android_NotificationIcon48">
                     <Platform Name="Android">
@@ -1264,9 +1324,19 @@
                 <DeployFile LocalName="Images\iconPlanetFunt_57.png" Configuration="Debug" Class="iPhone_AppIcon57"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_57.png" Configuration="Release" Class="iPhone_AppIcon57"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_58.png" Configuration="Debug" Class="iPad_Setting58"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_58.png" Configuration="Release" Class="iPad_Setting58">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_58.png" Configuration="Release" Class="iPhone_Spotlight58"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_60.png" Configuration="Debug" Class="iPhone_AppIcon60"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_60.png" Configuration="Release" Class="iPhone_Notification60"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_60.png" Configuration="Release" Class="iPhone_Notification60">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_72.png" Configuration="Debug" Class="iPad_AppIcon72"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_72.png" Configuration="Release" Class="Android_NotificationIcon72">
                     <Platform Name="Android">
@@ -1285,8 +1355,18 @@
                 <DeployFile LocalName="Images\iconPlanetFunt_76.png" Configuration="Release" Class="iPad_AppIcon76"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_80.png" Configuration="Debug" Class="iPad_SpotLight80"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_80.png" Configuration="Release" Class="iPad_SpotLight80"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_80.png" Configuration="Release" Class="iPad_SpotLight80">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_87.png" Configuration="Debug" Class="iPhone_AppIcon87"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_87.png" Configuration="Release" Class="iPhone_Setting87"/>
+                <DeployFile LocalName="Images\iconPlanetFunt_87.png" Configuration="Release" Class="iPhone_Setting87">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\iconPlanetFunt_96.png" Configuration="Release" Class="Android_NotificationIcon96"/>
                 <DeployFile LocalName="Images\iconPlanetFunt_96.png" Configuration="Release" Class="Android_NotificationIcon96">
                     <Platform Name="Android">
@@ -1302,6 +1382,12 @@
                 </DeployFile>
                 <DeployFile LocalName="Images\PlanetFunSplashh_1024x768.png" Configuration="Debug" Class="iPad_Launch1024x768"/>
                 <DeployFile LocalName="Images\PlanetFunSplashh_1024x768.png" Configuration="Release" Class="iPad_LaunchDark2x"/>
+                <DeployFile LocalName="Images\PlanetFunSplashh_1024x768.png" Configuration="Release" Class="iPad_LaunchDark2x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteName>FM_LaunchScreenImage_iPadDark@2x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\PlanetFunSplashh_1125x2436.png" Configuration="Debug" Class="iPhone_Launch1125"/>
                 <DeployFile LocalName="Images\PlanetFunSplashh_1125x2436.png" Configuration="Release" Class="iPhone_Launch1125"/>
                 <DeployFile LocalName="Images\PlanetFunSplashh_1136x640.png" Configuration="Debug" Class="iPhone_Launch1136x640"/>
@@ -1379,6 +1465,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Images\PlanetFunSplashh_640x480.png" Configuration="Release" Class="iPhone_LaunchDark2x"/>
+                <DeployFile LocalName="Images\PlanetFunSplashh_640x480.png" Configuration="Release" Class="iPhone_LaunchDark2x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteName>FM_LaunchScreenImage_iPhoneDark@2x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Images\PlanetFunSplashh_640x960.png" Configuration="Debug" Class="iPhone_Launch640"/>
                 <DeployFile LocalName="Images\PlanetFunSplashh_640x960.png" Configuration="Release" Class="iPhone_Launch640"/>
                 <DeployFile LocalName="Images\PlanetFunSplashh_750x1334.png" Configuration="Debug" Class="iPhone_Launch750"/>
@@ -1414,10 +1506,34 @@
                 <DeployFile LocalName="iOSDevice64\Debug\PlanetFun" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="iOSDevice64\Debug\ResourceRules.plist" Configuration="Debug" Class="ProjectiOSDeviceResourceRules"/>
                 <DeployFile LocalName="iOSDevice64\Release\PlanetFun.entitlements" Configuration="Release" Class="ProjectiOSEntitlements"/>
+                <DeployFile LocalName="iOSDevice64\Release\PlanetFun.entitlements" Configuration="Release" Class="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="iOSDevice64\Release\PlanetFun.info.plist" Configuration="Release" Class="ProjectiOSInfoPList"/>
+                <DeployFile LocalName="iOSDevice64\Release\PlanetFun.info.plist" Configuration="Release" Class="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice64">
+                        <RemoteName>Info.plist</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="iOSDevice64\Release\PlanetFun.launchscreen" Configuration="Release" Class="ProjectiOSLaunchScreen"/>
+                <DeployFile LocalName="iOSDevice64\Release\PlanetFun.launchscreen" Configuration="Release" Class="ProjectiOSLaunchScreen">
+                    <Platform Name="iOSDevice64">
+                        <Operation>64</Operation>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="iOSDevice64\Release\PlanetFun" Configuration="Release" Class="ProjectOutput"/>
+                <DeployFile LocalName="iOSDevice64\Release\PlanetFun" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="iOSDevice64">
+                        <RemoteName>PlanetFun</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="iOSDevice64\Release\ResourceRules.plist" Configuration="Release" Class="ProjectiOSDeviceResourceRules"/>
+                <DeployFile LocalName="ModelSupport_PlanetFun\default.txaPackage" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="ModelSupport_PlanetFun\default.txaPackage" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="ModelSupport_PlanetFun\default.txaPackage" Configuration="Release" Class="ProjectFile"/>
                 <DeployFile LocalName="ModelSupport_PlanetFun\default.txaPackage" Configuration="Release" Class="ProjectFile">
@@ -1429,6 +1545,12 @@
                 <DeployFile LocalName="ModelSupport_PlanetFun\default.txaPackage" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Android64">
                         <RemoteDir>.\assets\internal\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="ModelSupport_PlanetFun\default.txaPackage" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>StartUp\Documents\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
