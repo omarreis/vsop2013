@@ -17,7 +17,7 @@ apr-23 - PlanetFun 1.7 released
 * Almanac module allow exploring the astronomical calculations 
 * Click 3D object to see Almanac Data
 
-![planetfun 1.7](PlanetFun17main.png)
+![planetfun 1.7](AlmanacPlanet.png)
 
 nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
