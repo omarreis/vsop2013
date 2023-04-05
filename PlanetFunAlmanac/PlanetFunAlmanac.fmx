@@ -1,0 +1,120 @@
+object TabbedForm: TTabbedForm
+  Left = 0
+  Top = 0
+  Caption = 'TabbedForm'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object HeaderToolBar: TToolBar
+    Anchors = []
+    Size.Width = 384.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ToolBarLabel: TLabel
+      Align = Contents
+      Size.Width = 384.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+      Text = 'Title'
+    end
+  end
+  object TabControl1: TTabControl
+    Align = Client
+    FullSize = True
+    Size.Width = 384.000000000000000000
+    Size.Height = 519.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 0
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    Sizes = (
+      384s
+      470s
+      384s
+      470s
+      384s
+      470s
+      384s
+      470s)
+    object TabItem1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 95.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemtoprated'
+      TabOrder = 0
+      Text = 'TabItem1'
+      ExplicitSize.cx = 50.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+    object TabItem2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 95.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcontacts'
+      TabOrder = 0
+      Text = 'TabItem2'
+      ExplicitSize.cx = 50.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+    object TabItem3: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 95.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemrecent'
+      TabOrder = 0
+      Text = 'TabItem3'
+      ExplicitSize.cx = 50.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+    object TabItem4: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 97.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemmostrecent'
+      TabOrder = 0
+      Text = 'TabItem4'
+      ExplicitSize.cx = 50.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+  end
+  object GestureManager1: TGestureManager
+    Sensitivity = 80.000000000000000000
+    Left = 352
+    Top = 56
+    GestureData = <
+      item
+        Control = Owner
+        Collection = <
+          item
+            GestureID = sgiLeft
+          end
+          item
+            GestureID = sgiRight
+          end>
+      end>
+  end
+end
