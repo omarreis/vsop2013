@@ -102,9 +102,9 @@ begin
 
   aSL := TStringList.Create;
 
-  for i:=1 to NEstrelas do
+  for i:=1 to NumNavStars do
     begin
-      aStar := Estrelas[i];
+      aStar := StarsNav[i];
       if (aStar.Name<>'') then
         begin
           aStar.GMT := aGMT;             // calc coordinates

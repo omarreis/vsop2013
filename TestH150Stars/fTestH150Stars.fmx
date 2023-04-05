@@ -33,8 +33,8 @@ object FormStarEphemeris: TFormStarEphemeris
     Size.Height = 303.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
-    Viewport.Width = 312.000000000000000000
-    Viewport.Height = 299.000000000000000000
+    Viewport.Width = 316.000000000000000000
+    Viewport.Height = 303.000000000000000000
   end
   object edDate: TDateEdit
     Date = 44971.000000000000000000
@@ -222,7 +222,7 @@ object FormStarEphemeris: TFormStarEphemeris
     Anchors = [akTop, akRight]
     StyledSettings = [Family, Style, FontColor]
     Position.X = 36.000000000000000000
-    Position.Y = 212.000000000000000000
+    Position.Y = 211.000000000000000000
     Size.Width = 124.000000000000000000
     Size.Height = 29.000000000000000000
     Size.PlatformDefault = False
