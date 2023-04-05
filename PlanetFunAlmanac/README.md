@@ -7,4 +7,4 @@ The module can produce reports about calculations and lists of objects.
 
 
 
-
+![screenshot](AlmanacSistema.png)
