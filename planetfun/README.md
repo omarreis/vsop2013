@@ -148,15 +148,19 @@ PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Document
 Follow *Solar System Scope* license conditions
 
 # Star background texture
-The sky background is a flat jpg image mapped to a sphere of radius 200 au.
+The sky background is a sphere with radius 200 AU. The sphere texture is a large image. 
 It was generated using Hipparcos Input Catalogue (118k stars)
-Only objects with mag<8.0 were kept, resulting in 42k stars.
-Two star background maps available: with names and lines or plain stars.
+Only objects with mag<8.0 were kept, resulting in about 42000 stars.
+Two star background images are available: with names and constellation lines or just the plain stars.
 
 Since the texture is projected on the inside of the large sphereSky,
 texts must be horizontaly rotated to project correctly ( right-to-left texts )
 
 see sky texture: https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
+
+In adition, the 150 brightest stars are also represented by white 3D spheres.
+These are located at 200 AU from the Sun, so they are on the celestial sphere surface ( half in half out )
+so that they can be seen from both inside and outside the celestial ball.
 
 # Warning: not realistic
 A number of cheats introduced in v1.0 were corrected in subsequent versions. 
