@@ -5,7 +5,7 @@
 *Download app for iOS or Android from your app store. search for "PlanetFun" by "omarreis"*
 
 The app is developed in Pascal ( Delphi ). It uses standard Firemonkey 3d infrastructure. 
-Tested on Windows, Android and iOS (currently Delphi 10.4.1)
+Tested on Windows, Android and iOS (currently Delphi 11)
 
 Full app source code is available at:
 
