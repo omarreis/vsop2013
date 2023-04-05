@@ -1,0 +1,297 @@
+object FormTestVSOP87: TFormTestVSOP87
+  Left = 0
+  Top = 0
+  Caption = 'Planet ephemeris calculator'
+  ClientHeight = 588
+  ClientWidth = 442
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object btnCalcPlanet: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 366.000000000000000000
+    Position.Y = 98.000000000000000000
+    Size.Width = 67.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Calc'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnCalcPlanetClick
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    StyledSettings = [Size, Style, FontColor]
+    TextSettings.Font.Family = 'Courier New'
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 231.000000000000000000
+    Size.Width = 426.000000000000000000
+    Size.Height = 349.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Viewport.Width = 422.000000000000000000
+    Viewport.Height = 345.000000000000000000
+  end
+  object edDate: TDateEdit
+    Date = 44971.000000000000000000
+    Position.X = 67.000000000000000000
+    Position.Y = 61.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+  end
+  object Label1: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 1.000000000000000000
+    Position.Y = 66.000000000000000000
+    Size.Width = 56.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Trailing
+    Text = 'UT:'
+    TabOrder = 19
+  end
+  object Label2: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = -15.000000000000000000
+    Position.Y = 100.000000000000000000
+    Size.Width = 75.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Trailing
+    Text = 'Planet:'
+    TabOrder = 17
+  end
+  object comboPlanets: TComboBox
+    Position.X = 78.000000000000000000
+    Position.Y = 98.000000000000000000
+    Size.Width = 176.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 20
+  end
+  object Label3: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 11.000000000000000000
+    Position.Y = 4.000000000000000000
+    Size.Width = 332.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.VertAlign = Leading
+    Text = 'This app uses VSOP87 theory to calculate planet positions'
+    TabOrder = 14
+  end
+  object btnNow: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 366.000000000000000000
+    Position.Y = 60.000000000000000000
+    Size.Width = 68.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 21
+    Text = 'Now'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnNowClick
+  end
+  object Label4: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = -9.000000000000000000
+    Position.Y = 159.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Trailing
+    Text = 'Lat:'
+    TabOrder = 16
+  end
+  object Label5: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = -9.000000000000000000
+    Position.Y = 195.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Trailing
+    Text = 'Lon:'
+    TabOrder = 15
+  end
+  object edLat: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 24
+    Text = '-23.5'
+    TextSettings.Font.Size = 14.000000000000000000
+    Position.X = 63.000000000000000000
+    Position.Y = 156.000000000000000000
+    Size.Width = 96.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+  end
+  object edLon: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 22
+    Text = '46.5'
+    TextSettings.Font.Size = 14.000000000000000000
+    Position.X = 63.000000000000000000
+    Position.Y = 191.000000000000000000
+    Size.Width = 96.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+  end
+  object Label6: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 188.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 166.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Text = '(N=positive, S=negative)'
+    TabOrder = 12
+  end
+  object Label7: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 187.000000000000000000
+    Position.Y = 193.000000000000000000
+    Size.Width = 166.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Text = '(W=positive, E=negative)'
+    TabOrder = 11
+  end
+  object Label8: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 15.000000000000000000
+    Position.Y = 131.000000000000000000
+    Size.Width = 166.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Assumed Position'
+    TabOrder = 10
+  end
+  object Label9: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 162.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 166.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'coordinates in decimal'
+    TabOrder = 13
+  end
+  object btnCalcSun: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 366.000000000000000000
+    Position.Y = 189.000000000000000000
+    Size.Width = 67.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Calc Sun'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnCalcSunClick
+  end
+  object btnCalcMoon: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 366.000000000000000000
+    Position.Y = 151.000000000000000000
+    Size.Width = 67.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Calc Moon'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnCalcMoonClick
+  end
+  object btnUTCtoTDB: TButton
+    Anchors = [akTop, akRight]
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 289.000000000000000000
+    Position.Y = 60.000000000000000000
+    Size.Width = 69.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'UTC-->TDB'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnUTCtoTDBClick
+  end
+  object Label10: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 2.000000000000000000
+    Position.Y = 27.000000000000000000
+    Size.Width = 54.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Trailing
+    Text = 'JD:'
+    TabOrder = 18
+  end
+  object edJD: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 23
+    Text = '2542528.5'
+    TextSettings.Font.Size = 14.000000000000000000
+    Position.X = 67.000000000000000000
+    Position.Y = 23.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+  end
+  object btnJD2UTC: TButton
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 187.000000000000000000
+    Position.Y = 23.000000000000000000
+    Size.Width = 75.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'JD->UTC'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnJD2UTCClick
+  end
+  object edTime: TTimeEdit
+    Time = 0.698664884259259200
+    TimeFormatKind = Long
+    Position.X = 187.000000000000000000
+    Position.Y = 61.000000000000000000
+    Size.Width = 92.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+  end
+  object btnUTC2JD: TButton
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 288.000000000000000000
+    Position.Y = 23.000000000000000000
+    Size.Width = 75.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'UTC->JD'
+    TextSettings.Font.Size = 10.000000000000000000
+    OnClick = btnUTC2JDClick
+  end
+end
