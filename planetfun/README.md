@@ -120,6 +120,7 @@ Camera Target, distance and other config can be set from Camera settings.
 TODO: Planet transits can be seen, but they don't cast shadows on other objects at this time. 
 
 # Moon positions 
+
 Moon position calculations and data coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
 Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
 
@@ -147,10 +148,11 @@ PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Document
 
 Follow *Solar System Scope* license conditions
 
-# Star background texture
-The sky background is a sphere with radius 200 AU. The sphere texture is a large image. 
-It was generated using Hipparcos Input Catalogue (118k stars)
-Only objects with mag<8.0 were kept, resulting in about 42000 stars.
+# Star background 
+
+The sky background is a sphere with radius 200 AU. The sphere texture is a large image containing stars, constellation lines, names etc. 
+It was generated using Hipparcos Input Catalogue (118k stars).  Only objects with mag<8.0 were kept, resulting in about 42000 stars.
+
 Two star background images are available: with names and constellation lines or just the plain stars.
 
 Since the texture is projected on the inside of the large sphereSky,
@@ -159,10 +161,25 @@ texts must be horizontaly rotated to project correctly ( right-to-left texts )
 see sky texture: https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
 
 In adition, the 150 brightest stars are also represented by white 3D spheres.
-These are located at 200 AU from the Sun, so they are on the celestial sphere surface ( half in half out )
+These are located at 200 AU from the Sun, so they are on the celestial sphere background surface ( half in half out )
 so that they can be seen from both inside and outside the celestial ball.
 
+The app uses ecliptic coordinates ( x,y,z in au, same system as vsop2013 )
+and regular Almanac coodinates RA,Decl are equatorial. Between the two there is
+the obliquity of the ecliptic, which is about 23d26'
+
+By setting dummyCelestialSphere.RotationAmngle.x=336.5667 ( i.e. -23d26'  obliquity )
+and parenting the stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
+between the two systems (equatorial and ecliptic).
+
+sphereEarth is also rotated in the same fashion, so both have the same equator.
+
+sphereSkyBackground (the sphere w/ sky background image) is also parented to dummyCelestialSphere.
+sphereSkyBackground.RotationAnle.y was set 359.6 to make the texture "fit" the actual star spheres
+( probably because the image was generated for J2000 and there was precession since )
+
 # Warning: not realistic
+
 A number of cheats introduced in v1.0 were corrected in subsequent versions. 
 Still remain:
 * Solar and planet sizes are difficult for visualization. The Sun radius is more than 100x that of the Earth. Distance between planets and the Sun are even larger. If you do a program using actual proportional object sizes, you end up with a black screen and some tiny dots. Not really exciting.   I applied a custom log formula to Sun and planet sizes, so that the Sun is only about 4 times the size of the Earth. Anyway, planet scale can be configured for more visible planet details.
