@@ -19,7 +19,9 @@ unit fPlanetFun;    //-----  planetary system simulation in 4D ----\\
 //            calculation engines for Sun, Moon, Planets and stars    ||
 //            vsop2013, vsop87, ELP2000, epoch reduction              ||
 //          * solar system animation                                  //
-//-------------------------------------------------------------------//
+//   v1.8 - apr23: Fix ecliptic obliquity, which was set             //
+//                 to 0 by mistake !                                //
+//-----------------------------------------------------------------//
 
 interface
 
@@ -108,7 +110,7 @@ type
     cbOrbitDots: TSwitch;
     Label4: TLabel;
     textureStars: TTextureMaterialSource;
-    sphereSky: TSphere;
+    sphereSkyBackground: TSphere;
     textPlanetFunTitle: TText3D;
     dummyPluto: TDummy;
     spherePluto: TSphere;
@@ -217,6 +219,9 @@ type
     dummyBanner: TDummy;
     Label16: TLabel;
     cbShowBanner: TSwitch;
+    dummyCelestialSphere: TDummy;
+    Label17: TLabel;
+    cbEcliptic: TSwitch;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -262,7 +267,8 @@ type
     procedure cbSkyBGImageSwitch(Sender: TObject);
     procedure cbStarsSwitch(Sender: TObject);
     procedure btnCloseBigToastClick(Sender: TObject);
-    procedure cbShowBannerSwitch(Sender: TObject);               // Using AA chapter 45
+    procedure cbShowBannerSwitch(Sender: TObject);
+    procedure cbEclipticSwitch(Sender: TObject);               // Using AA chapter 45
   private
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
@@ -271,7 +277,7 @@ type
 
     fPlanetOrbitPoints:TList;  //save 3D dots created at runtime
     fStarDots:TList;          //save 3D dots created at runtime
-
+    fEclipticDots:TList;
 
     // Gesture related
     FLastZoomDistance:Single;
@@ -314,6 +320,8 @@ type
     procedure DoRotateCamera(const step: integer);
     procedure DoCameraDolly(const step: integer);
     procedure ClearStarDots;
+    procedure btnAddEclipticDotsClick(Sender: TObject);
+    procedure ClearEclipticDots;
   public
     procedure FileLoadTerminate(Sender: TObject);
   end;
@@ -325,15 +333,18 @@ implementation   // ---x--xx-xxx........................
 
 // solar system setup . Key properties to get the balls right
 //  sphereEarth.RotationAngle.X = 336.566666666667    ( Obliquity 360-(23+26/60)    E=23o26'
-//  sphereSky.RotationAngle.X = 336.566666666667      ( same obliquity as the earth. Same equator by definition.
+//  dummyCelestialSpehere.RotationAngle.X = 336.566666666667      ( same obliquity as the earth. Same equator by definition )
+
+// celestial sphere hierarchy
+//  --- dummyCelestialSpehere
+//                          +--- sphereSkyBackground ( with background image as texture R=200 AU )
+//                          +--- stars[] - 3d spheres ( diam proportional to magnitude )
 
 uses
   Om.Trigonometry,
   Om.AstronomicalAlgorithms,   // astronomical algorithm formulas from Meeus book
   Ah.Moon,                     // Moon positions ( from AA chapter 45 and Andreas Hörstemeier TMoon }
   quaternionRotations,
-
-
   CameraMovementToolbar;
 
 {$R *.fmx}
@@ -367,6 +378,7 @@ begin
 
   fPlanetOrbitPoints := TList.Create;  // list of orbit dots
   fStarDots          := TList.Create;  // list star dots
+  fEclipticDots      := TList.Create;  // list of ecliptic dots
 
   // gesture related vars
   FLastZoomDistance := 0;
@@ -841,9 +853,9 @@ begin                                                      // object must have H
           if SL.Count>1 then
              begin
                labBigToastTitle.Text := aObj.Name;
-               SL.Delete(0);   //delete o nome. vou repor maior em outro label
+               SL.Delete( 0 );                    //delete o nome. vou repor maior em outro label
                labBigToast.Text      := SL.Text;
-               rectBigToast.Visible := true;
+               rectBigToast.Visible  := true;
                rectBigToast.BringToFront;
              end;
           SL.Free;
@@ -1155,7 +1167,7 @@ procedure TFormPlanetFun.checkSphereSkyVisibility;
 var aCamPos:TPoint3D;
 begin
   // if camera outside the sphere w/ stars, we dont want it to be visible and obstruct vision of the little planets
-  aCamPos := dummyCamera.Position.Point + mjTomCamera.Position.Point;  // heliocentric position of our camera
+  aCamPos := dummyCamera.Position.Point + mjTomCamera.Position.Point;     // heliocentric position of our camera
   // sphereSky.Visible := (aCamPos.Length < sphereSky.Scale.x*0.5 );      //hide the sky sphere before we go out
 end;
 
@@ -1164,9 +1176,9 @@ var sc,aLat,aLon:Double;
 begin
   sc := tbPlanetScale.Value;   // 1..101
   labPlanetScale.Text := Trim( Format('%6.1f',[sc]) );
-  SizePlanets;        //resize according to new scale
+  SizePlanets;                 //resize according to new scale
 
-  // aLat := -23.5;  //Lighthouse at home
+  // aLat := -23.5;           //Lighthouse at home
   // aLon := -46.5;
   // getRandomTestPlace(aLat,aLon);
   // doPositionLighthouse(aLat,aLon);
@@ -1304,12 +1316,10 @@ begin
 
 end;
 
-
-// Adds a number of spheres at radius = 200 AU
-// Since the sky sphere also has r=200,
-// the stars are half-in half-out the celestial sphere
-// so that they can be seen from inside and outside the 200 au sky ball.
-
+// Adds a number of 3d spheres at radius = 200 AU
+// Since the celestial sphere also has r=200,
+// the stars are on the surface of the 3d sphere (half-in half-out)
+// so they can be seen from inside and outside the 200 au background sky ball
 procedure TFormPlanetFun.btnAddStarsClick(Sender: TObject);
 var aStarSphere:TSphere; i,ip:integer; aProxy:TProxyObject;
     yearLen,weekLen,aJDE,radiusDot:Double; aPos,aSpeed:TVector3D_D;
@@ -1328,34 +1338,49 @@ begin
          begin
            aStar := StarsH150[i];
 
-           radiusDot := 4.0-aStar.fMagnitude;
-           if ( radiusDot<0.5 ) then continue;  //too small ... don't include
+           radiusDot := 4.0-aStar.fMagnitude;        //
+           if ( radiusDot<0.5 ) then continue;       // too small ... don't include
 
            aStar.GMT := aGMT;        // calc coordinates
 
-           A := aStar.fRA;
+           A := aStar.fRA;           // these are equatorial
            B := aStar.fDecl;
-           C := 200-radiusDot/2;       // external sky sphere has radius 200, so dots are half in half out
-           // to heliocentric cartesian :
+           C := 200;                 //-radiusDot/2;       // external celestial sphere background has radius 200, so dots are half in half out
+
+           // to heliocentric ecliptic cartesian :
            aPos.x := (C * cosg(B)) * cosg(A);
            aPos.y := (C * cosg(B)) * sing(A);
            aPos.z := (C * sing(B));
 
-           aPoint3d := Point3D(   // 3DWorld   Universe
+           aPoint3d := Point3D(   // 3DWorld   Universe   ( ecliptic coordinates )
            aPos.x,                //   x          x
-          -aPos.z,                //   y         -z
+          -aPos.z,                //   y         -z       ( 3d y points down while universe z points up )
            aPos.y  );             //   z          y
 
            if (i=1) then     // 1st star is a sphere, other are proxys of that 1st star.
              begin
                aStarSphere := TSphere.Create( Self );
+               dummyCelestialSphere.AddObject(aStarSphere);
+               aStarSphere.SubdivisionsAxes    := 8;   //def=16     // make low tesselation star spheres ( only seem from far )
+               aStarSphere.SubdivisionsHeight  := 8;   //def=12
 
-               SolarSystemViewport3D.AddObject(aStarSphere);
-               aStarSphere.Position.Point := aPoint3d;    //
-               aStarSphere.Scale.Point    := Point3D( radiusDot,radiusDot,radiusDot );
+               // Note: The app uses ecliptic cartesian coordinates ( x,y,z in au, same system as vsop2013 )
+               // and regular Almanac coodinates RA,Decl are equatorial. Between the two there is
+               // the obliquity of the ecliptic, which is about 23g26'
+               //
+               // By setting dummyCelestialSphere.RotationAmngle.x=336.5667 ( = -26g44' )
+               // and parenting the stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
+               // between the two systems (equ and cliptic).
+               // sphereEarth is also rotated in the same fashion, so both have the same equators.
 
-               aStarSphere.TagString := aStar.Name;       // save starname. When a star is clicked, its Almanac data is shown
+               // sphereSkyBackground (the sphere w/ sky background image) is also parented to dummyCelestialSphere.
+               // sphereSkyBackground.RotationAnle.y was set 359.6 to make the texture "fit" the actual star spheres
+               // ( probably because the image was generated for J2000 and there was precession since)
 
+               aStarSphere.Position.Point := aPoint3d;
+               aStarSphere.SetSize( radiusDot,radiusDot,radiusDot );
+
+               aStarSphere.TagString := aStar.Name;         // save starname.  When a star is clicked, Almanac data is shown
                aStarSphere.MaterialSource := colorSun;
 
                aStarSphere.Opacity    := 0.5;      //semi transparent
@@ -1366,11 +1391,11 @@ begin
              end
              else begin    // other 119 dots are proxies
                aProxy := TProxyObject.Create(Self);
-               SolarSystemViewport3D.AddObject(aProxy);
+               dummyCelestialSphere.AddObject(aProxy);  //parent star to the celestial sphere
 
-               aProxy.SourceObject := aStarSphere;
+               aProxy.SourceObject   := aStarSphere;    // mk copies of star
                aProxy.Position.Point := aPoint3d;
-               aProxy.Scale.Point    := Point3D( radiusDot, radiusDot, radiusDot );
+               aProxy.SetSize( radiusDot, radiusDot, radiusDot );
                aProxy.Opacity        := 0.5;
                aProxy.TagString      := aStar.Name;
                aProxy.HitTest        := true;
@@ -1394,10 +1419,98 @@ begin
       for i:=0 to fStarDots.Count-1 do
         begin
           aObj := TControl3D(fStarDots.Items[i]);
-          SolarSystemViewport3D.RemoveObject( aObj );
-          // call aObj.Free; //??
+          dummyCelestialSphere.RemoveObject(aObj);
+          aObj.Free; //??
         end;
       fStarDots.Clear;
+  finally
+    // SolarSystemViewport3D.EndUpdate;
+  end;
+end;
+
+procedure TFormPlanetFun.btnAddEclipticDotsClick(Sender: TObject);
+var aEclipticDot:TSphere; i,ip:integer; aProxy:TProxyObject;
+    yearLen,weekLen,aJDE,radiusDot:Double; aPos,aSpeed:TVector3D_D;
+    aPoint3d:TPoint3d;
+    aGMT:TDAtetime;
+    A,B,C:Double;
+    Delta:Double;
+
+const
+  NumEclipticDots=100;
+
+begin
+   // SolarSystemViewport3D.BeginUpdate;
+   try
+     Delta:= 360/NumEclipticDots;
+     radiusDot := 2.5;
+     for i:=1 to NumEclipticDots do
+         begin
+           A := i*Delta;   // RA 0..360
+           B := 0;         // Decl=0
+           C := 200;       // external celestial sphere background has radius 200, so dots are half in half out
+           // to heliocentric cartesian
+           aPos.x := (C * cosg(B)) * cosg(A);
+           aPos.y := (C * cosg(B)) * sing(A);
+           aPos.z := (C * sing(B));
+
+           aPoint3d := Point3D(   // 3DWorld   Universe   ( ecliptic coordinates )
+           aPos.x,                //   x          x
+          -aPos.z,                //   y         -z       ( 3d y points down while universe z points up )
+           aPos.y  );             //   z          y
+
+           if (i=1) then     // 1st star is a sphere, other are proxys of that 1st star.
+             begin
+               aEclipticDot := TSphere.Create( Self );
+               SolarSystemViewport3D.AddObject( aEclipticDot );  //parent ecliptic to viewport root
+               aEclipticDot.SubdivisionsAxes    := 6;   //def=16     // make low tesselation spheres ( only seem from far )
+               aEclipticDot.SubdivisionsHeight  := 6;   //def=12
+
+               aEclipticDot.Position.Point := aPoint3d;
+               aEclipticDot.SetSize( radiusDot,radiusDot,radiusDot );
+
+               aEclipticDot.MaterialSource := colorPathEarth;
+
+               aEclipticDot.Opacity    := 0.3;      //semi transparent
+               aEclipticDot.HitTest    := true;
+               aEclipticDot.OnClick    := On3dObjClick;
+
+               fEclipticDots.Add( aEclipticDot );   //save ecliptic dots, so we can destroy them later
+             end
+             else begin    // other 119 dots are proxies
+               aProxy := TProxyObject.Create(Self);
+               SolarSystemViewport3D.AddObject(aProxy);  //parent ecliptic to viewport root
+
+               aProxy.SourceObject   := aEclipticDot;    // mk copies of star
+               aProxy.Position.Point := aPoint3d;
+               aProxy.SetSize( radiusDot, radiusDot, radiusDot );
+               aProxy.Opacity        := 0.3;
+               aProxy.TagString      := aEclipticDot.Name;
+               aProxy.HitTest        := true;
+               aProxy.OnClick        := On3dObjClick;
+
+               fEclipticDots.Add( aProxy );
+             end;
+         end;
+
+   finally
+     // SolarSystemViewport3D.EndUpdate;
+   end;
+end;
+
+procedure TFormPlanetFun.ClearEclipticDots;
+var aObj:TControl3D; i:integer;
+begin
+  // SolarSystemViewport3D.BeginUpdate;
+  try
+      // delete all dots
+      for i:=0 to fEclipticDots.Count-1 do
+        begin
+          aObj := TControl3D(fEclipticDots.Items[i]);
+          SolarSystemViewport3D.RemoveObject(aObj);
+          aObj.Free; //??
+        end;
+      fEclipticDots.Clear;
   finally
     // SolarSystemViewport3D.EndUpdate;
   end;
@@ -1651,8 +1764,15 @@ begin
   if FileExists(aFN) then      //sanity test
     begin
       textureStars.Texture.LoadFromFile(aFN);     //load
-      sphereSky.Visible := cbSkyBGImage.IsChecked;
+      sphereSkyBackground.Visible := cbSkyBGImage.IsChecked;
     end;
+end;
+
+procedure TFormPlanetFun.cbEclipticSwitch(Sender: TObject);
+begin
+  if cbEcliptic.IsChecked then
+    btnAddEclipticDotsClick(nil)
+    else ClearEclipticDots;
 end;
 
 procedure TFormPlanetFun.cbOrbitDotsSwitch(Sender: TObject);
@@ -1690,7 +1810,7 @@ end;
 
 procedure TFormPlanetFun.cbSkyBGImageSwitch(Sender: TObject);
 begin
-   sphereSky.Visible := cbSkyBGImage.IsChecked;
+   sphereSkyBackground.Visible := cbSkyBGImage.IsChecked;
 end;
 
 procedure TFormPlanetFun.cbStarsSwitch(Sender: TObject);

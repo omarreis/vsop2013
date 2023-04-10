@@ -333,22 +333,6 @@ object FormPlanetFun: TFormPlanetFun
         MaterialSource = lightMaterialTexturePluto
       end
     end
-    object sphereSky: TSphere
-      Scale.X = 400.000000000000000000
-      Scale.Y = 400.000000000000000000
-      Scale.Z = 400.000000000000000000
-      RotationAngle.Y = 359.799987792968800000
-      Locked = True
-      Width = 1.000000000000000000
-      Height = 1.000000000000000000
-      Depth = 1.000000000000000000
-      HitTest = False
-      TwoSide = True
-      SubdivisionsAxes = 40
-      SubdivisionsHeight = 30
-      MaterialSource = textureStars
-      Quanternion = '(0,0.00174557650461793,0,-0.999998390674591)'
-    end
     object Grid3D1: TGrid3D
       Marks = 4.000000000000000000
       Frequency = 1.000000000000000000
@@ -1347,6 +1331,26 @@ object FormPlanetFun: TFormPlanetFun
         HitTest = False
         MaterialSource = lightMaterialTextureBannerPlanetFun
         Quanternion = '(0,0.382683426141739,0,-0.923879504203796)'
+      end
+    end
+    object dummyCelestialSphere: TDummy
+      RotationAngle.X = 336.566711425781300000
+      Width = 1.000000000000000000
+      Height = 1.000000000000000000
+      Depth = 1.000000000000000000
+      Quanternion = '(0.203071638941765,0,0,-0.979163885116577)'
+      object sphereSkyBackground: TSphere
+        RotationAngle.Y = 359.600006103515600000
+        Locked = True
+        Width = 400.000000000000000000
+        Height = 400.000000000000000000
+        Depth = 400.000000000000000000
+        HitTest = False
+        TwoSide = True
+        SubdivisionsAxes = 40
+        SubdivisionsHeight = 30
+        MaterialSource = textureStars
+        Quanternion = '(0,-0.00349064776673913,0,0.999993920326233)'
       end
     end
   end
@@ -11573,8 +11577,8 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop]
     ClipChildren = True
     Fill.Color = claBlack
-    Position.X = 4.931818008422852000
-    Position.Y = 94.000000000000000000
+    Position.X = 8.000000000000000000
+    Position.Y = 93.000000000000000000
     Size.Width = 320.000000000000000000
     Size.Height = 574.000000000000000000
     Size.PlatformDefault = False
@@ -12600,15 +12604,15 @@ object FormPlanetFun: TFormPlanetFun
       end
       object labVersion: TLabel
         StyledSettings = [Family]
-        Position.X = 6.000000000000000000
-        Position.Y = 181.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 180.000000000000000000
         Size.Width = 137.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.FontColor = claAntiquewhite
-        Text = 'v 1.7.2'
+        Text = 'v 1.8.1'
         TabOrder = 1
       end
     end
@@ -12767,7 +12771,7 @@ object FormPlanetFun: TFormPlanetFun
     end
     object Label15: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 4.000000000000000000
+      Position.X = 8.000000000000000000
       Position.Y = 275.000000000000000000
       Size.Width = 64.000000000000000000
       Size.Height = 23.000000000000000000
@@ -12776,13 +12780,13 @@ object FormPlanetFun: TFormPlanetFun
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
       Text = 'stars'
-      TabOrder = 2
+      TabOrder = 4
     end
     object cbStars: TSwitch
       IsChecked = True
       Position.X = 87.000000000000000000
       Position.Y = 273.000000000000000000
-      TabOrder = 3
+      TabOrder = 5
       OnSwitch = cbStarsSwitch
     end
     object Label16: TLabel
@@ -12796,14 +12800,34 @@ object FormPlanetFun: TFormPlanetFun
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
       Text = 'app banner'
-      TabOrder = 4
+      TabOrder = 6
     end
     object cbShowBanner: TSwitch
       IsChecked = True
       Position.X = 254.000000000000000000
       Position.Y = 227.000000000000000000
-      TabOrder = 5
+      TabOrder = 7
       OnSwitch = cbShowBannerSwitch
+    end
+    object Label17: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = 175.000000000000000000
+      Position.Y = 277.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Trailing
+      Text = 'ecliptic'
+      TabOrder = 2
+    end
+    object cbEcliptic: TSwitch
+      IsChecked = False
+      Position.X = 254.000000000000000000
+      Position.Y = 275.000000000000000000
+      TabOrder = 3
+      OnSwitch = cbEclipticSwitch
     end
   end
   object GestureManager1: TGestureManager
