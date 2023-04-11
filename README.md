@@ -160,10 +160,10 @@ In order to compile and run this app, you will need to:
 * https://apps.apple.com/us/app/planet-fun/id1525941640
 
 # PlanetFun for Windows 
-Installs executables TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and assets.
-* https://github.com/omarreis/vsop2013/releases/download/1.2/setupPlanetFun_win32_v11.exe
+Install executables  PlanetFun.exe, TestVSOP2013.exe, gravityIntegration.exe and assets.
+Size: 130 MB - Current version 1.8 (apr23) 
 
-( Windows installer executable is authenticode signed by "Carvalho e Reis Ltda" )
+* https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
 
 ## Sample app 3: gravityIntegration 
 
