@@ -10,6 +10,12 @@ With time it grew to include:
 * VSOP87 planet position theory - Another planet theory, with smaller data footprint.
 * Moon position calculations ( ELP2000. Code was adapted from TMoon component by Andreas Hörstemeier )
 
+# Repository News
+
+* apr/23: PlanetFun app v1.8 released for iOS and Android. Added the Almanac module, which allows calculating ephemeris for various celestial objects
+
+See https://github.com/omarreis/vsop2013/tree/master/planetfun
+
 # VSOP 2013 
 
 VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
