@@ -13,9 +13,10 @@ Full app source code is available at:
 
 ## release notes
 
-apr-23 - PlanetFun 1.7 released
-* Almanac module allow exploring the astronomical calculations 
-* Click 3D object to see Almanac Data
+apr-23 - PlanetFun 1.8 released
+* Almanac module allow exploring the astronomical calculations using various methods 
+* Ecliptic dots 
+* Click a 3D object to see Almanac Data
 
 ![planetfun 1.7](AlmanacPlanet.png)
 
