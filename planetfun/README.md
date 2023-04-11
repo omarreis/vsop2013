@@ -172,13 +172,23 @@ so that they can be seen from both inside and outside the celestial ball.
                                       |
             sphereSkyBackground ------+------ 150 star spheres 
             
-The app main coordinate system is heliocentric ecliptic cartesian x,y,z in AU.
-For some objects, Almanac calculation methods return RA,Decl ( or SHA,Decl) which
-are geocentric and equatorial coordinates. Between the two there is
-the obliquity of the ecliptic which is about 23d26'.
+The app main coordinate system is heliocentric ecliptic (x,y,z).
+This is the same system as VSOP2013, the planet positions calculator.
 
+For some objects, Almanac calculation methods return RA,Decl instead, 
+which are geocentric equatorial coordinates. Between the two there is
+the inclination of the ecliptic (obliquity) which is about 23d26'.
+
+                                       .--- Ecliptic
+                                   .--- 
+                            A  .---  
+                 -----------+------------- Equator
+                       .---   
+                   .--- 
+                   
+                   
 By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obliquity )
-and parenting the stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
+and parenting the individual stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
 between equatorial and ecliptic systems. This is how 3d object parenting works. 
 
 sphereEarth is also rotated in the same fashion, so both Earth and celestial sphere share the same Equator.
