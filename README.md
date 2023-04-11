@@ -12,7 +12,8 @@ With time it grew to include:
 
 # Repository News
 
-* apr/23: PlanetFun app v1.8 released for iOS and Android. Added the Almanac module, which allows calculating ephemeris for various celestial objects
+* apr/23: PlanetFun app v1.8 released for iOS and Android. Added the Almanac module, which allows calculating ephemeris for various celestial objects.
+Added VSOP87 planet database. H150 and Navigator star catalogs.
 
 See https://github.com/omarreis/vsop2013/tree/master/planetfun
 
