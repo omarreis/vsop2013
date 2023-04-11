@@ -41,17 +41,19 @@ It is organized in 6 files, covering a 9,000 year period in all, as follows:
 
 Each file is divided in 17122, 32 day intervals. Each interval has 978 coefficients, arranged in groups of 6 per line. File header contains a table of indexes into coefficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
 Each planet has a number of Chebyshev polynomial terms (between 7 to 14 terms). Results are two 3D vectors: position and speed.
+Results are in AU ( AU/day for speeds ) heliocentric ecliptic coordinates ( x,y,z )
 
 The FTP repository contains Fortran code:
+
 * VSOP2013_binfile.f - Parses text file into binary file that allows fast random access.
 * VSOP2013_compute.f - Retrieves 32d interval from binary file and computes planet data ( position and speed )
 
-In this Delphi port, the whole ASCII file is loaded into memory tables, for fast access. 
+In this Delphi port, the whole file is pre-loaded into memory tables for fast access. 
 
-Object T_VSOP2013_File encapsulates VSOP 2013 machine:
+Object T_VSOP2013_File encapsulates VSOP 2013 machinery:
 
 * Parse original data files in text - Use only files in original format as the parser relies on fixed positions.
-* Save and Load data in custom binary format, more compact and fast to load ( Android apps have a 150MB bundle size limit )
+* Save and Load data in a custom binary format, more compact and fast to load ( at this time Android apps have a 150MB bundle size limit )
 * Calculator: calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
 
 ## Astronomical Algorithms
