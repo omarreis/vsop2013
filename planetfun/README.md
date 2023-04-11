@@ -180,9 +180,9 @@ By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obli
 and parenting the stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
 between equatorial and ecliptic systems. This is how 3d object parenting works. 
 
-sphereEarth is also rotated in the same fashion, so both have the same equator.
+sphereEarth is also rotated in the same fashion, so both Earth and celestial sphere share the same Equator.
 
-sphereSkyBackground (the sphere w/ sky background image) is also parented to dummyCelestialSphere.
+sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
 sphereSkyBackground.RotationAnle.y was set 359.6 to make the texture "fit" the actual star spheres
 ( probably because the image was generated for J2000 and there was precession since )
 
