@@ -150,27 +150,35 @@ Follow *Solar System Scope* license conditions
 
 # Star background 
 
-The sky background is a sphere with radius 200 AU. The sphere texture is a large image containing stars, constellation lines, names etc. 
-It was generated using Hipparcos Input Catalogue (118k stars).  Only objects with mag<8.0 were kept, resulting in about 42000 stars.
+The sky background is a large sphere with radius 200 AU. The sphere texture is a image containing stars, constellation lines, names etc. 
+It was generated using Hipparcos Input Catalogue (118k stars). Only objects with mag<8.0 were kept, resulting in about 42000 stars.
 
 Two star background images are available: with names and constellation lines or just the plain stars.
 
-Since the texture is projected on the inside of the large sphereSky,
-texts must be horizontaly rotated to project correctly ( right-to-left texts )
+Since the texture is projected on the inside of the large sphereSkyBackground,
+texts must be horizontaly rotated to project correctly ( as left-to-right texts ).
+The sphere can also be seen from the "outside" if camera distance is set to more than 200 AU.
 
-see sky texture: https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
+Sky texture image: 
 
-In adition, the 150 brightest stars are also represented by white 3D spheres.
-These are located at 200 AU from the Sun, so they are on the celestial sphere background surface ( half in half out )
+  https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
+
+In addition the 150 brightest stars are also represented by white 3D spheres.
+These are located at 200 AU from the Sun, so they are on the celestial sphere background surface ( half in - half out )
 so that they can be seen from both inside and outside the celestial ball.
 
-The app uses ecliptic coordinates ( x,y,z in au, same system as vsop2013 )
-and regular Almanac coodinates RA,Decl are equatorial. Between the two there is
-the obliquity of the ecliptic, which is about 23d26'
+                            dummyCelestialSphere
+                                      |
+            sphereSkyBackground ------+------ 150 star spheres 
+            
+The app main coordinate system is heliocentric ecliptic cartesian x,y,z in AU.
+For some objects, Almanac calculation methods return RA,Decl ( or SHA,Decl) which
+are geocentric and equatorial coordinates. Between the two there is
+the obliquity of the ecliptic which is about 23d26'.
 
-By setting dummyCelestialSphere.RotationAmngle.x=336.5667 ( i.e. -23d26'  obliquity )
+By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obliquity )
 and parenting the stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
-between the two systems (equatorial and ecliptic).
+between equatorial and ecliptic systems. This is how 3d object parenting works. 
 
 sphereEarth is also rotated in the same fashion, so both have the same equator.
 
