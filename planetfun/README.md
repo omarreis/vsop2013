@@ -175,8 +175,8 @@ so that they can be seen from both inside and outside the celestial ball.
 The app main coordinate system is heliocentric ecliptic (x,y,z).
 This is the same system as VSOP2013, the planet positions calculator.
 
-For some objects, Almanac calculation methods return RA,Decl instead, 
-which are geocentric equatorial coordinates. Between the two there is
+For some objects, Almanac calculation methods return Right Ascension,Declination (RA/Decl), 
+which are geocentric equatorial coordinates. Between the two systems there is
 the inclination of the ecliptic (obliquity) which is about 23d26'.
 
                                        .--- Ecliptic
