@@ -103,20 +103,19 @@ TDT is uniform ( consistent to atomic time ).
 
 # 3D Hierarchy
 
-The solar system 3D machinery is modelled by a hierarchy of 3D objects,
-mostly TDummys and TSpheres.    
+The solar system is modelled by a hierarchy of 3D objects, mostly TDummys and TSpheres.    
 
 ![planetfun 3d hierarchy](PlanetFun_3D_hierarchy.png)
 
-VSOP2013 planet data provides heliocentric ecliptic cartesian planet positions (X,Y,Z)
-in astronomical units (AU).  The p´lane of the Ecliptic for equinox JD2000 is Z=0.
-Similar convention was adopted by this app for the 3D simulation. 
+VSOP2013 provides heliocentric ecliptic cartesian planet positions (X,Y,Z)
+in astronomical units (AU).  The plane of the Ecliptic for J2000.0 is Z=0.
+Similar scale was adopted by this app. 
 
-Planets consist of TSpheres parented to TDummys.
-Planet position is set using TDummy.Position. 
-Planet rotation uses TSphere.RotationAngle
-Its ok to use RotationAngle if you changing only 2 angles
-( if changing 3, use quaternion for rotations )
+Planets consist of TSpheres, each parented to a TDummy.
+Planet position is set using TDummyXXX.Position. 
+Planet rotation uses TSphereXXX.RotationAngle.
+It is ok to use RotationAngle if you change at most 2 components.
+( if changing 3, use quaternion rotation )
 
 For the Moon we have ELP2000 geocentric spherical coordinates ( GHA, decl, radius ) 
 These are used to rotate dummyMoonOrbitCenter, which is attached to dummyEarth.
