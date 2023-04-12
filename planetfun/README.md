@@ -66,9 +66,11 @@ oct-20 - PlanetFun version 1.3 released
 
 Planet positions are calculated using VSOP2013 planet database ( see https://github.com/omarreis/vsop2013 ). This library calculates planet's heliocentric coordinates for epochs 1500 to 3000  ( VSOP2013 by Francou and Simon )
 
-    VSOP2013 original FTP repository: https://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+VSOP2013 original FTP repository: 
 
-For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data. This is the same idea as original vsop2013 theory (i.e. using a fixed size binary record to allow fast record access), but with a different implementation, as it is difficult to share binary record formats across different languages ( Fortran and Pascal ). 
+* https://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+
+For speed and small bundle size, PlanetFun app uses a custom binary version of VSOP2013 data. This is the same idea used in original vsop2013 (i.e. using a fixed size binary record to allow fast record access), but with a different implementation, as it is difficult to share binary records cross different languages (Fortran and Pascal). 
 
 Steps to obtain VSOP2013 binary data file for deploying with *PlanetFun*:
 
