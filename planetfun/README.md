@@ -1,6 +1,7 @@
 # PlanetFun      ![banner](bannerPlanetFun.png)
 
-### tl;dr - *PlanetFun* is a 4d solar system simulation with augmented reality. Celestial object spheres are rigged to astronomical almanac, resulting in realistic positions and movements. 
+In short: *PlanetFun* is a 4d solar system simulation with augmented reality. 
+Celestial object spheres are rigged to astronomical almanac, resulting in realistic positions and movements. 
 
 *Download app for iOS or Android from your app store. search for "PlanetFun" by "omarreis"*
 
@@ -38,14 +39,12 @@ oct-20 - PlanetFun version 1.3 released
 
 # Program features
 
-* Solar System scene in 3D with 9 planets, Sun, Moon and 150 brightest stars.
+* Solar system scene in 3D with 9 planets, Sun, Moon and 150 brightest stars.
 * Time *animation* with configurable speed
-* Choose camera target (Sun, planets, lighthouse or phone)
+* Choose camera target: Sun, Moon, planets, lighthouse or phone)
 * Set date/time bewteen years 1500 and 3000
 * Configurable camera distance-to-target
-* Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
-* Mouse events: mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
-* Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it is 1 dot per week) )
+* Planet orbit dots. Each orbit is represented by 52 dots. For Earth, each dot = 1 week
 * Ecliptic dots.
 * Heliocentric axis (x and z)
 * VSOP2013 planet position calculator usage sample
@@ -55,6 +54,8 @@ oct-20 - PlanetFun version 1.3 released
 * names of stars and constellation. constellation lines
 * a giant lighthouse and a phone shown on your position ( uses GPS, gyro and compass )
 * Target camera to the phone to enter augmented reality mode ( the scene rotates in sync with the real world )
+* Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
+* Mouse events: mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
 * Multi platform: Android, iOS and Windows ( Delphi Firemonkey app)
 
 ## Implementation notes
@@ -76,10 +77,12 @@ Steps to obtain VSOP2013 binary data file for deploying with *PlanetFun*:
 
 Resulting binary file is *only* 131 MB and doesn't require parsing to load. Loads much faster. 
 
-The scale factor between astronomical units and the app's 3D world is 1.0:     
-     1.0 AU = 1.0 3D-world-unit  
-    
-ex: Earth orbit radius is ~around~ 1.0 3D-world-units
+# PlanetFun 3D scene
+
+The program uses heliocentric ecliptic coordinates, a convention suitable to deal with planets.
+PlanetFun 3D scene scale is:
+
+    1 AU = 1 "3D unit"    ( 1 AU Astronomic Unit is  149.597.870,7 Km - mean distance Earth-Sun  )
 
 # 3D Hierarchy
 
