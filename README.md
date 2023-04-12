@@ -5,10 +5,11 @@ With time it grew to include:
 
 * VSOP2013 planet data calculation tests and binary data file utility.
 * N-to-N gravity integration by leapfrog method.
-* Delphi application "PlanetFun" ( a 3d solar system simulation with augmented reality - The app is available on iOS Appstore and Android Google Play ).
+* application "PlanetFun" (a solar system simulation in 3D with augmented reality - The app is available for iOS, Android and Windows).
 * Hipparchus 150 star position calculations ( 150 brightest stars )
 * VSOP87 planet position theory - Another planet theory, with smaller data footprint.
-* Moon position calculations ( ELP2000. Code was adapted from TMoon component by Andreas Hörstemeier )
+* star catalogs: H150 and Navigation stars
+* Moon position calculations ( ELP2000. code from TMoon component by Andreas Hörstemeier )
 
 # Repository News
 
@@ -24,7 +25,7 @@ This repo contains a Delphi Pascal port of original Fortran code by the theory a
 
 VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time, inside a 9000 years range. 
 
-Tested with D10.4.1 and D11.1 on Win32 iOS and Android. 
+Tested with D11.2 andon Win32 iOS and Android. 
 Tests are for Firemonkey, but should work with VCL and console app as well.
 
 VSOP 2013 original paper with Fortran code and data files can be found at:
