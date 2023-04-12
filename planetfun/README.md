@@ -252,9 +252,9 @@ should mimic its attitude (move with the real phone).
 The app uses *FiremonkeySensorFusion* component to mix sensor readings ( see dependencies)
 
        phone attitude 
-          -Y     Z       altitude X up positive
-           |    /        heading  Y down positive
-           |   /         roll     Z positive into the screen
+          -Y     Z       Altitude or Elevation -  X up positive
+           |    /        Heading or Azimuth    -  Y down positive
+           |   /         Roll                  -  Z positive into the screen
        /=======\
        |   | / |
        |   |/  |
