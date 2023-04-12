@@ -82,8 +82,7 @@ Full Delphi source code  in this repository
 
 ## Installer for Windows 
 Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
-https://github.com/omarreis/vsop2013/releases/download/1.2/setupPlanetFun_win32_v11.exe
-
+https://github.com/omarreis/vsop2013/releases/tag/1.8
 
 ( authenticode signed by Carvalho e Reis ltda )
 
