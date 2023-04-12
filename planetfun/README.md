@@ -3,13 +3,14 @@
 In short: *PlanetFun* is a 4d solar system simulation with augmented reality. 
 Celestial object spheres are rigged to astronomical almanac, resulting in realistic positions and movements. 
 
-*Download app for iOS or Android from your app store. search for "PlanetFun" by "omarreis"*
-*Also available for Windows ( se below )*
-
-The app is developed in Pascal ( Delphi ). It uses standard Firemonkey 3d infrastructure. 
+The app is developed in Delphi Pascal (Firemonkey 3D). 
 Tested on Windows, Android and iOS (currently Delphi 11)
 
-Full app source code is available at:
+*Download app for iOS or Android from your app store. search for "PlanetFun" by "omarreis"*
+
+*available for Windows ( se below )*
+
+Full app source available at:
 
 * https://github.com/omarreis/vsop2013/tree/master/planetfun
 
@@ -18,9 +19,9 @@ Full app source code is available at:
 apr-23 - PlanetFun 1.8 released
 * Almanac module allow exploring the astronomical calculations using various methods 
 * Ecliptic dots 
-* Click a 3D object to see Almanac Data
+* Click a 3D object to see Almanac data
 
-![planetfun 1.7](AlmanacPlanet.png)
+![planetfun 1.8](AlmanacPlanet.png)
 
 nov-20 - PlanetFun version 1.4 released
 * Added toolbar for camera manipulation
@@ -81,13 +82,15 @@ Resulting binary file is *only* 131 MB and doesn't require parsing to load. Load
 # PlanetFun 3D scene
 
 The program uses heliocentric ecliptic coordinates, a convention suitable to deal with planets.
+( The same frame as VSOP2013 )
+
 PlanetFun 3D scene scale is:
 
     1 AU = 1 "3D unit"    ( 1 AU Astronomic Unit is  149.597.870,7 Km - mean distance Earth-Sun  )
 
 # 3D Hierarchy
 
-The planet system 3D machinery is assembled by means of a hierarchy of 3D objects,
+The solar system 3D machinery is modelled by a hierarchy of 3D objects,
 mostly TDummys and TSpheres.    
 
 ![planetfun 3d hierarchy](PlanetFun_3D_hierarchy.png)
@@ -108,22 +111,22 @@ This makes the Moon rotate around Earth. Moon orbit radius is not used at this t
 
 Earth rotation is based on GAST (Greenwitch Apparent Sidereal Time). 
 
-Both the Earth and Star background spheres are tilted by 23°26′ (Earth's ecliptic obliquity). 
-Other planets orbit's are nearly parallel to Earth's, so planets Z coordinate are usualy small.
+Both the Earth and celestial sphere are tilted by 23°26′ (ecliptic obliquity) . 
+Other planets orbit's are nearly parallel to Earth's, the Z coordinate is usualy small.
 
 Augmented reality mode uses phone azimuth-elevation-roll sensor properties ( FiremonkeySensorFusion component )
 to set 3D phone corresponding attitude. Used quaternions to apply rotation in multiple axis
-instead of manipulating object's Euler angles. 
+instead of messing with object's RotationAngle. 
 
-A helper class was set for manipulating the 3D object transformation Matrix. 
+A helper class was set for manipulating the 3D object transformation Matrix ( i.e. expose SetMatrix() ). 
 
 Scene uses only one light: a Sun centered ambient light.
 This results in correct object ilumination phenomena (ex: Moon disk ilumination) 
 as a secondary result of the model  :)
-No shadows cast.
+But no shadows cast yet.
 
-dummyCamera is the camera *target*. The camera is parented to it, at a certain distance.
-Targetting the camera means parenting dummyCamera to other objects at position (0,0,0).
+dummyCamera is the camera *target*. The camera is parented to it at a certain distance.
+Targetting the camera means parenting dummyCamera to object at position (0,0,0).
 Camera Target, distance and other config can be set from Camera settings.
 
 TODO: Planet transits can be seen, but they don't cast shadows on other objects at this time. 
@@ -139,18 +142,19 @@ Code in ahMoon.pas is derived from TMoon component.
 # Planet textures
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
-The Texture property is a bitmap that is mapped to the sphere, on a reverse-Mercator projection.  
-Most planet textures are *not* included in this repository ( TForm planets have blank textures )
+The Texture property is a bitmap that is mapped to the sphere on a reverse-Mercator projection.  
+
+Most planet textures are *not* included in this repository ( TForm planets have blank textures ).
 Except for sky background texture, which is included ( see Documents folder for deployment info )
 
 I used textures from this website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
 
-Steps to complete PlanetFun assets:
+If you want to build and deploy PanetFun follow these steps to complete assets:
 
-* Download texture images: ex: 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
-* Deploy these files to Documents folder 
+* Download images from Solar System Scope. Program uses 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
+* Deploy files to Documents folder 
 * Deploy files SkyMapLinesNames.png and SkyMapPlain.png from this repository:
 
 PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Documents
