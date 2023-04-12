@@ -37,23 +37,27 @@ oct-20 - PlanetFun version 1.3 released
 ![screenshots](screenshotsPlanetFun.png)
 
 # Program features
-* Multi platform: Android, iOS and Windows
-* Solar system *animation* with configurable speed
+
+* Solar System scene in 3D with 9 planets, Sun, Moon and 150 brightest stars.
+* Time *animation* with configurable speed
 * Choose camera target (Sun, planets, lighthouse or phone)
 * Set date/time bewteen years 1500 and 3000
 * Configurable camera distance-to-target
 * Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
 * Mouse events: mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
 * Planet orbit dots. Each orbit is represented by 52 dots ( For the Earth, it is 1 dot per week) )
-* Solar system heliocentric axis (x and z)
-* VSOP2013 planet ephemeris usage sample
-* realistic Moon position ( except for orbit size )
-* Current catalog is small: Sun, 9 planets and Moon
-* Sky background with 40k stars
-* Star and constellation names
-* constellation lines
-* Sensor fusion allows positioning the light house on GPS position, and set phone attitude acording to gyro and compass
-* Attach camera to the phone to enter augmented reality mode
+* Ecliptic dots.
+* Heliocentric axis (x and z)
+* VSOP2013 planet position calculator usage sample
+* Moon positions realistic, except for orbit size 
+* Almanac data: Sun, 9 planets, Moon and 150 brightest stars.
+* Sky background with 42k stars
+* names of stars and constellation. constellation lines
+* a giant lighthouse and a phone shown on your position ( uses GPS, gyro and compass )
+* Target camera to the phone to enter augmented reality mode ( the scene rotates in sync with the real world )
+* Multi platform: Android, iOS and Windows ( Delphi Firemonkey app)
+
+## Implemenmtation notes
 
 # Planet positions
 
