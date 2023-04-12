@@ -4,6 +4,7 @@ In short: *PlanetFun* is a 4d solar system simulation with augmented reality.
 Celestial object spheres are rigged to astronomical almanac, resulting in realistic positions and movements. 
 
 *Download app for iOS or Android from your app store. search for "PlanetFun" by "omarreis"*
+*Also available for Windows ( se below )*
 
 The app is developed in Pascal ( Delphi ). It uses standard Firemonkey 3d infrastructure. 
 Tested on Windows, Android and iOS (currently Delphi 11)
