@@ -84,11 +84,22 @@ Resulting binary file is *only* 131 MB and doesn't require parsing to load. Load
 # PlanetFun 3D scene
 
 The program uses heliocentric ecliptic coordinates, a convention suitable to deal with planets.
-( The same frame as VSOP2013 )
+( The same as VSOP2013 )
 
 PlanetFun 3D scene scale is:
 
     1 AU = 1 "3D unit"    ( 1 AU Astronomic Unit is  149.597.870,7 Km - mean distance Earth-Sun  )
+    
+VSOP2013 time frame is J2000.0 (Equinox 1/jan/2000 12:00 UT). 
+Epoch reduction is done by correcting for Precession, Nutation, Aberration, Proper motion.
+
+While VSOP2013 specifies TDB (Barycentrc Dynamical Time), the app uses TDT (Terrestrial Dynamical Time).
+The difference is small in most cases. Check this.
+
+In most calculations we start from UT. Add DeltaT to get TDT.
+TDT is used in calculations because UT is not uniform 
+( astronomers add extra seconds to UT sometimes )
+TDT is uniform ( consistent to atomic time ).
 
 # 3D Hierarchy
 
