@@ -255,7 +255,7 @@ https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 ## download iOS app
 https://apps.apple.com/us/app/planet-fun/id1525941640
 
-## Downloiad for Windows ( Win32 )
+## Download for Windows ( Win32 )
 
 v1.8 https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
 
