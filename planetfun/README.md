@@ -192,6 +192,9 @@ In addition the 150 brightest stars are also represented by white 3D spheres.
 These are located at 200 AU from the Sun, so they are on the celestial sphere background surface ( half in - half out )
 so that they can be seen from both inside and outside the celestial ball.
 
+![screenshot](celestialBall.png)
+
+                               
                             dummyCelestialSphere
                                       |
             sphereSkyBackground ------+------ 150 star spheres 
