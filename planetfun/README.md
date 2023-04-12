@@ -244,8 +244,24 @@ Many formulas and algorithms for dates and astronomy from the book "Astronomical
 See file Om.AstronomicalAlgorithms.pas
 
 # Augmented Reality
-On the surface of Earth's sphere, at your GPS position, there is a large lighthouse.  On top of that lighthouse is a phone. 
-The position of the phone reflects actual device sensors ( location, gyro and magnetometer ) and should mimic its attitude (move with the real phone).  The app uses *FiremonkeySensorFusion* component to mix sensor readings ( see dependencies)
+On the surface of Earth's sphere, at your GPS position, there is a large lighthouse. 
+On top of that lighthouse is a phone. 
+The position of the phone reflects actual device sensors ( location, gyro and magnetometer ) and 
+should mimic its attitude (move with the real phone).  
+
+The app uses *FiremonkeySensorFusion* component to mix sensor readings ( see dependencies)
+
+       phone attitude 
+          -Y     Z       altitude X up positive
+           |    /        heading  Y down positive
+           |   /         roll     Z positive into the screen
+       /=======\
+       |   | / |
+       |   |/  |
+       |   *---|--------- X
+       |       |
+       |   O   |
+       \-------/
 
 What happens when you attach the scene *camera* to the *phone* ?  
 The simulation starts to move in sync with actual Universe.
