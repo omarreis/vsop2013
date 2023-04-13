@@ -215,14 +215,17 @@ the inclination of the ecliptic (obliquity) which is about 23d26'.
                    
                    
 By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obliquity )
-and parenting the individual stars to dummyCelestialSphere (the celestial sphere) we gain automatic translation
-between equatorial and ecliptic systems. This is how 3d object parenting works. 
-
-sphereEarth is also rotated in the same fashion, so both Earth and celestial sphere share the same Equator plane.
+and parenting the individual stars to dummyCelestialSphere (the celestial sphere) 
+we gain automatic translation between equatorial and ecliptic systems. 
+This is how 3d object parenting works. 
+Objects with Equatorial coordinates should be parented to dummyCelestialSphere.
+Objects with Ecliptical coordinates can be parented to root ( SolarSystemViewport3D )
 
 sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
 sphereSkyBackground.RotationAnle.y was set 359.6 to make the texture "fit" the actual star spheres
 ( probably because the image was generated for J2000 and there was precession since )
+
+sphereEarth is rotated in the same fashion, so both Earth and celestial sphere share the same Equator plane.
 
 # Warning: not realistic
 
