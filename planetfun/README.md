@@ -217,9 +217,13 @@ the inclination of the ecliptic (obliquity) which is about 23d26'.
 By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obliquity )
 and parenting the individual stars to dummyCelestialSphere (the celestial sphere) 
 we gain automatic translation between equatorial and ecliptic systems. 
-This is how 3d object parenting works. 
-Objects with Equatorial coordinates should be parented to dummyCelestialSphere.
-Objects Ecliptical coords can be parented to root ( SolarSystemViewport3D )
+Objects with Equatorial coordinates can be parented to dummyCelestialSphere.
+Objects with Ecliptical coords can be parented to root ( SolarSystemViewport3D ).
+This way we can use raw coordinates for various calculation methods. 
+
+For example, Ecliptic dots are created by positioning them at Z=0 plane.
+Since Ecliptic dots are parented to root, they show as an inclined
+circle in relation to the Equator, the path of Planets.
 
 sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
 
