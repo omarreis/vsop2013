@@ -167,10 +167,11 @@ I used textures from this website:
 If you want to build and deploy PanetFun follow these steps to complete assets:
 
 * Download images from Solar System Scope. Program uses 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
-* Deploy files to Documents folder 
-* Deploy files SkyMapLinesNames.png and SkyMapPlain.png from this repository:
+* Deploy texture files to Documents folder 
+* Deploy VSOP2013.p2000.bin "
+* Deploy SkyMapLinesNames.png and SkyMapPlain.png (from this repo)
 
-PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Documents
+see PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Documents
 
 Follow *Solar System Scope* license conditions
 
