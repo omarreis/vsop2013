@@ -39,5 +39,8 @@ Note: don't use binary file from the original ftp folder, which has a different 
 Deploy textures and vsop2013 binary file to app's *Documents* folder:
 
 * For Android to .\assets\internal
-* For iOS to StartUp\Documents
-* Duments for Windows  c:\Users\username\OneDrive\Documents\vsop2013\    <--  or something like that (installer creates vsop2013\ )
+* For iOS to .\StartUp\Documents
+* Documents for Windows  
+
+c:\Users\username\OneDrive\Documents\vsop2013\    <--  or something like that (installer creates vsop2013\ )
+
