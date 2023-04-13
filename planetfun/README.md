@@ -303,7 +303,9 @@ https://apps.apple.com/us/app/planet-fun/id1525941640
 
 ## Download for Windows ( Win32 )
 
-v1.8 https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
+PlanetFun v1.8 installer: https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
+
+Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program group "vsop2013"
 
 ## also in this repository
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
