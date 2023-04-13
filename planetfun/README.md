@@ -219,11 +219,13 @@ and parenting the individual stars to dummyCelestialSphere (the celestial sphere
 we gain automatic translation between equatorial and ecliptic systems. 
 This is how 3d object parenting works. 
 Objects with Equatorial coordinates should be parented to dummyCelestialSphere.
-Objects with Ecliptical coordinates can be parented to root ( SolarSystemViewport3D )
+Objects Ecliptical coords can be parented to root ( SolarSystemViewport3D )
 
 sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
-sphereSkyBackground.RotationAnle.y was set 359.6 to make the texture "fit" the actual star spheres
-( probably because the image was generated for J2000 and there was precession since )
+
+sphereSkyBackground.RotationAngle.y is set 359.6 to make the texture "fit" the actual star spheres,
+which have more accurate position. 
+( the image left displacement may be due to date J2000. There was precession since )
 
 sphereEarth is rotated in the same fashion, so both Earth and celestial sphere share the same Equator plane.
 
