@@ -120,10 +120,10 @@ Meus 5 centavos
 * Descoberta de Netuno: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
 ## Instalador para Windows
-Instala TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe e VSOP2013.p2000.bin
-* https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
 
-Instalador de Windows assinado por Carvalho e Reis Ltda (authenticode)
+Instala TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe e VSOP2013.p2000.bin
+
+* https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
 
 ## videos
 https://www.tiktok.com/@omar_reis/video/6868280053218823426
