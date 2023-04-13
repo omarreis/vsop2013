@@ -224,7 +224,7 @@ This way we can use raw coordinates for various calculation methods.
 
 For example, Ecliptic dots are created by positioning them at Z=0 plane.
 Since Ecliptic dots are parented to root, they show as an inclined
-circle in relation to the Equator, the path of Planets.
+circle in relation to the Equator.
 
 sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
 
