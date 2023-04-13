@@ -55,6 +55,7 @@ oct-20 - PlanetFun version 1.3 released
 * Sky background with 42k stars
 * names of stars and constellation. constellation lines
 * a giant lighthouse and a phone shown on your position ( uses GPS, gyro and compass )
+* phone model moves in sync with actual phone
 * Target camera to the phone to enter augmented reality mode ( the scene rotates in sync with the real world )
 * Touch gestures: one finger pan, two finger zoom and two finger rotation (on mobile)
 * Mouse events: mouse-move, Shift mouse-move and Alt mouse-move (on Windows)
