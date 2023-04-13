@@ -120,13 +120,13 @@ My 5 cents
 * Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
 ## Installer for Windows 
+
 Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
-* https://github.com/omarreis/vsop2013/releases/download/1.2/setupPlanetFun_win32_v11.exe
 
-
-Windows installer signed by Carvalho e Reis Ltda (authenticode)
+* https://github.com/omarreis/vsop2013/releases/tag/1.8
 
 ## videos
+
 https://www.tiktok.com/@omar_reis/video/6868280053218823426
 
 https://www.facebook.com/watch/?v=927266577766578&extid=zL8tulVwXybECcdZ
