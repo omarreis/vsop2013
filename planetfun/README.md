@@ -8,7 +8,7 @@ Tested on Windows, Android and iOS (currently Delphi 11)
 
 *Download app for iOS or Android from your app store. search for "PlanetFun" by "omarreis"*
 
-*available for Windows ( se below )*
+*also available for Windows ( see below )*
 
 Full app source available at:
 
@@ -308,6 +308,7 @@ PlanetFun v1.8 installer: https://github.com/omarreis/vsop2013/releases/download
 Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program group "vsop2013"
 
 ## also in this repository
+
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
 * gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
