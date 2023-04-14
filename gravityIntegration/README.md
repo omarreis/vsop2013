@@ -84,9 +84,7 @@ Full Delphi source code  in this repository
 
 Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
 
-https://github.com/omarreis/vsop2013/releases/tag/1.8
-
-( authenticode signed by Carvalho e Reis ltda )
+PlanetFun v1.8 installer:  https://github.com/omarreis/vsop2013/releases/tag/1.8
 
 # Discovery of planet Neptune
 
@@ -96,8 +94,8 @@ had seen it before.  See:
 
 https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
-
 ## also in this repository
+
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013
 * gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
