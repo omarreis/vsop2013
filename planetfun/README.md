@@ -157,10 +157,11 @@ Code in ahMoon.pas is derived from TMoon component.
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
 The Texture property is a bitmap that is mapped to the sphere on a reverse-Mercator projection.  
 
-Most planet textures are *not* included in this repository ( TForm planets have blank textures ).
-Except for sky background texture, which is included ( see Documents folder for deployment info )
+Planet textures are *not* included in this repository. TForm planets have blank textures.
+Textures are loaded from FormCreate.  Except for sky background textures, which are included 
+( see Documents folder for deployment info )
 
-I used textures from this website:
+The planet textures come from the website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
 
@@ -201,6 +202,7 @@ so that they can be seen from both inside and outside the celestial ball.
                                       |
             sphereSkyBackground ------+------ 150 star spheres 
             
+            
 The app main coordinate system is heliocentric ecliptic (x,y,z).
 This is the same system as VSOP2013, the planet positions calculator.
 
@@ -214,18 +216,25 @@ the inclination of the ecliptic (obliquity) which is about 23d26'.
                  -----------+------------- Equator
                        .---   
                    .--- 
-                   
-                   
+
 By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obliquity )
 and parenting the individual stars to dummyCelestialSphere (the celestial sphere) 
 we gain automatic translation between equatorial and ecliptic systems. 
 Objects with Equatorial coordinates can be parented to dummyCelestialSphere.
 Objects with Ecliptical coords can be parented to root ( SolarSystemViewport3D ).
-This way we can use raw coordinates for various calculation methods. 
 
+This way we can use raw coordinates for various calculation methods. 
 For example, Ecliptic dots are created by positioning them at Z=0 plane.
 Since Ecliptic dots are parented to root, they show as an inclined
 circle in relation to the Equator.
+
+Object coordinate calculation methods ( ephemeris ):
+
+    obj        method      Results
+    Planets    VSOP2013    X,Y,Z  heliocentric ecliptic 
+    Planets    VSOP87      heliocentric lat,lon,Radius 
+    Moon       ELP200      geocentric equatorial RA, Declination, radius
+    Stars      catalog     geocentric equatorial RA, Declination
 
 sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
 
