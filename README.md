@@ -16,7 +16,7 @@ With time it grew to include:
 * apr/23: PlanetFun app v1.8 released for iOS and Android. Added the Almanac module, which allows calculating ephemeris for various celestial objects.
 Added VSOP87 planet database. H150 and Navigator star catalogs.
 
-See https://github.com/omarreis/vsop2013/tree/master/planetfun
+* See https://github.com/omarreis/vsop2013/tree/master/planetfun
 
 # VSOP 2013 
 
@@ -30,11 +30,11 @@ Tests are for Firemonkey, but should work with VCL and console app as well.
 
 VSOP 2013 original paper with Fortran code and data files can be found at:
 
-* https://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
+https://ftp.imcce.fr/pub/ephem/planets/vsop2013/ephemerides/
  
 VSOP2013 README:   
 
-* https://ftp.imcce.fr/pub/ephem/planets/vsop2013/solution/README.pdf
+https://ftp.imcce.fr/pub/ephem/planets/vsop2013/solution/README.pdf
  
 Data files are large (400 MB) ASCII text containing Chebyshev polynomial of 1st kind *coefficients*. 
 It is organized in 6 files, covering a 9,000 year period in all, as follows:
