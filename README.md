@@ -139,15 +139,19 @@ I did not test the original Fortran code, so I used the results on original file
                                VX= 1.019554845438113E-03 VY=-7.116569436623840E-03 VZ= 5.921987272194194E-06
 
 ## Sample app 2: PlanetFun
+
 ![screenshot](planetfun/bannerPlanetFun.png)
 
-Planet Fun is a Firemonkey solar system 4D simulation. 
-It uses VSOP2013 to calculate planet positions for the 9 Planets ( or 8 planets + Pluto ).
+Planet Fun is a solar system simulation in 4D. 
+The 9 Planets, Sun, Moon, stars are positioned using 
+calculation methods described in the book Astronomical Algorithms.
 
 Source code:  
+
     https://github.com/omarreis/vsop2013/tree/master/planetfun
     
 PlanetFun readme:
+
     https://github.com/omarreis/vsop2013/blob/master/planetfun/README.md
 
 In order to compile and run this app, you will need to:
@@ -155,24 +159,28 @@ In order to compile and run this app, you will need to:
 * Download and include planet textures from 3rd party website
 
 # PlanetFun app for Android
-* https://play.google.com/store/apps/details?id=com.omarreis.planetfun
+
+https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 
 # PlanetFun app for iOS
-* https://apps.apple.com/us/app/planet-fun/id1525941640
+
+https://apps.apple.com/us/app/planet-fun/id1525941640
 
 # PlanetFun for Windows 
+
 Install executables  PlanetFun.exe, TestVSOP2013.exe, gravityIntegration.exe and assets.
 Size: 130 MB - Current version 1.8 (apr23) 
 
-* https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
+https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
 
 ## Sample app 3: gravityIntegration 
 
 Windows app. Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences (residues).
 
-* see: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
+see https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
 
 ## discovery of planet Neptune
+
 Numbers related to the discovery of the planet Neptune, in 1846. 
 * see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 * O descobrimento de Netuno (portugues): https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/leiame.md 
