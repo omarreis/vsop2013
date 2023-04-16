@@ -35,7 +35,7 @@ oct-20 - PlanetFun version 1.3 released
 * Target (=attach) the *camera* to the *phone* to enter augmented reality mode.  
 * Permissions for "sensor use while using the app" required
 
-![planetfun 1.3](earthLighthousePhone.png)
+![planetfun 1.3](PlanetFun18Hints.png)
 
 ![screenshots](screenshotsPlanetFun.png)
 
