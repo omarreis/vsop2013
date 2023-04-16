@@ -1,4 +1,6 @@
-# PlanetFun      ![banner](bannerPlanetFun.png)
+# PlanetFun      
+
+![banner](bannerPlanetFun.png)
 
 In short: *PlanetFun* is a 4d solar system simulation with augmented reality. 
 Celestial object spheres are rigged to astronomical almanac, resulting in realistic positions and movements. 
