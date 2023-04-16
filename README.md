@@ -160,18 +160,18 @@ In order to compile and run this app, you will need to:
 
 # PlanetFun app for Android
 
-https://play.google.com/store/apps/details?id=com.omarreis.planetfun
+* https://play.google.com/store/apps/details?id=com.omarreis.planetfun
 
 # PlanetFun app for iOS
 
-https://apps.apple.com/us/app/planet-fun/id1525941640
+* https://apps.apple.com/us/app/planet-fun/id1525941640
 
 # PlanetFun for Windows 
 
 Install executables  PlanetFun.exe, TestVSOP2013.exe, gravityIntegration.exe and assets.
 Size: 130 MB - Current version 1.8 (apr23) 
 
-https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
+* https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
 
 ## Sample app 3: gravityIntegration 
 
