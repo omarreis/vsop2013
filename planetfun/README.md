@@ -157,13 +157,12 @@ Code in ahMoon.pas is derived from TMoon component.
 # Planet textures
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
-The Texture property is a bitmap that is mapped to the sphere on a reverse-Mercator projection.  
+The Texture property is a bitmap that is mapped to the sphere sphere.  
 
 Planet textures are *not* included in this repository. TForm planets have blank textures.
-Textures are loaded from FormCreate.  Except for sky background textures, which are included 
-( see Documents folder for deployment info )
+Textures are loaded on FormCreate (except for sky background textures, which are included - see Documents folder for deployment info )
 
-The planet textures come from the website:
+PlanetFun lanet textures come from the website:
 
 *Solar System Scope*   https://www.solarsystemscope.com/textures/  
 
@@ -180,31 +179,29 @@ Follow *Solar System Scope* license conditions
 
 # Star background 
 
-The sky background is a large sphere with radius 200 AU. The sphere texture is a image containing stars, constellation lines, names etc. 
+The sky background is a large sphere with radius 200 AU. The sphere texture image containing stars, constellation lines, names etc. 
 It was generated using Hipparcos Input Catalogue (118k stars). Only objects with mag<8.0 were kept, resulting in about 42000 stars.
-
-Two star background images are available: with names and constellation lines or just the plain stars.
+Two star background images are available: stars with names, constellation lines or just plain stars.
 
 Since the texture is projected on the inside of the large sphereSkyBackground,
-texts must be horizontaly rotated to project correctly ( as left-to-right texts ).
-The sphere can also be seen from the "outside" if camera distance is set to more than 200 AU.
+texts must be rotated horizontaly to project correctly as left-to-right texts.
+The celestial sphere can be seen from the "outside" if camera distance is set to more than 200 AU.
 
 Sky texture image: 
 
   https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
 
-In addition the 150 brightest stars are also represented by white 3D spheres.
-These are located at 200 AU from the Sun, so they are on the celestial sphere background surface ( half in - half out )
+In addition the 150 brightest stars are also represented by little white 3D spheres.
+These are located at 200 AU from the Sun, so they are on the background sphere surface ( half in - half out )
 so that they can be seen from both inside and outside the celestial ball.
 
 ![screenshot](celestialBall.png)
-
                                
                             dummyCelestialSphere
                                       |
             sphereSkyBackground ------+------ 150 star spheres 
             
-            
+          
 The app main coordinate system is heliocentric ecliptic (x,y,z).
 This is the same system as VSOP2013, the planet positions calculator.
 
@@ -212,7 +209,7 @@ For some objects, Almanac calculation methods return Right Ascension,Declination
 which are geocentric equatorial coordinates. Between the two systems there is
 the inclination of the ecliptic (obliquity) which is about 23d26'.
 
-                                       .--- Ecliptic
+                                       .-- Ecliptic
                                    .--- 
                             A  .---  
                  -----------+------------- Equator
