@@ -179,7 +179,7 @@ Options to avoid the Gimbal Locks when you rotate objects:
 Generate a quaternion of 3D rotations and use SetMatrix() to apply all rotations at once. 
 
     // use quaternion to apply sensor readings
-    ToQuaternion( aRoll, aHead-90 , aAlt, Q );
+    ToQuaternion( aRoll, aAzimuth-90 , aAltitude, Q );
     cubePhone.SetMatrix( Q );                   // rotate phone model using the quaternion
 
 Note that SetMatrix() exists, but is not a public  method of 3D objects.
@@ -193,7 +193,7 @@ For example if we have the construction:
      
 You can do:
 
-    aDummy.RotationAngle.x    :=  aElevation;      //set one rotation component in each object
+    aDummy.RotationAngle.x    :=  aAltitude;     //set one rotation component in each object
     a3DObject.RotationAngle.y :=  aAzimuth;
 
 By rotating a single axis in each object you avoid Gimbal Locks.
