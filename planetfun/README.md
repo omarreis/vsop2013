@@ -96,13 +96,23 @@ PlanetFun 3D scene scale is:
 VSOP2013 time frame is J2000.0 (Equinox 1/jan/2000 12:00 UT). 
 Epoch reduction is done by correcting for Precession, Nutation, Aberration, Proper motion.
 
-While VSOP2013 specifies TDB (Barycentrc Dynamical Time), the app uses TDT (Terrestrial Dynamical Time).
-The difference is small in most cases. Check this.
+# Time
 
-In most calculations we start from UT. Add DeltaT to get TDT.
-TDT is used in calculations because UT is not uniform 
-( astronomers add extra seconds to UT sometimes )
-TDT is uniform ( consistent to atomic time ).
+Time calculations start with local time. Convert to UT ( Universal Time the same as GMT, old Greenwitch Meridian Time) 
+
+UT = Localtime + TimeZone     
+
+Normally time is converted to JD (Julian Date) since J2000.0 ( 1/jan/2000 12 UT ). 
+
+UT is converted to TDT (Terrestrial Dynamical Time) by adding DeltaT. 
+DT is used in calculations because UT is not uniform 
+( astronomers add insert seconds to UT sometimes )
+TDT is uniform ( consistent with atomic time ).
+
+While VSOP2013 specifies TDB (Barycentrc Dynamical Time), the app uses TDT ( aka Terrestrial Time ).
+The idea is that a clock in Paris runs differently from a clock in the solar system baricenter 
+due to General Relativity effects. TDB accounts for that. 
+The difference between TDB and TDT is small, I suppose. [Check!]   
 
 # 3D Hierarchy
 
