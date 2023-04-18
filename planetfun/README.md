@@ -93,6 +93,8 @@ PlanetFun 3D scene scale is:
 
     1 AU = 1 "3D unit"    ( 1 AU Astronomic Unit is  149.597.870,7 Km - mean distance Earth-Sun  )
     
+Plane X,Y contains the planet orbits, with Z generally small.    
+    
 # Time
 
 VSOP2013 time frame is J2000.0 (Equinox 1/jan/2000 12:00 UT). 
