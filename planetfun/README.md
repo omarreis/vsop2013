@@ -67,7 +67,7 @@ oct-20 - PlanetFun version 1.3 released
 
 # Planet positions
 
-Planet positions are calculated using VSOP2013 planet database ( see https://github.com/omarreis/vsop2013 ). This library calculates planet's heliocentric coordinates for epochs 1500 to 3000  ( VSOP2013 by Francou and Simon )
+Planet positions are calculated using VSOP2013 theory ( see https://github.com/omarreis/vsop2013 ). This library calculates planet's heliocentric ecliptic coordinates for a range of 9000 years ( VSOP2013 by Francou and Simon )
 
 VSOP2013 original FTP repository: 
 
