@@ -186,10 +186,10 @@ For example if we have the construction:
      
 You can do:
 
-  aDummy.RotationAngle.x    :=  aElevation;
-  a3DObject.RotationAngle.y :=  aAzimuth;
+    aDummy.RotationAngle.x    :=  aElevation;      //set one rotation component in each object
+    a3DObject.RotationAngle.y :=  aAzimuth;
 
-By rotating a single axis in each object, you avoid Gimbal Locks.
+By rotating a single axis in each object you avoid Gimbal Locks.
 
 # Moon positions 
 
