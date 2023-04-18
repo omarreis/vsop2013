@@ -174,16 +174,22 @@ but it is a trap and a source of frustation sometimes.
 
 Options to avoid the Gimbal Locks when you rotate objects:
 
-* Use Quaternions, as exemplified in the app for phone rotations in sync with sensors. 
-  Generate a quaternion for 3D rotations and use obj.SetMatrix() to apply all rotations at once.  
-* Use object parented to a dummy and don't change more than two components of RotationAngle   
+1- Use Quaternions, as exemplified in the app for phone rotations in sync with sensors. 
+ 
+Generate a quaternion of 3D rotations and use obj.SetMatrix() to apply all rotations at once.  
+  
+2- Use an object parented to a dummy and change one component of RotationAngle on either.
 
+For example if we have the construction: 
+  
+     -- aDummy --- a3DObject
+     
+You can do:
 
+  aDummy.RotationAngle.x    :=  aElevation;
+  a3DObject.RotationAngle.y :=  aAzimuth;
 
-
-
-
-
+By rotating a single axis in each object, you avoid Gimbal Locks.
 
 # Moon positions 
 
