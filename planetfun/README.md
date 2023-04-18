@@ -93,25 +93,27 @@ PlanetFun 3D scene scale is:
 
     1 AU = 1 "3D unit"    ( 1 AU Astronomic Unit is  149.597.870,7 Km - mean distance Earth-Sun  )
     
+# Time
+
 VSOP2013 time frame is J2000.0 (Equinox 1/jan/2000 12:00 UT). 
 Epoch reduction is done by correcting for Precession, Nutation, Aberration, Proper motion.
-
-# Time
 
 Time calculations start with local time. Convert to UT ( Universal Time the same as GMT, old Greenwitch Meridian Time) 
 
 UT = Localtime + TimeZone     
 
-Normally time is converted to JD (Julian Date) since J2000.0 ( 1/jan/2000 12 UT ). 
-
 UT is converted to TDT (Terrestrial Dynamical Time) by adding DeltaT. 
-DT is used in calculations because UT is not uniform 
-( astronomers add insert seconds to UT sometimes )
-TDT is uniform ( consistent with atomic time ).
+TDT is used in astronomical calculations because UT is not uniform 
+( astronomers insert seconds on UT sometimes )
+TDT is uniform, consistent with atomic time.
 
-While VSOP2013 specifies TDB (Barycentrc Dynamical Time), the app uses TDT ( aka Terrestrial Time ).
-The idea is that a clock in Paris runs differently from a clock in the solar system baricenter 
-due to General Relativity effects. TDB accounts for that. 
+Normally time is converted JD (Julian Date) and counted since J2000.0. 
+Mani AA methods funcions use time in "Centuries since j2000"
+
+While VSOP2013 specifies TDB (Barycentrc Dynamical Time), 
+the app uses TDT ( aka Terrestrial Time ).
+A clock in Paris runs differently from a clock in the solar system baricenter 
+due to General Relativity effects (movements, gravity). TDB accounts for that. 
 The difference between TDB and TDT is small, I suppose. [Check!]   
 
 # 3D Hierarchy
@@ -253,7 +255,7 @@ which have more accurate position.
 
 sphereEarth is rotated in the same fashion, so both Earth and celestial sphere share the same Equator plane.
 
-# Warning: not realistic
+# Not realistic
 
 A number of cheats introduced in v1.0 were corrected in subsequent versions. 
 Still remain:
