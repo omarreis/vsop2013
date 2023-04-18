@@ -110,10 +110,11 @@ TDT is used in astronomical calculations because UT is not uniform
 TDT is uniform, consistent with atomic time.
 
 Normally time is converted JD (Julian Date) and counted since J2000.0. 
-Many AA funcions use time parameter in "Centuries since j2000"
+Many AA functions use time parameter in "Centuries since j2000"
 
 While VSOP2013 specifies TDB (Barycentrc Dynamical Time), 
 the app uses TDT ( aka Terrestrial Time ).
+
 A clock in Paris runs differently from a clock in the solar system baricenter 
 due to General Relativity effects (movements, gravity). TDB accounts for that. 
 The difference between TDB and TDT is small, I suppose. [Check!]   
