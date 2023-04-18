@@ -159,7 +159,31 @@ dummyCamera is the camera *target*. The camera is parented to it at a certain di
 Targetting the camera means parenting dummyCamera to object at position (0,0,0).
 Camera Target, distance and other config can be set from Camera settings.
 
-TODO: Planet transits can be seen, but they don't cast shadows on other objects at this time. 
+TODO: cast shadows on other objects. 
+
+# RotationAngle and Gimbal locks
+
+Firemonkey 3D objects expose vectors *Position* and *RotationAngle* to specify object attitude
+in relation to its parent. You probably heard that *RotationAngle* must be used with care,
+to avoid the object going into a locked state, after repeated rotations. This is called "Gimbal lock".
+In this situation, reverting the object RotationAngle to (0,0,0) no longer works.
+The object refuses to return to default position.
+
+I suppose RotationAngle was exposed to "simplify" 3D programming, rather than using transformation matrixes,
+but it is a trap and a source of frustation sometimes.
+
+Options to avoid the Gimbal Locks when you rotate objects:
+
+* Use Quaternions, as exemplified in the app for phone rotations in sync with sensors. 
+  Generate a quaternion for 3D rotations and use obj.SetMatrix() to apply all rotations at once.  
+* Use object parented to a dummy and don't change more than two components of RotationAngle   
+
+
+
+
+
+
+
 
 # Moon positions 
 
