@@ -98,7 +98,7 @@ PlanetFun 3D scene scale is:
 VSOP2013 time frame is J2000.0 (Equinox 1/jan/2000 12:00 UT). 
 Epoch reduction is done by correcting for Precession, Nutation, Aberration, Proper motion.
 
-Time calculations start with local time. Convert to UT ( Universal Time the same as GMT, old Greenwitch Meridian Time) 
+Time calculations start with local time. Convert to UT ( Universal Time,  same as GMT old Greenwitch Meridian Time) 
 
 UT = Localtime + TimeZone     
 
@@ -108,7 +108,7 @@ TDT is used in astronomical calculations because UT is not uniform
 TDT is uniform, consistent with atomic time.
 
 Normally time is converted JD (Julian Date) and counted since J2000.0. 
-Mani AA methods funcions use time in "Centuries since j2000"
+Many AA funcions use time parameter in "Centuries since j2000"
 
 While VSOP2013 specifies TDB (Barycentrc Dynamical Time), 
 the app uses TDT ( aka Terrestrial Time ).
