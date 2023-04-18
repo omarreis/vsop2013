@@ -174,9 +174,14 @@ but it is a trap and a source of frustation sometimes.
 
 Options to avoid the Gimbal Locks when you rotate objects:
 
-1- Use Quaternions, as exemplified in the app for phone rotations in sync with sensors. 
- 
-Generate a quaternion of 3D rotations and use obj.SetMatrix() to apply all rotations at once.  
+1- Use *Quaternions*, as exemplified in the app for phone rotations in sync with sensors. 
+
+Generate a quaternion of 3D rotations and use SetMatrix() to apply all rotations at once. 
+
+    // use quaternion to apply sensor readings
+    ToQuaternion( aRoll, aHead-90 , aAlt, Q );
+    cubePhone.SetMatrix( Q );                   // rotate phone model using the quaternion
+
   
 2- Use an object parented to a dummy and change one component of RotationAngle on either.
 
