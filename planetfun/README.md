@@ -182,7 +182,9 @@ Generate a quaternion of 3D rotations and use SetMatrix() to apply all rotations
     ToQuaternion( aRoll, aHead-90 , aAlt, Q );
     cubePhone.SetMatrix( Q );                   // rotate phone model using the quaternion
 
-  
+Note that SetMatrix() exists, but is not a public  method of 3D objects.
+Used a helper class to expose the method.
+
 2- Use an object parented to a dummy and change one component of RotationAngle on either.
 
 For example if we have the construction: 
