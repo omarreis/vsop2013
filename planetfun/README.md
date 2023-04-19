@@ -206,6 +206,15 @@ Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörste
 Andreas Hörstemeier's TMoon component was released to public domain according to component help file.
 Code in ahMoon.pas is derived from TMoon component.
 
+## Sun positions
+
+TSun object implements two calculation methods ( High and Low res, as described in AA )  
+Sun geocentric equatorial coordinates are derived from Earth's VSOP87 heliocentric coords.
+
+This corresponds to the high res method, that uses VSOP87
+
+see VSOP87.SunData.pas 
+
 # Planet textures
 
 Planets are represented by TSpheres with light reflecting surfaces ( TLightMaterialSource )
