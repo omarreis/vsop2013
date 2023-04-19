@@ -202,21 +202,22 @@ By rotating a single axis in each object you avoid gimbal locks.
 
 ## Celestial object calculator classes  
                                              
-TCelObjBase is the base class for coordinate calculators. Each object must implement (override) 2 methods.
+TCelObjBase is the base class for coordinate calculators. Each class must implement (override) 2 methods.
+
 * CalcCoordinates - calculates object geocentric equatorial coordinates for a given time
 * GetObjectData   - returns a verbose report about the calculation procedure, with intermediate results.
 
 SetGMT is used to trigger the calculation
 
-                                TCelObjBase (abstract)                       
-                                       |                                     
-         +----------------+------------+---------------------+---------+     
-         |                |            |                     |         |     
-         |                |         TStarBase  (abstract)    |         |     
-         |                |            |                     |         |     
-         |                |            +----------+          |         |     
-         |                |            |          |          |         |     
-    TPlanetVSOP2013    TPlanetVSOP87   TStarH150 TNavStar    TSun     TMon   
+                              TCelObjBase (abstract)                       
+                                     |                                     
+         +--------------+------------+---------------------+---------+     
+         |              |            |                     |         |     
+         |              |         TStarBase  (abstract)    |         |     
+         |              |            |                     |         |     
+         |              |            +------------+        |         |     
+         |              |            |            |        |         |     
+    TPlanetVSOP2013   TPlanetVSOP87  TStarH150   TNavSt   TSun      TMoon   
 
 Calculation results can be found on the object fields:
 
