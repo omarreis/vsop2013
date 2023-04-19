@@ -271,8 +271,9 @@ Follow *Solar System Scope* license conditions
 
 # Star background 
 
-The sky background is a large sphere with radius 200 AU. The sphere texture image containing stars, constellation lines, names etc. 
-It was generated using Hipparcos Input Catalogue (118k stars). Only objects with mag<8.0 were kept, resulting in about 42000 stars.
+The sky background is a large sphere with radius 200 AU. The texture image contains stars, constellation lines, names, constellation drawings  etc. 
+It was generated using Hipparcos Input Catalogue (118k stars).  Only objects with mag<8.0 were kept, resulting in about 42000 stars.
+
 Two star background images are available: stars with names, constellation lines or just plain stars.
 
 Since the texture is projected on the inside of the large sphereSkyBackground,
