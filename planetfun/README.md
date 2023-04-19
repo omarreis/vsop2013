@@ -225,6 +225,8 @@ Calculation results can be found on the object fields:
     // celestial coordinate results
     fRA,fDecl:Double;    // current coordinates Right Ascension, Declination
     fGHA:Double;         // Current Greenwich Hour Angle
+    
+SHA (Sidereal Hour Angle) can be obtained by:   SHA = 360°  – RA
 
 ## Moon positions 
 
