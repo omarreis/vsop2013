@@ -217,7 +217,7 @@ SetGMT is used to trigger the calculation
          |              |            |                     |         |     
          |              |            +------------+        |         |     
          |              |            |            |        |         |     
-    TPlanetVSOP2013   TPlanetVSOP87  TStarH150   TNavSt   TSun      TMoon   
+    TPlanetVSOP2013   TPlanetVSOP87  TStarH150  TNavStar  TSun      TMoon   
 
 Calculation results can be found on the object fields:
 
