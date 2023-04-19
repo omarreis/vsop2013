@@ -95,14 +95,6 @@ See *TestH150* folder for test app.
 
 https://github.com/omarreis/vsop2013/tree/master/TestH150Stars
 
-# Sun positions
-
-TSun object implements two calculation methods ( High and Low as described in AA )  
-Sun geocentric equatorial coordinates are derived rom Earth's VSOP87 heliocentric coords.
-This corresponds to the high res method, using VSOP87.
-
-see VSOP87.SunData.pas
-
 # Sample apps
 
 Sample apps are included in this repository:
