@@ -167,7 +167,8 @@ Firemonkey 3D objects expose vectors *Position* and *RotationAngle* to specify o
 in relation to its parent. You probably heard that *RotationAngle* must be used with care,
 to avoid the object going into a locked state, after repeated rotations. This is called "Gimbal lock".
 In this situation, reverting the object RotationAngle to (0,0,0) no longer works.
-The object refuses to return to default position.
+The object refuses to return to default position. Some attitudes become unreachable. 
+There is a loss of a degree of freedom.
 
 I suppose RotationAngle was exposed to "simplify" 3D programming, rather than using transformation matrixes,
 but it is a trap and a source of frustation sometimes.
@@ -196,8 +197,8 @@ You can do:
     aDummy.RotationAngle.x    :=  aAltitude;     //set one rotation component in each object
     a3DObject.RotationAngle.y :=  aAzimuth;
 
-By rotating a single axis in each object you avoid Gimbal Locks.
-
+This is similar to actual camera gimbals found in drones: each servo rotates in one axis only.
+By rotating a single axis in each object you avoid gimbal locks.
 
 ## Celestial object calculator classes  
                                              
