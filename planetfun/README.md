@@ -198,7 +198,34 @@ You can do:
 
 By rotating a single axis in each object you avoid Gimbal Locks.
 
-# Moon positions 
+
+## Celestial object calculator classes  
+                                             
+TCelObjBase is the base class for coordinate calculators. Each object must implement (override) 2 methods.
+* CalcCoordinates - calculates object geocentric equatorial coordinates for a given time
+* GetObjectData   - returns a verbose report about the calculation procedure, with intermediate results.
+
+SetGMT is used to trigger the calculation
+
+                                TCelObjBase (abstract)                       
+                                       |                                     
+         +----------------+------------+---------------------+---------+     
+         |                |            |                     |         |     
+         |                |         TStarBase  (abstract)    |         |     
+         |                |            |                     |         |     
+         |                |            +----------+          |         |     
+         |                |            |          |          |         |     
+    TPlanetVSOP2013    TPlanetVSOP87   TStarH150 TNavStar    TSun     TMon   
+
+Calculation results can be found on the object fields:
+
+    fGMT:TDateTime;      // current time ( use setGMT to calculate coordinates )
+    fTDT:TDateTime;      // goodol' TDT (Time Dynamical) Today is called TT ( Terrestrial Time ? )
+    // celestial coordinate results
+    fRA,fDecl:Double;    // current coordinates Right Ascension, Declination
+    fGHA:Double;         // Current Greenwich Hour Angle
+
+## Moon positions 
 
 Moon position calculations and data coefficients from ELP2000 ( Chapront-Touzé ) described in Meeus' Astronomical Algorithms (chapter 45).
 Delphi Implementation of ELP2000 from TMoon v2.0 component by (c)Andreas Hörstemeier: http://www.hoerstemeier.com/moon.htm
