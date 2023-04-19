@@ -161,17 +161,17 @@ Camera Target, distance and other config can be set from Camera settings.
 
 TODO: cast shadows on other objects. 
 
-# RotationAngle and Gimbal locks
+# RotationAngle and gimbal locks
 
-Firemonkey 3D objects expose vectors *Position* and *RotationAngle* to specify object attitude
-in relation to its parent. You probably heard that *RotationAngle* must be used with care,
-to avoid the object going into a locked state, after repeated rotations. This is called "Gimbal lock".
-In this situation, reverting the object RotationAngle to (0,0,0) no longer works.
-The object refuses to return to default position. Some attitudes become unreachable. 
+Firemonkey 3D objects expose properties *Position* and *RotationAngle* to specify object attitude
+in relation to parent. You probably heard that *RotationAngle* must be used with care,
+to avoid the object going into a locked state after repeated rotations. This is called "gimbal lock".
+In this situation, reverting the object *RotationAngle* to (0,0,0) no longer works.
+The object refuses to return to default position. Some rotation combinations become unreachable. 
 There is a loss of a degree of freedom.
 
-I suppose RotationAngle was exposed to "simplify" 3D programming, rather than using transformation matrixes,
-but it is a trap and a source of frustation sometimes.
+I suppose *RotationAngle* was exposed to "simplify" 3D programming, rather than using transformation matrixes,
+but it is a trap and a source of frustation.
 
 Options to avoid the Gimbal Locks when you rotate objects:
 
