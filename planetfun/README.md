@@ -298,7 +298,7 @@ This is the same system as VSOP2013, the planet positions calculator.
 
 For some objects, Almanac calculation methods return Right Ascension,Declination (RA/Decl), 
 which are geocentric equatorial coordinates. Between the two systems there is
-the inclination of the ecliptic (obliquity) which is about 23d26'.
+the inclination of the ecliptic (obliquity) which is about 23°26'.
 
                                        .-- Ecliptic
                                    .--- 
@@ -307,7 +307,7 @@ the inclination of the ecliptic (obliquity) which is about 23d26'.
                        .---   
                    .--- 
 
-By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23d26'  obliquity )
+By setting dummyCelestialSphere.RotationAngle.x to 336.5667 ( i.e. -23°26'  obliquity )
 and parenting the individual stars to dummyCelestialSphere (the celestial sphere) 
 we gain automatic translation between equatorial and ecliptic systems. 
 Objects with Equatorial coordinates can be parented to dummyCelestialSphere.
