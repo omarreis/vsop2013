@@ -324,9 +324,10 @@ Object coordinate calculation methods ( ephemeris ):
 
     obj        method      Results
     Planets    VSOP2013    X,Y,Z heliocentric ecliptic 
-    Planets    VSOP87      heliocentric lat,lon,Radius 
+    Planets    VSOP87      heliocentric lat,lon,Radius --> RA, Declination
     Moon       ELP2000     geocentric equatorial RA, Declination, radius
     Stars      catalog     geocentric equatorial RA, Declination
+    Sun        VSOP87      geocentric equatorial RA, Declination, radius 
 
 sphereSkyBackground (sky image) is also parented to dummyCelestialSphere.
 
