@@ -186,9 +186,9 @@ Generate a quaternion of 3D rotations and use SetMatrix() to apply all rotations
 Note that SetMatrix() exists, but is not a public  method of 3D objects.
 Used a helper class to expose the method.
 
-2- Use an object parented to a dummy and change one component of RotationAngle on either.
+2- Use an object parented to a dummy and change one component of RotationAngle on each.
 
-For example if we have the construction: 
+For example if you have the construction: 
   
      -- aDummy --- a3DObject
      
@@ -197,8 +197,8 @@ You can do:
     aDummy.RotationAngle.x    :=  aAltitude;     //set one rotation component in each object
     a3DObject.RotationAngle.y :=  aAzimuth;
 
-This is similar to actual camera gimbals found in drones: each servo rotates in one axis only.
-By rotating a single axis in each object you avoid gimbal locks.
+This is similar to actual camera gimbals, found in drones: each servo rotates in one axis only, but they are linked together to allow 3D movements.  
+By using this construction, the object rotates as expected and you avoid gimbal locks.
 
 ## Celestial object calculator classes  
                                              
