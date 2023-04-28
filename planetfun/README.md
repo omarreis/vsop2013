@@ -18,9 +18,10 @@ Full app source available at:
 
 ## release notes
 
-apr-23 - PlanetFun 1.8 released
+apr-23 - PlanetFun 1.9 released
 * Almanac module allow exploring the astronomical calculations using various methods 
 * Ecliptic dots 
+* constellation drawings ( 2 new backgrounds )
 * Click a 3D object to see Almanac data
 
 ![planetfun 1.8](AlmanacPlanet.png)
@@ -405,7 +406,7 @@ https://apps.apple.com/us/app/planet-fun/id1525941640
 
 ## Download for Windows ( Win32 )
 
-PlanetFun v1.8 installer: https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
+PlanetFun v1.9 installer: https://github.com/omarreis/vsop2013/releases/download/1.9/setupPlanetFunV19win32.exe
 
 Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program group "vsop2013"
 
