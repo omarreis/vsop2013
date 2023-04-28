@@ -11,9 +11,13 @@ As of v1.3 smaller textures are still embedded in fPlanetFun.fmx textures.
 Some of the deployment files are in this repo, some are available from 3rd party sites:
 
 ## from this repository:
+
 Custom sky background textures:
+
 * SkyMapLinesNames.png
 * SkyMapPlain.png
+* SkyMapLinesNamesDrawings.png 
+* SkyMapDrawings.png
 
 ## Files to be download from  *Solar System Scope*
 https://www.solarsystemscope.com/textures/
