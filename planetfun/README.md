@@ -264,7 +264,7 @@ If you want to build and deploy PanetFun follow these steps to complete assets:
 * Download images from Solar System Scope. Program uses 2k_earth_daymap.jpg, 2k_jupiter.jpg, 2k_mars.jpg, 2k_mercury.jpg, 2k_moon.jpg, 2k_neptune.jpg, 2k_saturn.jpg, 2k_stars_milky_way.jpg, 2k_uranus.jpg, 2k_venus_surface.jpg and PlutoTexture.jpg
 * Deploy texture files to Documents folder 
 * also deploy VSOP2013.p2000.bin 
-* and SkyMapLinesNames.png and SkyMapPlain.png (from this repo)
+* and SkyMapLinesNames.png, SkyMapPlain.png, SkyMapDrawings, SkyMapLinesNamesDrawings.png   (from this repo)
 
 see PlanetFun deployments: https://github.com/omarreis/vsop2013/tree/master/Documents
 
@@ -281,9 +281,12 @@ Since the texture is projected on the inside of the large sphereSkyBackground,
 texts must be rotated horizontaly to project correctly as left-to-right texts.
 The celestial sphere can be seen from the "outside" if camera distance is set to more than 200 AU.
 
-Sky texture image: 
+Sky texture images: 
 
-  https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png
+* https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNames.png   
+* https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapPlain.png
+* https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNamesDrawings.png
+* https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapDrawings.png
 
 In addition the 150 brightest stars are also represented by little white 3D spheres.
 These are located at 200 AU from the Sun, so they are on the background sphere surface ( half in - half out )
