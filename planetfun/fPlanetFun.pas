@@ -21,7 +21,8 @@ unit fPlanetFun;    //-----  planetary system simulation in 4D ----\\
 //          * solar system animation                                  //
 //   v1.8 - apr23: Fix ecliptic obliquity, which was set             //
 //                 to 0 by mistake !                                //
-//-----------------------------------------------------------------//
+//   v1.9 - may23: constellation drawings                          //
+//----------------------------------------------------------------//
 
 interface
 
@@ -208,9 +209,9 @@ type
     labCamera: TLabel;
     btnAddStars: TSpeedButton;
     Label14: TLabel;
-    cbSkyBGImage: TSwitch;
+    cbSkyBG: TSwitch;
     Label15: TLabel;
-    cbStars: TSwitch;
+    cbStarSpheres: TSwitch;
     btnCloseAbout2: TSpeedButton;
     rectBigToast: TRectangle;
     labBigToast: TLabel;
@@ -222,6 +223,8 @@ type
     dummyCelestialSphere: TDummy;
     Label17: TLabel;
     cbEcliptic: TSwitch;
+    Label18: TLabel;
+    cbConstDrawings: TSwitch;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -249,7 +252,6 @@ type
     procedure btnOkJDEClick(Sender: TObject);
     procedure btnJDENowClick(Sender: TObject);
     procedure tbAngleOfViewChange(Sender: TObject);
-    procedure cbConstLinesNamesSwitch(Sender: TObject);
     procedure MemoAboutApplyStyleLookup(Sender: TObject);
     procedure btnCloseVisibilityClick(Sender: TObject);
     procedure btnCloseCameraClick(Sender: TObject);
@@ -264,11 +266,11 @@ type
       Button: TMouseButton; Shift: TShiftState; X, Y: Single);
     procedure On3dObjClick(Sender: TObject);
     procedure btnAddStarsClick(Sender: TObject);
-    procedure cbSkyBGImageSwitch(Sender: TObject);
-    procedure cbStarsSwitch(Sender: TObject);
+    procedure cbStarSpheresSwitch(Sender: TObject);
     procedure btnCloseBigToastClick(Sender: TObject);
     procedure cbShowBannerSwitch(Sender: TObject);
-    procedure cbEclipticSwitch(Sender: TObject);               // Using AA chapter 45
+    procedure cbEclipticSwitch(Sender: TObject);
+    procedure cbSkyTextureSwitch(Sender: TObject);               // Using AA chapter 45
   private
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
@@ -533,7 +535,7 @@ begin
   aAlt  := fMagAccelFusion.fAltitude;
   aRoll := fMagAccelFusion.fRoll;
 
-  s := ' Az:'+     Trim(Format('%5.0f°', [aHead] ))+
+  s := ' Az:'+     Trim(Format('%5.0f°', [aHead] ))+'T'+
        ' Ele:'+    Trim(Format('%5.0f°', [aAlt ] ))+
        ' Roll:'+   Trim(Format('%5.0f°', [aRoll] ));   // roll  -- az
   labStatus2.Text := s;
@@ -1750,21 +1752,57 @@ begin
   lightMaterialTextureEarthNight.Texture.LoadFromFile(aFN);
 end;
 
-procedure TFormPlanetFun.cbConstLinesNamesSwitch(Sender: TObject);
-var aFN:String;
+// sky background texture files - 4 high res images w/ different visibility options
+// bytes     file
+// 2,439,862 SkyMapDrawings.png
+// 1,857,870 SkyMapLinesNames.png
+// 2,800,244 SkyMapLinesNamesDrawings.png
+// 1,304,827 SkyMapPlain.png
+
+const
+  sSkyMapLinesNamesDrawings = 'SkyMapLinesNamesDrawings.png';
+  sSkyMapLinesNames         = 'SkyMapLinesNames.png';
+  sSkyMapDrawings           = 'SkyMapDrawings.png';
+  sSkyMapPlain              = 'SkyMapPlain.png';
+
+procedure TFormPlanetFun.cbSkyTextureSwitch(Sender: TObject);
+var aFN,aFile:String;
 begin
-  // on (my) Windows 10 it is  'C:\Users\<user>\OneDrive\Documentos\vsop2013\'
-  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim; // mk file path
+  // on (my) Windows 10 it is  'C:\Users\<user>\OneDrive\Documentos\vsop2013\'  may include \OneDrive\
+  aFN := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim;     // mk file path
   {$IFDEF MsWindows}
   aFN := aFN +'vsop2013'+ System.SysUtils.PathDelim;  // for Windows there is an extra 'vsop2013\'
   {$ENDIF MsWindows}
-  if cbConstLinesNames.IsChecked then aFN:=aFN+'SkyMapLinesNames.png'
-    else aFN:=aFN+'SkyMapPlain.png';
 
-  if FileExists(aFN) then      //sanity test
+  aFile := '';    // no file --> hide sphere
+
+  if cbSkyBG.IsChecked then   // 3 visibility checkbox determine which sky texture to use
     begin
-      textureStars.Texture.LoadFromFile(aFN);     //load
-      sphereSkyBackground.Visible := cbSkyBGImage.IsChecked;
+      if cbConstLinesNames.IsChecked then
+        begin                                                                  //  visibility options determine which texture to load
+          if cbConstDrawings.IsChecked then aFile:=sSkyMapLinesNamesDrawings   //  starBG   linesNames   drawings
+            else aFile:=sSkyMapLinesNames;                                     //  starBG   linesNames
+        end
+        else begin  // no lines/names
+          if cbConstDrawings.IsChecked then aFile:=sSkyMapDrawings             //  starBG                drawings
+            else aFile:=sSkyMapPlain;                                          //  starBG   <--
+        end;
+    end;
+
+  if (aFile<>'') then  // load it
+    begin
+        aFN := aFN+aFile;            //  path + filename
+        if FileExists(aFN) then      //  sanity test
+          begin
+            textureStars.Texture.LoadFromFile(aFN);     // load file
+            sphereSkyBackground.Visible := true;
+          end
+          else begin
+            // expected file not found... bad deployment.. do something...
+          end;
+    end
+    else begin
+      sphereSkyBackground.Visible := false;
     end;
 end;
 
@@ -1808,16 +1846,10 @@ begin
   dummyLighthouse.Visible := cbShowLightHouseAndPhone.IsChecked;  // show/hide LH n phone
 end;
 
-procedure TFormPlanetFun.cbSkyBGImageSwitch(Sender: TObject);
+procedure TFormPlanetFun.cbStarSpheresSwitch(Sender: TObject);
 begin
-   sphereSkyBackground.Visible := cbSkyBGImage.IsChecked;
-end;
-
-procedure TFormPlanetFun.cbStarsSwitch(Sender: TObject);
-begin
-  if cbStars.IsChecked then
-    btnAddStarsClick(nil)
-    else self.ClearStarDots;
+  if cbStarSpheres.IsChecked then btnAddStarsClick(nil)       // add/remove star spheres for the brightest stars
+    else ClearStarDots;
 end;
 
 procedure TFormPlanetFun.comboTargetChange(Sender: TObject);
@@ -1906,7 +1938,7 @@ begin
        rectTime.Visible := false;      // menus starts hiden
 
        LoadPlanetTextures;            // load planet texture images from Documents
-       cbConstLinesNamesSwitch(nil);  // this loads defaut sky texture from file
+       cbSkyTextureSwitch(nil);       // this loads defaut sky texture from file
 
        btnLoadFileClick(nil);         // load data file on startup
        btnLoadFile.Visible := false;  // hide filename editor ( for debug only)

@@ -2,8 +2,8 @@ object FormPlanetFun: TFormPlanetFun
   Left = 0
   Top = 0
   Caption = 'PlanetFun'
-  ClientHeight = 680
-  ClientWidth = 346
+  ClientHeight = 661
+  ClientWidth = 347
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -20,8 +20,8 @@ object FormPlanetFun: TFormPlanetFun
     Align = Client
     Camera = mjTomCamera
     Color = claBlack
-    Size.Width = 346.000000000000000000
-    Size.Height = 680.000000000000000000
+    Size.Width = 347.000000000000000000
+    Size.Height = 661.000000000000000000
     Size.PlatformDefault = False
     UsingDesignCamera = False
     OnMouseDown = SolarSystemViewport3DMouseDown
@@ -1534,6 +1534,7 @@ object FormPlanetFun: TFormPlanetFun
       Size.Width = 170.000000000000000000
       Size.Height = 21.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
       TextSettings.FontColor = claBisque
       TextSettings.HorzAlign = Center
       Text = 'Planet Fun'
@@ -1546,6 +1547,7 @@ object FormPlanetFun: TFormPlanetFun
       Size.Width = 202.000000000000000000
       Size.Height = 21.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
       TextSettings.FontColor = claBisque
       TextSettings.HorzAlign = Center
       Text = '...'
@@ -1557,6 +1559,7 @@ object FormPlanetFun: TFormPlanetFun
       Size.Width = 194.000000000000000000
       Size.Height = 16.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
       TextSettings.FontColor = claBisque
       TextSettings.HorzAlign = Center
       Text = '...'
@@ -9267,7 +9270,7 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     Fill.Color = xFF0A0B0C
     Opacity = 0.699999988079071000
-    Position.X = -2.000000000000000000
+    Position.X = -1.000000000000000000
     Position.Y = 192.000000000000000000
     Size.Width = 341.000000000000000000
     Size.Height = 267.000000000000000000
@@ -9459,7 +9462,7 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     GroupName = 'TOOLS'
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 302.000000000000000000
+    Position.X = 303.000000000000000000
     Position.Y = 91.000000000000000000
     Size.Width = 36.000000000000000000
     Size.Height = 48.000000000000000000
@@ -9613,7 +9616,7 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     GroupName = 'TOOLS'
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 302.000000000000000000
+    Position.X = 303.000000000000000000
     Position.Y = 46.000000000000000000
     Size.Width = 36.000000000000000000
     Size.Height = 48.000000000000000000
@@ -9804,7 +9807,7 @@ object FormPlanetFun: TFormPlanetFun
       TextSettings.Font.Size = 11.000000000000000000
       TextSettings.FontColor = claMediumseagreen
       TextSettings.HorzAlign = Trailing
-      Text = 'View'
+      Text = 'Visibility'
       TabOrder = 0
       OnClick = btnToggleVisibilitySettingsClick
     end
@@ -9812,7 +9815,7 @@ object FormPlanetFun: TFormPlanetFun
   object btnToggleCameraSettings: TSpeedButton
     Anchors = [akTop, akRight]
     StyledSettings = [Family]
-    Position.X = 302.000000000000000000
+    Position.X = 303.000000000000000000
     Position.Y = 6.000000000000000000
     Size.Width = 36.000000000000000000
     Size.Height = 48.000000000000000000
@@ -9992,7 +9995,7 @@ object FormPlanetFun: TFormPlanetFun
   object rectEditJDE: TRectangle
     Anchors = [akTop, akRight]
     Fill.Color = xFFA0A0A0
-    Position.X = 14.000000000000000000
+    Position.X = 15.000000000000000000
     Position.Y = 185.000000000000000000
     Size.Width = 322.000000000000000000
     Size.Height = 217.000000000000000000
@@ -10075,7 +10078,7 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     Fill.Color = xFF0A0B0C
     Opacity = 0.699999988079071000
-    Position.X = 10.000000000000000000
+    Position.X = 11.000000000000000000
     Position.Y = 185.000000000000000000
     Size.Width = 329.000000000000000000
     Size.Height = 242.000000000000000000
@@ -11193,8 +11196,8 @@ object FormPlanetFun: TFormPlanetFun
       end>
     Anchors = [akBottom]
     Opacity = 0.300000011920929000
-    Position.X = 13.230767250061040000
-    Position.Y = 516.000000000000000000
+    Position.X = 13.384613037109380000
+    Position.Y = 497.000000000000000000
     Scale.X = 1.399999976158142000
     Scale.Y = 1.399999976158142000
     Size.Width = 80.000000000000000000
@@ -11242,7 +11245,7 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     GroupName = 'TOOLS'
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 303.000000000000000000
+    Position.X = 304.000000000000000000
     Position.Y = 136.000000000000000000
     Size.Width = 35.000000000000000000
     Size.Height = 48.000000000000000000
@@ -11578,7 +11581,7 @@ object FormPlanetFun: TFormPlanetFun
     ClipChildren = True
     Fill.Color = claBlack
     Position.X = 8.000000000000000000
-    Position.Y = 93.000000000000000000
+    Position.Y = 77.000000000000000000
     Size.Width = 320.000000000000000000
     Size.Height = 574.000000000000000000
     Size.PlatformDefault = False
@@ -12612,7 +12615,7 @@ object FormPlanetFun: TFormPlanetFun
         TextSettings.Font.Size = 16.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
         TextSettings.FontColor = claAntiquewhite
-        Text = 'v 1.8.1'
+        Text = 'v 1.9.2'
         TabOrder = 1
       end
     end
@@ -12635,10 +12638,10 @@ object FormPlanetFun: TFormPlanetFun
     Anchors = [akTop, akRight]
     Fill.Color = xFF6C384C
     Opacity = 0.600000023841857900
-    Position.X = 2.000000000000000000
+    Position.X = 8.000000000000000000
     Position.Y = 175.000000000000000000
-    Size.Width = 341.000000000000000000
-    Size.Height = 319.000000000000000000
+    Size.Width = 334.000000000000000000
+    Size.Height = 388.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     Stroke.Thickness = 2.000000000000000000
@@ -12648,7 +12651,7 @@ object FormPlanetFun: TFormPlanetFun
     object btnCloseVisibility: TSpeedButton
       Anchors = [akTop, akRight]
       StyledSettings = [Family]
-      Position.X = 281.000000000000000000
+      Position.X = 274.000000000000000000
       Position.Y = 10.000000000000000000
       Scale.X = 1.399999976158142000
       Size.Width = 38.000000000000000000
@@ -12661,173 +12664,183 @@ object FormPlanetFun: TFormPlanetFun
     end
     object cbOrbitDots: TSwitch
       IsChecked = False
-      Position.X = 187.000000000000000000
-      Position.Y = 9.000000000000000000
+      Position.X = 146.000000000000000000
+      Position.Y = 8.000000000000000000
       OnSwitch = cbOrbitDotsSwitch
     end
     object Label4: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 7.000000000000000000
-      Position.Y = 13.000000000000000000
-      Size.Width = 161.000000000000000000
+      Position.X = -3.000000000000000000
+      Position.Y = 12.000000000000000000
+      Size.Width = 131.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'show orbit Dots'
+      Text = 'Orbit dots'
     end
     object cbAxisVisible: TSwitch
       IsChecked = False
-      Position.X = 186.000000000000000000
-      Position.Y = 51.000000000000000000
+      Position.X = 146.000000000000000000
+      Position.Y = 43.000000000000000000
       OnSwitch = cbAxisVisibleSwitch
     end
     object Label6: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 26.000000000000000000
-      Position.Y = 53.000000000000000000
-      Size.Width = 142.000000000000000000
+      Position.X = -3.000000000000000000
+      Position.Y = 45.000000000000000000
+      Size.Width = 130.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
       Text = 'Heliocentric Axis'
     end
     object cbConstLinesNames: TSwitch
       IsChecked = True
-      Position.X = 186.000000000000000000
-      Position.Y = 96.000000000000000000
-      OnSwitch = cbConstLinesNamesSwitch
+      Position.X = 181.000000000000000000
+      Position.Y = 116.000000000000000000
+      OnSwitch = cbSkyTextureSwitch
     end
     object Label1: TLabel
       StyledSettings = [Family, Style]
-      Position.X = -89.000000000000000000
-      Position.Y = 96.000000000000000000
+      Position.X = -84.000000000000000000
+      Position.Y = 113.000000000000000000
       Size.Width = 257.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'constellation lines && names'
+      Text = 'const Lines && Names'
     end
     object label8: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 4.000000000000000000
-      Position.Y = 227.000000000000000000
+      Position.X = 143.000000000000000000
+      Position.Y = 343.000000000000000000
       Size.Width = 64.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'sensors'
+      Text = 'Sensors'
     end
     object cbSensorsOn: TSwitch
       IsChecked = True
-      Position.X = 87.000000000000000000
-      Position.Y = 225.000000000000000000
+      Position.X = 223.000000000000000000
+      Position.Y = 345.000000000000000000
       OnSwitch = cbSensorsOnSwitch
     end
     object Label12: TLabel
       StyledSettings = [Family, Style]
-      Position.X = -32.000000000000000000
-      Position.Y = 181.000000000000000000
+      Position.X = 6.000000000000000000
+      Position.Y = 270.000000000000000000
       Size.Width = 201.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'show lighthouse && phone'
+      Text = 'Lighthouse && phone'
     end
     object cbShowLightHouseAndPhone: TSwitch
       IsChecked = True
-      Position.X = 186.000000000000000000
-      Position.Y = 181.000000000000000000
+      Position.X = 224.000000000000000000
+      Position.Y = 270.000000000000000000
       OnSwitch = cbShowLightHouseAndPhoneSwitch
     end
     object Label14: TLabel
       StyledSettings = [Family, Style]
       Position.X = -88.000000000000000000
-      Position.Y = 139.000000000000000000
+      Position.Y = 191.000000000000000000
       Size.Width = 257.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'sky background image '
+      Text = 'star Background '
       TabOrder = 0
     end
-    object cbSkyBGImage: TSwitch
+    object cbSkyBG: TSwitch
       IsChecked = True
-      Position.X = 186.000000000000000000
-      Position.Y = 138.000000000000000000
+      Position.X = 180.000000000000000000
+      Position.Y = 190.000000000000000000
       TabOrder = 1
-      OnSwitch = cbSkyBGImageSwitch
+      OnSwitch = cbSkyTextureSwitch
     end
     object Label15: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 8.000000000000000000
-      Position.Y = 275.000000000000000000
-      Size.Width = 64.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 232.000000000000000000
+      Size.Width = 154.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'stars'
+      Text = 'star spheres'
       TabOrder = 4
     end
-    object cbStars: TSwitch
+    object cbStarSpheres: TSwitch
       IsChecked = True
-      Position.X = 87.000000000000000000
-      Position.Y = 273.000000000000000000
+      Position.X = 181.000000000000000000
+      Position.Y = 231.000000000000000000
       TabOrder = 5
-      OnSwitch = cbStarsSwitch
+      OnSwitch = cbStarSpheresSwitch
     end
     object Label16: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 160.000000000000000000
-      Position.Y = 229.000000000000000000
+      Position.X = 125.000000000000000000
+      Position.Y = 309.000000000000000000
       Size.Width = 81.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'app banner'
+      Text = 'app Banner'
       TabOrder = 6
     end
     object cbShowBanner: TSwitch
       IsChecked = True
-      Position.X = 254.000000000000000000
-      Position.Y = 227.000000000000000000
+      Position.X = 224.000000000000000000
+      Position.Y = 307.000000000000000000
       TabOrder = 7
       OnSwitch = cbShowBannerSwitch
     end
     object Label17: TLabel
       StyledSettings = [Family, Style]
-      Position.X = 175.000000000000000000
-      Position.Y = 277.000000000000000000
-      Size.Width = 64.000000000000000000
+      Position.X = 72.000000000000000000
+      Position.Y = 79.000000000000000000
+      Size.Width = 52.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
       TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Trailing
-      Text = 'ecliptic'
+      Text = 'Ecliptic'
       TabOrder = 2
     end
     object cbEcliptic: TSwitch
       IsChecked = False
-      Position.X = 254.000000000000000000
-      Position.Y = 275.000000000000000000
+      Position.X = 146.000000000000000000
+      Position.Y = 79.000000000000000000
       TabOrder = 3
       OnSwitch = cbEclipticSwitch
+    end
+    object Label18: TLabel
+      StyledSettings = [Family, Style]
+      Position.X = -88.000000000000000000
+      Position.Y = 155.000000000000000000
+      Size.Width = 257.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Trailing
+      Text = 'const drawings'
+      TabOrder = 8
+    end
+    object cbConstDrawings: TSwitch
+      IsChecked = False
+      Position.X = 180.000000000000000000
+      Position.Y = 152.000000000000000000
+      TabOrder = 9
+      OnSwitch = cbSkyTextureSwitch
     end
   end
   object GestureManager1: TGestureManager
