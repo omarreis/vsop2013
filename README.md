@@ -13,8 +13,13 @@ With time it grew to include:
 
 # Repository News
 
-* apr/23: PlanetFun app v1.8 released for iOS and Android. Added the Almanac module, which allows calculating ephemeris for various celestial objects.
+* apr/23: 
+PlanetFun app v1.9 released for iOS and Android. 
+
+* Added the Almanac module, which allows calculating ephemeris for various celestial objects.
 Added VSOP87 planet database. H150 and Navigator star catalogs.
+
+* COnstellation drawings ( added two new sky backgrounds, with constellation mythical greek figures )
 
 * See https://github.com/omarreis/vsop2013/tree/master/planetfun
 
@@ -169,9 +174,9 @@ In order to compile and run this app, you will need to:
 # PlanetFun for Windows 
 
 Install executables  PlanetFun.exe, TestVSOP2013.exe, gravityIntegration.exe and assets.
-Size: 130 MB - Current version 1.8 (apr23) 
+Size: 130 MB - Current version 1.9 (apr23) 
 
-* https://github.com/omarreis/vsop2013/releases/download/1.8/setupPlanetFunV18win32.exe
+* https://github.com/omarreis/vsop2013/releases/download/1.9/setupPlanetFunV19win32.exe
 
 ## Sample app 3: gravityIntegration 
 
