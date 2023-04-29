@@ -57,6 +57,7 @@ oct-20 - PlanetFun version 1.3 released
 * Almanac data: Sun, 9 planets, Moon and 150 brightest stars.
 * Sky background with 42k stars
 * names of stars and constellation. constellation lines
+* Costellation drawings with greek mythical figures
 * a giant lighthouse and a phone shown on your position ( uses GPS, gyro and compass )
 * phone model moves in sync with actual phone
 * Target camera to the phone to enter augmented reality mode ( the scene rotates in sync with the real world )
