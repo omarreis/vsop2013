@@ -275,10 +275,11 @@ Follow *Solar System Scope* license conditions
 The sky background is a large sphere with radius 200 AU. The texture image contains stars, constellation lines, names, constellation drawings  etc. 
 It was generated using Hipparcos Input Catalogue (118k stars).  Only objects with mag<8.0 were kept, resulting in about 42000 stars.
 
-Two star background images are available: stars with names, constellation lines or just plain stars.
+4 star background images are available: stars with names, lines, constellation drawings or just plain stars.
+Selecting visibility checkboxes determines which background is used.
 
 Since the texture is projected on the inside of the large sphereSkyBackground,
-texts must be rotated horizontaly to project correctly as left-to-right texts.
+images must be flipped horizontaly to project correctly with left-to-right texts.
 The celestial sphere can be seen from the "outside" if camera distance is set to more than 200 AU.
 
 Sky texture images: 
@@ -287,6 +288,8 @@ Sky texture images:
 * https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapPlain.png
 * https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNamesDrawings.png
 * https://github.com/omarreis/vsop2013/blob/master/Documents/SkyMapDrawings.png
+
+![planetfun 1.9 screenshot](CentaurusDrawing18.png)
 
 In addition the 150 brightest stars are also represented by little white 3D spheres.
 These are located at 200 AU from the Sun, so they are on the background sphere surface ( half in - half out )
@@ -418,5 +421,5 @@ Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program g
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
 * gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
-* Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
++* Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
