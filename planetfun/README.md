@@ -422,5 +422,5 @@ Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program g
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
 * gravity integration tool: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration/README.md
 * planetFun app: https://github.com/omarreis/vsop2013/tree/master/planetfun/README.md
-+* Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
+* Neptune discovery: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
