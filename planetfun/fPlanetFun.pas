@@ -225,6 +225,9 @@ type
     cbEcliptic: TSwitch;
     Label18: TLabel;
     cbConstDrawings: TSwitch;
+    dummySpaceShip: TDummy;
+    modelSpaceShip: TModel3D;
+    modelSpaceShipMat01: TLightMaterialSource;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -275,7 +278,7 @@ type
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
     fMousePt:TPointF;
-    fJDE:Double;
+    fJDE:Double;               // current time
 
     fPlanetOrbitPoints:TList;  //save 3D dots created at runtime
     fStarDots:TList;          //save 3D dots created at runtime
@@ -571,13 +574,17 @@ begin
 end;
 
 procedure TFormPlanetFun.FormMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer; var Handled: Boolean);
-var v1:TPoint3d;
+var l:Single;  v1:TPoint3D;
 begin
-  v1 := mjTomCamera.Position.Point.Normalize;   // camera pointing versor
-  mjTomCamera.Position.Point := mjTomCamera.Position.Point - ( WheelDelta/10 * v1 ); //pan camera slowly
+  l  := mjTomCamera.Position.Point.Length;  // in AU
+  l  := l + WheelDelta/100;
 
-  checkSphereSkyVisibility;
-
+  if (l>0.1) then   // 0.1 is the near clip plane ( ignore if closer )
+    begin
+      v1 := mjTomCamera.Position.Point.Normalize;       // camera pointing versor
+      mjTomCamera.Position.Point := l * v1;            // pan camera slowly
+      checkSphereSkyVisibility;
+    end;
   Handled:= true;
 end;
 
@@ -929,6 +936,9 @@ begin    // 3d coordinates are in AU
 
         r := LN(360000/k)*sc /1.0;               //size moon orbit . ad hoc factor applied again
         dummyMoon.Position.Point := Point3D( r, 0, 0);
+
+        r := sc * 4;  modelSpaceship.Scale.Point    := Point3D(r,r,r);  // Enterprise too   ad hoc 4 used to make the spaceship big !
+
         // Pluto
     end
     else begin  //planet real sizes ( cannot see most of them. too small )
@@ -1570,9 +1580,16 @@ begin
 end;
 
 procedure TFormPlanetFun.btnEditJDEClick(Sender: TObject);
+var L:integer;
 begin
   rectTime.Visible := false;
   rectEditJDE.Visible := true;
+
+  // test - check mesh on Android. get points. commented on Release
+  // L := Length(modelSpaceShip.MeshCollection);
+  // if ( L=0) then  labStatus.Text := 'no mesh'
+  //   else labStatus.Text := IntToStr(L)+' meshes';
+
 end;
 
 procedure TFormPlanetFun.btnJDENowClick(Sender: TObject);
@@ -1870,6 +1887,7 @@ begin
     11: aDummy := dummyLighthouse;        // Lighthouse
     12: aDummy := dummyPhoneTarget;       // Phone ( Augmented Reality mode )
     13: aDummy := dummyBanner;            // PlanetFun plate ..
+    14: aDummy := dummySpaceShip;
     else exit;
   end;
 

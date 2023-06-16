@@ -373,7 +373,7 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
-        <VerInfo_Build>15</VerInfo_Build>
+        <VerInfo_Build>16</VerInfo_Build>
         <Android_LauncherIcon36>Images\iconPlanetFunt_36.png</Android_LauncherIcon36>
         <Android_LauncherIcon48>Images\iconPlanetFunt_48.png</Android_LauncherIcon48>
         <Android_LauncherIcon72>Images\iconPlanetFunt_72.png</Android_LauncherIcon72>
@@ -389,7 +389,7 @@
         <Android_NotificationIcon72>Images\iconPlanetFunt_72.png</Android_NotificationIcon72>
         <Android_NotificationIcon96>Images\iconPlanetFunt_96.png</Android_NotificationIcon96>
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
-        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=15;versionName=1.9.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=16;versionName=2.0.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <PF_KeyStore>AndroidKeystore\PlanetFun2.keystore</PF_KeyStore>
         <PF_KeyStorePass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_KeyStorePass>
         <PF_AliasKey>planet fun</PF_AliasKey>
@@ -404,13 +404,13 @@
     </PropertyGroup>
     <Import Project="Images\PFAndroid.optset" Condition="'$(Cfg_2_Android64)'!='' And Exists('Images\PFAndroid.optset')"/>
     <PropertyGroup Condition="'$(Cfg_2_Android64)'!=''">
-        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=15;versionName=1.9.2;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+        <VerInfo_Keys>package=com.omarreis.planetfun;label=$(MSBuildProjectName);versionCode=16;versionName=2.0.1;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <PF_KeyStore>AndroidKeystore\PlanetFun2.keystore</PF_KeyStore>
         <PF_KeyStorePass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_KeyStorePass>
         <PF_AliasKey>planet fun</PF_AliasKey>
         <DCC_GenerateAndroidAppBundleFile>true</DCC_GenerateAndroidAppBundleFile>
         <PF_AliasKeyPass>851B47C65F99078FCF7DE534A4557BA2E47E08517EA1ECA79F557731D8573CDADB5BA3CFE3371C39C1EA5730FA9DC37FBAE93602043622DA163545DEE5A722D5C950F373D56AFA9EBFF9AF5207411D1A92103E761DE50925E3BB16E34439</PF_AliasKeyPass>
-        <VerInfo_Build>15</VerInfo_Build>
+        <VerInfo_Build>16</VerInfo_Build>
         <AUP_CAMERA>false</AUP_CAMERA>
         <AUP_CALL_PHONE>false</AUP_CALL_PHONE>
         <AUP_WRITE_EXTERNAL_STORAGE>false</AUP_WRITE_EXTERNAL_STORAGE>
@@ -432,8 +432,8 @@
         <iPad_SpotLight80>Images\iconPlanetFunt_80.png</iPad_SpotLight80>
         <iPad_Setting58>Images\iconPlanetFunt_58.png</iPad_Setting58>
         <iPad_AppIcon167>Images\iconPlanetFunt_167.png</iPad_AppIcon167>
-        <VerInfo_Build>2</VerInfo_Build>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=com.omarreis.planetfun;CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.9.2;CFBundleShortVersionString=1.9;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=No need for GPS when in background;NSLocationWhenInUseUsageDescription=Uses sensors and GPS to position the sky;NSLocationAlwaysAndWhenInUseUsageDescription=Uses sensors and GPS to position the sky;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=Uses sensors and GPS to position the sky;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;UIUserInterfaceStyle=Light</VerInfo_Keys>
+        <VerInfo_Build>1</VerInfo_Build>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=com.omarreis.planetfun;CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=2.0.1;CFBundleShortVersionString=2.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=No need for GPS when in background;NSLocationWhenInUseUsageDescription=Uses sensors and GPS to position the sky;NSLocationAlwaysAndWhenInUseUsageDescription=Uses sensors and GPS to position the sky;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=Uses sensors and GPS to position the sky;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers;UIUserInterfaceStyle=Light</VerInfo_Keys>
         <DCC_GenerateUniversalBinaryFile>false</DCC_GenerateUniversalBinaryFile>
         <iPhone_Launch2x>Images\PlanetFunSplashh_640x480.png</iPhone_Launch2x>
         <iPhone_LaunchDark2x>Images\PlanetFunSplashh_640x480.png</iPhone_LaunchDark2x>
@@ -442,13 +442,13 @@
         <iPad_Launch2x>Images\PlanetFunSplashh_1024x768.png</iPad_Launch2x>
         <iPad_LaunchDark2x>Images\PlanetFunSplashh_1024x768.png</iPad_LaunchDark2x>
         <iOS_BackgroundColor>FF000000</iOS_BackgroundColor>
-        <VerInfo_MinorVer>9</VerInfo_MinorVer>
         <iPhone_Notification60>Images\iconPlanetFunt_60.png</iPhone_Notification60>
         <iPhone_Setting87>Images\iconPlanetFunt_87.png</iPhone_Setting87>
         <iPhone_Notification40>Images\iconPlanetFunt_40.png</iPhone_Notification40>
         <iPhone_Setting58>Images\iconPlanetFunt_58.png</iPhone_Setting58>
         <iPad_Notification40>Images\iconPlanetFunt_40.png</iPad_Notification40>
         <iOS_AppStore1024>Images\iconPlanetFunt_1024.png</iOS_AppStore1024>
+        <VerInfo_MajorVer>2</VerInfo_MajorVer>
         <BT_BuildType>AppStore</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_iOSSimARM64)'!=''">
@@ -484,12 +484,12 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_MinorVer>9</VerInfo_MinorVer>
         <VerInfo_Release>1</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=oMAR Reis;FileDescription=$(MSBuildProjectName);FileVersion=1.9.1.0;InternalName=;LegalCopyright=(c)copr 2023 Omar Reis;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.9.1;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=oMAR Reis;FileDescription=$(MSBuildProjectName);FileVersion=2.0.1.0;InternalName=;LegalCopyright=(c)copr 2023 Omar Reis;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=2.0.1;Comments=</VerInfo_Keys>
         <UWP_DelphiLogo44>Images\iconPlanetFunt_48.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>Images\iconPlanetFunt_152.png</UWP_DelphiLogo150>
         <Icon_MainIcon>PlanetFun_Icon1.ico</Icon_MainIcon>
+        <VerInfo_MajorVer>2</VerInfo_MajorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
