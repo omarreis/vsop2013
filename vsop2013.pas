@@ -35,7 +35,7 @@ const
   TXT_FILES_ROOT = './ephemerides/';
   NUM_COEFS=978;   // fixed ?
   NUM_FILES=6;     // one file for each 1500y period
-  NUM_PLANETS=9;
+  NUM_PLANETS=9;   // number of vsop2103 planets
   //
   // NUM_PERIODS=17122;
 
@@ -49,7 +49,7 @@ var
              'VSOP2013.p2000',
              'VSOP2013.p4000');
 
-  PLANET_NAMES :Array[1..NUM_PLANETS] of string =
+  PLANET_NAMES :Array[1..NUM_PLANETS] of string =     // planet order for vsop2013
      //   1         2       3        4         5         6         7          8        9
      ('Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto');
 

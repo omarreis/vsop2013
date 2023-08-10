@@ -43,6 +43,9 @@ type
 
 function  CreatePlanetsVSOP2013:boolean;
 function  FindPlanetVSOP2013ByName(const aName:String):TPlanetVSOP2013;
+function  FindPlanetVSOP2013ByIndex(const aIndex:integer):TPlanetVSOP2013;
+function  TranslateIndexVSOP2013to87(aIndex2013:integer):integer;  // index for use w/ vsop87
+
 Procedure FreePlanetsVSOP2013;
 
 var
@@ -63,7 +66,45 @@ begin
   Result := true;
 end;
 
-function  FindPlanetVSOP2013ByName(const aName:String):TPlanetVSOP2013;
+// planet indexes are according to original theory indexes
+//      vsop87              vsop2013
+//
+//     'Venus'    1        'Mercury'    1
+//     'Saturn'   2        'Venus'      2
+//     'Mars'     3        'Earth'      3
+//     'Jupiter'  4        'Mars'       4
+//     'Mercury'  5        'Jupiter'    5
+//     'Uranus'   6        'Saturn'     6
+//     'Neptune'  7        'Uranus'     7
+//                         'Neptune'    8
+//                         'Pluto'      9
+
+function TranslateIndexVSOP2013to87(aIndex2013:integer):integer;
+begin
+  case aIndex2013 of
+    1: Result := 5;
+    2: Result := 1;
+    3: Result := 0;   // 0 = invalid  - Earth not in vsop87
+    4: Result := 3;
+    5: Result := 4;
+    6: Result := 2;
+    7: Result := 6;
+    8: Result := 7;
+    9: Result := 0;   // 0 = invalid  - Pluto is out
+  else
+    Result := 0 ;  // 0 = invalid
+  end;
+end;
+
+function  FindPlanetVSOP2013ByIndex(const aIndex:integer):TPlanetVSOP2013;
+begin
+  Result:=nil;
+  if not ( Assigned(VSOP_File) and VSOP_File.fLoaded ) then exit;
+
+  if (aIndex>0) and (aIndex<=NUM_PLANETS) then Result := PlanetsVSOP2013[aIndex];
+end;
+
+function  FindPlanetVSOP2013ByName(const aName:String):TPlanetVSOP2013;  // don't use translated planet names !!
 var i:integer; aPlanet:TPlanetVSOP2013;
 begin
   Result:=nil;
