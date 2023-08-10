@@ -155,8 +155,8 @@ uses
   VSOP2013.Planet,              // VSOP2013 planets
   Om.Trigonometry,             // trigonometric utils
   Om.AstronomicalAlgorithms,  // UTCtoTDB()
-  Om.SphericalTriangle,      // Spherical triangle solution to obtain Altitude and Az
-  fPlanetFun;               // PlanetFun main form ( bad dependence )
+  Om.SphericalTriangle,         // Spherical triangle solution to obtain Altitude and Az
+  fPlanetFun;                     // PlanetFun main form ( bad dependence )
 
 
 {$R *.fmx}
@@ -386,8 +386,8 @@ begin
   // for i := 1 to NumPlanetsVSOP07 do                 // vsop87 planets
   //   comboPlanets.Items.Add(Planetas[i].Name);
 
-  for i:=1 to NUM_PLANETS do                  // Use planet list from vsop2013
-    comboPlanets.Items.Add(PLANET_NAMES[i]);
+  for i:=1 to NUM_PLANETS do        // Use planet list from vsop2013 ( larger
+    comboPlanets.Items.Add( PLANET_NAMES[i] );
 
   comboPlanets.ItemIndex := 0;  //select 1st planet
 end;
@@ -516,9 +516,10 @@ procedure TFrmPlanetFunAlmanac.btnCalcPlanetClick(Sender: TObject);
 var aPlanet87:TPlanetVSOP87;
     aPlanet13:TPlanetVSOP2013;
     aName:String; aGMT:TDAtetime;
+    aIndex,aIndex87:integer;
     aLat,aLon,aHcalc,aLHA,aDelta,aAz,Dummy:Double; IsVisible:boolean;
 begin
-  aName := Trim(comboPlanets.Selected.Text);
+  // aName := Trim( comboPlanets.Selected.Text );
 
   try
     aLat  := StrToFloat(edLat.Text);
@@ -528,12 +529,19 @@ begin
     aLon := NaN;
   end;
 
+  aIndex := comboPlanets.ItemIndex+1;  // aIndex uses vsop2013 planet indexes
+
   Memo1.Lines.Clear;
 
-  aPlanet87 := FindPlanetVSOP87ByName(aName);  //search planet using name
+  // aPlanet87 := FindPlanetVSOP87ByName(aName);  //search planet using name  : failed because interface is automatically translated ( planet names )
+
+  aIndex87  := TranslateIndexVSOP2013to87( aIndex );
+
+  aPlanet87 := FindPlanetVSOP87ByIndex(aIndex87);
+
   if Assigned(aPlanet87) then
     begin
-      aGMT := edDate.Date + edTime.Time;     // get GMT time
+      aGMT := edDate.Date + edTime.Time;        // get GMT time
       aPlanet87.GMT := aGMT;                   // calc coordinates
       Memo1.Lines.Add('vsop87');
       aPlanet87.GetObjectData( Memo1.Lines );  // show data on Memo
@@ -558,7 +566,7 @@ begin
     end
     else Memo1.Lines.Add(aName+'vsop87 planet not found');
 
-  aPlanet13 := FindPlanetVSOP2013ByName(aName);  // search planet using name
+  aPlanet13 := FindPlanetVSOP2013ByIndex(aIndex);  // search planet using index ( name may be translated )
   if Assigned(aPlanet13) then
     begin
       aGMT := edDate.Date + edTime.Time;     // get GMT time

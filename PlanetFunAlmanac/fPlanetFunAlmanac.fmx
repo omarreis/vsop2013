@@ -3,7 +3,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
   Top = 0
   Caption = 'PlanetFun Almanac'
   ClientHeight = 640
-  ClientWidth = 341
+  ClientWidth = 361
   FormFactor.Width = 1440
   FormFactor.Height = 900
   FormFactor.Devices = [Desktop]
@@ -14,22 +14,22 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     Align = Top
     FullSize = True
     Position.Y = 198.000000000000000000
-    Size.Width = 341.000000000000000000
+    Size.Width = 361.000000000000000000
     Size.Height = 157.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     TabPosition = Top
     OnChange = TabControlAlmanacChange
     Sizes = (
-      341s
+      361s
       108s
-      341s
+      361s
       108s
-      341s
+      361s
       108s
-      341s
+      361s
       108s)
     object tabPlanets: TTabItem
       CustomIcon.Height = 60
@@ -80,8 +80,8 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
             1E8FC7E3F178261D22770096CA2070EC9F674C0000000049454E44AE426082}
           FileName = 'C:\dpr4\vsop2013\PlanetFunAlmanac\Images\icon60x60__Planet.png'
         end>
-      IsSelected = False
-      Size.Width = 84.000000000000000000
+      IsSelected = True
+      Size.Width = 89.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -91,19 +91,19 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       ExplicitSize.cy = 49.000000000000000000
       object btnCalcPlanet: TButton
         StyledSettings = [Family, Style, FontColor]
-        Position.X = 250.000000000000000000
-        Position.Y = 29.000000000000000000
-        Size.Width = 67.000000000000000000
+        Position.X = 254.000000000000000000
+        Position.Y = 30.000000000000000000
+        Size.Width = 80.000000000000000000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 5
         Text = 'Calc'
-        TextSettings.Font.Size = 10.000000000000000000
+        TextSettings.Font.Size = 11.000000000000000000
         OnClick = btnCalcPlanetClick
       end
       object comboPlanets: TComboBox
-        Position.X = 80.000000000000000000
-        Position.Y = 28.000000000000000000
+        Position.X = 81.000000000000000000
+        Position.Y = 29.000000000000000000
         Size.Width = 162.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
@@ -131,6 +131,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         Size.PlatformDefault = False
         TextSettings.Font.Size = 10.000000000000000000
         TextSettings.FontColor = claCornflowerblue
+        TextSettings.HorzAlign = Center
         TextSettings.VertAlign = Leading
         Text = 'Calculate Planet ephemeris using VSOP2013 and VSOP87'
         TabOrder = 15
@@ -139,24 +140,24 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         StyledSettings = [Family, Style, FontColor]
         Position.X = 80.000000000000000000
         Position.Y = 69.000000000000000000
-        Size.Width = 72.000000000000000000
+        Size.Width = 85.000000000000000000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Calc Moon'
-        TextSettings.Font.Size = 10.000000000000000000
+        TextSettings.Font.Size = 11.000000000000000000
         OnClick = btnCalcMoonClick
       end
       object btnCalcSun: TButton
         StyledSettings = [Family, Style, FontColor]
         Position.X = 174.000000000000000000
         Position.Y = 69.000000000000000000
-        Size.Width = 72.000000000000000000
+        Size.Width = 85.000000000000000000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         Text = 'Calc Sun'
-        TextSettings.Font.Size = 10.000000000000000000
+        TextSettings.Font.Size = 11.000000000000000000
         OnClick = btnCalcSunClick
       end
     end
@@ -170,51 +171,51 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
           PNG = {
             89504E470D0A1A0A0000000D494844520000003C0000003C08060000003AFCD9
             72000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            04ED494441546843ED994D881C4514C75F557FCC74F7CCAE9BB012E31223264B
-            B212B31F9A591693F5230AE2450515D44304BD080141D18B074144F4E4458217
-            3D4850905C44BC88A241BCB8C946235E4C04492441D165DD99497ABABBCA7F4D
-            D7C6D95D67E7A3676687B57F4C4DF77B5DD35DFFAEAA57AF7B28252525252525
-            256593319BCD0C4CECD2C686C2F5B6AB58EED2988CF807448F1ADAB561F44430
-            37E47EC668DACE9D7F49BB368C9E08964216D496117BD572C7F7579D1B444F04
-            47421CD2BB3697F223A2315BDB3DA727820D5EDEAD7761987B2CD77A4B5B3DA7
-            EB822DEBE6DB181B34B5598573F3A8999BBA539B3DA5EB8223C61ED0BBB56064
-            4B44ED2957DB2D30EDB8EE1DDBB0C362BB35BA2E580A6346EFAEC0646CA795A3
-            46439BD9B989BD99FCE411DB9B3C96C94DCE6772C142486212C7645CA535DABA
-            4BAD6018A33F9B4EBE5ED2217147EEF34BF35F2823971B1FAE307E8021AA0B46
-            051EF202993458ADB98C94AFFBA5D3AF68AB65BA2ED876464BCCC8D71DBA1145
-            170C324E86820A26A775B33129C4B14A79FE396DB64597054F59965BF139B793
-            5F47C8137EF996C7893E8EB4A72DBA94EA6D19407C3EC4D8E251848902522D62
-            ACFD4B09A22F2BA5AB8F107D1D6A57DB74A287A1C4BB1503AE404C4E637B0022
-            C7E04740446EC5B2D09B236EE5B11C65E25FB4C69C6FD1615A38B5A8ED44B421
-            D8BD2116472A5D84409AC269F2D543FF0944934598C7645A83D8AA24ABB9CB62
-            5E9F737834532C9EF943BB12D3E8CA0E51562D011088A1190BDCA10EB48616CD
-            D1D3F62022B7EAE9F52F1D91BC68187CD65F9CFB45BB3A4203C1DEDDC4C4D3A8
-            F6308C5CEC6B17752913C3DA83E8A1F54587B4280C7930289D3EAB3D1DA3510F
-            2FE3E1F310B1E8494CCDFB612708764AB4EAE9FAA20589AF82E2FC3DD86D2BB9
-            588F661B1EE083BB1D1EC7CAFA2EDAF11BA2D130FCDBE3C3AD20903B60651188
-            BDDC8278D58495A23101769AF6F6CB51E5D29C76758C667BB80EB93DE8F5A770
-            1A14BA29F6354313735A50914C39EEFF7DFABCF674848482AF81F3640FE21B43
-            5E3E8681739DF6AF83126D56451BE6008A2325632BDA2345F44DA5BCFBAEA4C9
-            462D09E6E26AC25F513E457C7D1BF3F40CB17016A76F10E8904ACB002544815A
-            6E097C5F130DC70EC3FC6B290A2E7DAB5D89E9540FAF8565FE84E02DDA6A80CA
-            C46C9DA07811E78E6AD772F18564B707A5B91F55CDA47449B033020517B4518B
-            8ABA75AEB93CAF3D0C6F16704B891ED02F0EC4BC5F5479C02904CF6474E97998
-            D57B5157B3CCC89F10F97FD706C0F0A60A82F71285816F8595C548CAA5320EA8
-            703E818E7F2DAE978C6EBD00D8A7B7B5A0E191CA872BD83D4B323B43321881CA
-            07E1FB10E58AAAA4B20E29CB24828A1D5E2DDA51B070454AE173567AC1C8EC3D
-            1CD7E93798739C982B579500E524CA2718F237EA9A356C453EEE1EC16F3F479D
-            28FE4D5E32BE5570632432ED6DBE658D5E26DA8527B17E83657F881B5C5B1CF4
-            AEFB32D160134B968384C67D11E7F99E98A7850FA10C0B665CFF9EAED43720F2
-            B895B582DDEF888656BEAE690A6F1F6ED69B107E518BC733B187B5B96F500D5C
-            2316C1473D332702F1C6BB17E2DFAFF67CE287998EE13DB14A2C96125705A64E
-            82C7D69CCAE5FB00E6BC51231691D97D561FD9A430F7048A9AC318C6CEF3DABB
-            8961EE3B98639FA1679FD19E4D0D028B3B8E67E67FFF3CFB1FB0E28FB3949494
-            9494949494949494949494BE83E81F88464DDB3202D3890000000049454E44AE
+            04ED494441546843ED994D881C4514C75F557FCC74F7CCAEBBCB8AC625464C96
+            6425663F34B32C24EB4714C48B0A2AA887087A110441D18B074144F4E4458217
+            3D4850905C44BC88A22178713F12235E34822492A0E8BAD9994D66BABBCA7F6D
+            D7C6D95D67E7A3A76787B57F4C4DD77B5DD35DFFA9AAD7AF6628252525252525
+            25659B319DCDF48CEDD6C696C2F531512C77694486FC43A2470DEDDA323A2298
+            1BF200633469E7CEBDAC5D5B4647044B210BEAC888BD66B9A307569C5B444704
+            87421CD6559B4BF931D188ADED8ED311C1065FDCA3AB30CCBD966BBDADAD8EC3
+            F431312CEB96DB79A6FF8C365711214277509C3DA5ED8E91F808878C3DA0ABD5
+            60664B44ED0957DB4D30E9B8EE9D37A0D2D260252E580A634A57D76032B6CBCA
+            51BDA9CDECDCD8BE4C7EFCA8ED8D1FCBE4C6E733397F2120318E73326AD21C89
+            4F69C318FEC974F2B5920E896FE4BE7269FE4B65E472A38315C60F324475C1A8
+            C0035E20937A575AAE22E51BE5D2DCABDA6A9AC405DBCE708919F99A5337A4F0
+            BC41C6C94050C1E4B4693626853856599E7F4E9B2D91B0E009CB722B65CEEDF8
+            F711F24479F9D6C7893E41BC6B9D8452BDFE1EC4E7C38C2D3E8F305140AA458C
+            B57E2B41F455A574F511A26F02ED6A99768C309478B761C21588C9491C0F42E4
+            08FC0888C8AD58167A73C4AD3C719E893ED11C33658B8ED0C2ECA2B663D18260
+            F7C6481CA9741102690297C9AF9CFA4F209A2CC23A26D3EAC55125598DDD16EB
+            FA67878753C5E2E93FB42B36F5EEEC1065D5230002313523813BD589E6D0A239
+            46DAEE45E45623BDF9AD4392170C834F9717677ED1AEB65047B0773731F1349A
+            3D0C2317F95A45DDCAC4B4F620BA6F73D1012D0A431EF24B7367B5A76DD41BE1
+            553CBC1E22163E89A5793FEC18C14E8956235D5BB420F1B55F9CBF07D596928B
+            CD68B4E33E5EF8B683E378B2BE877EFC86683408FF8EE8743308E40E78B208C4
+            5E6E41BCEAC25AD15800BB4C7BC7A5B0727146BBDA46A3235C83DC5E8CFA53B8
+            0C0ADD1CF91AA181352DA848A61C2D5F9E3BA73D6D21A6E06BE03AD94378C794
+            978F61E25CA7FD9BA0449B2BA20DB307C59192B135FD91223C5559DE7357DC64
+            A39A186B713DC1AF289F21BEBE83757A9A58308DCBD7097448A5A58F12A0402D
+            B704DEAF898663A761FEB514FA17BFD5AED8B46B8437C2327F4270BFB6EAA032
+            315B27285EC8B9A3FAB55ACA42B23BFCD2CC0FAA655C1212EC0C41C1796D54A3
+            A26E8D7BAEAE6B0FD35BF8DCCAA0DD80199D13F3E5A2CA0366113CE391D07E98
+            D5FAA1AEEA31237F44E4FF5D1B00D39B2A08DE4B14F88115542E87522E2DE384
+            0AE76318F8D7A376F148EA0780FDFA580D3A1EAA7CB882EA5992D92992FE1054
+            3E08DF4728575423957548B94CC2177670B56887FEC215294599B3BF5F3432FB
+            8E446DBA0DE61C27E6CA75C5473989F229A6FC4DBA651503C8C7DDA3F8EC1768
+            13469FC94BC60704378642D31E2C5BD6F025A2DDD889751B2CFB7DD4E1EAE260
+            74DD57887A1B7864394868DC97709D33C43C2DBC0F655030E3FAF775A3AE0191
+            C7AD6C14EC7E47D4B7F6E79A86F0F6E3CB7A0BC22F68F1D8137B7836770DAA83
+            1BC422F8A83D732C106FBC7B21FE8395918FBD99691BDE13EBC4E251E2AAC0D4
+            4EB06DCDA95CBE0B60CE9B55621199DD67F5996D0A734FA0A8358C69ECBCA0BD
+            DB18E6BE8B35F63946F619EDD9D620B0B8A3D833FFFBE7D9FF009DFFA6A4A4A4
+            A4A4A4A4A4A4A4A4A4A4742944FF00ADBC5473CEB5C5080000000049454E44AE
             426082}
           FileName = 'C:\dpr4\vsop2013\PlanetFunAlmanac\Images\icon60x60__Star.png'
         end>
       IsSelected = False
-      Size.Width = 84.000000000000000000
+      Size.Width = 89.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -257,9 +258,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       object btnNavigatorAlmanac: TButton
         Anchors = [akTop, akRight]
         StyledSettings = [Family, Style, FontColor]
-        Position.X = 64.000000000000000000
+        Position.X = 109.000000000000000000
         Position.Y = 71.000000000000000000
-        Size.Width = 111.000000000000000000
+        Size.Width = 123.000000000000000000
         Size.Height = 29.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -269,9 +270,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       object btnH150Almanac: TButton
         Anchors = [akTop, akRight]
         StyledSettings = [Family, Style, FontColor]
-        Position.X = 205.000000000000000000
+        Position.X = 235.000000000000000000
         Position.Y = 71.000000000000000000
-        Size.Width = 111.000000000000000000
+        Size.Width = 123.000000000000000000
         Size.Height = 29.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -294,10 +295,10 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       end
       object Label13: TLabel
         StyledSettings = [Family, FontColor]
-        Position.X = 13.000000000000000000
-        Position.Y = 79.000000000000000000
-        Size.Width = 88.000000000000000000
-        Size.Height = 25.000000000000000000
+        Position.X = 12.000000000000000000
+        Position.Y = 78.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 20.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 10.000000000000000000
         TextSettings.VertAlign = Leading
@@ -352,7 +353,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
             '.png'
         end>
       IsSelected = False
-      Size.Width = 84.000000000000000000
+      Size.Width = 89.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -362,7 +363,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       ExplicitSize.cy = 49.000000000000000000
       object pnlTopAnimation: TPanel
         Align = Client
-        Size.Width = 341.000000000000000000
+        Size.Width = 361.000000000000000000
         Size.Height = 108.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -391,7 +392,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
           Min = 1.000000000000000000
           Orientation = Horizontal
           Position.X = 13.000000000000000000
-          Position.Y = 44.000000000000000000
+          Position.Y = 49.000000000000000000
           Size.Width = 186.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
@@ -404,7 +405,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
           Min = 1.000000000000000000
           Orientation = Horizontal
           Position.X = 13.000000000000000000
-          Position.Y = 13.000000000000000000
+          Position.Y = 18.000000000000000000
           Size.Width = 186.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
@@ -415,7 +416,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         object cbAnimatePlanets: TSwitch
           IsChecked = False
           Position.X = 47.000000000000000000
-          Position.Y = 71.000000000000000000
+          Position.Y = 76.000000000000000000
           Size.Width = 44.000000000000000000
           Size.Height = 26.000000000000000000
           Size.PlatformDefault = False
@@ -424,9 +425,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         end
         object Label14: TLabel
           StyledSettings = [Family, Style, FontColor]
-          Position.X = 118.000000000000000000
+          Position.X = 113.000000000000000000
           Position.Y = 74.000000000000000000
-          Size.Width = 89.000000000000000000
+          Size.Width = 115.000000000000000000
           Size.Height = 24.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 16.000000000000000000
@@ -436,9 +437,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         end
         object btnCalcSolarSystem: TButton
           StyledSettings = [Family, Style, FontColor]
-          Position.X = 242.000000000000000000
-          Position.Y = 71.000000000000000000
-          Size.Width = 64.000000000000000000
+          Position.X = 259.000000000000000000
+          Position.Y = 73.000000000000000000
+          Size.Width = 73.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
@@ -447,7 +448,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         end
         object Label15: TLabel
           StyledSettings = [Family]
-          Position.X = 139.000000000000000000
+          Position.X = 97.000000000000000000
           Position.Y = 3.000000000000000000
           Size.Width = 178.000000000000000000
           Size.Height = 22.000000000000000000
@@ -465,8 +466,8 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       CustomIcon = <
         item
         end>
-      IsSelected = True
-      Size.Width = 87.000000000000000000
+      IsSelected = False
+      Size.Width = 92.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -2433,18 +2434,20 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
         TabOrder = 3
       end
       object labAlmanacVersion: TLabel
-        StyledSettings = [Family, Style, FontColor]
+        StyledSettings = [Family, FontColor]
         Position.X = 175.000000000000000000
         Position.Y = 69.000000000000000000
         Size.Width = 148.000000000000000000
         Size.Height = 31.000000000000000000
         Size.PlatformDefault = False
-        Text = 'v2.0.1  jun/23'
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = 'v2.1.2  ago/23'
         TabOrder = 2
       end
       object Label17: TLabel
         StyledSettings = [Family]
-        Position.X = 140.000000000000000000
+        Position.X = 144.000000000000000000
         Position.Y = 37.000000000000000000
         Size.Width = 208.000000000000000000
         Size.Height = 31.000000000000000000
@@ -2460,7 +2463,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
   end
   object pnlTimePos: TPanel
     Align = Top
-    Size.Width = 341.000000000000000000
+    Size.Width = 361.000000000000000000
     Size.Height = 198.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
@@ -2483,14 +2486,14 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       Position.X = 29.000000000000000000
       Position.Y = 26.000000000000000000
       Hint = 'Julian Date (JD)'
-      Size.Width = 106.000000000000000000
+      Size.Width = 116.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       StyledSettings = [Family, Style, FontColor]
     end
     object btnJD2UTC: TButton
       StyledSettings = [Family, Style, FontColor]
-      Position.X = 140.000000000000000000
+      Position.X = 147.000000000000000000
       Position.Y = 26.000000000000000000
       Size.Width = 47.000000000000000000
       Size.Height = 32.000000000000000000
@@ -2502,7 +2505,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     end
     object btnUTC2JD: TButton
       StyledSettings = [Family, Style, FontColor]
-      Position.X = 190.000000000000000000
+      Position.X = 197.000000000000000000
       Position.Y = 26.000000000000000000
       Size.Width = 47.000000000000000000
       Size.Height = 32.000000000000000000
@@ -2530,7 +2533,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       Hint = 'Date UTC'
       Position.X = 28.000000000000000000
       Position.Y = 64.000000000000000000
-      Size.Width = 143.000000000000000000
+      Size.Width = 133.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       StyledSettings = [Family, Style, FontColor]
@@ -2540,9 +2543,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       Time = 0.698664884259259300
       TimeFormatKind = Long
       Hint = 'Time UTC ( Greenwitch )'
-      Position.X = 175.000000000000000000
+      Position.X = 165.000000000000000000
       Position.Y = 64.000000000000000000
-      Size.Width = 124.000000000000000000
+      Size.Width = 116.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       StyledSettings = [Family, Style, FontColor]
@@ -2550,7 +2553,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     end
     object btnUTCtoTDB: TButton
       StyledSettings = [Family, Style, FontColor]
-      Position.X = 240.000000000000000000
+      Position.X = 247.000000000000000000
       Position.Y = 26.000000000000000000
       Size.Width = 49.000000000000000000
       Size.Height = 32.000000000000000000
@@ -2563,9 +2566,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     object btnNow: TButton
       Anchors = [akTop, akRight]
       StyledSettings = [Family, Style, FontColor]
-      Position.X = 297.000000000000000000
+      Position.X = 284.000000000000000000
       Position.Y = 63.000000000000000000
-      Size.Width = 40.000000000000000000
+      Size.Width = 73.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 23
@@ -2602,7 +2605,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       StyledSettings = [Family]
       Position.X = 161.000000000000000000
       Position.Y = 119.000000000000000000
-      Size.Width = 145.000000000000000000
+      Size.Width = 153.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 10.000000000000000000
@@ -2614,7 +2617,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       StyledSettings = [Family]
       Position.X = 160.000000000000000000
       Position.Y = 153.000000000000000000
-      Size.Width = 145.000000000000000000
+      Size.Width = 153.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 10.000000000000000000
@@ -2684,9 +2687,9 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     end
     object btnGPS_position: TButton
       StyledSettings = [Family, Style, FontColor]
-      Position.X = 281.000000000000000000
+      Position.X = 288.000000000000000000
       Position.Y = 133.000000000000000000
-      Size.Width = 55.000000000000000000
+      Size.Width = 64.000000000000000000
       Size.Height = 35.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 22
@@ -2697,7 +2700,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     object btnCloseAlmanacForm: TButton
       Anchors = [akTop]
       StyledSettings = [Family, Style]
-      Position.X = 294.332366943359400000
+      Position.X = 313.002899169921900000
       Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
@@ -2714,7 +2717,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
       StyledSettings = [Family]
       Position.X = 120.000000000000000000
       Position.Y = -4.000000000000000000
-      Size.Width = 93.000000000000000000
+      Size.Width = 107.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
@@ -2750,12 +2753,12 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     Margins.Top = 5.000000000000000000
     Margins.Right = 5.000000000000000000
     Margins.Bottom = 5.000000000000000000
-    Size.Width = 331.000000000000000000
+    Size.Width = 351.000000000000000000
     Size.Height = 275.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
     OnApplyStyleLookup = Memo1ApplyStyleLookup
-    Viewport.Width = 327.000000000000000000
+    Viewport.Width = 347.000000000000000000
     Viewport.Height = 271.000000000000000000
   end
   object pnlSolarSystemDiagram: TPanel
@@ -2816,7 +2819,7 @@ object FrmPlanetFunAlmanac: TFrmPlanetFunAlmanac
     ActivityType = Other
     UsageAuthorization = WhenInUse
     OnLocationChanged = LocationSensor1LocationChanged
-    Left = 168
+    Left = 248
     Top = 304
   end
 end
