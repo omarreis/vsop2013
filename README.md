@@ -13,6 +13,9 @@ With time it grew to include:
 
 # Repository News
 
+* aug/23:
+PlanetFun 2.1 includes some translations ( English, Portuguese, Spanish, Italian, French ). Fixed phone attitude ( was rolling in the wrong direction )
+
 * apr/23: 
 PlanetFun app v1.9 released for iOS and Android. 
 
