@@ -20,9 +20,10 @@ unit fPlanetFun;    //-----  planetary system simulation in 4D ----\\
 //            vsop2013, vsop87, ELP2000, epoch reduction              ||
 //          * solar system animation                                  //
 //   v1.8 - apr23: Fix ecliptic obliquity, which was set             //
-//                 to 0 by mistake !                                //
-//   v1.9 - may23: constellation drawings                          //
-//----------------------------------------------------------------//
+//                 to 0 by mistake !                                 ||
+//   v1.9 - may23: constellation drawings                            ||
+//   v2.1 - fixed phone roll signal. Was rotating to the wrong side  ||
+//-------------------------------------------------------------------//
 
 interface
 
@@ -228,6 +229,7 @@ type
     dummySpaceShip: TDummy;
     modelSpaceShip: TModel3D;
     modelSpaceShipMat01: TLightMaterialSource;
+    Lang1: TLang;
     procedure TimerSolarSystemTimer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -273,7 +275,8 @@ type
     procedure btnCloseBigToastClick(Sender: TObject);
     procedure cbShowBannerSwitch(Sender: TObject);
     procedure cbEclipticSwitch(Sender: TObject);
-    procedure cbSkyTextureSwitch(Sender: TObject);               // Using AA chapter 45
+    procedure cbSkyTextureSwitch(Sender: TObject);
+    procedure Label2Click(Sender: TObject);               // Using AA chapter 45
   private
     fFirstShow:boolean;
     fToastMsgStartTime:TDatetime;
@@ -544,7 +547,7 @@ begin
   labStatus2.Text := s;
 
   // use quaternion to apply sensor fusion readings
-  ToQuaternion( aRoll, aHead-90 , aAlt, Q );
+  ToQuaternion( -aRoll, aHead-90 , aAlt, Q );    // ago23: corrected roll signal. Was rotating to the wrong side !!
   // ToQuaternion( aRoll, aHead+90 , aAlt, Q );
 
   Self.SolarSystemViewport3D.BeginUpdate;  //needed ??
@@ -774,6 +777,22 @@ begin
 
 end;
 
+procedure TFormPlanetFun.Label2Click(Sender: TObject);
+var aLang:String;
+begin
+  aLang :='en';
+  if       (Lang1.Lang='FR') then aLang:='en'
+  else  if (Lang1.Lang='PT') then aLang:='FR'
+  else  if (Lang1.Lang='ES') then aLang:='PT'
+  else  if (Lang1.Lang='IT') then aLang:='ES'
+  else  if (Lang1.Lang='en') then aLang:='IT';
+  Label2.Text := aLang;
+
+  if (aLang<>'') then
+
+    LoadLangFromStrings( Lang1.LangStr[aLang] );
+end;
+
 procedure TFormPlanetFun.labJDEClick(Sender: TObject);   //click JDE sets JDE time to Now
 var T:TDatetime; Y,M,D:word; Year,H:Double;
 begin
@@ -853,7 +872,7 @@ begin                                                      // object must have H
   // else ..
   if (aObjName<>'') then
     begin
-      aObj := FrmPlanetFunAlmanac.getCelObjByName(aObjName);   // generic obj query
+      aObj := FrmPlanetFunAlmanac.getCelObjByName( aObjName );   // generic obj query
       if Assigned(aObj) then
         begin
           aObj.GMT := JDtoDatetime( fJDE );  // to UT
