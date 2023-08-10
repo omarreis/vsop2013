@@ -61,13 +61,15 @@ type
 
 Procedure CreatePlanetsVSOP87;
 function  FindPlanetVSOP87ByName(const aName:String):TPlanetVSOP87;
+function  FindPlanetVSOP87ByIndex(aIndex:integer):TPlanetVSOP87;
+
 Procedure FreePlanetsVSOP87;
 
 const
-  NumPlanetsVSOP07=7;
+  NumPlanetsVSOP87=7;
 
 var
-  Planetas:Array[1..NumPlanetsVSOP07] of TPlanetVSOP87;   // Mars, Venus, Jupiter and Saturn
+  Planetas:Array[1..NumPlanetsVSOP87] of TPlanetVSOP87;   // Mars, Venus, Jupiter and Saturn
 
 implementation //-------------------------------------------------------------------------------------
 
@@ -90,28 +92,35 @@ type
   end;
 
 const
-  ConstPlanetas:Array[1..NumPlanetsVSOP07] of RPlanet=(
-    (Name:'Venus'   ; CPlan:@CVenus   ; Mag:-4.9),
-    (Name:'Saturn'  ; CPlan:@CSaturn  ; Mag:+0.5),
-    (Name:'Mars'    ; CPlan:@CMars    ; Mag:+0.3),
-    (Name:'Jupiter' ; CPlan:@CJupiter ; Mag:-2.9),
-    (Name:'Mercury' ; CPlan:@CMercury ; Mag:-2.5),
-    (Name:'Uranus'  ; CPlan:@CUranus  ; Mag:+5.4),   //from wikipedia
-    (Name:'Neptune' ; CPlan:@CNeptune ; Mag:+7.7));
+  ConstPlanetas:Array[1..NumPlanetsVSOP87] of RPlanet=(
+    (Name:'Venus'   ; CPlan:@CVenus   ; Mag:-4.9),   // 1
+    (Name:'Saturn'  ; CPlan:@CSaturn  ; Mag:+0.5),   // 2
+    (Name:'Mars'    ; CPlan:@CMars    ; Mag:+0.3),   // 3
+    (Name:'Jupiter' ; CPlan:@CJupiter ; Mag:-2.9),   // 4
+    (Name:'Mercury' ; CPlan:@CMercury ; Mag:-2.5),   // 5
+    (Name:'Uranus'  ; CPlan:@CUranus  ; Mag:+5.4),   // 6        //from wikipedia
+    (Name:'Neptune' ; CPlan:@CNeptune ; Mag:+7.7));  // 7
 
 Procedure CreatePlanetsVSOP87;
 var i:integer;
 begin
-  for i:=1 to NumPlanetsVSOP07 do
+  for i:=1 to NumPlanetsVSOP87 do
     with ConstPlanetas[i] do
       Planetas[i] := TPlanetVSOP87.Create(Name,CPlan,Mag);
 end;
+
+function  FindPlanetVSOP87ByIndex(aIndex:integer):TPlanetVSOP87;
+begin
+  if (aIndex>0) and (aIndex<=NumPlanetsVSOP87) then Result := Planetas[aIndex]
+    else Result := nil;
+end;
+
 
 function  FindPlanetVSOP87ByName(const aName:String):TPlanetVSOP87;
 var i:integer; aPlanet:TPlanetVSOP87;
 begin
   Result:=nil;
-  for i:=1 to NumPlanetsVSOP07 do      // linear search
+  for i:=1 to NumPlanetsVSOP87 do      // linear search
     begin
       aPlanet := Planetas[i];
       if (aPlanet.Name=aName) then
@@ -125,7 +134,7 @@ end;
 Procedure FreePlanetsVSOP87;
 var i:integer;
 begin
-  for i:=1 to NumPlanetsVSOP07 do
+  for i:=1 to NumPlanetsVSOP87 do
     begin
       Planetas[i].Free;
       Planetas[i]:=nil;
