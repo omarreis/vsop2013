@@ -18,6 +18,10 @@ Full app source available at:
 
 ## release notes
 
+ago-23 - PlanetFun 2.1 release ( iOS, Android and Win32 )
+* fixed phone roll ( model was rolling to the wrong side )
+* Added program translations using TLang. Besides english, interfaces for French, Portuguese, Spanish and Italian.
+
 apr-23 - PlanetFun 1.9 released
 * Almanac module allow exploring the astronomical calculations using various methods 
 * Ecliptic dots 
