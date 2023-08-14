@@ -12,6 +12,8 @@ Requirements ( aug/23 ) :
 1) The program EXE and the installer EXE must be signed with a 
 Authenticode EV certificate ( those that require USB security stick when signing )
 
+2) The installer must run silently
+
 # Code signing Certificate 
 
 Extended Validation Authenticode certificates are issued by CA authorities
