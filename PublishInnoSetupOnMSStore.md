@@ -31,11 +31,17 @@ Not sure a person can get an EV certificate.
 Once the certificate is installed on the computer, 
 you can sign the file with SignTool from Windows SDK. 
 
-The command looks like this:
+Install Windows SDK if needed.
+Typical Windows SDK path is 
+
+\Program Files (x86)\Windows Kits\10\bin\10.0.1234.0\x86"              
+
+The sign command looks like this:
 
 SignTool sign /n "SomeCompany Ltd" /t "https://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
 This stores the signature and timestamp on the EXE meta data.
+
 To check the signature, use Windows Explorer, righ-click the file and select Properties.
 
 Sign app executable, build the installer and sign the installer EXE.
@@ -54,6 +60,8 @@ parameters /SILENT and /VERYSILENT.
 Fill the installer package fields regarding silence parameter
 and return codes. There is a Inno Setup page with the return values (URL?).
 Add the page URL to package corresponding field.
+
+# Windows Defender 
 
 In order to pass the test, the installer execution cannot be questioned 
 by Windows Defender SmartScreen either. If the execution brings a UAC
