@@ -79,7 +79,7 @@ to detect known threats. If passed, the file is added to a database
 of installers with reputations. 
 
 The installer must have certain reputation ( =a number of downloads ) 
-to be allowed to run uncheked. This is a tricky requirement, as a 
+to be allowed to run unchecked. This is a tricky requirement, as a 
 typical setup changes at each new release/update. 
 It can take as long as two weeks, according to one source..
 
