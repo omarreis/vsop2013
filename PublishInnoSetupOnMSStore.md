@@ -53,6 +53,8 @@ In MS Partners website, on the application page, add a package of type EXE.
 
 Set the installer URL.
 
+# Silence
+
 The EXE installer  must run in complete "silence". Whence the silence test.
 You can instruct Inno installers to run silently by using command line  
 parameters /SILENT and /VERYSILENT.
