@@ -1,7 +1,7 @@
 # Publishing Inno Setup EXE installer on Microsoft Store
 
 This is a compilation of info I collected on how to get a 
-Inno Setup installer accepted.
+Inno Setup installer accepted on the MS Store.
 
 * Note that I did not succeed yet.
 
