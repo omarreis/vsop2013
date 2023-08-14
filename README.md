@@ -177,9 +177,8 @@ In order to compile and run this app, you will need to:
 # PlanetFun for Windows 
 
 Install executables  PlanetFun.exe, TestVSOP2013.exe, gravityIntegration.exe and assets.
-Size: 130 MB - Current version 1.9 (apr23) 
 
-* https://github.com/omarreis/vsop2013/releases/download/1.9/setupPlanetFunV19win32.exe
+get latest release: https://github.com/omarreis/vsop2013/releases
 
 ## Sample app 3: gravityIntegration 
 
