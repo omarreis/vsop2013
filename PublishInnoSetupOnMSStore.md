@@ -21,32 +21,32 @@ like Comodo, Certum. Costs as much as $300/year.
 
 It requires a Company with:
 
-* Domain Name
-* Contact corporate email ( same domain )
-* Some form of legal company proof of existance
+* Company domain Name
+* Company website with SSL certificate
+* Contact email ( corporate email on the same domain )
+* Legal company proof of existence
 * Other validation checks
 
 Not sure a person can get an EV certificate.
 
 # Signing files
 
-Once the certificate is installed on the computer, 
-you can sign EXE files with SignTool from Windows SDK. 
+Once the certificate is issued and installed on the computer, 
+you can sign files with SignTool from Windows SDK. 
 
-Install Windows SDK if needed.
-Typical Windows SDK path is 
+Install Windows SDK if needed. Typical Windows SDK path is 
 
-\Program Files (x86)\Windows Kits\10\bin\10.0.1234.0\x86"              
+    \Program Files (x86)\Windows Kits\10\bin\10.0.1234.0\x86"              
 
 The sign command looks like this:
 
-SignTool sign /n "SomeCompany Ltd" /t "https://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
+    SignTool sign /n "SomeCompany Ltd" /t "https://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
-This stores the signature and timestamp on the EXE meta data.
+This stores the signature and timestamp on the file meta data.
 
-To check the signature, use Windows Explorer, righ-click the file and select Properties.
+* To check the signature, use Windows Explorer, righ-click the file and select Properties.
 
-Sign app executable, build the installer and sign the installer EXE.
+Sign the app executable, build the installer and sign the installer EXE.
 Name the installer something like "setupMyApp-Ver11-Win32.exe"
 
 Place the signed installer on the company website, on a https URL ( must have a SSL certificate ).
@@ -55,7 +55,7 @@ In MS Partners website, on the application page, add a package of type EXE.
 
 Set the installer URL.
 
-# Silence
+# Silence test
 
 The EXE installer  must run in complete "silence". Whence the silence test.
 You can instruct Inno installers to run silently by using command line  
