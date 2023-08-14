@@ -26,8 +26,12 @@ It requires a Company with:
 
 Not sure a person can get an EV certificate.
 
-Once the certificate is installed, you can sign the file with 
-SignTool from Windows SDK. The command looks like this:
+# Signing files
+
+Once the certificate is installed on the computer, 
+you can sign the file with SignTool from Windows SDK. 
+
+The command looks like this:
 
 SignTool sign /n "SomeCompany Ltd" /t "https://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
