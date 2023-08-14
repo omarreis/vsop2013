@@ -51,7 +51,7 @@ Name the installer something like "setupMyApp-Ver11-Win32.exe"
 
 Place the signed installer on the company website, on a https URL ( must have a SSL certificate ).
 
-In MS Partners website, on the application page, add a package of type EXE.
+On Microsoft Partners website, on the application page, add a package of type EXE.
 
 Set the installer URL.
 
@@ -62,7 +62,7 @@ You can instruct Inno installers to run silently by using command line
 parameters /SILENT and /VERYSILENT.
 
 Fill the installer package fields regarding silence parameter
-and return codes. There is a Inno Setup page with the return values (URL?).
+and return codes. There is a Inno Setup page with the return values.
 Add the page URL to package corresponding field.
 
 # Windows Defender 
@@ -72,7 +72,12 @@ by Windows Defender SmartScreen either. If the execution brings a UAC
 dialog saying "Windows protected your computer bla bla..", then that
 installer is not suitable.
 
-Nor can it ask for user options. Install with default options.
+The problem is all installers must run with some administrative rights
+to be able to create directories, add files to \Program Files\,
+add data files to user Documents, create shortcuts. 
+Not things Windows Defender likes...
+
+The installer cannot ask for user options either. Install with default options.
 
 How Smartscreen works is not clear. It performs a antivirus check
 to detect known threats. If passed, the file is added to a database 
