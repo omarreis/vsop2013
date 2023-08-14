@@ -31,7 +31,7 @@ Not sure a person can get an EV certificate.
 # Signing files
 
 Once the certificate is installed on the computer, 
-you can sign the file with SignTool from Windows SDK. 
+you can sign EXE files with SignTool from Windows SDK. 
 
 Install Windows SDK if needed.
 Typical Windows SDK path is 
