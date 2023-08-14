@@ -1,7 +1,9 @@
-# Publishing Inno Setup EXE installer on Mocrosoft Store
+# Publishing Inno Setup EXE installer on Microsoft Store
 
 MS Store now accepts EXE installers.
-This is a compilation of installer requirements to be accepted by the Store.
+This is a compilation of info I collected on how to get an installer accepted.
+
+* Note that I did not succeed yet.
 
 * The program EXE and the installer EXE must be signed with a 
 Authenticode EV certificate ( those that require USB security stick when signing )
