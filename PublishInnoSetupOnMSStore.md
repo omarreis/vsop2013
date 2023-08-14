@@ -1,13 +1,12 @@
 # Publishing Inno Setup EXE installer on Microsoft Store
 
-This is a compilation of info I collected on how to get a 
-Inno Setup installer accepted on the MS Store.
+Notes collected on how to get a Inno Setup EXE installer accepted on the MS Store.
 
 * Note that I did not succeed yet.
 
 MS Store now accepts EXE installers.
 
-Requirements ( aug/23 ) :
+Current Requirements ( aug/23 ) :
 
 1) The program EXE and the installer EXE must be signed with a 
 Authenticode EV certificate ( those that require USB security stick when signing )
