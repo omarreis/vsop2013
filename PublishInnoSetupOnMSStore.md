@@ -29,7 +29,7 @@ Not sure a person can get an EV certificate.
 Once the certificate is installed, you can sign the file with 
 SignTool from Windows SDK. The command looks like this:
 
-SignTool sign /n "SomeCompany Ltd" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
+SignTool sign /n "SomeCompany Ltd" /t "https://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
 This stores the signature and timestamp on the EXE meta data.
 To check the signeture, use Windows Explorer, righ-click the file and select Properties
