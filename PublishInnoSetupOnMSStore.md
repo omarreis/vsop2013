@@ -32,13 +32,14 @@ SignTool from Windows SDK. The command looks like this:
 SignTool sign /n "SomeCompany Ltd" /t "https://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
 This stores the signature and timestamp on the EXE meta data.
-To check the signeture, use Windows Explorer, righ-click the file and select Properties
+To check the signature, use Windows Explorer, righ-click the file and select Properties.
 
-Sign app EXE, build the installer and sign the installee file.
+Sign app executable, build the installer and sign the installer EXE.
+Name the installer something like "setupMyApp-Ver11-Win32.exe"
 
 Place the signed installer on the company website, on a https URL ( must have a SSL certificate ).
 
-In MS Partners website, In the application page, add a package of type EXE.
+In MS Partners website, on the application page, add a package of type EXE.
 
 Set the installer URL.
 
@@ -47,15 +48,17 @@ You can instruct Inno installers to run silently by using command line
 parameters /SILENT and /VERYSILENT.
 
 Fill the installer package fields regarding silence parameter
-and return codes. There is a Inno Setup page with the return values {URL?}.
+and return codes. There is a Inno Setup page with the return values (URL?).
 Add the page URL to package corresponding field.
 
-In order to pass this test, the installer execution cannot be questioned 
+In order to pass the test, the installer execution cannot be questioned 
 by Windows Defender SmartScreen either. If the execution brings a UAC
 dialog saying "Windows protected your computer bla bla..", then that
 installer is not suitable.
 
-  How Smartscreen works is not clear. It performs a antivirus check
+Nor can it ask for user options. Install with default options.
+
+How Smartscreen works is not clear. It performs a antivirus check
 to detect known threats. If passed, the file is added to a database 
 of installers with reputations. 
 
@@ -67,5 +70,7 @@ It can take as long as two weeks, according to one source..
 It helps if you submit the file to SmartScreen ( URL? ) 
 
 This is as far as I went. I put the project to the side for now..
+
+
 
 
