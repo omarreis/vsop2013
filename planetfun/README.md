@@ -417,9 +417,9 @@ https://apps.apple.com/us/app/planet-fun/id1525941640
 
 ## Download for Windows ( Win32 )
 
-PlanetFun v1.9 installer: https://github.com/omarreis/vsop2013/releases/download/1.9/setupPlanetFunV19win32.exe
-
 Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program group "vsop2013"
+
+latest Win32 release: https://github.com/omarreis/vsop2013/releases
 
 ## also in this repository
 
