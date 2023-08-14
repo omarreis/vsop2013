@@ -2,7 +2,7 @@
 
 Notes collected on how to get a Inno Setup EXE installer accepted on the MS Store.
 
-* Note that I did not succeed yet.
+( I did not succeed yet )
 
 MS Store now accepts EXE installers.
 
