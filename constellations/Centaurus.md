@@ -12,6 +12,8 @@ Centaurus was happy in Libya, but he also felt different from his people. He did
 
 One day, he decided to leave Libya and travel the world. He took his favorite winged horse, Pegasus, and flew across the sky. He saw many wonders and met many people, but he also faced many dangers and challenges.
 
+![Pegasus](Pegasus.png)
+
 He came across a land of giants called Nephilim, who tried to capture him and kill him. He escaped from them with his speed and cunning.
 
 He came across a land of fire called Vulcania, where he met Hephaestus, the god of fire and metalwork. Hephaestus taught him how to forge weapons and armor from iron and bronze. He came across a land of water called Atlantis, where he met Poseidon, the god of the sea and earthquakes. Poseidon taught him how to control the waves and the winds.
