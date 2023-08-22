@@ -4,6 +4,8 @@ Centaurus was a lonely king who ruled over a land of half-human, half-horse crea
 
 ![Centaurus](Centaurus.png)
 
+Rigil Kentaurus and Hadar, the brightest stars in this constellation, form the front legs of the character.
+
 Centaurus was the son of Apollo, the god of the sun, and Cyrene, a nymph who loved horses. Apollo had fallen in love with Cyrene when he saw her wrestling a lion on a mountain. He took her to Libya, where he built a city for her and made her the queen. He also gave her a gift of a golden chariot pulled by winged horses.
 
 Cyrene gave birth to Centaurus, who inherited his father's beauty and his mother's passion for horses. He grew up in Libya, where he learned to ride and tame the winged horses. He also learned to play the lyre and sing from his father, who often visited him.
