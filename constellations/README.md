@@ -35,15 +35,15 @@ Check the stories and images:
 
 ![Eridanus](Eridanus.png) 
 
-* Sagittarius, anoother half-man/halh-horse character
+* Sagittarius, another half-man/half-horse character
 
 ![Sagittarius](Sagittarius.png)
 
 
 
-    .
-    ..
-    ...
+       .
+      ..
+     ...
     ....
 
 by OMAR - aug/23
