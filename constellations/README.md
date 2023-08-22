@@ -1,4 +1,4 @@
-## Myths and characters in western tradition costellations
+## Myths and characters in constellations
 
 This folder contains images of constellations captured from app *PlanetFun*
 and stories about myths and characters in western tradition costellations.
