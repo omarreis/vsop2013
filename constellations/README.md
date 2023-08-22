@@ -1,4 +1,4 @@
-## Myths and characters in western costellations
+## Myths and characters in western tradition costellations
 
 This folder contains images of constellations captured from app *PlanetFun*
 and stories about myths and characters in western tradition costellations.
@@ -12,13 +12,13 @@ and are loosely based on actual greek myths.
 
 Check the stories and images:
 
-* [The Sacrifice of Andromeda](Andromeda.md) constellations Andromeda, Cassiopeia, Cepheus, Cetus amd Perseus
+* [The Sacrifice of Andromeda](Andromeda.md) constellations Andromeda, Cassiopeia, Cepheus, Cetus and Perseus
 
 * [Aquila, Zeus and Europa](Aquila.md) constellations Aquila and Taurus
 
 * [Centaurus](Centaurus.md) constellations Centaurus and Pegasus
 
-* [The Hunt for the Golden Fleece](GoldenFleece.md) constellations Orion and Vela ( the Argo )
+* [The Hunt for the Golden Fleece](GoldenFleece.md) constellations Orion and Vela ( the ship Argo )
 
 * [Hercules and Leo](HerculesLeo.md) constellations Hercules and Leo
 
@@ -29,13 +29,10 @@ Check the stories and images:
 * [Virgo](Virgo.md) constellation Virgo
 
 
-.
-
-..
-
-...
-
-....
+    .
+    ..
+    ...
+    ....
 
 by OMAR - aug/23
 
