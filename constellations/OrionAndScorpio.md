@@ -4,6 +4,10 @@ Orion was a hunter who lived in the woods. He was skilled with the bow and the s
 
 ![Orion](Orion.png)
 
+Orion was always accompanied by his faithful dogs: Canis Major and Canis Minor .
+
+![Canis Major](CanisMajor.png)
+
 Scorpius was a giant scorpion that lived in the desert. He was fierce and venomous, and he feared no one. Cunning and vengeful, he hated anyone who trespassed on his territory.
 
 ![Scorpio](Scorpio.png)
