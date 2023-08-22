@@ -12,7 +12,7 @@ and are loosely based on actual greek myths.
 
 Check the stories and images:
 
-* [The Sacrifice of Andromeda](Andromeda.md)
+* [The Sacrifice of Andromeda](Andromeda.md) constellations Andromeda, Cassiopeia, Cepheus, Cetus, Perseus
 
 * [Aquila, Zeus and Europa](Aquila.md)
 
