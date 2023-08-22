@@ -29,13 +29,13 @@ Check the stories and images:
 * [Virgo](Virgo.md) constellation Virgo
 
 
-## Other constelations, not in any story yet
+## Other constellations not in any story (yet)
 
 * Eridanus, the River
 
 ![Eridanus](Eridanus.png) 
 
-* Sagittarius
+* Sagittarius, anoother half-man/halh-horse character
 
 ![Sagittarius](Sagittarius.png)
 
