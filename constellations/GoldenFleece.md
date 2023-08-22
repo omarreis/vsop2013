@@ -32,9 +32,9 @@ Orion lived happily with his wife for many years, until he met his tragic end. H
 
 After his death, Zeus placed him among the stars as a constellation, where he can still be seen today. He holds his club and shield in his hands, ready for battle. He wears his belt and sword around his waist, symbols of his courage and skill. He also has his faithful dog Sirius by his side, who follows him wherever he goes.
 
-Orion is one of the most recognizable constellations in the sky. He lies on the celestial equator, making him visible from both hemispheres. He is also one of the brightest constellations, with two of the ten brightest stars in Rigel and Betelgeuse.
+Orion is one of the most recognizable constellations in the sky. Orion lies on the celestial equator, making him visible from both hemispheres. It is also one of the brightest constellations, with two of the ten brightest stars in Rigel and Betelgeuse.
 
-Orion is still admired by many people who look up at him and remember his story. He is a hero who inspires us to pursue our dreams and overcome our challenges.
+Orion is admired by many people who look up at him and remember his story. A hero who inspires us to pursue our dreams and overcome challenges. And fighting sedentary lifestyle.
 
 
 Bing chat text
