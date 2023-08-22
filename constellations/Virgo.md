@@ -18,22 +18,22 @@ The constellation Virgo is said to represent Persephone. The brightest star in t
 
 The story of Persephone and Aphrodite is a reminder of the power of love and loss. It is also a reminder of the cycle of life and death.
 
-The Maiden in the Sky
+    The Maiden in the Sky
 
-She stands with wheat in hand,
-A symbol of the harvest.
-Her beauty is unmatched,
-A gift from Aphrodite.
+    She stands with wheat in hand,
+    A symbol of the harvest.
+    Her beauty is unmatched,
+    A gift from Aphrodite.
 
-She is Persephone,
-The daughter of Demeter.
-She was taken to the underworld,
-Where she returned each year.
+    She is Persephone,
+    The daughter of Demeter.
+    She was taken to the underworld,
+    Where she returned each year.
 
-The constellation Virgo
-Is her eternal form.
-She watches over the world,
-Bringing hope and renewal.
+    The constellation Virgo
+    Is her eternal form.
+    She watches over the world,
+    Bringing hope and renewal.
 
 I hope you enjoyed this story about the myth of Virgo constellation. 
 
