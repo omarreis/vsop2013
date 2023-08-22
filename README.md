@@ -16,7 +16,7 @@ With time it grew to include:
 * aug/23:
 PlanetFun 2.1 includes some translations ( English, Portuguese, Spanish, Italian, French ). Fixed phone attitude ( was rolling in the wrong direction )
 
-Completed drawings of common western tradition constellation designs and names, mostly from Greek mythology.
+Completed drawings of western tradition constellations, mostly characters from Greek mythology.
 To go with the drawings (this is not in the software) I used AI chat bots ( MS Bing and Google Bard ) to create 
 stories about the myths involving constellations, and how Zeus - mostly - designed the skies. 
 
