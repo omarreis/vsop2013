@@ -10,6 +10,8 @@ One day, Zeus asked Aquila to do him a favor. He told he had fallen in love with
 
 Aquila agreed to help. Both flew to Phoenicia. Zeus disguised himself as a white bull, and mingled with the herd of cattle that belonged to Europa's father. Europa saw the bull and was charmed by its style. She approached and stroked his fur. The bull seemed to like her, and bowed as for her to climb on its back. Which she did..
 
+![Taurus](Taurus.png)
+
 Zeus took advantage of the situation and ran towards the sea with Europa on the back. Europa was scared and cried for help, but no one heard. Zeus reached the shore and jumped into the water, swimming towards Crete.
 
 Aquila followed from the air, keeping an eye on them. He saw that Europa was holding on to the bull's horns, but she was all wet and cold. He felt sorry for her and decided to give some comfort. He flew close to her and spoke.
