@@ -29,6 +29,9 @@ Check the stories and images:
 * [Virgo](Virgo.md) constellation Virgo
 
 
+( I'm not sure how "original" the stories are. What do you think? )  
+
+
 ## Other constellations not in any story (yet)
 
 * Eridanus, the River
