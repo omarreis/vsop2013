@@ -1,7 +1,7 @@
 ## Constellation images and myths 
 
 This folder contains images of constellations captured from app *PlanetFun*
-and stories about myths and characters in western tradition costellations.
+and stories about myths and characters in western tradition constellations.
 
 Some stories, like Andromeda, include multiple constellations.
 
