@@ -1,6 +1,6 @@
 ## Virgo Constellation
 
-Long ago there was a beautiful maid named Persephone. She was the daughter of Demeter, the goddess of agriculture. One day Persephone was picking flowers in the meadow when she was abducted by Hades, the god of the underworld.
+Long ago there was a beautiful maid named Persephone. She was the daughter of Demeter, the goddess of agriculture. One day Persephone was picking wheat and flowers in the field when she was abducted by Hades, the god of the underworld.
 
 ![Virgo](Virgo.png)
 
