@@ -42,6 +42,9 @@ Check the stories and images:
 
 ![Sagittarius](Sagittarius.png)
 
+## PlanetFun complete Sky Map
+
+![complete sky map](/omarreis/vsop2013/blob/master/Documents/SkyMapLinesNamesDrawings.png)
 
 
        .
