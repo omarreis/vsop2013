@@ -44,7 +44,7 @@ Check the stories and images:
 
 ## PlanetFun complete Sky Map
 
-![Complete Sky Map](/Documents/SkyMapLinesNamesDrawings.png)
+[Complete Sky Map](/Documents/SkyMapLinesNamesDrawings.png)
 
 
        .
