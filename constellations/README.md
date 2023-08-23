@@ -46,7 +46,8 @@ Check the stories and images:
      ...
     ....
 
-by OMAR - aug/23
+by OMAR - aug/23 - except for the stories by Bing Chat and Google Bard
+
 
 
 
