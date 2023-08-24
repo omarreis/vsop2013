@@ -10,6 +10,7 @@ With time it grew to include:
 * VSOP87 planet position theory - Another planet theory, with smaller data footprint.
 * star catalogs: H150 and Navigation stars
 * Moon position calculations ( ELP2000. code from TMoon component by Andreas Hörstemeier )
+* Constellation images, myths and stories ( western tradition )
 
 # Repository News
 
