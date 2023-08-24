@@ -20,7 +20,7 @@ Meanwhile, Perseus, the son of Zeus and Danae, was flying over the sea with his 
 
 ![Perseus](Perseus.png)
 
-As he flew over Ethiopia, he saw Andromeda chained to the rock. He was struck by her beauty and courage, and felt a surge of pity and love for her. He decided to rescue her.
+As he flew over Ethiopia, he saw Andromeda chained to the rock. He was struck by her beauty and courage, and felt a surge of pity and love for her. He decided to rescue her, at great risk.
 
 Perseus landed near the rock and revealed himself to Andromeda. He told her his name and his deeds, and asked her to be his wife. Andromeda was overjoyed and agreed to marry him.
 
