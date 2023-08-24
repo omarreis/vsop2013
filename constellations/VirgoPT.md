@@ -18,24 +18,23 @@ Diz-se que a constelação de Virgem representa Perséfone. A estrela mais brilh
 
 A história de Perséfone e Afrodite é um lembrete do poder do amor e da perda. É também um lembrete do ciclo de vida e morte.
      
+    A Donzela no Céu
+    
+    Com um ramo de trigo nas mãos,
+    Um símbolo da colheita.
+    Sua beleza é incomparável,
+    Um presente de Afrodite.
+  
+    Ela é Perséfone,
+    A filha de Deméter.
+    Ela foi levada ao submundo,
+    Para onde deverá voltar todos os anos.
+  
+    A constelação de Virgem
+    É sua forma eterna.
+    Ela cuida do mundo,
+    Trazendo esperança e renovação.
 
-      The Maiden in the Sky
-	  She stands with wheat in hand,
-	  A symbol of the harvest.
-	  Her beauty is unmatched,
-	  A gift from Aphrodite.
-	  
-	  She is Persephone,
-	  The daughter of Demeter.
-	  She was taken to the underworld,
-	  Where she returned each year.
-	  
-	  The constellation Virgo
-	  Is her eternal form.
-	  She watches over the world,
-	  Bringing hope and renewal.
-
-Espero que tenham gostado desta história sobre o mito da constelação de Virgem.
-        
-    história criada por Google Bard
+    história sobre o mito da constelação de Virgem.
+    gerada por Google Bard
         
