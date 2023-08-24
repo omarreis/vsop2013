@@ -40,7 +40,9 @@ Perseus fought back with his sword, but he was outnumbered by Phineus' men. He h
 
 Perseus had defeated his enemies with Medusa's head. He returned to Andromeda's side and kissed her tenderly.
 
-They were finally free to live happily ever after. Perseus was so excited that he forgot to put the Medusa head back in the bag. As Perseus and Andromeda kissed they both looked to the same side, they saw the green hair of serpents, becoming the most beautiful marble sculpture of all Greece.
+They were finally free to live happily ever after. Perseus was so excited that he forgot to put the Medusa's head back in bag. As Perseus and Andromeda kissed, they both looked to the same side. The green hair of serpents. Medusa. 
+
+This is the story of the most beautiful marble sculpture of all Greece. 
 
 Zeus then decided to set the whole Andromeda family, and Perseus, and Cetus, as constellations covering half of the sky...
 
