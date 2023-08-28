@@ -2,8 +2,6 @@
 
 Notes collected on how to get a Inno Setup EXE installer accepted on the MS Store.
 
-( I did not succeed yet )
-
 MS Store now accepts EXE installers.
 
 Current Requirements ( aug/23 ) :
@@ -39,7 +37,7 @@ Install Windows SDK if needed. Typical Windows SDK path is
 
 The sign command looks like this:
 
-    SignTool sign /n "SomeCompany Ltd" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
+    SignTool sign /n "YourCompany Ltd" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
 This stores the signature and timestamp on the EXE file meta data.
 
@@ -58,7 +56,7 @@ Set the installer URL.
 
 The EXE installer  must run in complete "silence". Whence the silence test.
 You can instruct Inno installers to run silently by using command line  
-parameters /SILENT and /VERYSILENT.
+parameter /VERYSILENT
 
 Fill the installer package fields regarding silence parameter
 and return codes. There is a Inno Setup page with the return values.
@@ -85,11 +83,18 @@ of installers with reputations.
 The installer must have certain reputation ( =a number of downloads ) 
 to be allowed to run unchecked. This is a tricky requirement, as a 
 typical setup changes at each new release/update. 
-It can take as long as two weeks, according to one source..
 
-It helps if you submit the file to SmartScreen ( URL? ) 
+Before testing your installer on MS Partners, it must be submitted to
+Windows Defender SmartScreen ( the Windows anti-virus ). 
+After about 1 week,the app was accepted by SmartScreen.
+After that, the app was also accepted on the MS Store.
 
-This is as far as I went. I put the project to the side for now..
+* App URL on MS Store:
+* 
+Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
+  
+
+Omar - Aug/23
 
 
 
