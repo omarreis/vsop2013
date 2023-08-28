@@ -30,8 +30,10 @@ Not sure a person can get an EV certificate.
 
 According to MS store policies:
 
-    "10.2.9.b - The binary and all of its Portable Executable (PE) files must be digitally signed with a code signing certificate that chains 
-    up to a certificate issued by a Certificate Authority (CA) that is part of the Microsoft Trusted Root Program."
+    "10.2.9.b - The binary and all of its Portable Executable (PE) files must be digitally 
+    signed with a code signing certificate that chains 
+    up to a certificate issued by a Certificate Authority (CA) that 
+    is part of the Microsoft Trusted Root Program."
 
 Portable Executable (PE) means all executable code ( extensions EXE, DLL, CPL, SRV ).
 
