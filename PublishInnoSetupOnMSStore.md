@@ -79,9 +79,9 @@ Not things Windows Defender likes...
 
 The installer cannot ask for user options either. Install with default options.
 
-How Smartscreen works is not clear. It performs a anti-virus check
-to detect known threats. If passed, the file is added to a database 
-of installers with reputations. 
+Smartscreen performs some anti-virus checks to detect known threats. 
+If passed, the file is added to a database of installers with reputations,
+starting with 0.
 
 The installer must have certain reputation (i.e. a certain number of downloads ) 
 to be allowed to run unchecked. This is a tricky requirement, as a 
@@ -91,6 +91,8 @@ Before testing your installer on MS Partners, it must be submitted to
 Windows Defender SmartScreen ( the Windows anti-virus ). 
 In my case, it took about 1 week to the app to be accepted by SmartScreen.
 After that, the app was also accepted on the MS Store.
+
+So we have this 2 tier system on this platform.
 
 * App URL on MS Store:
 
