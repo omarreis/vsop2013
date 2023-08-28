@@ -53,7 +53,7 @@ This stores the signature and timestamp on the EXE file meta data.
 
 * To check the signature, use Windows Explorer, righ-click the file and select Properties.
 
-Sign the app executable, build the installer and sign the installer EXE.
+Sign the app executables, build the installer and sign the installer EXE.
 Name the installer something like "setupMyApp-Ver11-Win32.exe" ( that is, with app name and version number )
 Note that, once accepted, the installer cannot be modified. If you release a new version,
 change the installer filename.
