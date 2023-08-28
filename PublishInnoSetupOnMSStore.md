@@ -44,9 +44,11 @@ This stores the signature and timestamp on the EXE file meta data.
 * To check the signature, use Windows Explorer, righ-click the file and select Properties.
 
 Sign the app executable, build the installer and sign the installer EXE.
-Name the installer something like "setupMyApp-Ver11-Win32.exe"
+Name the installer something like "setupMyApp-Ver11-Win32.exe" ( that is, with app name and version number )
+Note that, once accepted, the installer cannot be modified. If you release a new version,
+change the installer filename.
 
-Place the signed installer on the company website, on a https URL ( must have a SSL certificate ).
+Place the signed installer on the company website, on a https URL (i.e. the webserver must have a SSL certificate ).
 
 On Microsoft Partners website, on the application page, add a package of type EXE.
 
@@ -62,7 +64,7 @@ Fill the installer package fields regarding silence parameter
 and return codes. There is a Inno Setup page with the return values.
 Add the page URL to package corresponding field.
 
-# Windows Defender 
+# Windows Defender SmartScreen
 
 In order to pass the test, the installer execution cannot be questioned 
 by Windows Defender SmartScreen either. If the execution brings a UAC
@@ -76,17 +78,17 @@ Not things Windows Defender likes...
 
 The installer cannot ask for user options either. Install with default options.
 
-How Smartscreen works is not clear. It performs a antivirus check
+How Smartscreen works is not clear. It performs a anti-virus check
 to detect known threats. If passed, the file is added to a database 
 of installers with reputations. 
 
-The installer must have certain reputation ( =a number of downloads ) 
+The installer must have certain reputation (i.e. a certain number of downloads ) 
 to be allowed to run unchecked. This is a tricky requirement, as a 
-typical setup changes at each new release/update. 
+installer changes at each new release/update. 
 
 Before testing your installer on MS Partners, it must be submitted to
 Windows Defender SmartScreen ( the Windows anti-virus ). 
-After about 1 week,the app was accepted by SmartScreen.
+In my case, it took about 1 week to the app to be accepted by SmartScreen.
 After that, the app was also accepted on the MS Store.
 
 * App URL on MS Store:
