@@ -90,7 +90,7 @@ After about 1 week,the app was accepted by SmartScreen.
 After that, the app was also accepted on the MS Store.
 
 * App URL on MS Store:
-* 
+
 Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
   
 
