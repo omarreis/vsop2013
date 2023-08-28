@@ -49,6 +49,7 @@ Note that, once accepted, the installer cannot be modified. If you release a new
 change the installer filename.
 
 Place the signed installer on the company website, on a https URL (i.e. the webserver must have a SSL certificate ).
+Once the app is submitted, the file cannot be modified.
 
 On Microsoft Partners website, on the application page, add a package of type EXE.
 
