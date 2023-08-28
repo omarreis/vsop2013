@@ -28,7 +28,14 @@ Not sure a person can get an EV certificate.
 
 # Signing files
 
-Once the certificate is issued and installed on the computer, 
+According to MS store policies:
+
+    "10.2.9.b - The binary and all of its Portable Executable (PE) files must be digitally signed with a code signing certificate that chains 
+    up to a certificate issued by a Certificate Authority (CA) that is part of the Microsoft Trusted Root Program."
+
+Portable Executable (PE) means all executable code ( extensions EXE, DLL, CPL, SRV ).
+
+Once the code signing certificate is issued and installed on the computer, 
 you can sign files with SignTool from Windows SDK. 
 
 Install Windows SDK if needed. Typical Windows SDK path is 
@@ -39,6 +46,7 @@ The sign command looks like this:
 
     SignTool sign /n "YourCompany Ltd" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
+Make sure the company name matches the certificate.
 This stores the signature and timestamp on the EXE file meta data.
 
 * To check the signature, use Windows Explorer, righ-click the file and select Properties.
