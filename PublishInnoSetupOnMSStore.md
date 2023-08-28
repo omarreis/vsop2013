@@ -98,10 +98,11 @@ Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
 
 ## Links
 
-* installer requirements https://learn.microsoft.com/en-us/windows/apps/publish/store-policies
-* Partner website https://partner.microsoft.com/
-* Inno setup exit code https://jrsoftware.org/ishelp/topic_setupexitcodes.htm
-* Inno setup command line parameters https://jrsoftware.org/ishelp/index.php?topic=setupcmdline
+* MS Partners website:  https://partner.microsoft.com    <--- Manage ms store apps here
+* MS Store installer requirements: https://learn.microsoft.com/en-us/windows/apps/publish/store-policies
+* Inno setup: https://jrsoftware.org  <-- Great installer maker
+* Inno setup exit codes: https://jrsoftware.org/ishelp/topic_setupexitcodes.htm
+* Inno setup command line parameters: https://jrsoftware.org/ishelp/index.php?topic=setupcmdline
   
 
 Omar - Aug/23
