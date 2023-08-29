@@ -9,7 +9,7 @@ Current Requirements ( aug/23 ) :
 1) The program EXE and the installer EXE must be signed with a 
 Authenticode certificate ( those that require USB security stick when signing )
 
-note: according to this post by Jernej Simončič, non-EV certificates are accepted.
+note: according to this post by Jernej Simončič, non-EV certificates are also accepted.
 https://groups.google.com/g/innosetup/c/f2-s8egy4s0
 ( I previously said that EV certificate was required )
 
@@ -19,14 +19,16 @@ https://groups.google.com/g/innosetup/c/f2-s8egy4s0
 
 Extended Validation Authenticode certificates are issued by CA authorities
 like Comodo, Certum. Costs as much as $300/year.
+Non-EV certificates are also accepted.
 
-It requires a Company with:
+EV certificate requires a Company with:
 
 * Company domain Name
 * Company website with SSL certificate
 * Contact email ( corporate email on the same domain )
 * Legal company proof of existence
 * Other validation checks
+* Signing requires a 2 factor authentication ( password and USB token ) 
 
 Not sure a person can get an EV certificate.
 
