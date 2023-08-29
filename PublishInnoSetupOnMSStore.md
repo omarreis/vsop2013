@@ -67,7 +67,12 @@ change the installer filename.
 Place the signed installer on the company website, on a https URL (i.e. the webserver must have a SSL certificate ).
 Once the app is submitted, the file cannot be modified.
 
-On Microsoft Partners website, on the application page, add a package of type EXE.
+On Microsoft Partners website, create a developer account.
+Add a new application. Provide app name, description,
+store images, license, privacy rules. App price. etc.
+Sign all required contracts.
+
+Add a package of type EXE.
 
 Set the installer URL.
 
