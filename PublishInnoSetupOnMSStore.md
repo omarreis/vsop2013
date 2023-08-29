@@ -104,6 +104,9 @@ The installer must have certain reputation (i.e. a certain number of downloads )
 to be allowed to run unchecked. This is a tricky requirement, as a 
 installer changes at each new release/update. 
 
+I read somewhere that Smartscreen is less likely to interrupt
+if the file is signed with an EV certificate. 
+
 Before testing your installer on MS Partners, it must be submitted to
 Windows Defender SmartScreen ( the Windows anti-virus ). 
 In my case, it took about 1 week to the app to be accepted by SmartScreen.
