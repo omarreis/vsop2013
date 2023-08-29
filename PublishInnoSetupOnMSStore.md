@@ -55,6 +55,7 @@ The sign command looks like this:
     SignTool sign /n "YourCompany Ltd" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
 Make sure the company name matches the certificate.
+At this point you will be prompted for the password and token ( 2 factor authentication )
 This stores the signature and timestamp on the EXE file meta data.
 
 * To check the signature, use Windows Explorer, righ-click the file and select Properties.
