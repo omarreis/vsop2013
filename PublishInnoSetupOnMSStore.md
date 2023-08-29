@@ -13,7 +13,7 @@ note: according to this post by Jernej Simončič, non-EV certificates are also 
 https://groups.google.com/g/innosetup/c/f2-s8egy4s0
 ( I previously said that EV certificate was required )
 
-3) The installer must run silently
+2) The installer must run silently
 
 # Code signing Certificate 
 
