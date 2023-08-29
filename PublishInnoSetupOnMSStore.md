@@ -19,7 +19,8 @@ https://groups.google.com/g/innosetup/c/f2-s8egy4s0
 
 Extended Validation Authenticode certificates are issued by CA authorities
 like Comodo, Certum. Costs as much as $300/year.
-Non-EV certificates are also accepted.
+
+Non-EV certificates are also accepted on the MS Store.
 
 EV certificate requires a Company with:
 
