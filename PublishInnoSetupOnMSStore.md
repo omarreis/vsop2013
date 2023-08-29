@@ -111,10 +111,13 @@ Before testing your installer on MS Partners, it must be submitted to
 Windows Defender SmartScreen ( the Windows anti-virus ). 
 In my case, it took about 1 week to the app to be accepted by SmartScreen.
 After that, the app was also accepted on the MS Store.
-
 So we have this 2 tier system on this platform.
 
-* App URL on MS Store:
+The store check is also in 2 parts. You can perform a basic test on 
+your installer package before submiting to publication.
+The store review takes a couple days.
+
+* my app URL on MS Store:
 
 Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
 
