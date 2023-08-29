@@ -69,8 +69,8 @@ Once the app is submitted, the file cannot be modified.
 
 On Microsoft Partners website, create a developer account.
 Add a new application. Provide app name, description,
-store images, license, privacy rules. App price. etc.
-Sign all required contracts.
+store images, license, privacy rules. Content rating. User data usage. App price. etc. 
+Sign all required contracts. 80% of the work here.
 
 Add a package of type EXE.
 
@@ -79,8 +79,8 @@ Set the installer URL.
 # Silence test
 
 The EXE installer  must run in complete "silence". Whence the silence test.
-You can instruct Inno installers to run silently by using command line  
-parameter /VERYSILENT
+You can instruct Inno installers to run silently by using command line parameter /VERYSILENT
+( a simple /SILENCE didn't do because it displayed progress bar )
 
 Fill the installer package fields regarding silence parameter
 and return codes. There is a Inno Setup page with the return values.
