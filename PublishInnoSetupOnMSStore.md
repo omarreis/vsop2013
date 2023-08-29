@@ -125,6 +125,7 @@ Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
 * Inno setup: https://jrsoftware.org  <-- Great installer builder
 * Inno setup exit codes: https://jrsoftware.org/ishelp/topic_setupexitcodes.htm
 * Inno setup command line parameters: https://jrsoftware.org/ishelp/index.php?topic=setupcmdline
+* Inno setup Forum: https://groups.google.com/g/innosetup/c/f2-s8egy4s0 
   
 
 Omar - Aug/23
