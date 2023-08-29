@@ -6,8 +6,7 @@ MS Store now accepts EXE installers.
 
 Current Requirements ( aug/23 ) :
 
-1) The program EXE and the installer EXE must be signed with a 
-Authenticode certificate ( those that require USB security stick when signing )
+1) The program EXE and the installer EXE must be signed with a Authenticode certificate
 
 note: according to this post by Jernej Simončič, non-EV certificates are also accepted.
 https://groups.google.com/g/innosetup/c/f2-s8egy4s0
