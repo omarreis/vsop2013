@@ -81,7 +81,7 @@ Set the installer URL.
 
 The EXE installer  must run in complete "silence". Whence the silence test.
 You can instruct Inno installers to run silently by using command line parameter /VERYSILENT
-( a simple /SILENCE didn't do because it displayed progress bar )
+( a simple /SILENT didn't work because it displayed a progress bar )
 
 Fill the installer package fields regarding silence parameter
 and return codes. There is a Inno Setup page with the return values.
