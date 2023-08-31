@@ -138,7 +138,7 @@ Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
 * Inno setup exit codes: https://jrsoftware.org/ishelp/topic_setupexitcodes.htm
 * Inno setup command line parameters: https://jrsoftware.org/ishelp/index.php?topic=setupcmdline
 * Inno setup Forum: https://groups.google.com/g/innosetup/c/f2-s8egy4s0
-* Submit URL to SmartScreen https://www.microsoft.com/en-us/wdsi/filesubmission  (select Windows Defender Sm,artscreen) 
+* Submit file to SmartScreen https://www.microsoft.com/en-us/wdsi/filesubmission  (select Windows Defender Sm,artscreen) 
   
 
 Omar - Aug/23
