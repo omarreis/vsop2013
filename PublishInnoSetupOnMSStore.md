@@ -50,13 +50,17 @@ Install Windows SDK if needed. Typical Windows SDK path is
 
     \Program Files (x86)\Windows Kits\10\bin\10.0.1234.0\x86"              
 
-The sign command looks like this:
+The sign command with EV certificate looks like this:
 
     SignTool sign /n "YourCompany Ltd" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
 
-Make sure the company name matches the certificate.
-At this point you will be prompted for the password and token ( 2 factor authentication )
-This stores the signature and timestamp on the EXE file meta data.
+Make sure the company name matches the certificate. At this point you will be prompted for the password and token ( 2 factor authentication )
+
+If signing with a non-EV certificate, the password can be included in the command line:
+
+    SignTool sign /f "path\YourCompanyCertificate.pfx" /p "aLargePassword" /t "http://timestamp.comodoca.com" /fd SHA256 "path\filename.exe"
+
+SignTool stores the digital signature and timestamp on the executable file meta data.
 
 * To check the signature, use Windows Explorer, righ-click the file and select Properties.
 
@@ -133,7 +137,8 @@ Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
 * Inno setup: https://jrsoftware.org  <-- Great installer builder
 * Inno setup exit codes: https://jrsoftware.org/ishelp/topic_setupexitcodes.htm
 * Inno setup command line parameters: https://jrsoftware.org/ishelp/index.php?topic=setupcmdline
-* Inno setup Forum: https://groups.google.com/g/innosetup/c/f2-s8egy4s0 
+* Inno setup Forum: https://groups.google.com/g/innosetup/c/f2-s8egy4s0
+* Submit URL to SmartScreen https://www.microsoft.com/en-us/wdsi/filesubmission  (select Windows Defender Sm,artscreen) 
   
 
 Omar - Aug/23
