@@ -2,15 +2,21 @@
 
 Notes collected on how to get a Inno Setup EXE installer accepted on the MS Store.
 
+! This a little off-topic in this astronomy/graphics repo !
+
+Software installers are programs that you run to setup a softare package.  
+Usually run once to install the software components, default Documents files,
+create app shortcuts. Inno Setup is a very popular installer builder
+for Windows platform.
+
 MS Store now accepts EXE installers.
 
 Current Requirements ( aug/23 ) :
 
-1) The program EXE and the installer EXE must be signed with a Authenticode certificate
+1) The app EXEcutables and the installer EXE must be signed with a code signing certificate
 
-note: according to this post by Jernej Simončič, non-EV certificates are also accepted.
-https://groups.google.com/g/innosetup/c/f2-s8egy4s0
-( I previously said that EV certificate was required )
+       note: according to this post by Jernej Simončič, non-EV certificates are also accepted.
+       ( I previously said that EV certificate was required )
 
 2) The installer must run silently
 
