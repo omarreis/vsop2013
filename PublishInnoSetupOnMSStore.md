@@ -36,7 +36,8 @@ EV certificate requires a Company with:
 * Other validation checks
 * Signing uses 2 factor authentication ( password and a external hardware token )
 
-Non-EV certificates require onlty the password. Keep yours safe on external drive, not anywhere in the computer. 
+Non-EV certificate signing requires only the password. Use a large and hard to break password.
+Keep it on external drive, not anywhere in the computer. 
 
 # Signing files
 
