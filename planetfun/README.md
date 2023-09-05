@@ -421,6 +421,8 @@ Installs executables PlanetFun, TestVSOP2013 and GravityIntegration on program g
 
 latest Win32 release: https://github.com/omarreis/vsop2013/releases
 
+Also available on the Microsoft Store. Search for "planetfun".
+
 ## also in this repository
 
 * vsop2013 ephemerides for Delphi: https://github.com/omarreis/vsop2013/README.md
