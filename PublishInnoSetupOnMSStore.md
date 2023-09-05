@@ -134,9 +134,12 @@ The store check is also in 2 parts. You can perform a basic test on
 your installer package before submiting to publication.
 The store review takes a couple days.
 
-* my app URL on MS Store:
+* Apps on MS Store:
 
-Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
+* Nassau St - https://apps.microsoft.com/store/detail/nassau-st/XPFCXKJ048XRHF
+
+* Planet Fun - https://apps.microsoft.com/store/detail/planet-fun/XPFD2CLDB2Q8S4
+
 
 ## Links
 
