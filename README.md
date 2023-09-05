@@ -35,13 +35,15 @@ Added VSOP87 planet database. H150 and Navigator star catalogs.
 
 # VSOP 2013 
 
-VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision planetary position model by G. FRANCOU & J.-L. SIMON - may 2013 ) 
-This repo contains a Delphi Pascal port of original Fortran code by the theory authors. 
+VSOP 2013 (Variations Séculaires des Orbites Planétaires) is a high precision 
+planetary position model by G. FRANCOU & J.-L. SIMON - may 2013.  
+This repo contains a Delphi Pascal port of original Fortran code. 
 
-VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed of the 9 planets at a time, inside a 9000 years range. 
+VSOP2013 calculation machinery uses Chebyshev polynomials to find position and speed 
+of the 9 planets at a time (inside a 9000 years range). 
 
-Tested with D11.2 andon Win32 iOS and Android. 
-Tests are for Firemonkey, but should work with VCL and console app as well.
+Tested with D11.2 for Win32, iOS and Android. 
+Tests are for Firemonkey but should work with VCL and console app as well.
 
 VSOP 2013 original paper with Fortran code and data files can be found at:
 
@@ -62,9 +64,14 @@ It is organized in 6 files, covering a 9,000 year period in all, as follows:
      +1500 to +3000       VSOP2013.p2000
      +3000 to +4500       VSOP2013.p4000
 
-Each file is divided in 17122, 32 day intervals. Each interval has 978 coefficients, arranged in groups of 6 per line. File header contains a table of indexes into coefficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
-Each planet has a number of Chebyshev polynomial terms (between 7 to 14 terms). Results are two 3D vectors: position and speed.
-Results are in AU ( AU/day for speeds ) heliocentric ecliptic coordinates ( x,y,z )
+Each file is divided in 17122, 32 day intervals. Each interval has 978 coefficients, arranged in groups of 6 per line. 
+
+File header contains a table of indexes into coefficients for 9 planets: Mercury, Venus, Earth+Moon baricenter, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto.
+
+Each planet has a number of Chebyshev polynomial terms (between 7 to 14 terms per planet). 
+
+Results are two 3D vectors: position and speed.     
+Results are in AU ( AU/day for speeds ) heliocentric ecliptic coordinates ( x,y,z ).
 
 The FTP repository contains Fortran code:
 
@@ -76,12 +83,14 @@ In this Delphi port, the whole file is pre-loaded into memory tables for fast ac
 Object T_VSOP2013_File encapsulates VSOP 2013 machinery:
 
 * Parse original data files in text - Use only files in original format as the parser relies on fixed positions.
-* Save and Load data in a custom binary format, more compact and fast to load ( at this time Android apps have a 150MB bundle size limit )
-* Calculator: calculates heliocentric rectangular position and speed ( in UA and UA/day). Planets Almanac. 
+* Save and Load data in a custom binary format, more compact and fast to load ( Android apps have bundle size limit )
+* Calculator: calculates heliocentric rectangular position and speed ( in UA and UA/day). Planetary Almanac. 
 
 ## Astronomical Algorithms
 
-Most algorithms used for dealing with dates and astronomy are from the book "Astronomical Algorithms" by Jean Meeus ( AA 1st and 2nd editions )
+Most algorithms used for dealing with dates and astronomy are from the 
+book "Astronomical Algorithms" by Jean Meeus ( AA 1st and 2nd editions )
+
 Some formulas are from the "Almanac For Computers" publication by USNO  ( marked AfC ).  
 
 ## Moon positions
@@ -91,6 +100,7 @@ Moon position calculations use theory ELP2000 ( AA chapter 47 ). ELP (Éphémér
 The implementation in Ah.Moon.pas was extracted from TMoon component by Andreas Hörstemeier.
 
 see http://www.hoerstemeier.com/moon.htm 
+
 
 ## VSOP 87
 
@@ -159,7 +169,9 @@ I did not test the original Fortran code, so I used the results on original file
 
 Planet Fun is a solar system simulation in 4D. 
 The 9 Planets, Sun, Moon, stars are positioned using 
-calculation methods described in the book Astronomical Algorithms.
+calculation methods described in "Astronomical Algorithms".
+
+Implements an Almanac ( calculator of position for Sun, Moon, 9 planets and 150 stars )
 
 Source code:  
 
@@ -186,6 +198,8 @@ In order to compile and run this app, you will need to:
 Install executables  PlanetFun.exe, TestVSOP2013.exe, gravityIntegration.exe and assets.
 
 get latest release: https://github.com/omarreis/vsop2013/releases
+
+Also available on the Microsoft Store. Search for "planetfun". 
 
 ## Sample app 3: gravityIntegration 
 
