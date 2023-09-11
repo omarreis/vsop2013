@@ -82,7 +82,7 @@ Using the leapfrog integration app *gravityIntegration* select:
   * interval=23741 days, 
   * DT=0.5 
   * start date 13/03/1781 
-  * set Pluto and Neptune OUT of existence ( select planets and uncheck *(x) Exists* checkbox )
+  * set Pluto and Neptune OUT of existence ( select planets and uncheck *( )Exists* checkbox )
   * click [Build charts]
 
 In the resulting chart below we see that Uranus behaved nicely up to 1820, 
