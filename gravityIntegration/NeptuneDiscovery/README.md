@@ -1,4 +1,32 @@
-## The discovery of planet Neptune
+# The discovery of planet Neptune
+
+This is a numeric exercise using the planetary position tools in this repo.
+
+Astronomers collect observations of planet and star positions over 
+long periods of time, so they can formulate mathematical models
+that approach the experimental results.
+We can use the formulas to extrapolate for even longer periods
+and calculate planet coordinates for a given time.
+
+This is the case of theories VSOP87, VSOP2013, ELP2000 and some others.
+Mathematical models that that produce precise predictions for
+the state of the Solar System.
+
+Then there is the simplicity of the Universal Gravigation theory.
+A simple formula that shows how the Sun and planets attract each other.
+We can use this to calculate sucessive positions for the planets,
+integrating in small intervals.
+
+They should match, at least whitin a certain precision.
+
+In this exercise we compare positions obtained from:
+
+1) Numerical integration by leapfrog method
+2) Modern VSOP 2013 planetary theory ( close to reality )
+
+What happens when we turn Neptune's gravity OFF ?  
+
+## Planet discovery history
 
 In 1846 Urbain Le Verrier predicted the existence of a new planet,
 never seen before by astronomers. He noticed perturbations in the 
