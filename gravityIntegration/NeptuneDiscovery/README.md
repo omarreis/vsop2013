@@ -4,20 +4,22 @@ This is a numeric exercise using the planetary position tools in this repo.
 
 Astronomers collect observations of planet and star positions over 
 long periods of time, so they can formulate mathematical models
-that approach the experimental results.
+that approach these experimental results.
 We can use the formulas to extrapolate for even longer periods
-and calculate planet coordinates for a given time.
+and calculate planet coordinates at a given time.
 
-This is the case of theories VSOP87, VSOP2013, ELP2000 and some others.
+This is the case of theories VSOP87 and VSOP2013 and many others.
 Mathematical models that that produce predictions for
 the state of the Solar System.
 
 Then there is the simplicity of the Universal Gravigation theory.
 A simple formula that shows how the Sun and planets attract each other.
-We can use this to calculate sucessive positions for the planets,
-adding up the N-to-N forces in small intervals ( DTs ).
-
-They should match, at least whitin a certain precision.
+We can use it to calculate all the little forces.
+Forces produce acceleration, influencing speed and position. 
+The effects can be integrated over time.
+ 
+If the formula is any good, the two calculations should match, 
+at least to a certain precision.
 
 In this exercise we compare positions obtained from:
 
