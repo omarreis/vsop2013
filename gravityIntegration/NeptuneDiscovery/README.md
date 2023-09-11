@@ -18,7 +18,7 @@ We can use it to calculate all the little forces.
 Forces produce acceleration, influencing speed and position. 
 The effects can be integrated over time.
  
-If the formula is any good, the two calculations should match, 
+If the formulas are any good the two calculations should match, 
 at least to a certain precision.
 
 In this exercise we compare positions obtained from:
@@ -100,10 +100,10 @@ If we look at the actual positions chart of the planets in the period (below),
 we see that in 1781, Uranus was about one quarter of revolution
 behind Neptune.  Uranus revolution, being closer to the Sun,
 is faster, so it catches up and eventually, around 1820, 
-they meet at closest point.   
+the two meet at closest point (see chart).   
 
 At this point, at a relatively small distance, gravity forces between planets 
-are of maximum magnitude, but force direction is along the orbit radius,
+are of maximum magnitude, but force directions are along the orbit radius,
 difficult to observe from Earth, and not affecting the planet's longitude. 
 
 ![UranusNeptuneOrbits](UranusNeptune1871-1846.png)
@@ -119,13 +119,14 @@ they struggled to fit Uranus' into their numeric models.
 
 This, I guess, is what made Verrier and Adams consider a new planet.
 I suppose they also relied on Kepler's 3rd law. Since the new planet was 
-left behind by Uranus, its orbit was slower and hence more distant from the Sun.  
+left behind by Uranus, the orbit was slower and hence more distant from the Sun.  
+So it's really faint, difficult to find, if you don't know where to point.
 
 Since the planets sort of met around 1820, the new planet must have been 
 with similar longitude at the time. Since Neptune rotates more slowly than Uranus, 
 in 1846 its longitude must be closer to 1871 position, say 1/8 into the new orbit.
 They knew Uranus was already about 1/4 into the new orbit. 
-That hinted to the estimated position of the suspect.
+That hinted to the estimated position of the new planet.
 
 We now know that Neptune revolution period is 60189 Earth days.
 Period between the 2 planet meetings (closest point) is 62594 Earth days.
