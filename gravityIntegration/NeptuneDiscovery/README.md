@@ -14,9 +14,17 @@ the state of the Solar System.
 
 Then there is the simplicity of the Universal Gravigation theory.
 A simple formula that shows how the Sun and planets attract each other.
-We can use it to calculate all the little forces.
-Forces produce acceleration, influencing speed and position. 
-The effects can be integrated over time.
+
+    F = G * M1 * M2 / D^2
+    where
+      F = attraction force between objects 1-2 
+      G = Universal gravitation constant 6.674×10−11 N⋅m2/kg2
+      M1, M2 = Masses of objects 
+      D = Distance between object centers 
+
+We can use it to calculate all the little forces (N-to-N attraction).
+Forces produce acceleration, setting speed and position. 
+The effects of the forces can be summed up - integrated.
  
 If the formulas are any good the two calculations should match, 
 at least to a certain precision.
