@@ -86,8 +86,9 @@ Using the leapfrog integration app *gravityIntegration* select:
   * click [Build charts]
 
 In the resulting chart below we see that Uranus behaved nicely up to 1820, 
-then it starts to drift away from previous phisical model. By 1846, time of Neptune discovery, 
-Uranus longitude integration was already 140 arcsec off, a large diference observable with telescopes at the time.
+then it starts to drift away from previous physical model. By 1846, time of Neptune discovery, 
+Uranus longitude integration was already 140 arcsec off - full two minutes of arc - 
+a large difference observable with telescope.
 
 ![chart of Uranus longitude without Neptune](UranusLongitudeNoNeptune.png)
 
