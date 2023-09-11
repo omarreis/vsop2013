@@ -9,13 +9,13 @@ We can use the formulas to extrapolate for even longer periods
 and calculate planet coordinates for a given time.
 
 This is the case of theories VSOP87, VSOP2013, ELP2000 and some others.
-Mathematical models that that produce precise predictions for
+Mathematical models that that produce predictions for
 the state of the Solar System.
 
 Then there is the simplicity of the Universal Gravigation theory.
 A simple formula that shows how the Sun and planets attract each other.
 We can use this to calculate sucessive positions for the planets,
-integrating in small intervals.
+adding up the N-to-N forces in small intervals ( DTs ).
 
 They should match, at least whitin a certain precision.
 
@@ -25,6 +25,8 @@ In this exercise we compare positions obtained from:
 2) Modern VSOP 2013 planetary theory ( close to reality )
 
 What happens when we turn Neptune's gravity OFF ?  
+
+back to 1846...
 
 ## Planet discovery history
 
