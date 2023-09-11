@@ -154,9 +154,11 @@ My 5 cents
 
 ## Installer for Windows 
 
-Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
+Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe, VSOP2013.p2000.bin
 
-* https://github.com/omarreis/vsop2013/releases/tag/1.8
+Latest release: https://github.com/omarreis/vsop2013/releases
+
+Also on the Windows Store (search for "PlanetFun").
 
 ## videos
 
