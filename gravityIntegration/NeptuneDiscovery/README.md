@@ -9,7 +9,7 @@ We can use the formulas to extrapolate for even longer periods
 and calculate planet coordinates at a given time.
 
 This is the case of theories VSOP87 and VSOP2013 and many others.
-Mathematical models that that produce predictions for
+Mathematical models that produce predictions for
 the state of the Solar System.
 
 Then there is the simplicity of the Universal Gravigation theory.
