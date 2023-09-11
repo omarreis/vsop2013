@@ -59,9 +59,10 @@ By 1846 astronomers had about 65 years worth of Uranus observations (23741 days)
 
 Uranus revolution around the Sun (its "year") is 30684 Earth days long, or 84 Earth years. 
 By 1846, astronomers have recorded about 77% of the first Uranus lap around the Sun.  
-Still the planet was misbehaving.
+Problem: the new planet was misbehaving, not orbiting the Sun as fast as it should,
+according to Newton's Gravitation.
 
-To simulate the planet observations at the time (which I didn't have), I used vsop2013 ephemerides. 
+To simulate the planet observations at the time (which I didn't have) I used theory vsop 2013. 
 
 * see vsop2013 for Delphi: https://github.com/omarreis/vsop2013/
 
@@ -76,12 +77,12 @@ Planets unknown at the time (Neptune and Pluto) were excluded from integration i
 
 Using the leapfrog integration app *gravityIntegration* select:
 
-  * select *[x]Uranus* chart
+  * select *[x] Uranus* chart
   * comparison=Longitude
   * interval=23741 days, 
   * DT=0.5 
   * start date 13/03/1781 
-  * set Pluto and Neptune OUT of existence ( select planets and uncheck *Exists* checkbox )
+  * set Pluto and Neptune OUT of existence ( select planets and uncheck *(x) Exists* checkbox )
   * click [Build charts]
 
 In the resulting chart below we see that Uranus behaved nicely up to 1820, 
