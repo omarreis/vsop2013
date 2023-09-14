@@ -12,7 +12,7 @@ This is the case of theories VSOP87 and VSOP2013 and many others.
 Mathematical models that produce predictions for
 the state of the Solar System.
 
-Then there is the simplicity of the Universal Gravigation theory.
+Then there is the simplicity of the Universal Gravitation theory.
 A simple formula that shows how the Sun and planets attract each other.
 
     F = G * M1 * M2 / D^2
